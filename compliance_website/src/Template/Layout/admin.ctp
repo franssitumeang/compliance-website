@@ -59,19 +59,19 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/admins/dashboards">
               <i class="menu-icon fa fa-desktop"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admins/perusahaans">
               <i class="menu-icon fa fa-building-o"></i>
               <span class="menu-title">Perusahaan</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admins/departemens">
               <i class="menu-icon fa fa-sitemap"></i>
               <span class="menu-title">Departemen</span>
             </a>
