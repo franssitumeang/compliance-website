@@ -17,6 +17,10 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <?= $this->Html->script('../vendors/js/vendor.bundle.base.js') ?>
+    <?= $this->Html->script('../vendors/js/vendor.bundle.addons.js') ?>
+    <?= $this->Html->script('off-canvas.js') ?>
+    <?= $this->Html->script('misc.js') ?>
     
 </head>
 <body>
@@ -150,11 +154,5 @@
         </div>
     </div>
 </div>
-
-
-    <?= $this->Html->script('../vendors/js/vendor.bundle.base.js') ?>
-    <?= $this->Html->script('../vendors/js/vendor.bundle.addons.js') ?>
-    <?= $this->Html->script('off-canvas.js') ?>
-    <?= $this->Html->script('misc.js') ?>
 </body>
 </html>
