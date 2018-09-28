@@ -52,4 +52,10 @@ Router::scope('/admins', function (RouteBuilder $routes) {
     $routes->connect('/departemens', ['controller' => 'Departemens', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
-
+Router::scope('/', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
+    $routes->connect('/approvals', ['controller' => 'Publics', 'action' => 'approval']);
+    // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->setExtensions(['json']);
+    $routes->fallbacks(DashedRoute::class);
+});
