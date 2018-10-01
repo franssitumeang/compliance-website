@@ -7,13 +7,10 @@ use Cake\ORM\Entity;
  * Role Entity
  *
  * @property string $id
- * @property string $menu_id
- * @property string $user_group_id
+ * @property string $name
+ * @property string $description
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- *
- * @property \App\Model\Entity\Menu $menu
- * @property \App\Model\Entity\UserGroup $user_group
  */
 class Role extends Entity
 {
@@ -28,11 +25,9 @@ class Role extends Entity
      * @var array
      */
     protected $_accessible = [
-        'menu_id' => true,
-        'user_group_id' => true,
+        'name' => true,
+        'description' => true,
         'created' => true,
-        'modified' => true,
-        'menu' => true,
-        'user_group' => true
+        'modified' => true
     ];
 }

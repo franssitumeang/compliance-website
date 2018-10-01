@@ -9,9 +9,9 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <th>#</th>
-                                    <th>ID</th>
-                                    <th>Menu ID</th>
-                                    <th>User Group ID</th>
+                                    <th>Nama</th>
+                                    <th>Deskripsi</th>
+                                    <th>Action</th>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -21,13 +21,26 @@
                                                 <?= $i; ?>
                                             </td>
                                             <td>
-                                                <?= $role->id; ?>
+                                                <?= $role->name; ?>
                                             </td>
                                             <td>
-                                                <?= $role->menu_id; ?>
+                                                <?= $role->description; ?>
                                             </td>
                                             <td>
-                                                <?= $role->user_group_id; ?>
+                                                <?= $this->Form->button('<i class="fa fa-edit">', 
+                                                                                ['class' => 'btn btn-icons btn-inverse-primary',
+                                                                                'data-toggle' => 'tooltip',
+                                                                                'id' => 'edit-'.$role->id,
+                                                                                'title' => 'Edit',
+                                                                                'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
+                                                ?></i>
+                                                <?= $this->Form->button('<i class="fa fa-trash">', 
+                                                                                ['class' => 'btn btn-icons btn-inverse-danger',
+                                                                                'data-toggle' => 'tooltip',
+                                                                                'id' => 'delete-'.$role->id,
+                                                                                'title' => 'Delete',
+                                                                                'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
+                                                ?></i> 
                                             </td>
                                         <?php $i++; ?>
                                         <?php endforeach;?>
@@ -36,48 +49,34 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col-2" style="padding-left: 0px;">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center;">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($roles as $role): ?>
-                                <tr>
-                                    <td>
-                                        <button class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit" style="margin-top:-22px; margin-bottom:-20px;"><i
-                                            class="fa fa-edit"></i></button>
-                                        <button class="btn btn-icons btn-inverse-danger" data-toggle="tooltip" title="delete" style="margin-top:-22px; margin-bottom:-20px;"><i
-                                            class="fa fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <?php endforeach;?>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>                  
         </div>
     </div>
-    <!-- <div class="col-lg-12 grid-margin stretch-card">
+    <div class="col-lg-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Tambah Role</h5>
                 <?= $this->Form->create($roles, ['url' => ['action' => 'add']]); ?>
                     <?= $this->Form->control('id', ['type' => 'hidden']); ?>
                     <div class="form-group">
-                        <?= $this->Form->control('menu_id'); ?>
+                        <label for="name">Name</label>
+                        <?= $this->Form->control('name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama']); ?>
                     </div>
                     <div class="form-group">  
-                        <?= $this->Form->control('user_group_id'); ?>
+                        <label for="description">Deskripsi</label>
+                        <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi']); ?>
                     </div>
-                    <?= $this->Form->button(__('Save Article')); ?>
+                    <?= $this->Form->button(__('Save'), ['class' => 'btn btn-success pull-right']); ?>
                 <?= $this->Form->end(); ?>
             </div>
         </div>
-    </div> -->
+    </div>
 </div>
+<script>
+$(document).ready(function(){
+    $("button").click(function(e){
+        alert('ID = ' + this.id);
+    });
+});
+</script>

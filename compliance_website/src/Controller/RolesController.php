@@ -22,6 +22,12 @@ class RolesController extends AppController
     }
 
     public function add() {
-
+        $role = $this->Roles->newEntity();
+        $role = $this->Roles->patchEntity($role, $this->request->getData());
+        if($this->Roles->save($role)) {
+            return $this->redirect(['action' => 'index']); 
+        } else {
+            $this->Flash->error(__('Gagal Menyimpan'));
+        }
     }
 }
