@@ -30,6 +30,8 @@ Router::scope('/admin', function (RouteBuilder $routes) {
     $routes->connect('/dashboards', ['controller' => 'Admins', 'action' => 'index',]);
     $routes->connect('/companies', ['controller' => 'Companies', 'action' => 'index']);
     $routes->connect('/departemens', ['controller' => 'Departemens', 'action' => 'index']);
+    $routes->connect('/roles', ['controller' => 'Roles', 'action' => 'index']);
+    $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/', function (RouteBuilder $routes) {

@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\RolesTable;
+use App\Model\Table\PositionsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\RolesTable Test Case
+ * App\Model\Table\PositionsTable Test Case
  */
-class RolesTableTest extends TestCase
+class PositionsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\RolesTable
+     * @var \App\Model\Table\PositionsTable
      */
-    public $Roles;
+    public $Positions;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class RolesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.roles'
+        'app.positions'
     ];
 
     /**
@@ -35,8 +35,8 @@ class RolesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Roles') ? [] : ['className' => RolesTable::class];
-        $this->Roles = TableRegistry::getTableLocator()->get('Roles', $config);
+        $config = TableRegistry::getTableLocator()->exists('Positions') ? [] : ['className' => PositionsTable::class];
+        $this->Positions = TableRegistry::getTableLocator()->get('Positions', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class RolesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Roles);
+        unset($this->Positions);
 
         parent::tearDown();
     }

@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Role Entity
+ * Position Entity
  *
  * @property string $id
  * @property string $name
@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
-class Role extends Entity
+class Position extends Entity
 {
 
     /**
