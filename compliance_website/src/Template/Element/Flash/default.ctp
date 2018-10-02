@@ -1,8 +1,13 @@
 <?php
-$class = 'message';
-if (!empty($params['class'])) {
-    $class .= ' ' . $params['class'];
+$class = '';
+$arr_message = (explode(" ",$message));
+if($arr_message[2] == 'could' || $arr_message[2] == 'not'){
+    $class = 'alert alert-danger';
 }
+else{
+    $class = 'alert alert-success';
+}
+
 if (!isset($params['escape']) || $params['escape'] !== false) {
     $message = h($message);
 }

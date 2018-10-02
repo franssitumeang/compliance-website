@@ -3,6 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><span class="menu-icon fa fa-building-o"></span>&nbsp; Daftar Perusahaan</h5>
+        <!-- <p><?= $paginate["count"] ?></p> -->
         
         <form class="forms-sample">
           <div class="row">
@@ -118,10 +119,10 @@
                   <?php foreach ($companies as $c): ?>
                   <tr>
                     <td>
-                      <button class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
+                      <button id="<?=$c->id?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
                       style="margin-top:-22px; margin-bottom:-20px;"><i class="fa fa-edit"></i></button>
-                      <button class="btn btn-icons btn-inverse-danger" data-toggle="tooltip" title="delete"
-                      style="margin-top:-22px; margin-bottom:-20px;"><i class="fa fa-trash"></i></button>
+                      <span data-target="#myModal" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
+                      style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                     </td>
                   </tr>
                   <?php endforeach; ?>
@@ -134,12 +135,20 @@
           <br>
           <div class="row">
             <div class="col-6">
-              <p>Page 0 of 1, showing 10 record(s)</p>
+              <p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s)</p>
             </div>
             <div class="col-6">
               <div class="pull-right">
-                <a href="#" class="btn btn-light"><i class="fa fa-chevron-left"></i></a>
-                <a href="#" class="btn btn-light"><i class="fa fa-chevron-right"></i></a>
+                <?php if ($paginate["prevPage"]): ?>
+                <a href="?page=<?= $paginate['page']-1 ?>" class="btn btn-light"><i class="fa fa-chevron-left"></i></a>
+                <?php else: ?>
+                <a class="btn btn-light disabled"><i class="fa fa-chevron-left"></i></a>
+                <?php endif; ?>
+                <?php if ($paginate["nextPage"]): ?>
+                <a href="?page=<?= $paginate['page']+1 ?>" class="btn btn-light"><i class="fa fa-chevron-right"></i></a>
+                <?php else: ?>
+                <a class="btn btn-light disabled"><i class="fa fa-chevron-right"></i></a>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -150,7 +159,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Tambah Perusahan</h5>
-          <?= $this->Form->create($company,['url'=>['action'=>'add']]) ?>
+          <?= $this->Form->create($company,['id'=>'form','url'=>['action'=>'add']]) ?>
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
@@ -194,21 +203,78 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" style="font-size: small;">http://</span>
                     </div>
-                    <input type="text" class="form-control" id="website" placeholder="ex : wahanahonda.com">
+                    <input type="text" class="form-control" id="website" name="website" placeholder="ex : wahanahonda.com">
                   </div>
                 </div>
               </div>
             </div>
-            <input type="submit" value="Save" class="btn btn-success pull-right">
+            <div class="pull-right">
+                <input type="submit" value="Save" class="btn btn-success" id="btn_save">
+                <input type="submit" value="Update" class="btn btn-success" id="btn_update">
+                <button class="btn btn-secondary" type="button" id="btn_cancel">Cancel</button>
+            </div>
             <?= $this->Form->end() ?>
+          
         </div>
       </div>
     </div>
   </div>
   <div>
+    
+
+      <div id="myModal" class="modal fade">
+          <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      Are you sure?
+                  </div>
+                  <div class="modal-body">
+                      <p>Do you really want to delete these records? This process cannot be undone.</p>
+                      <div class="btn-group btn-group-justified">
+                          <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+                          <div class="btn-group"><button type="button" class="btn btn-danger">Save changes</button></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     <script>
       $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
-        console.log('oke');
+        $('#btn_update').hide()
+        $('#btn_cancel').hide()
       });
+      var companies = JSON.parse('<?php echo json_encode($companies); ?>');
+      $("button").click(function(e) {
+        var id = this.id;
+        for(var i=0;i<companies.length;i++) {
+            if(id == companies[i].id) {
+                $("#company_code").val(companies[i].company_code);
+                $("#company_name").val(companies[i].company_name);
+                $("#address_1").val(companies[i].address_1);
+                $("#address_2").val(companies[i].address_2);
+                $("#phone_num").val(companies[i].phone_num);
+                $("#fax_num").val(companies[i].fax_num);
+                $("#url_link").val(companies[i].url_link);
+                $("#website").val(companies[i].website);
+                $('#form').attr('action','companies/add/'+id);
+                break;
+            }
+        };
+        $('#btn_update').show()
+        $('#btn_cancel').show()
+        $('#btn_save').hide()
+      });
+      $('#btn_cancel').click(function(e){
+        $('#btn_update').hide()
+        $('#btn_cancel').hide()
+        $('#btn_save').show()
+        $(':input','#form')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
+        $('#form').attr('action','companies/add');
+      });
+      
     </script>

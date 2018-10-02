@@ -22,6 +22,7 @@
     <?= $this->Html->script('off-canvas.js') ?>
     <?= $this->Html->script('misc.js') ?>
     
+    
 </head>
 <body>
 <div class="container-scroller">
@@ -139,9 +140,7 @@
               <!-- Message error/success -->
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
-
           </div>
-
         <footer class="footer">
             <div class="container-fluid clearfix">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
