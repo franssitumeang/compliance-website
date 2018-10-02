@@ -157,7 +157,7 @@
     </div>
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body form">
           <h5 class="card-title">Tambah Perusahan</h5>
           <?= $this->Form->create($company,['id'=>'form','url'=>['action'=>'add']]) ?>
             <div class="row">
@@ -218,9 +218,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div>
-    
+  </div>  
 
       <div id="myModal" class="modal fade">
           <div class="modal-dialog modal-sm">
@@ -232,7 +230,7 @@
                       <p>Do you really want to delete these records? This process cannot be undone.</p>
                       <div class="btn-group btn-group-justified">
                           <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-                          <div class="btn-group"><button type="button" class="btn btn-danger">Save changes</button></div>
+                          <div class="btn-group"><button type="button" class="btn btn-danger">Delete</button></div>
                       </div>
                   </div>
               </div>
@@ -258,12 +256,16 @@
                 $("#url_link").val(companies[i].url_link);
                 $("#website").val(companies[i].website);
                 $('#form').attr('action','companies/add/'+id);
+                $('html, body').animate({
+                  scrollTop: $("div.form").offset().top
+                }, 1000)
                 break;
             }
         };
         $('#btn_update').show()
         $('#btn_cancel').show()
         $('#btn_save').hide()
+        
       });
       $('#btn_cancel').click(function(e){
         $('#btn_update').hide()
