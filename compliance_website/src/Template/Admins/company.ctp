@@ -2,31 +2,39 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><span class="menu-icon fa fa-building-o"></span>&nbsp; Daftar Perusahaan</h5>
-        <form class="forms-sample">
+        <h5 class="card-title">
+          <a href="companies" style="color:#669DE0;"><span class="menu-icon fa fa-building-o"></span>&nbsp; Daftar Perusahaan</a>
+        </h5>
+        <?= $this->Form->create("",['type'=>'get']) ?>
           <div class="row">
             <div class="col-6">
               <div class="form-group">
                 <label for="search">Searh</label>
-                <input type="email" class="form-control" id="search" placeholder="Enter Searh Key">
+                <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label>Search By</label>
                 <div class="input-group col-xs-12">
-                  <select class="form-control">
-                    <option>Male</option>
-                    <option>Female</option>
+                  <select class="form-control" name="attribute">
+                    <option value="company_code">Kode Perusahaan</option>
+                    <option value="company_name">Nama Perusahaan</option>
+                    <option value="address_1">Alamat 1</option>
+                    <option value="address_2">Alamat 2</option>
+                    <option value="phone_num">No. Telepon</option>
+                    <option value="fax_num">Fax</option>
+                    <option value="url_link">URL</option>
+                    <option value="website">Website</option>
                   </select>
                   <span class="input-group-append">
-                    <button class="file-upload-browse btn btn-primary" type="button">Search</button>
+                    <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
                   </span>
                 </div>
               </div>
             </div>
           </div>
-        </form>
+        <?= $this->Form->end() ?>
         <br>
         <div class="row">
           <div class="col-10" style="padding-right: 0px;">
@@ -38,10 +46,10 @@
                       #
                     </th>
                     <th>
-                      Kode
+                      Kode Perusahaan
                     </th>
                     <th>
-                      Nama
+                      Nama Perusahaan
                     </th>
                     <th>
                       Alamat 1
@@ -131,9 +139,13 @@
           </div>
           
           <br>
+          <?php if ($companies-> isEmpty()): ?>
+              <h5 class="text-center">No Record</h5>
+          <?php endif; ?>
           <div class="row">
+              
             <div class="col-6">
-              <p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s)</p>
+              <p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s) out of <?= $paginate["count"] ?> total</p>
             </div>
             <div class="col-6">
               <div class="pull-right">
@@ -157,34 +169,42 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" id="title_form">Tambah Perusahan</h5>
-          <?= $this->Form->create($company,['class'=>'form','id'=>'form','url'=>['action'=>'add']]) ?>
+          <?= $this->Form->create($company,['class'=>'form','id'=>'form','url'=>['action'=>'add'],
+          'data-bv-feedbackicons-valid'=>'fa fa-check',
+          'data-bv-feedbackicons-invalid'=>'fa fa-warning',
+          'data-bv-feedbackicons-validating'=>'fa fa-spinner']) ?>
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label for="company_code">Kode Perusahaan</label>
-                  <input type="text" class="form-control" id="company_code" name="company_code" placeholder="Kode">
+                  <input type="text" class="form-control" id="company_code" name="company_code" placeholder="Kode" required
+                  maxlength="5">
                 </div>
                 <div class="form-group">
                   <label for="company_name">Nama Perusahaan</label>
-                  <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Nama">
+                  <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Nama" required
+                  maxlength="100">
                 </div>
                 <div class="form-group">
                   <label for="address_1">Alamat 1</label>
-                  <input type="text" class="form-control" id="address_1" name="address_1" placeholder="Alamat 1">
+                  <input type="text" class="form-control" id="address_1" name="address_1" placeholder="Alamat 1" required
+                  maxlength="50">
                 </div>
                 <div class="form-group">
                   <label for="address_2">Alamat 2</label>
-                  <input type="text" class="form-control" id="address_2" name="address_2" placeholder="Alamat 2">
+                  <input type="text" class="form-control" id="address_2" name="address_2" placeholder="Alamat 2" maxlength="50">
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="phone_num">No. Telepon</label>
-                  <input type="text" class="form-control" id="phone_num" name="phone_num" placeholder="No. Telepon">
+                  <input type="text" class="form-control" id="phone_num" name="phone_num" placeholder="No. Telepon" required
+                  maxlength="30">
                 </div>
                 <div class="form-group">
                   <label for="fax_num">Fax</label>
-                  <input type="text" class="form-control" id="fax_num" name="fax_num" placeholder="Fax">
+                  <input type="text" class="form-control" id="fax_num" name="fax_num" placeholder="Fax" required
+                  maxlength="30">
                 </div>
                 <div class="form-group">
                   <label for="url_link">URL</label>
@@ -192,7 +212,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" style="font-size: small;">http://</span>
                     </div>
-                    <input type="text" class="form-control" id="url_link" name="url_link" placeholder="ex : wahana.com">
+                    <input type="text" class="form-control" id="url_link" name="url_link" placeholder="ex : wahana.com" maxlength="100">
                   </div>
                 </div>
                 <div class="form-group">
@@ -201,7 +221,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" style="font-size: small;">http://</span>
                     </div>
-                    <input type="text" class="form-control" id="website" name="website" placeholder="ex : wahanahonda.com">
+                    <input type="text" class="form-control" id="website" name="website" placeholder="ex : wahanahonda.com" maxlength="50">
                   </div>
                 </div>
               </div>
@@ -243,6 +263,7 @@
         $('[data-toggle="tooltip"]').tooltip();
         $('#btn_update').hide()
         $('#btn_cancel').hide()
+        $('#form').bootstrapValidator();
       });
       var companies = JSON.parse('<?php echo json_encode($companies); ?>');
       $("button").click(function(e) {
