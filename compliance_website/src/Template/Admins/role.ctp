@@ -47,7 +47,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                                            <div class="btn-group btn-group-justified">
+                                                            <div class="btn-group">
                                                                 <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                                                                 <div class="btn-group">
                                                                 <?= $this->Form->postButton('Delete', ['controller' => 'Roles', 'action' => 'delete', $role->id], 
