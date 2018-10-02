@@ -3,8 +3,6 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><span class="menu-icon fa fa-building-o"></span>&nbsp; Daftar Perusahaan</h5>
-        <!-- <p><?= $paginate["count"] ?></p> -->
-        
         <form class="forms-sample">
           <div class="row">
             <div class="col-6">
@@ -121,7 +119,7 @@
                     <td>
                       <button id="<?=$c->id?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
                       style="margin-top:-22px; margin-bottom:-20px;"><i class="fa fa-edit"></i></button>
-                      <span data-target="#myModal" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
+                      <span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?=$c->id?>" class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
                       style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                     </td>
                   </tr>
@@ -157,9 +155,9 @@
     </div>
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
-        <div class="card-body form">
-          <h5 class="card-title">Tambah Perusahan</h5>
-          <?= $this->Form->create($company,['id'=>'form','url'=>['action'=>'add']]) ?>
+        <div class="card-body">
+          <h5 class="card-title" id="title_form">Tambah Perusahan</h5>
+          <?= $this->Form->create($company,['class'=>'form','id'=>'form','url'=>['action'=>'add']]) ?>
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
@@ -230,7 +228,11 @@
                       <p>Do you really want to delete these records? This process cannot be undone.</p>
                       <div class="btn-group btn-group-justified">
                           <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-                          <div class="btn-group"><button type="button" class="btn btn-danger">Delete</button></div>
+                          <?= $this->Form->create($company,['id'=>'form_delete']) ?>
+                            <div class="btn-group">
+                              <input type="submit" class="btn btn-danger" value="Delete">
+                            </div>
+                          <?= $this->Form->end() ?>
                       </div>
                   </div>
               </div>
@@ -255,11 +257,16 @@
                 $("#fax_num").val(companies[i].fax_num);
                 $("#url_link").val(companies[i].url_link);
                 $("#website").val(companies[i].website);
+                $("#title_form").text("Update Perusahaan");
                 $('#form').attr('action','companies/add/'+id);
                 $('html, body').animate({
-                  scrollTop: $("div.form").offset().top
+                  scrollTop: $("form.form").offset().top
                 }, 1000)
                 break;
+            }
+            if(id == 'btn_delete_'+companies[i].id) {
+              $('#form_delete').attr('action','companies/delete/'+companies[i].id);
+              break;
             }
         };
         $('#btn_update').show()
@@ -277,6 +284,7 @@
         .removeAttr('checked')
         .removeAttr('selected');
         $('#form').attr('action','companies/add');
+        $("#title_form").text("Tambah Perusahaan");
       });
       
     </script>

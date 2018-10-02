@@ -24,6 +24,7 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
 
+
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/admin', function (RouteBuilder $routes) {
