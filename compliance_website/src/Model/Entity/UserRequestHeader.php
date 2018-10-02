@@ -7,12 +7,13 @@ use Cake\ORM\Entity;
  * UserRequestHeader Entity
  *
  * @property string $id
- * @property string $users_id
+ * @property string $user_id
  * @property bool $status
  * @property \Cake\I18n\FrozenTime $request_dates
  * @property string $reasons_id
  *
  * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Reason $reason
  */
 class UserRequestHeader extends Entity
 {
@@ -27,10 +28,11 @@ class UserRequestHeader extends Entity
      * @var array
      */
     protected $_accessible = [
-        'users_id' => true,
+        'user_id' => true,
         'status' => true,
         'request_dates' => true,
         'reasons_id' => true,
-        'user' => true
+        'user' => true,
+        'reason' => true
     ];
 }

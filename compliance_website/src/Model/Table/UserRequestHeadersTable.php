@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * UserRequestHeaders Model
  *
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property |\Cake\ORM\Association\BelongsTo $Reasons
+ * @property \App\Model\Table\ReasonsTable|\Cake\ORM\Association\BelongsTo $Reasons
  *
  * @method \App\Model\Entity\UserRequestHeader get($primaryKey, $options = [])
  * @method \App\Model\Entity\UserRequestHeader newEntity($data = null, array $options = [])
@@ -39,7 +39,7 @@ class UserRequestHeadersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Users', [
-            'foreignKey' => 'users_id',
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Reasons', [
@@ -82,7 +82,7 @@ class UserRequestHeadersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['users_id'], 'Users'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['reasons_id'], 'Reasons'));
 
         return $rules;
