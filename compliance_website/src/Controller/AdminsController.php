@@ -16,4 +16,6 @@ class AdminsController extends AppController
         $this->viewBuilder()->templatePath('Admins');
         $this->render('dashboard');
     }
+
+    
 }
