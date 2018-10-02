@@ -6,17 +6,30 @@ use Cake\Event\Event;
 
 class RolesController extends AppController
 {
+    public $paginate = [
+        'limit' => 10,
+        'order' => [
+            'Roles.name' => 'asc'
+        ]
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
     public function beforeFilter(Event $event){
         $this->viewBuilder()->layout('admin');
     }
     public function index() {
         $role = $this->Roles->newEntity();
-        $this->loadComponent('Paginator');
+        
         $title = "Roles";
         $this->set('title', $title);
         
-        $roles = $this->Paginator->paginate($this->Roles->find());
-        $this->set(compact('roles'));
+        $roles = $this->paginate('Roles');
+        $paginate = $this->Paginator->getPagingParams()["Roles"];
+        $this->set(compact('roles', 'paginate'));
         $this->set('newRole', $role);
         //kondisi
         $this->viewBuilder()->templatePath('Admins');
@@ -32,11 +45,12 @@ class RolesController extends AppController
         }
         $role = $this->Roles->patchEntity($role, $this->request->getData());
         if($this->Roles->save($role)) {
-            return $this->redirect(['action' => 'index']); 
+            $message = 'The Role has been saved.';
         } else {
-            $this->Flash->error(__('Gagal Menyimpan'));
-            return $this->redirect(['action' => 'index']); 
+            $message = 'The Role could not be saved. Please, try again.'; 
         }
+        $this->Flash->set(__($message));
+        return $this->redirect(['action' => 'index']);
     }
 
     public function delete($id) {
