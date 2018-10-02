@@ -80,3 +80,15 @@
 
 /*compatible with bootstrap*/
 #mcTooltip, #mcTooltip div {box-sizing:content-box;}
+
+
+
+
+
+
+.sample-text-area {
+    padding-top: 25px;
+}
+.sample-text-area .text-heading{
+    margin-bottom: 15px;
+}
