@@ -27,14 +27,14 @@
 					</div>
 	    			<div class="table-row">
                         <?php $i = 1; ?>
-                        <?php foreach ($user_request_headers as $urh): ?>
+                        <?php foreach ($userRequestHeaders as $urh): ?>
 						<div class="serial"><?=$urh->request_dates?></div>
-						<div class="country percentage"><?=$urh->users_id?></div>
-						<div class="serial"><?=$urh->reasons_id?></div>
+						<div class="country percentage"><?=$urh->user->user_name; ?></div>
+						<div class="serial"><?=$urh->reason->reasons_name; ?></div>
 						<div class="serial"><?=$urh->status?></div>
-                        <div class="serial">test</div>
+                        <div class="serial"><a href="#">Detail</a>  </div>
                         <?php $i+=1; ?>
-                  <?php endforeach; ?>
+                        <?php endforeach; ?>
 					</div>						
 				</div>
 			</div>

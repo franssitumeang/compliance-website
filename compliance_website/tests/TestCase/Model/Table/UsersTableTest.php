@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UserRequestHeadersTable;
+use App\Model\Table\UsersTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UserRequestHeadersTable Test Case
+ * App\Model\Table\UsersTable Test Case
  */
-class UserRequestHeadersTableTest extends TestCase
+class UsersTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UserRequestHeadersTable
+     * @var \App\Model\Table\UsersTable
      */
-    public $UserRequestHeaders;
+    public $Users;
 
     /**
      * Fixtures
@@ -24,9 +24,10 @@ class UserRequestHeadersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.user_request_headers',
         'app.users',
-        'app.reasons'
+        'app.departments',
+        'app.user_groups',
+        'app.user_request_headers'
     ];
 
     /**
@@ -37,8 +38,8 @@ class UserRequestHeadersTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('UserRequestHeaders') ? [] : ['className' => UserRequestHeadersTable::class];
-        $this->UserRequestHeaders = TableRegistry::getTableLocator()->get('UserRequestHeaders', $config);
+        $config = TableRegistry::getTableLocator()->exists('Users') ? [] : ['className' => UsersTable::class];
+        $this->Users = TableRegistry::getTableLocator()->get('Users', $config);
     }
 
     /**
@@ -48,7 +49,7 @@ class UserRequestHeadersTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->UserRequestHeaders);
+        unset($this->Users);
 
         parent::tearDown();
     }
