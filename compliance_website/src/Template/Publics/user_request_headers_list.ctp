@@ -11,36 +11,83 @@
 </section>
 <!-- End banner Area -->
 
-<!--tabel-->
-<div class="whole-wrap">
-	<div class="container">
-		<div class="section-top-border">
-			<h3 class="mb-30">Monitoring Approval</h3>
-			<div class="progress-table-wrap">
-				<div class="progress-table">
-					<div class="table-head">
-						<div class="serial">Tanggal</div>
-						<div class="country percentage">Oleh</div>
-						<div class="country percentage">Alasan</div>
-						<div class="serial">Status</div>
-                        <div class="serial">Action</div>
+ <!--Start Content-->
+
+<div class = "row">
+
+<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+		  <div class="card-body">
+			<h5 class="card-title">Monitoring Approval</h5>
+		
+			<form class="forms-sample">
+			<?= $this->Form->create("",['type'=>'get']) ?>
+					<div class="row">
+					  <div class="col-6">
+						<div class="form-group">
+						  <label for="search">Search</label>
+						  <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
+						</div>
+					  </div>
+					  <div class="col-6">
+						<div class="form-group">
+						  <label>Search By</label>
+						  <div class="input-group col-xs-12">
+							<select class="form-control" name="attribute">
+							  <option value="request_dates">Tanggal</option>
+							  <option value="status">Status</option>
+							</select>
+							<span class="input-group-append">
+							  <button  class="file-upload-browse btn btn-secondary" type="submit">Search</button>
+							</span>
+						  </div>
+						</div>
+					  </div>
 					</div>
-	    			<div class="table-row">
-                        <?php $i = 1; ?>
-                        <?php foreach ($userRequestHeaders as $urh): ?>
-						<div class="serial"><?=$urh->request_dates?></div>
-						<div class="country percentage"><?=$urh->user->user_name; ?></div>
-						<div class="serial"><?=$urh->reason->reasons_name; ?></div>
-						<div class="serial"><?=$urh->status?></div>
-                        <div class="serial"><a href="#">Detail</a>  </div>
-                        <?php $i+=1; ?>
-                        <?php endforeach; ?>
-					</div>						
+					<?= $this->Form->end() ?>
+			</form>
+			<br>
+			<div class= "row">
+				<div class="col-12" style="padding-right: 1px;">
+						<div class="table-responsive">
+								<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Tanggal </th>
+												<th>Nama</th>
+												<th>Alasan</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+											</thead>   
+											<tbody>
+												<?php $i = 1; ?>
+                        						<?php foreach ($userRequestHeaders as $urh): ?>
+												<tr>
+													<td><?=$urh->request_dates?></td>
+													<td><?=$urh->user->user_name; ?></td>
+													<td><?=$urh->reason->reasons_name; ?></td>
+													<td><?=$urh->status ?></td>
+													<td>
+														<button class="btn pull-left btn-sm">
+														<?php echo $this->Html->link('Detail', array('controller' => 'UserRequestDetails', $urh->id)); ?>
+													</td>
+												</tr>
+												<?php $i+=1; ?>
+                       							<?php endforeach; ?>
+											</tbody>
+										</table>    
+									</div>          
+								</div>
+								<?php if ($userRequestHeaders-> isEmpty()): ?>
+              					<h5 class="text-center">No Record</h5>
+          						<?php endif; ?>
+            					<div class="col-6">
+             					<p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s) out of <?= $paginate["count"] ?> total</p>
+            					</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-    </div>   
-</div>
-
-
-<!--tabel-->
+			

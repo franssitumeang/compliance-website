@@ -14,6 +14,7 @@ class UserRequestHeadersController extends AppController
 
     public function index()
     {
+        
         $title = "List Approval";
         $this->set('title', $title);
         $this->paginate = [
@@ -23,8 +24,12 @@ class UserRequestHeadersController extends AppController
         $userRequestHeaders = $this->paginate($this->UserRequestHeaders);
         $userRequestHeader = $this->UserRequestHeaders->newEntity();
         $paginate = $this->Paginator->getPagingParams()["UserRequestHeaders"];
-        $this->set(compact('UserRequestHeaders', 'UserRequestHeader', 'paginate'));
-
+        $this->set(compact('userRequestHeaders', 'userRequestHeader', 'paginate'));
+        $searchKey = $this->request->query('search_key');
+        $attribute = $this->request->query('attribute');
+        if($searchKey){
+            $this->paginate = ['conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']];
+        }      
         $this->viewBuilder()->templatePath('Publics');
         $this->render('user_request_headers_list');
     }
