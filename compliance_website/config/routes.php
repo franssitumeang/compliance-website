@@ -41,6 +41,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/approvals', ['controller' => 'Publics', 'action' => 'approval']);
     $routes->connect('/monitoring-approval', ['controller' => 'UserRequestHeaders', 'action' => 'index']);
     $routes->connect('/user-request-details-list', ['controller' => 'UserRequestDetails', 'action' => 'index']);
+    $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
+    $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
     $routes->connect('/user-request', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);

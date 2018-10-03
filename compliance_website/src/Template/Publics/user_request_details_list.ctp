@@ -52,10 +52,12 @@
 										<thead>
 											<tr>
 												<th>Tanggal </th>
+												<th>Nama Dokumen</th>
 												<th>Tipe Request</th>
 												<th>Description</th>
 												<th>Compliance</th>
 												<th>Manager</th>
+												<th>More</th>
 											</tr>
 											</thead>   
 											<tbody>
@@ -63,10 +65,19 @@
                         <?php foreach ($userRequestDetails as $urh): ?>
 												<tr>
 													<td><?=$urh->created?></td>
+													<td><?=$urh->user_document->name?></td>
 													<td><?=$urh->request_types ?></td>
 													<td><?=$urh->descriptions ?></td>
 													<td><?=$urh->approve_c ?></td>
 													<td><?=$urh->approve_m ?></td>
+													<td>
+														<button class="btn pull-left btn-sm">
+														<?php echo $this->Html->link('Download', array('controller' => 'UserRequestDetails', $urh->id)); ?>
+														</button>
+														<button class="btn pull-left btn-sm">
+														<?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions','action'=>'view', $urh->id)); ?>
+														</button>
+													</td>
 												</tr>
 												<?php $i+=1; ?>
                        	<?php endforeach; ?>
@@ -78,8 +89,22 @@
               	<h5 class="text-center">No Record</h5>
           			<?php endif; ?>
 								<div class="col-6">
-             					<p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s) out of <?= $paginate["count"] ?> total</p>
-            		</div>
+									<p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s) out of <?= $paginate["count"] ?> total</p>
+									</div>
+									<div class="col-6">
+										<div class="pull-right">
+											<?php if ($paginate["prevPage"]): ?>
+											<a href="?page=<?= $paginate['page']-1 ?>" class="btn btn-light"><i class="fa fa-chevron-left"></i></a>
+											<?php else: ?>
+											<a class="btn btn-light disabled"><i class="fa fa-chevron-left"></i></a>
+											<?php endif; ?>
+											<?php if ($paginate["nextPage"]): ?>
+											<a href="?page=<?= $paginate['page']+1 ?>" class="btn btn-light"><i class="fa fa-chevron-right"></i></a>
+											<?php else: ?>
+											<a class="btn btn-light disabled"><i class="fa fa-chevron-right"></i></a>
+											<?php endif; ?>
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>

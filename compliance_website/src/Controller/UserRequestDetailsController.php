@@ -32,13 +32,6 @@ class UserRequestDetailsController extends AppController{
         $this->render('user_request_details_list');
     }
 
-    public function approve($nilai=null){
-        if($nilai==1){
-            return 'Approved';
-        } else {
-            return 'Rejected';
-        }
-    }
 
 }
 ?>
