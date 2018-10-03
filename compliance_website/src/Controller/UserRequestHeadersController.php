@@ -16,7 +16,11 @@ class UserRequestHeadersController extends AppController
     {
         $title = "List Approval";
         $this->set('title', $title);
-        $userRequestHeaders = $this->paginate('UserRequestHeaders');
+        $this->paginate = [
+            'contain' => ['Users','Reasons']
+
+        ];
+        $userRequestHeaders = $this->paginate($this->UserRequestHeaders);
         $userRequestHeader = $this->UserRequestHeaders->newEntity();
         $paginate = $this->Paginator->getPagingParams()["UserRequestHeaders"];
         $this->set(compact('UserRequestHeaders', 'UserRequestHeader', 'paginate'));
