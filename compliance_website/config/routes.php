@@ -35,6 +35,7 @@ Router::scope('/admin', function (RouteBuilder $routes) {
     $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
+
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
     $routes->connect('/approvals', ['controller' => 'Publics', 'action' => 'approval']);
@@ -45,14 +46,15 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-Router::scope('/', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'Fanys', 'action' => 'index']);
-    $routes->connect('/list-request', ['controller' => 'Fanys', 'action' => 'listRequest']);
-    $routes->connect('/view-articles', ['controller' => 'Fanys', 'action' => 'viewArticles']);
-    $routes->connect('/forum/{id}', ['controller' => 'Fanys', 'action' => 'forum']);
-    $routes->connect('/all-articles', ['controller' => 'Fanys', 'action' => 'allArticles']);
-    $routes->connect('/all-documents', ['controller' => 'Fanys', 'action' => 'allDocuments']);
-    // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-    $routes->setExtensions(['json']);
-    $routes->fallbacks(DashedRoute::class);
-});
+
+// Router::scope('/', function (RouteBuilder $routes) {
+//     $routes->connect('/', ['controller' => 'Fanys', 'action' => 'index']);
+//     $routes->connect('/list-request', ['controller' => 'Fanys', 'action' => 'listRequest']);
+//     $routes->connect('/view-articles', ['controller' => 'Fanys', 'action' => 'viewArticles']);
+//     $routes->connect('/forum/{id}', ['controller' => 'Fanys', 'action' => 'forum']);
+//     $routes->connect('/all-articles', ['controller' => 'Fanys', 'action' => 'allArticles']);
+//     $routes->connect('/all-documents', ['controller' => 'Fanys', 'action' => 'allDocuments']);
+//     // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+//     $routes->setExtensions(['json']);
+//     $routes->fallbacks(DashedRoute::class);
+// });
