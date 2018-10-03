@@ -39,6 +39,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
     $routes->connect('/approvals', ['controller' => 'Publics', 'action' => 'approval']);
     $routes->connect('/monitoring-approval', ['controller' => 'UserRequestHeaders', 'action' => 'index']);
+    $routes->connect('/user-request', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
     // $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);
