@@ -25,6 +25,7 @@ class UserDocTypesTableTest extends TestCase
      */
     public $fixtures = [
         'app.user_doc_types',
+        'app.user_documents',
         'app.user_request_headers'
     ];
 

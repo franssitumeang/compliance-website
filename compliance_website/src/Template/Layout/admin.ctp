@@ -125,6 +125,9 @@
                   <a class="nav-link" href="../../pages/ui-features/buttons.html">Kategori Dokumen</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="../../pages/ui-features/buttons.html">Tipe Dokumen</a>
+                  </li>
+                <li class="nav-item">
                   <a class="nav-link" href="../../pages/ui-features/typography.html">Kategori Artikel</a>
                 </li>
               </ul>
