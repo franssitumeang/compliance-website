@@ -237,7 +237,6 @@
       </div>
     </div>
   </div>  
-
       <div id="myModal" class="modal fade">
           <div class="modal-dialog modal-sm">
               <div class="modal-content">

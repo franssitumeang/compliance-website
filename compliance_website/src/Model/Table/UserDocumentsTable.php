@@ -45,11 +45,11 @@ class UserDocumentsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('UserDocCategories', [
-            'foreignKey' => 'user_doc_categorie_id',
+            'foreignKey' => 'user_doc_category_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('UserDocTypes', [
-            'foreignKey' => 'doc_types_id',
+            'foreignKey' => 'user_doc_type_id',
             'joinType' => 'INNER'
         ]);
         $this->hasMany('UserRequestDetails', [
@@ -90,9 +90,9 @@ class UserDocumentsTable extends Table
             ->notEmpty('status');
 
         $validator
-            ->dateTime('publisher_dates')
-            ->requirePresence('publisher_dates', 'create')
-            ->notEmpty('publisher_dates');
+            ->dateTime('publisher_date')
+            ->requirePresence('publisher_date', 'create')
+            ->notEmpty('publisher_date');
 
         $validator
             ->scalar('paths')
@@ -112,8 +112,8 @@ class UserDocumentsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_doc_categorie_id'], 'UserDocCategories'));
-        $rules->add($rules->existsIn(['doc_types_id'], 'UserDocTypes'));
+        $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
+        $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
 
         return $rules;
     }
