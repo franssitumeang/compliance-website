@@ -18,7 +18,7 @@ class CompaniesFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'company_code' => ['type' => 'string', 'length' => 5, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'company_code' => ['type' => 'string', 'length' => 4, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'company_name' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'address_1' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'address_2' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -47,8 +47,8 @@ class CompaniesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'c4d8f359-9607-480e-bc0b-08f83d81bad2',
-                'company_code' => 'Lor',
+                'id' => '5864320f-5357-41ba-ac7d-7cd004ae7e89',
+                'company_code' => 'Lo',
                 'company_name' => 'Lorem ipsum dolor sit amet',
                 'address_1' => 'Lorem ipsum dolor sit amet',
                 'address_2' => 'Lorem ipsum dolor sit amet',
@@ -56,8 +56,8 @@ class CompaniesFixture extends TestFixture
                 'fax_num' => 'Lorem ipsum dolor sit amet',
                 'url_link' => 'Lorem ipsum dolor sit amet',
                 'website' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 03:01:07',
-                'modified' => '2018-10-04 03:01:07'
+                'created' => '2018-10-04 06:13:15',
+                'modified' => '2018-10-04 06:13:15'
             ],
         ];
         parent::init();

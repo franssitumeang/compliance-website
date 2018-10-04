@@ -25,6 +25,7 @@ class UserDocCategoriesTableTest extends TestCase
      */
     public $fixtures = [
         'app.user_doc_categories',
+        'app.user_documents',
         'app.user_request_headers'
     ];
 

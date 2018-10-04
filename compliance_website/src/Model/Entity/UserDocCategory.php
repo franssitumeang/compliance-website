@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\UserDocument[] $user_documents
  * @property \App\Model\Entity\UserRequestHeader[] $user_request_headers
  */
 class UserDocCategory extends Entity
@@ -29,6 +30,7 @@ class UserDocCategory extends Entity
         'category_name' => true,
         'created' => true,
         'modified' => true,
+        'user_documents' => true,
         'user_request_headers' => true
     ];
 }

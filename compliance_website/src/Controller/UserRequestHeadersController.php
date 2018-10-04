@@ -74,6 +74,12 @@ class UserRequestHeadersController extends AppController
         $this->render('add');
     }
 
+    public function download($id=null) { 
+        $filePath = WWW_ROOT .'files'. DS . $id;
+        $this->response->file($filePath ,
+            array('download'=> true, 'name'=> 'file name'));
+    }
+
    
 }
         

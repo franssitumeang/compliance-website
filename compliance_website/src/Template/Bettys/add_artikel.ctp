@@ -47,9 +47,8 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="deskripsi">Deskripsi</label>
                     <div class ="input-group col-xs-12"></div>
-                        <textarea rows="5" cols="80"></textarea>
+                        <textarea id="tinymce"></textarea>
                     </div>
                   </div>
               </div>

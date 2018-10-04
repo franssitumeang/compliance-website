@@ -82,19 +82,14 @@ class UserRequestHeadersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('attachment')
-            ->maxLength('attachment', 255)
-            ->allowEmpty('attachment');
+            ->scalar('doc_title')
+            ->maxLength('doc_title', 125)
+            ->allowEmpty('doc_title');
 
         $validator
-            ->scalar('approve_m')
-            ->maxLength('approve_m', 15)
-            ->allowEmpty('approve_m');
-
-        $validator
-            ->scalar('apprive_c')
-            ->maxLength('apprive_c', 15)
-            ->allowEmpty('apprive_c');
+            ->scalar('doc_no')
+            ->maxLength('doc_no', 125)
+            ->allowEmpty('doc_no');
 
         $validator
             ->scalar('status')

@@ -41,11 +41,11 @@ class UserDocTypesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '44e8a83e-f386-44a3-8cde-e283709cfbd3',
+                'id' => '4d0bd5a6-c9c8-4711-833f-832f9194e727',
                 'descriptions' => 'Lorem ipsum dolor sit amet',
                 'doc_type_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 03:02:20',
-                'modified' => '2018-10-04 03:02:20'
+                'created' => '2018-10-04 06:13:30',
+                'modified' => '2018-10-04 06:13:30'
             ],
         ];
         parent::init();

@@ -38,7 +38,11 @@ class DiscussionsController extends AppController{
         ]);
 
         $this->set('discussion', $discussion);
+        $this->viewBuilder()->templatePath('Publics/Discussions');
+        $this->render('view');
     }
+
+    
 }
 
 ?>
