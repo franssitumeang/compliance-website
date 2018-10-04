@@ -60,7 +60,7 @@ class CompaniesTable extends Table
 
         $validator
             ->scalar('company_code')
-            ->maxLength('company_code', 5)
+            ->maxLength('company_code', 4)
             ->requirePresence('company_code', 'create')
             ->notEmpty('company_code');
 

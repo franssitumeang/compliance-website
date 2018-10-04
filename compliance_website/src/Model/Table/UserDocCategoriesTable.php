@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * UserDocCategories Model
  *
- * @property |\Cake\ORM\Association\HasMany $UserDocuments
+ * @property \App\Model\Table\UserDocumentsTable|\Cake\ORM\Association\HasMany $UserDocuments
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
  *
  * @method \App\Model\Entity\UserDocCategory get($primaryKey, $options = [])

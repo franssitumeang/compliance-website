@@ -30,7 +30,7 @@ class ArticlesFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'fk_categories_id' => ['type' => 'foreign', 'columns' => ['categories_id'], 'references' => ['categories_article', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
+            'fk_categories_id' => ['type' => 'foreign', 'columns' => ['categories_id'], 'references' => ['article_categories', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
             'fk_user_id' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
         ],
         '_options' => [
@@ -49,12 +49,12 @@ class ArticlesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '985782ca-edcc-46d5-9363-6f2fdac20a2a',
+                'id' => 'a94ed2a6-ca28-4dda-b095-4db975353e33',
                 'title' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 03:00:22',
+                'created' => '2018-10-04 06:13:13',
                 'description' => 'Lorem ipsum dolor sit amet',
-                'user_id' => '65c45f46-f166-4a8f-922d-21e9c8d880a6',
-                'categories_id' => '919e5a86-6de9-4159-b4bf-f9342ec22270',
+                'user_id' => 'ec74b736-88c5-42ec-b493-2a7cb9859730',
+                'categories_id' => '404bfb07-41c8-4d6e-9c2c-d5e91dc57aa1',
                 'attachment' => 'Lorem ipsum dolor sit amet'
             ],
         ];

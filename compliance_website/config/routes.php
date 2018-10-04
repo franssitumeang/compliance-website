@@ -45,6 +45,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
     $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
     $routes->connect('/user-request', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
+    
+    //For Article
+    $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);
+    // $routes->connect('/articles-add',['controller' => 'Articles', 'action'=>'add']);
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);
 });

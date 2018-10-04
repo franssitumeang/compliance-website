@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Positions
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\BelongsTo $Departments
  * @property \App\Model\Table\ArticlesTable|\Cake\ORM\Association\HasMany $Articles
  * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
@@ -46,8 +47,11 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Positions', [
+            'foreignKey' => 'position_id'
+        ]);
         $this->belongsTo('Departments', [
-            'foreignKey' => 'departement_id'
+            'foreignKey' => 'department_id'
         ]);
         $this->hasMany('Articles', [
             'foreignKey' => 'user_id'
@@ -119,7 +123,8 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['departement_id'], 'Departments'));
+        $rules->add($rules->existsIn(['position_id'], 'Positions'));
+        $rules->add($rules->existsIn(['department_id'], 'Departments'));
 
         return $rules;
     }

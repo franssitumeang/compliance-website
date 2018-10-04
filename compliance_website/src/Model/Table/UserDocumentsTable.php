@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UserDocCategoriesTable|\Cake\ORM\Association\BelongsTo $UserDocCategories
  * @property \App\Model\Table\UserDocTypesTable|\Cake\ORM\Association\BelongsTo $UserDocTypes
- * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\HasMany $UserRequestDetails
+ * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\BelongsTo $UserRequestDetails
  * @property \App\Model\Table\VersionsTable|\Cake\ORM\Association\HasMany $Versions
  *
  * @method \App\Model\Entity\UserDocument get($primaryKey, $options = [])
@@ -52,8 +52,8 @@ class UserDocumentsTable extends Table
             'foreignKey' => 'user_doc_type_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('UserRequestDetails', [
-            'foreignKey' => 'user_document_id'
+        $this->belongsTo('UserRequestDetails', [
+            'foreignKey' => 'user_doc_detail_id'
         ]);
         $this->hasMany('Versions', [
             'foreignKey' => 'user_document_id'
@@ -114,6 +114,7 @@ class UserDocumentsTable extends Table
     {
         $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
         $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
+        $rules->add($rules->existsIn(['user_doc_detail_id'], 'UserRequestDetails'));
 
         return $rules;
     }

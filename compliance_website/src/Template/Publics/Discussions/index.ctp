@@ -68,9 +68,8 @@
 													<td><?=$d->user_request_detail->attachment?></td>
 													<td>
 														<button class="btn pull-left btn-sm">
-														<?php echo $this->Html->link('Lihat', array('controller' => 'UserRequestDetails', $urh->id)); ?>
+														<?php echo $this->Html->link(__('View'), ['action' => 'view', $akun->id]) ?>
 														</button>
-													</td>
 												</tr>
 												<?php $i+=1; ?>
                        	<?php endforeach; ?>

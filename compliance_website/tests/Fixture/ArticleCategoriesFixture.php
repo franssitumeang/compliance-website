@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * UserDocCategoriesFixture
+ * ArticleCategoriesFixture
  *
  */
-class UserDocCategoriesFixture extends TestFixture
+class ArticleCategoriesFixture extends TestFixture
 {
 
     /**
@@ -18,9 +18,8 @@ class UserDocCategoriesFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'category_name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'name_categories' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'description' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -40,10 +39,9 @@ class UserDocCategoriesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'a97957fc-ee0d-40d2-87a6-d355e1f47f88',
-                'category_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 06:13:28',
-                'modified' => '2018-10-04 06:13:28'
+                'id' => '28d03f18-5a34-4751-8435-7fa7919e0cf5',
+                'name_categories' => 'Lorem ipsum dolor sit amet',
+                'description' => 'Lorem ipsum dolor sit amet'
             ],
         ];
         parent::init();
