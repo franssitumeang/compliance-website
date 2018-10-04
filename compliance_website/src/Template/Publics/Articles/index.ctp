@@ -13,7 +13,9 @@
 <!--Start Content-->
   
 <br>
-<button type="button" class="btn btn-success">Add</button> 
+<div class="action-top">
+    <?= $this->Html->link('Add', '/articles/add',['id'=>'btnAdd','class'=>'btn btn-danger btn-sm btn-add']) ?>
+  </div>
 <br>
 <br>    
 <div class = "row grid">
