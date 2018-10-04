@@ -30,7 +30,7 @@ Router::defaultRouteClass(DashedRoute::class);
 Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/dashboards', ['controller' => 'Admins', 'action' => 'index',]);
     $routes->connect('/companies', ['controller' => 'Companies', 'action' => 'index']);
-    $routes->connect('/departemens', ['controller' => 'Departemens', 'action' => 'index']);
+    $routes->connect('/departments', ['controller' => 'Departments', 'action' => 'index']);
     $routes->connect('/roles', ['controller' => 'Roles', 'action' => 'index']);
     $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
