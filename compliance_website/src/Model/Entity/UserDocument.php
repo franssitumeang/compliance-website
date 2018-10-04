@@ -8,15 +8,19 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $name
- * @property string $no_docs
- * @property string $user_doc_categories_id
+ * @property string $doc_num
+ * @property string $user_doc_categorie_id
  * @property string $doc_types_id
  * @property string $status
  * @property \Cake\I18n\FrozenTime $publisher_dates
  * @property string $paths
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\UserDocCategory $user_doc_category
- * @property \App\Model\Entity\DocType $doc_type
+ * @property \App\Model\Entity\UserDocType $user_doc_type
+ * @property \App\Model\Entity\UserRequestDetail[] $user_request_details
+ * @property \App\Model\Entity\Version[] $versions
  */
 class UserDocument extends Entity
 {
@@ -32,13 +36,17 @@ class UserDocument extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'no_docs' => true,
-        'user_doc_categories_id' => true,
+        'doc_num' => true,
+        'user_doc_categorie_id' => true,
         'doc_types_id' => true,
         'status' => true,
         'publisher_dates' => true,
         'paths' => true,
+        'created' => true,
+        'modified' => true,
         'user_doc_category' => true,
-        'doc_type' => true
+        'user_doc_type' => true,
+        'user_request_details' => true,
+        'versions' => true
     ];
 }

@@ -7,20 +7,22 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * DocTypes Model
+ * UserDocTypes Model
  *
- * @method \App\Model\Entity\DocType get($primaryKey, $options = [])
- * @method \App\Model\Entity\DocType newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\DocType[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\DocType|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\DocType|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\DocType patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\DocType[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\DocType findOrCreate($search, callable $callback = null, $options = [])
+ * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
+ *
+ * @method \App\Model\Entity\UserDocType get($primaryKey, $options = [])
+ * @method \App\Model\Entity\UserDocType newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\UserDocType[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\UserDocType|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\UserDocType|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\UserDocType patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\UserDocType[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\UserDocType findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class DocTypesTable extends Table
+class UserDocTypesTable extends Table
 {
 
     /**
@@ -33,11 +35,15 @@ class DocTypesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('doc_types');
+        $this->setTable('user_doc_types');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('UserRequestHeaders', [
+            'foreignKey' => 'user_doc_type_id'
+        ]);
     }
 
     /**

@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Companies Model
  *
+ * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\HasMany $Departments
+ *
  * @method \App\Model\Entity\Company get($primaryKey, $options = [])
  * @method \App\Model\Entity\Company newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Company[] newEntities(array $data, array $options = [])
@@ -38,6 +40,10 @@ class CompaniesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Departments', [
+            'foreignKey' => 'company_id'
+        ]);
     }
 
     /**

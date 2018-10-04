@@ -67,14 +67,14 @@
 													<td><?=$urh->request_dates?></td>
 													<td><?=$urh->user->user_name; ?></td>
 													<td><?=$urh->reason->reasons_name; ?></td>
-													<td><?=$urh->status ?></td>
+													<td><?=$urh->status?></td>
 													<td>
 														<button class="btn pull-left btn-sm">
 														<?php echo $this->Html->link('Detail', array('controller' => 'UserRequestDetails', $urh->id)); ?>
 													</td>
 												</tr>
 												<?php $i+=1; ?>
-                       							<?php endforeach; ?>
+                       	<?php endforeach; ?>
 											</tbody>
 										</table>    
 									</div>          
