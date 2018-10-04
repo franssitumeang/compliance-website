@@ -19,17 +19,24 @@ class UserRequestHeadersController extends AppController
         $this->set('title', $title);
         $this->paginate = [
             'contain' => ['Users','Reasons']
-
         ];
+        $searchKey = $this->request->query('search_key');
+        $attribute = $this->request->query('attribute');
+        if($searchKey){
+            $this->paginate = [
+                'limit' => 10,
+                'order' => [
+                    'UserRequestHeaders.request_dates' => 'asc'
+                ],
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
+                'contain' => ['Users','Reasons']
+            ];
+        }           
         $userRequestHeaders = $this->paginate($this->UserRequestHeaders);
         $userRequestHeader = $this->UserRequestHeaders->newEntity();
         $paginate = $this->Paginator->getPagingParams()["UserRequestHeaders"];
         $this->set(compact('userRequestHeaders', 'userRequestHeader', 'paginate'));
-        $searchKey = $this->request->query('search_key');
-        $attribute = $this->request->query('attribute');
-        if($searchKey){
-            $this->paginate = ['conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']];
-        }      
+       
         $this->viewBuilder()->templatePath('Publics');
         $this->render('user_request_headers_list');
     }
