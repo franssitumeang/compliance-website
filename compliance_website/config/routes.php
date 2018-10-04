@@ -47,4 +47,3 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);
 });
-
