@@ -17,6 +17,7 @@ class ArticlesController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
     public function index()
     {
         $title = "Artikel";
@@ -60,7 +61,7 @@ class ArticlesController extends AppController
         if($this->request->is('post'))
         {
             $article = $this->Articles->patchEntity($article, $this->request->getData());
-            $article->created = "Ivan Roabalang";
+            $article->user_id = "Ivan Roabalang";
             if($this->Articles->save($article)){
                 $this->Flash->success(__('The Article has been saved'));
             }else{
