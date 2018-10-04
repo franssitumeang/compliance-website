@@ -12,6 +12,8 @@
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Reasons'), ['controller' => 'Reasons', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Reason'), ['controller' => 'Reasons', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List User Request Details'), ['controller' => 'UserRequestDetails', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User Request Detail'), ['controller' => 'UserRequestDetails', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="userRequestHeaders index large-9 medium-8 columns content">
@@ -24,6 +26,8 @@
                 <th scope="col"><?= $this->Paginator->sort('status') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('request_dates') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('reasons_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -31,10 +35,12 @@
             <?php foreach ($userRequestHeaders as $userRequestHeader): ?>
             <tr>
                 <td><?= h($userRequestHeader->id) ?></td>
-                <td><?= h($userRequestHeader->user_id) ?></td>
+                <td><?= $userRequestHeader->has('user') ? $this->Html->link($userRequestHeader->user->id, ['controller' => 'Users', 'action' => 'view', $userRequestHeader->user->id]) : '' ?></td>
                 <td><?= h($userRequestHeader->status) ?></td>
                 <td><?= h($userRequestHeader->request_dates) ?></td>
                 <td><?= $userRequestHeader->has('reason') ? $this->Html->link($userRequestHeader->reason->id, ['controller' => 'Reasons', 'action' => 'view', $userRequestHeader->reason->id]) : '' ?></td>
+                <td><?= h($userRequestHeader->created) ?></td>
+                <td><?= h($userRequestHeader->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $userRequestHeader->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $userRequestHeader->id]) ?>

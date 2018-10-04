@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * Reason Entity
  *
  * @property string $id
- * @property string $reasons_name
+ * @property string $reason_name
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
@@ -24,7 +24,7 @@ class Reason extends Entity
      * @var array
      */
     protected $_accessible = [
-        'reasons_name' => true,
+        'reason_name' => true,
         'created' => true,
         'modified' => true
     ];

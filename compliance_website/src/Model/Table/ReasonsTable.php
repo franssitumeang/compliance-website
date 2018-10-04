@@ -53,10 +53,10 @@ class ReasonsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('reasons_name')
-            ->maxLength('reasons_name', 100)
-            ->requirePresence('reasons_name', 'create')
-            ->notEmpty('reasons_name');
+            ->scalar('reason_name')
+            ->maxLength('reason_name', 100)
+            ->requirePresence('reason_name', 'create')
+            ->notEmpty('reason_name');
 
         return $validator;
     }

@@ -25,8 +25,11 @@ class UserRequestHeadersTableTest extends TestCase
      */
     public $fixtures = [
         'app.user_request_headers',
+        'app.user_doc_categories',
+        'app.user_doc_types',
         'app.users',
-        'app.reasons'
+        'app.reasons',
+        'app.user_request_details'
     ];
 
     /**

@@ -10,6 +10,9 @@ use Cake\Validation\Validator;
  * Users Model
  *
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\BelongsTo $Departments
+ * @property \App\Model\Table\ArticlesTable|\Cake\ORM\Association\HasMany $Articles
+ * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
+ * @property |\Cake\ORM\Association\HasMany $UserDocApprovals
  * @property \App\Model\Table\UserGroupsTable|\Cake\ORM\Association\HasMany $UserGroups
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
  *
@@ -45,6 +48,15 @@ class UsersTable extends Table
 
         $this->belongsTo('Departments', [
             'foreignKey' => 'departement_id'
+        ]);
+        $this->hasMany('Articles', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('DiscussionParticipants', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('UserDocApprovals', [
+            'foreignKey' => 'user_id'
         ]);
         $this->hasMany('UserGroups', [
             'foreignKey' => 'user_id'

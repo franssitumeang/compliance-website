@@ -49,15 +49,15 @@ class UsersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '6f2f16eb-b11d-44ff-a184-5c288e1bc2c1',
+                'id' => '67d594ac-79bc-4106-8ba8-20539e109956',
                 'user_name' => 'Lorem ipsum dolor sit amet',
                 'phone_num' => 'Lorem ipsum dolor sit amet',
                 'telp_num' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
-                'departement_id' => '7acc98b5-7d02-4b28-b6dd-a208dafe87a3',
-                'created' => '2018-10-02 09:09:40',
-                'modified' => '2018-10-02 09:09:40'
+                'departement_id' => '5f2ece94-db69-49a0-959f-1f9bcb69dfc4',
+                'created' => '2018-10-04 02:36:54',
+                'modified' => '2018-10-04 02:36:54'
             ],
         ];
         parent::init();
