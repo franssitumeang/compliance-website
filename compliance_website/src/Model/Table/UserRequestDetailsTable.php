@@ -1,0 +1,122 @@
+<?php
+namespace App\Model\Table;
+
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Validation\Validator;
+
+/**
+ * UserRequestDetails Model
+ *
+ * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\BelongsTo $UserRequestHeaders
+ * @property \App\Model\Table\UserDocumentsTable|\Cake\ORM\Association\BelongsTo $UserDocuments
+ *
+ * @method \App\Model\Entity\UserRequestDetail get($primaryKey, $options = [])
+ * @method \App\Model\Entity\UserRequestDetail newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\UserRequestDetail[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\UserRequestDetail|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\UserRequestDetail|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\UserRequestDetail patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\UserRequestDetail[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\UserRequestDetail findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ */
+class UserRequestDetailsTable extends Table
+{
+
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
+
+        $this->setTable('user_request_details');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('UserRequestHeaders', [
+            'foreignKey' => 'user_request_headers_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('UserDocuments', [
+            'foreignKey' => 'user_documents_id',
+            'joinType' => 'INNER'
+        ]);
+    }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->uuid('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->scalar('approve_m')
+            ->maxLength('approve_m', 50)
+            ->requirePresence('approve_m', 'create')
+            ->notEmpty('approve_m');
+
+        $validator
+            ->scalar('approve_c')
+            ->maxLength('approve_c', 50)
+            ->requirePresence('approve_c', 'create')
+            ->notEmpty('approve_c');
+
+        $validator
+            ->scalar('request_types')
+            ->maxLength('request_types', 50)
+            ->requirePresence('request_types', 'create')
+            ->notEmpty('request_types');
+
+        $validator
+            ->scalar('descriptions')
+            ->maxLength('descriptions', 255)
+            ->requirePresence('descriptions', 'create')
+            ->notEmpty('descriptions');
+
+        $validator
+            ->scalar('attachment')
+            ->maxLength('attachment', 255)
+            ->requirePresence('attachment', 'create')
+            ->notEmpty('attachment');
+
+        $validator
+            ->integer('create_by')
+            ->allowEmpty('create_by');
+
+        $validator
+            ->integer('modi_by')
+            ->allowEmpty('modi_by');
+
+        return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['user_request_headers_id'], 'UserRequestHeaders'));
+        $rules->add($rules->existsIn(['user_documents_id'], 'UserDocuments'));
+
+        return $rules;
+    }
+}

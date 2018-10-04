@@ -47,28 +47,7 @@
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
                             <li><a href="index.html">Home</a></li>
-                            <li class="menu-has-children"><a href="#">Pengajuan SOP</a>
-                                <ul>
-                                    <li><a href="#">Monitoring Approval SOP</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-has-children"><a href="#">Pendaftaran Quiz</a>
-                                <ul>
-                                    <li><a href="blog-home.html">QYPO</a></li>
-                                    <li><a href="blog-home.html">The Comment</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-has-children"><a href="#">Dokumen Perusahaan</a>
-                                <ul>
-                                    <li><a href="#">Policy & Procedure</a></li>
-                                    <li><a href="#">SK-DIR</a></li>
-                                    <li><a href="#">Risk Profile</a></li>
-                                    <li><a href="#">Pamflet</a></li>
-                                    <li><a href="#">Jurnal Audit</a></li>
-                                    <li><a href="#">Buletin Policy & Procedure</a></li>
-                                </ul>
-                            </li>
-                            
+
                             <li class="menu-has-children"><a href="#">Perusahaan</a>
                                 <ul>
                                     <li class="menu-has-children"><a href="#">PT Wahana Artha Harsaka</a>
@@ -156,7 +135,32 @@
                                     
                                 </ul>
                             </li>
-                            <li><a href="#">Forum Diskusi</a></li>
+
+                            <li class="menu-has-children"><a href="#">Profil Perusahaan</a></li>
+
+                            <li class="menu-has-children"><a href="#">Pengajuan SOP</a>
+                                <ul>
+                                    <li><a href="#">Monitoring Approval SOP</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-has-children"><a href="#">Pendaftaran Quiz</a>
+                                <ul>
+                                    <li><a href="blog-home.html">QYPO</a></li>
+                                    <li><a href="blog-home.html">The Comment</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-has-children"><a href="#">Dokumen Perusahaan</a>
+                                <ul>
+                                    <li><a href="#">Policy & Procedure</a></li>
+                                    <li><a href="#">SK-DIR</a></li>
+                                    <li><a href="#">Risk Profile</a></li>
+                                    <li><a href="#">Pamflet</a></li>
+                                    <li><a href="#">Jurnal Audit</a></li>
+                                    <li><a href="#">Buletin Policy & Procedure</a></li>
+                                </ul>
+                            </li>
+                            
+                        <li><a href="#">Forum Diskusi</a></li>
                             <li><a href="#">Login</a></li>
                             <li class="menu-has-children"><a href="#">Profile</a>
                                 <ul>
