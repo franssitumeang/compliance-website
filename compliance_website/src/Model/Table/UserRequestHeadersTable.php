@@ -9,8 +9,12 @@ use Cake\Validation\Validator;
 /**
  * UserRequestHeaders Model
  *
+ * @property \App\Model\Table\UserDocCategoriesTable|\Cake\ORM\Association\BelongsTo $UserDocCategories
+ * @property \App\Model\Table\UserDocTypesTable|\Cake\ORM\Association\BelongsTo $UserDocTypes
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\ReasonsTable|\Cake\ORM\Association\BelongsTo $Reasons
+ * @property \App\Model\Table\UserRequestReasonsTable|\Cake\ORM\Association\BelongsTo $UserRequestReasons
+ * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
+ * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\HasMany $UserRequestDetails
  *
  * @method \App\Model\Entity\UserRequestHeader get($primaryKey, $options = [])
  * @method \App\Model\Entity\UserRequestHeader newEntity($data = null, array $options = [])
@@ -20,6 +24,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\UserRequestHeader patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\UserRequestHeader[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\UserRequestHeader findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UserRequestHeadersTable extends Table
 {
@@ -38,13 +44,28 @@ class UserRequestHeadersTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('UserDocCategories', [
+            'foreignKey' => 'user_doc_category_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('UserDocTypes', [
+            'foreignKey' => 'user_doc_type_id'
+        ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Reasons', [
+        $this->belongsTo('UserRequestReasons', [
             'foreignKey' => 'reasons_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('UserDocApprovals', [
+            'foreignKey' => 'user_request_header_id'
+        ]);
+        $this->hasMany('UserRequestDetails', [
+            'foreignKey' => 'user_request_header_id'
         ]);
     }
 
@@ -61,8 +82,23 @@ class UserRequestHeadersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('attachment')
+            ->maxLength('attachment', 255)
+            ->allowEmpty('attachment');
+
+        $validator
+            ->scalar('approve_m')
+            ->maxLength('approve_m', 15)
+            ->allowEmpty('approve_m');
+
+        $validator
+            ->scalar('apprive_c')
+            ->maxLength('apprive_c', 15)
+            ->allowEmpty('apprive_c');
+
+        $validator
             ->scalar('status')
-            ->maxLength('status', 15)
+            ->maxLength('status', 10)
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
@@ -83,8 +119,10 @@ class UserRequestHeadersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
+        $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['reasons_id'], 'Reasons'));
+        $rules->add($rules->existsIn(['reasons_id'], 'UserRequestReasons'));
 
         return $rules;
     }

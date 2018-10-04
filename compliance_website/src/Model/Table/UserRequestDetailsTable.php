@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\BelongsTo $UserRequestHeaders
  * @property \App\Model\Table\UserDocumentsTable|\Cake\ORM\Association\BelongsTo $UserDocuments
+ * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\HasMany $Discussions
  *
  * @method \App\Model\Entity\UserRequestDetail get($primaryKey, $options = [])
  * @method \App\Model\Entity\UserRequestDetail newEntity($data = null, array $options = [])
@@ -43,12 +44,15 @@ class UserRequestDetailsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('UserRequestHeaders', [
-            'foreignKey' => 'user_request_headers_id',
+            'foreignKey' => 'user_request_header_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('UserDocuments', [
-            'foreignKey' => 'user_documents_id',
+            'foreignKey' => 'user_document_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Discussions', [
+            'foreignKey' => 'user_request_detail_id'
         ]);
     }
 
@@ -65,18 +69,6 @@ class UserRequestDetailsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('approve_m')
-            ->maxLength('approve_m', 50)
-            ->requirePresence('approve_m', 'create')
-            ->notEmpty('approve_m');
-
-        $validator
-            ->scalar('approve_c')
-            ->maxLength('approve_c', 50)
-            ->requirePresence('approve_c', 'create')
-            ->notEmpty('approve_c');
-
-        $validator
             ->scalar('request_types')
             ->maxLength('request_types', 50)
             ->requirePresence('request_types', 'create')
@@ -87,20 +79,6 @@ class UserRequestDetailsTable extends Table
             ->maxLength('descriptions', 255)
             ->requirePresence('descriptions', 'create')
             ->notEmpty('descriptions');
-
-        $validator
-            ->scalar('attachment')
-            ->maxLength('attachment', 255)
-            ->requirePresence('attachment', 'create')
-            ->notEmpty('attachment');
-
-        $validator
-            ->integer('create_by')
-            ->allowEmpty('create_by');
-
-        $validator
-            ->integer('modi_by')
-            ->allowEmpty('modi_by');
 
         return $validator;
     }
@@ -114,8 +92,8 @@ class UserRequestDetailsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_request_headers_id'], 'UserRequestHeaders'));
-        $rules->add($rules->existsIn(['user_documents_id'], 'UserDocuments'));
+        $rules->add($rules->existsIn(['user_request_header_id'], 'UserRequestHeaders'));
+        $rules->add($rules->existsIn(['user_document_id'], 'UserDocuments'));
 
         return $rules;
     }

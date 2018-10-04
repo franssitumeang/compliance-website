@@ -18,20 +18,18 @@ class DiscussionParticipantsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'users_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'discussions_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'discussion_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'create_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'modi_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'discussion_participants_ibfk_1' => ['type' => 'index', 'columns' => ['users_id'], 'length' => []],
-            'discussion_participants_ibfk_2' => ['type' => 'index', 'columns' => ['discussions_id'], 'length' => []],
+            'discussion_participants_ibfk_1' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'discussion_participants_ibfk_2' => ['type' => 'index', 'columns' => ['discussion_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'discussion_participants_ibfk_1' => ['type' => 'foreign', 'columns' => ['users_id'], 'references' => ['users', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
-            'discussion_participants_ibfk_2' => ['type' => 'foreign', 'columns' => ['discussions_id'], 'references' => ['discussions', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
+            'discussion_participants_ibfk_1' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
+            'discussion_participants_ibfk_2' => ['type' => 'foreign', 'columns' => ['discussion_id'], 'references' => ['discussions', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -49,13 +47,11 @@ class DiscussionParticipantsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '428f61c2-bbda-4b5f-8b7f-4ed1d6976e0b',
-                'users_id' => 'a1b23623-adb0-46fb-ba32-22a2143ed52d',
-                'discussions_id' => 'aae01961-c2f9-4d85-a781-06e0ebd58ff3',
-                'created' => '2018-10-02 08:04:28',
-                'create_by' => 1,
-                'modified' => '2018-10-02 08:04:28',
-                'modi_by' => 1
+                'id' => '82a5e135-847b-465d-8cb4-84bd2754abdb',
+                'user_id' => '1041fac7-65c0-46ca-9d1c-0973e56a7bb9',
+                'discussion_id' => '047d1eea-5219-4a5d-b234-9f96ee61912e',
+                'created' => '2018-10-04 03:01:22',
+                'modified' => '2018-10-04 03:01:22'
             ],
         ];
         parent::init();

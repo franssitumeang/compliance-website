@@ -45,6 +45,9 @@ class UserRequestHeadersController extends AppController
 
     public function add()
     {
+        $title = "Add User Request";
+
+
         $userRequestHeader = $this->UserRequestHeaders->newEntity();
         if ($this->request->is('post')) {
             $userRequestHeader = $this->UserRequestHeaders->patchEntity($userRequestHeader, $this->request->getData());
@@ -57,39 +60,13 @@ class UserRequestHeadersController extends AppController
         }
         $users = $this->UserRequestHeaders->Users->find('list', ['limit' => 200]);
         $reasons = $this->UserRequestHeaders->Reasons->find('list', ['limit' => 200]);
-        $this->set(compact('userRequestHeader', 'users', 'reasons'));
+        $this->set(compact('userRequestHeader', 'users', 'reasons', 'title'));
+        
+        
+        $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
+        $this->render('add');
     }
 
-    public function edit($id = null)
-    {
-        $userRequestHeader = $this->UserRequestHeaders->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $userRequestHeader = $this->UserRequestHeaders->patchEntity($userRequestHeader, $this->request->getData());
-            if ($this->UserRequestHeaders->save($userRequestHeader)) {
-                $this->Flash->success(__('The user request header has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The user request header could not be saved. Please, try again.'));
-        }
-        $users = $this->UserRequestHeaders->Users->find('list', ['limit' => 200]);
-        $reasons = $this->UserRequestHeaders->Reasons->find('list', ['limit' => 200]);
-        $this->set(compact('userRequestHeader', 'users', 'reasons'));
-    }
-
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $userRequestHeader = $this->UserRequestHeaders->get($id);
-        if ($this->UserRequestHeaders->delete($userRequestHeader)) {
-            $this->Flash->success(__('The user request header has been deleted.'));
-        } else {
-            $this->Flash->error(__('The user request header could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
-    }
+   
 }
         

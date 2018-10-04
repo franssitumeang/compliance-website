@@ -7,12 +7,10 @@ use Cake\ORM\Entity;
  * Version Entity
  *
  * @property string $id
- * @property string $user_documents_id
- * @property int $versions
+ * @property string $user_document_id
+ * @property int $version
  * @property \Cake\I18n\FrozenTime $created
- * @property int $create_by
  * @property \Cake\I18n\FrozenTime $modified
- * @property int $modi_by
  * @property bool $obsolute
  *
  * @property \App\Model\Entity\UserDocument $user_document
@@ -30,12 +28,10 @@ class Version extends Entity
      * @var array
      */
     protected $_accessible = [
-        'user_documents_id' => true,
-        'versions' => true,
+        'user_document_id' => true,
+        'version' => true,
         'created' => true,
-        'create_by' => true,
         'modified' => true,
-        'modi_by' => true,
         'obsolute' => true,
         'user_document' => true
     ];

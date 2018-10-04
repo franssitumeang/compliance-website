@@ -43,11 +43,11 @@ class DiscussionParticipantsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Users', [
-            'foreignKey' => 'users_id',
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Discussions', [
-            'foreignKey' => 'discussions_id',
+            'foreignKey' => 'discussion_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -64,14 +64,6 @@ class DiscussionParticipantsTable extends Table
             ->uuid('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->integer('create_by')
-            ->allowEmpty('create_by');
-
-        $validator
-            ->integer('modi_by')
-            ->allowEmpty('modi_by');
-
         return $validator;
     }
 
@@ -84,8 +76,8 @@ class DiscussionParticipantsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['users_id'], 'Users'));
-        $rules->add($rules->existsIn(['discussions_id'], 'Discussions'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['discussion_id'], 'Discussions'));
 
         return $rules;
     }
