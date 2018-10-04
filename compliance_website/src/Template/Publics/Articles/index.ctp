@@ -22,7 +22,7 @@
     <div class = "card col-lg-3 col-md-6 col-sm-6 single-blog all peraturan" style="width: 18rem; height:32rem;">
             <div class="single-menu" style="height:32rem;">
                     <div class="thumb">
-                        <img class="card-image" src="img/sk.jpg" alt="" width="200" height="200">
+                        <!--img class="card-image" src="img/sk.jpg" alt="" width="200" height="200"-->
                     </div>
                     <p class="date">24 Sep 2018</p>
                     <a href="blog-single.html">
@@ -38,7 +38,7 @@
     <div class="card col-lg-3 col-md-6 col-sm-6 single-blog all peraturan" style="width: 18rem; height:32rem;">
             <div class="single-menu" style="height:32rem;">
                 <div class="thumb">
-                    <img class="card-image" src="img/b1.jpg" alt="" width="200" height="200">
+                    <!--img class="card-image" src="img/b1.jpg" alt="" width="200" height="200"-->
                 </div>
                 <p class="date">24 Sep 2018</p>
                 <a href="blog-single.html">
@@ -54,7 +54,7 @@
         <div class="card col-lg-3 col-md-6 col-sm-6 single-blog all prosedur" style="width: 18rem; height:32rem;">
                 <div class="single-menu" style="height:32rem;">
                     <div class="thumb">
-                        <img class="card-image" src="img/prosedur.jpg" alt="" width="200" height="200">
+                        <!--img class="card-image" src="img/prosedur.jpg" alt="" width="200" height="200"-->
                     </div>
                     <p class="date">05 Sep 2018</p>
                     <a href="blog-single.html">
@@ -72,7 +72,7 @@
             <div class="card col-lg-3 col-md-6 col-sm-6 single-blog all lain" style="width: 18rem; height:32rem;">
                     <div class="single-menu">
                         <div class="thumb">
-                            <img class="card-image" src="img/lain.jpg" alt="" width="200" height="200">
+                            <!--img class="card-image" src="img/lain.jpg" alt="" width="200" height="200"-->
                         </div>
                         <p class="date">05 Sep 2018</p>
                         <a href="blog-single.html">

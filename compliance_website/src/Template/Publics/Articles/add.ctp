@@ -52,7 +52,7 @@
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
                     <div class ="input-group col-xs-12"></div>
-                        <textarea rows="5" cols="80" value="description" id="description" name="description"></textarea>
+                        <textarea class="tinymce" name="content" id="content" ></textarea>
                     </div>
                   </div>
               </div>
@@ -60,4 +60,4 @@
           </div>
         </div>
     </div>
-<!--End Content -->    
+<!--End Content -->

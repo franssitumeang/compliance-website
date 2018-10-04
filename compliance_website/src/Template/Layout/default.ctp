@@ -269,8 +269,10 @@
                 <?= $this->Html->script('public/isotope.pkgd.min.js') ?>
                 <?= $this->Html->script('public/mail-script.js') ?>
                 <?= $this->Html->script('public/main.js') ?>
-                
-                <script>
+                <?= $this->Html->script('tinymce/tinymce.min.js')?>
+                <?= $this->Html->script('tinymce/init-tinymce.js')?>
+
+                <!-- <script>
                     var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");
                     for (var i = 0; i < slides.length; i++) {
                         slides[i].onmouseover = function (e) {
@@ -281,7 +283,7 @@
                             }
                         };
                     }
-                </script>
+                </script> -->
             </body>
             
             </html>
