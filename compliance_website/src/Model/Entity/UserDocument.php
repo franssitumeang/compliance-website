@@ -9,10 +9,10 @@ use Cake\ORM\Entity;
  * @property string $id
  * @property string $name
  * @property string $doc_num
- * @property string $user_doc_categorie_id
- * @property string $doc_types_id
+ * @property string $user_doc_category_id
+ * @property string $user_doc_type_id
  * @property string $status
- * @property \Cake\I18n\FrozenTime $publisher_dates
+ * @property \Cake\I18n\FrozenTime $publisher_date
  * @property string $paths
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -37,10 +37,10 @@ class UserDocument extends Entity
     protected $_accessible = [
         'name' => true,
         'doc_num' => true,
-        'user_doc_categorie_id' => true,
-        'doc_types_id' => true,
+        'user_doc_category_id' => true,
+        'user_doc_type_id' => true,
         'status' => true,
-        'publisher_dates' => true,
+        'publisher_date' => true,
         'paths' => true,
         'created' => true,
         'modified' => true,
