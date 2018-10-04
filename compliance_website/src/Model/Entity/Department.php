@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property string $dept_code
  * @property string $dept_name
  * @property string $parent_id
- * @property string $parent_name
  * @property string $company_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -18,6 +17,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\ParentDepartment $parent_department
  * @property \App\Model\Entity\Company $company
  * @property \App\Model\Entity\ChildDepartment[] $child_departments
+ * @property \App\Model\Entity\User[] $users
  */
 class Department extends Entity
 {
@@ -35,12 +35,12 @@ class Department extends Entity
         'dept_code' => true,
         'dept_name' => true,
         'parent_id' => true,
-        'parent_name' => true,
         'company_id' => true,
         'created' => true,
         'modified' => true,
         'parent_department' => true,
         'company' => true,
-        'child_departments' => true
+        'child_departments' => true,
+        'users' => true
     ];
 }

@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\BelongsTo $ParentDepartments
  * @property \App\Model\Table\CompaniesTable|\Cake\ORM\Association\BelongsTo $Companies
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\HasMany $ChildDepartments
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\HasMany $Users
  *
  * @method \App\Model\Entity\Department get($primaryKey, $options = [])
  * @method \App\Model\Entity\Department newEntity($data = null, array $options = [])
@@ -55,6 +56,9 @@ class DepartmentsTable extends Table
             'className' => 'Departments',
             'foreignKey' => 'parent_id'
         ]);
+        $this->hasMany('Users', [
+            'foreignKey' => 'department_id'
+        ]);
     }
 
     /**
@@ -80,12 +84,6 @@ class DepartmentsTable extends Table
             ->maxLength('dept_name', 50)
             ->requirePresence('dept_name', 'create')
             ->notEmpty('dept_name');
-
-        $validator
-            ->scalar('parent_name')
-            ->maxLength('parent_name', 50)
-            ->requirePresence('parent_name', 'create')
-            ->notEmpty('parent_name');
 
         return $validator;
     }
