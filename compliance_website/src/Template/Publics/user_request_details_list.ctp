@@ -18,10 +18,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
 		  <div class="card-body">
-			<h5 class="card-title">Monitoring Approval</h5>
+			<h5 class="card-title">Request Details</h5>
 		
 			<form class="forms-sample">
-			<?= $this->Form->create("",['type'=>'get']) ?>
 					<div class="row">
 					  <div class="col-6">
 						<div class="form-group">
@@ -34,8 +33,8 @@
 						  <label>Search By</label>
 						  <div class="input-group col-xs-12">
 							<select class="form-control" name="attribute">
-							  <option value="request_dates">Tanggal</option>
-							  <option value="status">Status</option>
+							  <option value="created">Tanggal</option>
+							  <option value="request_types">Tipe Request</option>
 							</select>
 							<span class="input-group-append">
 							  <button  class="file-upload-browse btn btn-secondary" type="submit">Search</button>
@@ -44,7 +43,6 @@
 						</div>
 					  </div>
 					</div>
-					<?= $this->Form->end() ?>
 			</form>
 			<br>
 			<div class= "row">
@@ -54,36 +52,43 @@
 										<thead>
 											<tr>
 												<th>Tanggal </th>
-												<th>Nama</th>
-												<th>Alasan</th>
-												<th>Status</th>
-												<th>Action</th>
+												<th>Nama Dokumen</th>
+												<th>Tipe Request</th>
+												<th>Description</th>
+												<th>Compliance</th>
+												<th>Manager</th>
+												<th>More</th>
 											</tr>
 											</thead>   
 											<tbody>
 												<?php $i = 1; ?>
-                        <?php foreach ($userRequestHeaders as $urh): ?>
+                        <?php foreach ($userRequestDetails as $urh): ?>
 												<tr>
-													<td><?=$urh->request_dates?></td>
-													<td><?=$urh->user->user_name; ?></td>
-													<td><?=$urh->reason->reasons_name; ?></td>
-													<td><?=$urh->status ?></td>
+													<td><?=$urh->created?></td>
+													<td><?=$urh->user_document->name?></td>
+													<td><?=$urh->request_types ?></td>
+													<td><?=$urh->descriptions ?></td>
+													<td><?=$urh->approve_c ?></td>
+													<td><?=$urh->approve_m ?></td>
 													<td>
 														<button class="btn pull-left btn-sm">
-														<?php echo $this->Html->link('Detail', array('controller' => 'UserRequestDetails', $urh->id)); ?>
+														<?php echo $this->Html->link('Download', array('controller' => 'UserRequestDetails', $urh->id)); ?>
+														</button>
+														<button class="btn pull-left btn-sm">
+														<?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions','action'=>'view', $urh->id)); ?>
+														</button>
 													</td>
 												</tr>
 												<?php $i+=1; ?>
-                       							<?php endforeach; ?>
+                       	<?php endforeach; ?>
 											</tbody>
 										</table>    
 									</div>          
 								</div>
-								<?php if ($userRequestHeaders-> isEmpty()): ?>
-              					<h5 class="text-center">No Record</h5>
-          						<?php endif; ?>
-								 
-									<div class="col-6">
+								<?php if ($userRequestDetails-> isEmpty()): ?>
+              	<h5 class="text-center">No Record</h5>
+          			<?php endif; ?>
+								<div class="col-6">
 									<p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s) out of <?= $paginate["count"] ?> total</p>
 									</div>
 									<div class="col-6">
@@ -100,10 +105,10 @@
 											<?php endif; ?>
 										</div>
 									</div>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+	
 			

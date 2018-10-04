@@ -10,6 +10,8 @@ use Cake\ORM\Entity;
  * @property string $user_doc_category_id
  * @property string $user_doc_type_id
  * @property string $user_id
+ * @property string $status
+ * @property \Cake\I18n\FrozenTime $request_dates
  * @property string $reasons_id
  * @property string $attachment
  * @property string $approve_m

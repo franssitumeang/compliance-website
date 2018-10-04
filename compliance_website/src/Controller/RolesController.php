@@ -22,8 +22,18 @@ class RolesController extends AppController
         $this->viewBuilder()->layout('admin');
     }
     public function index() {
+        $searchKey = $this->request->query('search_key');
+        $attribute = $this->request->query('attribute');
+        if($searchKey) {
+            $this->paginate = [
+                'limit' => '10',
+                'order' => [
+                    'Roles.name' => 'asc'
+                ],
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+            ];
+        }
         $role = $this->Roles->newEntity();
-        
         $title = "Roles";
         $this->set('title', $title);
         
