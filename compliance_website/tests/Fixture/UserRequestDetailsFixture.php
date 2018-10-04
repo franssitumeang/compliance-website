@@ -48,13 +48,13 @@ class UserRequestDetailsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'bf884930-7077-4120-9d34-da2b80bbea1c',
-                'user_request_header_id' => '38b9a52f-34a1-4024-aadb-6eb6d08dbe29',
-                'user_document_id' => '7300f48c-4cc5-4178-ad17-defb781af6b9',
+                'id' => '484cf2cc-01e6-4e49-a1c8-cb780266e401',
+                'user_request_header_id' => '7a07cf3b-6a3c-431d-afb2-713bb216665c',
+                'user_document_id' => 'b8922446-ca96-47b9-9233-4028ee971198',
                 'request_types' => 'Lorem ipsum dolor sit amet',
                 'descriptions' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:36:48',
-                'modified' => '2018-10-04 02:36:48'
+                'created' => '2018-10-04 02:55:08',
+                'modified' => '2018-10-04 02:55:08'
             ],
         ];
         parent::init();

@@ -40,10 +40,10 @@ class UserDocCategoriesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '60ad3839-25b5-41a7-8f12-95b1a42ee2da',
+                'id' => '42706ec5-e2cb-411b-8d88-e6870c76c780',
                 'category_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:36:39',
-                'modified' => '2018-10-04 02:36:39'
+                'created' => '2018-10-04 02:54:59',
+                'modified' => '2018-10-04 02:54:59'
             ],
         ];
         parent::init();

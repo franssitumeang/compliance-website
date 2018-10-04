@@ -47,7 +47,7 @@ class CompaniesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'ef91c940-313b-4ff9-b2ee-15b2ad27dcbe',
+                'id' => '119d4db9-7ff5-404a-8b2d-36fa52955a95',
                 'company_code' => 'Lor',
                 'company_name' => 'Lorem ipsum dolor sit amet',
                 'address_1' => 'Lorem ipsum dolor sit amet',
@@ -56,8 +56,8 @@ class CompaniesFixture extends TestFixture
                 'fax_num' => 'Lorem ipsum dolor sit amet',
                 'url_link' => 'Lorem ipsum dolor sit amet',
                 'website' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:36:22',
-                'modified' => '2018-10-04 02:36:22'
+                'created' => '2018-10-04 02:54:43',
+                'modified' => '2018-10-04 02:54:43'
             ],
         ];
         parent::init();

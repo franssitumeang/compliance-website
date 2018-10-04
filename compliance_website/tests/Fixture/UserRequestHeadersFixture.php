@@ -21,8 +21,6 @@ class UserRequestHeadersFixture extends TestFixture
         'user_doc_category_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'user_doc_type_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'user_id' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'status' => ['type' => 'string', 'length' => 15, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'request_dates' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'reasons_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'attachment' => ['type' => 'string', 'fixed' => true, 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'approve_m' => ['type' => 'string', 'fixed' => true, 'length' => 15, 'null' => true, 'default' => 'PENDING', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
@@ -39,7 +37,7 @@ class UserRequestHeadersFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'fk_reason_id' => ['type' => 'foreign', 'columns' => ['reasons_id'], 'references' => ['reasons', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
+            'fk_reason_id' => ['type' => 'foreign', 'columns' => ['reasons_id'], 'references' => ['user_request_reasons', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
             'fk_user_doc_categories_ib' => ['type' => 'foreign', 'columns' => ['user_doc_category_id'], 'references' => ['user_doc_categories', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
             'fk_user_doc_types' => ['type' => 'foreign', 'columns' => ['user_doc_type_id'], 'references' => ['user_doc_types', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'fk_users_id' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
@@ -60,18 +58,18 @@ class UserRequestHeadersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '17760a77-55e2-46a3-bfed-3d57c372bd60',
-                'user_doc_category_id' => 'd67bd176-5daf-47c5-8722-9524e147ef30',
-                'user_doc_type_id' => 'dd39ef96-3de5-436e-aa58-f273da733de8',
+                'id' => '0fd2ddbf-b837-4500-87de-f3550edcd098',
+                'user_doc_category_id' => 'c7d83aa1-36e7-4e11-873c-f1ef4ebb9db9',
+                'user_doc_type_id' => '6736c324-6dda-41c4-a02b-a1b9dadfb1cf',
                 'user_id' => 'Lorem ipsum dolor sit amet',
-                'reasons_id' => '2bebba8f-5c25-4eda-9ac7-9ed52d6ffd30',
+                'reasons_id' => '772ed0f1-2283-47fc-af64-34c37e9114d7',
                 'attachment' => 'Lorem ipsum dolor sit amet',
                 'approve_m' => 'Lorem ipsum d',
                 'apprive_c' => 'Lorem ipsum d',
                 'status' => 'Lorem ip',
-                'request_dates' => '2018-10-04 02:36:51',
-                'created' => '2018-10-04 02:36:51',
-                'modified' => '2018-10-04 02:36:51'
+                'request_dates' => '2018-10-04 02:55:10',
+                'created' => '2018-10-04 02:55:10',
+                'modified' => '2018-10-04 02:55:10'
             ],
         ];
         parent::init();

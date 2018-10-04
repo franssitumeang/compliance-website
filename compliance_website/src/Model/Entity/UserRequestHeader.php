@@ -10,8 +10,6 @@ use Cake\ORM\Entity;
  * @property string $user_doc_category_id
  * @property string $user_doc_type_id
  * @property string $user_id
- * @property string $status
- * @property \Cake\I18n\FrozenTime $request_dates
  * @property string $reasons_id
  * @property string $attachment
  * @property string $approve_m
@@ -25,6 +23,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\UserDocType $user_doc_type
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Reason $reason
+ * @property \App\Model\Entity\UserDocApproval[] $user_doc_approvals
  * @property \App\Model\Entity\UserRequestDetail[] $user_request_details
  */
 class UserRequestHeader extends Entity
@@ -55,6 +54,7 @@ class UserRequestHeader extends Entity
         'user_doc_type' => true,
         'user' => true,
         'reason' => true,
+        'user_doc_approvals' => true,
         'user_request_details' => true
     ];
 }

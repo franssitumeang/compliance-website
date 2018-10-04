@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * UserDocTypesFixture
+ * UserRequestReasonsFixture
  *
  */
-class UserDocTypesFixture extends TestFixture
+class UserRequestReasonsFixture extends TestFixture
 {
 
     /**
@@ -17,9 +17,8 @@ class UserDocTypesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'descriptions' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'doc_type_name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null],
+        'reason_name' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -41,11 +40,10 @@ class UserDocTypesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '35c9d993-85a6-4a3c-9765-68c15b783431',
-                'descriptions' => 'Lorem ipsum dolor sit amet',
-                'doc_type_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:55:01',
-                'modified' => '2018-10-04 02:55:01'
+                'id' => '4676701b-d20b-4154-b43e-50d70f4de330',
+                'reason_name' => 'Lorem ipsum dolor sit amet',
+                'created' => '2018-10-04 02:55:13',
+                'modified' => '2018-10-04 02:55:13'
             ],
         ];
         parent::init();

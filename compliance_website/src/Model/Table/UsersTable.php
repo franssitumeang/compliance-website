@@ -12,7 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\BelongsTo $Departments
  * @property \App\Model\Table\ArticlesTable|\Cake\ORM\Association\HasMany $Articles
  * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
- * @property |\Cake\ORM\Association\HasMany $UserDocApprovals
+ * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
  * @property \App\Model\Table\UserGroupsTable|\Cake\ORM\Association\HasMany $UserGroups
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
  *

@@ -47,10 +47,10 @@ class MenusFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '563557a1-9039-4013-9509-ae54992b9aeb',
+                'id' => '6881ff5b-6bbe-4957-8cee-41e3c2f134fa',
                 'menu_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:36:29',
-                'modified' => '2018-10-04 02:36:29'
+                'created' => '2018-10-04 02:54:50',
+                'modified' => '2018-10-04 02:54:50'
             ],
         ];
         parent::init();

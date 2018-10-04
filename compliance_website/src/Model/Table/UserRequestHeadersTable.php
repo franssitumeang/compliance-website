@@ -12,8 +12,8 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\UserDocCategoriesTable|\Cake\ORM\Association\BelongsTo $UserDocCategories
  * @property \App\Model\Table\UserDocTypesTable|\Cake\ORM\Association\BelongsTo $UserDocTypes
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\ReasonsTable|\Cake\ORM\Association\BelongsTo $Reasons
- * @property |\Cake\ORM\Association\HasMany $UserDocApprovals
+ * @property |\Cake\ORM\Association\BelongsTo $UserRequestReasons
+ * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
  * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\HasMany $UserRequestDetails
  *
  * @method \App\Model\Entity\UserRequestHeader get($primaryKey, $options = [])
@@ -57,7 +57,7 @@ class UserRequestHeadersTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Reasons', [
+        $this->belongsTo('UserRequestReasons', [
             'foreignKey' => 'reasons_id',
             'joinType' => 'INNER'
         ]);
@@ -122,7 +122,7 @@ class UserRequestHeadersTable extends Table
         $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
         $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['reasons_id'], 'Reasons'));
+        $rules->add($rules->existsIn(['reasons_id'], 'UserRequestReasons'));
 
         return $rules;
     }

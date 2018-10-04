@@ -49,12 +49,12 @@ class ArticlesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '3ac2cb7e-b5bc-46d6-bde9-5b252c913c4e',
+                'id' => '08cf5a37-bcb5-459e-84da-226044b97fa5',
                 'title' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:36:18',
+                'created' => '2018-10-04 02:54:38',
                 'description' => 'Lorem ipsum dolor sit amet',
-                'user_id' => 'bfe0e2f4-9479-491a-8758-51a51c328ca2',
-                'categories_id' => '0ba4935c-99e9-4653-826e-5048707d6658',
+                'user_id' => 'd9218b5e-70b7-4ac0-a504-9ae2a18d90de',
+                'categories_id' => 'b838d093-ec54-4325-9a42-f9f40ca2d6a5',
                 'attachment' => 'Lorem ipsum dolor sit amet'
             ],
         ];

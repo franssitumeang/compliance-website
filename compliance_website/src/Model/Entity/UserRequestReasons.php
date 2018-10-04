@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
-class Reason extends Entity
+class UserRequestReasons extends Entity
 {
 
     /**

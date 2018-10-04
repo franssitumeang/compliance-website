@@ -7,20 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Reasons Model
+ * UserRequestReasons Model
  *
- * @method \App\Model\Entity\Reason get($primaryKey, $options = [])
- * @method \App\Model\Entity\Reason newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Reason[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Reason|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Reason|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Reason patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Reason[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Reason findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\UserRequestReason get($primaryKey, $options = [])
+ * @method \App\Model\Entity\UserRequestReason newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\UserRequestReason[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\UserRequestReason|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\UserRequestReason|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\UserRequestReason patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\UserRequestReason[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\UserRequestReason findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class ReasonsTable extends Table
+class UserRequestReasonsTable extends Table
 {
 
     /**
@@ -33,7 +33,7 @@ class ReasonsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('reasons');
+        $this->setTable('user_request_reasons');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
