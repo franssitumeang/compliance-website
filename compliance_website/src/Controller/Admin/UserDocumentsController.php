@@ -46,6 +46,6 @@ class UserDocumentsController extends AppController
         //kondisi
         $this->set(compact('userDocuments', 'paginate'));
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('user_dokumen');
+        $this->render('user_document');
     }   
 }
