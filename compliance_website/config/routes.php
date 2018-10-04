@@ -27,7 +27,7 @@ use Cake\Routing\Route\DashedRoute;
 
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope('/admin', function (RouteBuilder $routes) {
+Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/dashboards', ['controller' => 'Admins', 'action' => 'index',]);
     $routes->connect('/companies', ['controller' => 'Companies', 'action' => 'index']);
     $routes->connect('/departemens', ['controller' => 'Departemens', 'action' => 'index']);
