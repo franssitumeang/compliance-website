@@ -66,7 +66,7 @@
 												<tr>
 													<td><?=$urh->request_dates?></td>
 													<td><?=$urh->user->user_name; ?></td>
-													<td><?=$urh->reason->reasons_name; ?></td>
+													<td><?=$urh->user_request_reason->reason_name; ?></td>
 													<td><?=$urh->status?></td>
 													<td>
 														<button class="btn pull-left btn-sm">

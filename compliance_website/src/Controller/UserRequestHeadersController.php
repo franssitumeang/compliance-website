@@ -18,7 +18,7 @@ class UserRequestHeadersController extends AppController
         $title = "List Approval";
         $this->set('title', $title);
         $this->paginate = [
-            'contain' => ['Users','Reasons']
+            'contain' => ['Users','UserRequestReasons']
         ];
         $searchKey = $this->request->query('search_key');
         $attribute = $this->request->query('attribute');
@@ -29,7 +29,7 @@ class UserRequestHeadersController extends AppController
                     'UserRequestHeaders.request_dates' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
-                'contain' => ['Users','Reasons']
+                'contain' => ['Users','UserRequestReasons']
             ];
         }           
         $userRequestHeaders = $this->paginate($this->UserRequestHeaders);
