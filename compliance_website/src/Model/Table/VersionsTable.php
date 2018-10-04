@@ -42,7 +42,7 @@ class VersionsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('UserDocuments', [
-            'foreignKey' => 'user_documents_id',
+            'foreignKey' => 'user_document_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -60,17 +60,9 @@ class VersionsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->integer('versions')
-            ->requirePresence('versions', 'create')
-            ->notEmpty('versions');
-
-        $validator
-            ->integer('create_by')
-            ->allowEmpty('create_by');
-
-        $validator
-            ->integer('modi_by')
-            ->allowEmpty('modi_by');
+            ->integer('version')
+            ->requirePresence('version', 'create')
+            ->notEmpty('version');
 
         $validator
             ->boolean('obsolute')
@@ -89,7 +81,7 @@ class VersionsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_documents_id'], 'UserDocuments'));
+        $rules->add($rules->existsIn(['user_document_id'], 'UserDocuments'));
 
         return $rules;
     }

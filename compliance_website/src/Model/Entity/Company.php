@@ -17,6 +17,8 @@ use Cake\ORM\Entity;
  * @property string $website
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Department[] $departments
  */
 class Company extends Entity
 {
@@ -40,6 +42,7 @@ class Company extends Entity
         'url_link' => true,
         'website' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'departments' => true
     ];
 }

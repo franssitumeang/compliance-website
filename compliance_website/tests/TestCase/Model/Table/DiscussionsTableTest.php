@@ -25,7 +25,8 @@ class DiscussionsTableTest extends TestCase
      */
     public $fixtures = [
         'app.discussions',
-        'app.user_request_details'
+        'app.user_request_details',
+        'app.discussion_participants'
     ];
 
     /**

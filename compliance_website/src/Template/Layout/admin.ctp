@@ -21,6 +21,7 @@
     <?= $this->Html->script('../vendors/js/vendor.bundle.addons.js') ?>
     <?= $this->Html->script('off-canvas.js') ?>
     <?= $this->Html->script('misc.js') ?>
+    <?= $this->Html->script('bootstrapValidator.js') ?>
     
     
 </head>
@@ -64,13 +65,13 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/admins/dashboards">
+            <a class="nav-link" href="/admin/dashboards">
               <i class="menu-icon fa fa-desktop"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admins/perusahaans">
+            <a class="nav-link" href="/admin/companies">
               <i class="menu-icon fa fa-building-o"></i>
               <span class="menu-title">Perusahaan</span>
             </a>
@@ -109,16 +110,22 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon fa fa-list-alt"></i>
-              <span class="menu-title">Kategori</span>
+              <span class="menu-title">Dokumen</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">User Dokumen</a>
+                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Pengajuan Dokumen</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/typography.html">Artikel</a>
+                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Alasan Pengajuan</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Kategori Dokumen</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../pages/ui-features/typography.html">Kategori Artikel</a>
                 </li>
               </ul>
             </div>

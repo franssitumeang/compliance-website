@@ -10,7 +10,9 @@ use Cake\Validation\Validator;
  * UserDocuments Model
  *
  * @property \App\Model\Table\UserDocCategoriesTable|\Cake\ORM\Association\BelongsTo $UserDocCategories
- * @property \App\Model\Table\DocTypesTable|\Cake\ORM\Association\BelongsTo $DocTypes
+ * @property \App\Model\Table\UserDocTypesTable|\Cake\ORM\Association\BelongsTo $UserDocTypes
+ * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\HasMany $UserRequestDetails
+ * @property \App\Model\Table\VersionsTable|\Cake\ORM\Association\HasMany $Versions
  *
  * @method \App\Model\Entity\UserDocument get($primaryKey, $options = [])
  * @method \App\Model\Entity\UserDocument newEntity($data = null, array $options = [])
@@ -20,6 +22,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\UserDocument patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\UserDocument[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\UserDocument findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UserDocumentsTable extends Table
 {
@@ -38,13 +42,21 @@ class UserDocumentsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('UserDocCategories', [
-            'foreignKey' => 'user_doc_categories_id',
+            'foreignKey' => 'user_doc_category_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('DocTypes', [
-            'foreignKey' => 'doc_types_id',
+        $this->belongsTo('UserDocTypes', [
+            'foreignKey' => 'user_doc_type_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('UserRequestDetails', [
+            'foreignKey' => 'user_document_id'
+        ]);
+        $this->hasMany('Versions', [
+            'foreignKey' => 'user_document_id'
         ]);
     }
 
@@ -67,9 +79,9 @@ class UserDocumentsTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->uuid('no_docs')
-            ->requirePresence('no_docs', 'create')
-            ->notEmpty('no_docs');
+            ->uuid('doc_num')
+            ->requirePresence('doc_num', 'create')
+            ->notEmpty('doc_num');
 
         $validator
             ->scalar('status')
@@ -78,9 +90,9 @@ class UserDocumentsTable extends Table
             ->notEmpty('status');
 
         $validator
-            ->dateTime('publisher_dates')
-            ->requirePresence('publisher_dates', 'create')
-            ->notEmpty('publisher_dates');
+            ->dateTime('publisher_date')
+            ->requirePresence('publisher_date', 'create')
+            ->notEmpty('publisher_date');
 
         $validator
             ->scalar('paths')
@@ -100,8 +112,8 @@ class UserDocumentsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_doc_categories_id'], 'UserDocCategories'));
-        $rules->add($rules->existsIn(['doc_types_id'], 'DocTypes'));
+        $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
+        $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
 
         return $rules;
     }
