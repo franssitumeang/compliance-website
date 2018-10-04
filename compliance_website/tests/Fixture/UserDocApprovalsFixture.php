@@ -48,12 +48,12 @@ class UserDocApprovalsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '63928af1-52e0-4909-a038-c4c24d2441f9',
-                'user_id' => '3749f459-7a77-4fb7-9873-c8a74ae020c4',
-                'user_request_header_id' => 'b7506855-3c68-4769-b8fe-bd643185eca6',
+                'id' => 'dd0fa341-1b5f-498e-91fb-04c2b7e26074',
+                'user_id' => 'fe0d18fd-7aaa-49ac-85ff-74eaebae47bd',
+                'user_request_header_id' => '88873103-d7db-4dfe-8175-e9b381ae8b37',
                 'status' => 'Lorem ipsum d',
-                'created' => '2018-10-04 02:54:57',
-                'modified' => '2018-10-04 02:54:57'
+                'created' => '2018-10-04 03:02:17',
+                'modified' => '2018-10-04 03:02:17'
             ],
         ];
         parent::init();

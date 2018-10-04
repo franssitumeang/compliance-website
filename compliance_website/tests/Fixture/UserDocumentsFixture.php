@@ -52,16 +52,16 @@ class UserDocumentsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '54d41305-12d9-47a3-af3b-6891177225d2',
+                'id' => 'b097130b-415f-42c2-9338-b3b358ee1a58',
                 'name' => 'Lorem ipsum dolor sit amet',
-                'doc_num' => 'e84c6508-5c46-4682-9913-d38b4b028829',
-                'user_doc_categorie_id' => 'cda98c23-0232-458f-b3fb-0b2d9a661d19',
-                'doc_types_id' => '4c5f7bd5-d6bc-4257-a6dd-90c1ba264ba4',
+                'doc_num' => '254d848b-7cd5-44cf-8c9d-5aefbb23a03a',
+                'user_doc_categorie_id' => 'dd91de10-1bbb-4159-bce0-5484767cf15f',
+                'doc_types_id' => 'b8da544c-86c4-4a2b-9c44-5318fd141ce6',
                 'status' => 'Lorem ipsum dolor sit amet',
-                'publisher_dates' => '2018-10-04 02:55:04',
+                'publisher_dates' => '2018-10-04 03:02:22',
                 'paths' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:55:04',
-                'modified' => '2018-10-04 02:55:04'
+                'created' => '2018-10-04 03:02:22',
+                'modified' => '2018-10-04 03:02:22'
             ],
         ];
         parent::init();

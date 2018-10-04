@@ -45,7 +45,7 @@ class CategoriesArticleFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'b26f20b5-acf2-469c-8e03-f7e05ddd183a',
+                'id' => '201f2d35-6674-4290-80c3-bbeac4403043',
                 'name_categories' => 'Lorem ipsum dolor sit amet'
             ],
         ];

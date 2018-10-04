@@ -22,7 +22,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\UserDocCategory $user_doc_category
  * @property \App\Model\Entity\UserDocType $user_doc_type
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Reason $reason
+ * @property \App\Model\Entity\UserRequestReason $user_request_reason
  * @property \App\Model\Entity\UserDocApproval[] $user_doc_approvals
  * @property \App\Model\Entity\UserRequestDetail[] $user_request_details
  */
@@ -53,7 +53,7 @@ class UserRequestHeader extends Entity
         'user_doc_category' => true,
         'user_doc_type' => true,
         'user' => true,
-        'reason' => true,
+        'user_request_reason' => true,
         'user_doc_approvals' => true,
         'user_request_details' => true
     ];

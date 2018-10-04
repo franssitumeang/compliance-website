@@ -15,9 +15,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\Department $parent_department
+ * @property \App\Model\Entity\ParentDepartment $parent_department
  * @property \App\Model\Entity\Company $company
- * @property \App\Model\Entity\Department[] $child_departments
+ * @property \App\Model\Entity\ChildDepartment[] $child_departments
  */
 class Department extends Entity
 {

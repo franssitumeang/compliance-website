@@ -58,18 +58,18 @@ class UserRequestHeadersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '0fd2ddbf-b837-4500-87de-f3550edcd098',
-                'user_doc_category_id' => 'c7d83aa1-36e7-4e11-873c-f1ef4ebb9db9',
-                'user_doc_type_id' => '6736c324-6dda-41c4-a02b-a1b9dadfb1cf',
+                'id' => '8ce6ca6f-125f-4fc2-a97c-84583cbd831f',
+                'user_doc_category_id' => '7db83c5a-1f1e-4ca0-8704-80ded79da0d4',
+                'user_doc_type_id' => 'debe9157-c9ba-4f22-bbf7-8db6fcc5578a',
                 'user_id' => 'Lorem ipsum dolor sit amet',
-                'reasons_id' => '772ed0f1-2283-47fc-af64-34c37e9114d7',
+                'reasons_id' => '8e9f3150-ff67-459d-857b-e20df31a319a',
                 'attachment' => 'Lorem ipsum dolor sit amet',
                 'approve_m' => 'Lorem ipsum d',
                 'apprive_c' => 'Lorem ipsum d',
                 'status' => 'Lorem ip',
-                'request_dates' => '2018-10-04 02:55:10',
-                'created' => '2018-10-04 02:55:10',
-                'modified' => '2018-10-04 02:55:10'
+                'request_dates' => '2018-10-04 03:02:28',
+                'created' => '2018-10-04 03:02:28',
+                'modified' => '2018-10-04 03:02:28'
             ],
         ];
         parent::init();

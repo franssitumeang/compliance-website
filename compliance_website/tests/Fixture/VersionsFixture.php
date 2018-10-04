@@ -46,11 +46,11 @@ class VersionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'b1fa80f5-5a24-4212-80dc-5ef7d2c98a12',
-                'user_document_id' => '4b5fa37b-886b-4082-af2f-df2f1b94b20c',
+                'id' => 'b1857c5d-8eef-4fdb-b94e-8ae04600bf48',
+                'user_document_id' => '5fd3af1d-a65d-4604-a6ae-7d358a20161a',
                 'version' => 1,
-                'created' => '2018-10-04 02:55:17',
-                'modified' => '2018-10-04 02:55:17',
+                'created' => '2018-10-04 03:02:33',
+                'modified' => '2018-10-04 03:02:33',
                 'obsolute' => 1
             ],
         ];

@@ -48,14 +48,14 @@ class DepartmentsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'd08e5c28-2a69-4e41-8d37-09cedc3dfb8e',
+                'id' => 'd6d90890-b32b-43a9-abff-7577812e0865',
                 'dept_code' => 'Lo',
                 'dept_name' => 'Lorem ipsum dolor sit amet',
-                'parent_id' => 'dfb9f543-25cb-4127-b1d7-b4939c1044d7',
+                'parent_id' => 'c5b5d012-186c-4b65-8f79-123fa7e51c1e',
                 'parent_name' => 'Lorem ipsum dolor sit amet',
-                'company_id' => 'f6aea677-7797-449d-9ec9-37d602d7e074',
-                'created' => '2018-10-04 02:54:45',
-                'modified' => '2018-10-04 02:54:45'
+                'company_id' => '686d3c78-fe99-49ac-ad84-48dc1c980098',
+                'created' => '2018-10-04 03:01:09',
+                'modified' => '2018-10-04 03:01:09'
             ],
         ];
         parent::init();

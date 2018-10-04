@@ -41,11 +41,11 @@ class PositionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'ce2c4931-120d-4da1-99b3-182363bc4c0a',
+                'id' => 'f8f10398-6363-4dc7-b0f1-6431c61cadfe',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'description' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 02:54:52',
-                'modified' => '2018-10-04 02:54:52'
+                'created' => '2018-10-04 03:02:01',
+                'modified' => '2018-10-04 03:02:01'
             ],
         ];
         parent::init();
