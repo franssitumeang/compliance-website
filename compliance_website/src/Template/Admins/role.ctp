@@ -2,7 +2,35 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"><span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Roles</h5>
+                <h5 class="card-title">
+                    <a href="roles" style="color:#669DE0;">
+                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Roles
+                    </a>
+                </h5>
+                <?= $this->Form->create("",['type'=>'get']) ?>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="search">Searh</label>
+                <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label>Search By</label>
+                <div class="input-group col-xs-12">
+                  <select class="form-control" name="attribute">
+                    <option value="name">Nama</option>
+                    <option value="description">Deskripsi</option>
+                  </select>
+                  <span class="input-group-append">
+                    <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?= $this->Form->end() ?>
                 <div class="row">
                     <div class="col-12" style="padding-right: 0px;">
                         <div class="table-responsive">
@@ -68,6 +96,9 @@
                     </div>
                 </div>
                 <br>
+                <?php if($roles->isEmpty()) : ?>
+                <h5 class="text-center">No Record</h5>
+                <?php endif; ?>
                 <div class="row">
                     <div class="col-6">
                     <p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s)</p>
