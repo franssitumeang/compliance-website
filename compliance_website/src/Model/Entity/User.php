@@ -7,12 +7,13 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property string $id
+ * @property string $position_id
  * @property string $user_name
  * @property string $phone_num
  * @property string $telp_num
  * @property string $password
  * @property string $email
- * @property string $departement_id
+ * @property string $department_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -36,12 +37,13 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
+        'position_id' => true,
         'user_name' => true,
         'phone_num' => true,
         'telp_num' => true,
         'password' => true,
         'email' => true,
-        'departement_id' => true,
+        'department_id' => true,
         'created' => true,
         'modified' => true,
         'department' => true,

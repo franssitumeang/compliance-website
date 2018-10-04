@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\DepartmentsTable;
+use App\Model\Table\ArticleCategoriesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\DepartmentsTable Test Case
+ * App\Model\Table\ArticleCategoriesTable Test Case
  */
-class DepartmentsTableTest extends TestCase
+class ArticleCategoriesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\DepartmentsTable
+     * @var \App\Model\Table\ArticleCategoriesTable
      */
-    public $Departments;
+    public $ArticleCategories;
 
     /**
      * Fixtures
@@ -24,9 +24,7 @@ class DepartmentsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.departments',
-        'app.companies',
-        'app.users'
+        'app.article_categories'
     ];
 
     /**
@@ -37,8 +35,8 @@ class DepartmentsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Departments') ? [] : ['className' => DepartmentsTable::class];
-        $this->Departments = TableRegistry::getTableLocator()->get('Departments', $config);
+        $config = TableRegistry::getTableLocator()->exists('ArticleCategories') ? [] : ['className' => ArticleCategoriesTable::class];
+        $this->ArticleCategories = TableRegistry::getTableLocator()->get('ArticleCategories', $config);
     }
 
     /**
@@ -48,7 +46,7 @@ class DepartmentsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Departments);
+        unset($this->ArticleCategories);
 
         parent::tearDown();
     }
@@ -69,16 +67,6 @@ class DepartmentsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

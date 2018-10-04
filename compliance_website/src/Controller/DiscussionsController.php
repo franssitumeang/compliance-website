@@ -26,8 +26,8 @@ class DiscussionsController extends AppController{
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
         $this->set(compact('discussions','discussion','paginate'));
         
-        $this->viewBuilder()->templatePath('Publics');
-        $this->render('discussions_list');
+        $this->viewBuilder()->templatePath('Publics/Discussions');
+        $this->render('index');
 
     }
 
@@ -36,11 +36,8 @@ class DiscussionsController extends AppController{
         $discussion = $this->Discussions->get($id, [
             'contain' => ['UserRequestDetails']
         ]);
-        $this->set(compact('discussions'));
 
         $this->set('discussion', $discussion);
-        $this->viewBuilder()->templatePath('Publics');
-        $this->render('discussions_view');
     }
 }
 

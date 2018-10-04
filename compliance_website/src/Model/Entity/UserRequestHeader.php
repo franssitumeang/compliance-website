@@ -10,10 +10,9 @@ use Cake\ORM\Entity;
  * @property string $user_doc_category_id
  * @property string $user_doc_type_id
  * @property string $user_id
+ * @property string $doc_title
+ * @property string $doc_no
  * @property string $reasons_id
- * @property string $attachment
- * @property string $approve_m
- * @property string $apprive_c
  * @property string $status
  * @property \Cake\I18n\FrozenTime $request_dates
  * @property \Cake\I18n\FrozenTime $created
@@ -42,10 +41,9 @@ class UserRequestHeader extends Entity
         'user_doc_category_id' => true,
         'user_doc_type_id' => true,
         'user_id' => true,
+        'doc_title' => true,
+        'doc_no' => true,
         'reasons_id' => true,
-        'attachment' => true,
-        'approve_m' => true,
-        'apprive_c' => true,
         'status' => true,
         'request_dates' => true,
         'created' => true,

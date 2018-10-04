@@ -38,8 +38,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
                                         <th>Nomor Dokumen</th>
+                                        <th>Nama</th>
                                         <th>Kategori Dokumen</th>
                                         <th>Tipe Dokumen</th>
                                         <th>Status</th>
@@ -52,8 +52,8 @@
                                     <?php foreach ($userDocuments as $userDocument): ?>
                                     <tr>
                                         <td><?= $i; ?></td>
-                                        <td><?= $userDocument->name; ?></td>
                                         <td><?= $userDocument->doc_num; ?></td>
+                                        <td><?= $userDocument->name; ?></td>
                                         <td><?= $userDocument->user_doc_category->category_name; ?></td>
                                         <td><?= $userDocument->user_doc_type->doc_type_name; ?></td>
                                         <td><?= $userDocument->status; ?></td>

@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $doc_num
  * @property string $user_doc_category_id
  * @property string $user_doc_type_id
+ * @property string $user_doc_detail_id
  * @property string $status
  * @property \Cake\I18n\FrozenTime $publisher_date
  * @property string $paths
@@ -39,6 +40,7 @@ class UserDocument extends Entity
         'doc_num' => true,
         'user_doc_category_id' => true,
         'user_doc_type_id' => true,
+        'user_doc_detail_id' => true,
         'status' => true,
         'publisher_date' => true,
         'paths' => true,

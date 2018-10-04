@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * UserDocTypes Model
  *
+ * @property |\Cake\ORM\Association\HasMany $UserDocuments
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
  *
  * @method \App\Model\Entity\UserDocType get($primaryKey, $options = [])
@@ -41,6 +42,9 @@ class UserDocTypesTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('UserDocuments', [
+            'foreignKey' => 'user_doc_type_id'
+        ]);
         $this->hasMany('UserRequestHeaders', [
             'foreignKey' => 'user_doc_type_id'
         ]);

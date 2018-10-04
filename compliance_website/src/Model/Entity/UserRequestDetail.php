@@ -8,9 +8,11 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $user_request_header_id
- * @property string $user_document_id
+ * @property string $approve_m
+ * @property string $approve_c
  * @property string $request_types
  * @property string $descriptions
+ * @property string $attachment
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -32,9 +34,11 @@ class UserRequestDetail extends Entity
      */
     protected $_accessible = [
         'user_request_header_id' => true,
-        'user_document_id' => true,
+        'approve_m' => true,
+        'approve_c' => true,
         'request_types' => true,
         'descriptions' => true,
+        'attachment' => true,
         'created' => true,
         'modified' => true,
         'user_request_header' => true,
