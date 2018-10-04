@@ -25,6 +25,17 @@ class CompaniesController extends AppController{
 
     public function index()
     {
+        $searchKey = $this->request->query('search_key');
+        $attribute = $this->request->query('attribute');
+        if($searchKey){
+            $this->paginate = [
+                'limit' => 10,
+                'order' => [
+                    'Companies.company_name' => 'asc'
+                ],
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+            ];
+        }       
         $title = "Perusahaan";
         $this->set('title', $title);
         $companies = $this->paginate('Companies');

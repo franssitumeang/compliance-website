@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $user_id
- * @property bool $status
+ * @property string $status
  * @property \Cake\I18n\FrozenTime $request_dates
  * @property string $reasons_id
  *

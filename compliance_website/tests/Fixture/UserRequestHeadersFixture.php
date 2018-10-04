@@ -19,7 +19,7 @@ class UserRequestHeadersFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null],
         'user_id' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'status' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'status' => ['type' => 'string', 'length' => 15, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'request_dates' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'reasons_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -47,11 +47,11 @@ class UserRequestHeadersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '1ff19cdd-7071-4353-aaee-e5ddf696aaa8',
+                'id' => '154ca341-4809-4267-969a-081c3a4da3ca',
                 'user_id' => 'Lorem ipsum dolor sit amet',
-                'status' => 1,
-                'request_dates' => '2018-10-02 09:02:03',
-                'reasons_id' => 'f46a74a3-f8c3-4d74-9e51-8d1cef740144'
+                'status' => 'Lorem ipsum d',
+                'request_dates' => '2018-10-03 06:09:17',
+                'reasons_id' => '2c62a6cc-447e-4f0e-8935-3406e8064ddf'
             ],
         ];
         parent::init();

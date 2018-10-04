@@ -61,7 +61,8 @@ class UserRequestHeadersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->boolean('status')
+            ->scalar('status')
+            ->maxLength('status', 15)
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
