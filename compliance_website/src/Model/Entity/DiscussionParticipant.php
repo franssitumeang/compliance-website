@@ -7,12 +7,10 @@ use Cake\ORM\Entity;
  * DiscussionParticipant Entity
  *
  * @property string $id
- * @property string $users_id
- * @property string $discussions_id
+ * @property string $user_id
+ * @property string $discussion_id
  * @property \Cake\I18n\FrozenTime $created
- * @property int $create_by
  * @property \Cake\I18n\FrozenTime $modified
- * @property int $modi_by
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Discussion $discussion
@@ -30,12 +28,10 @@ class DiscussionParticipant extends Entity
      * @var array
      */
     protected $_accessible = [
-        'users_id' => true,
-        'discussions_id' => true,
+        'user_id' => true,
+        'discussion_id' => true,
         'created' => true,
-        'create_by' => true,
         'modified' => true,
-        'modi_by' => true,
         'user' => true,
         'discussion' => true
     ];

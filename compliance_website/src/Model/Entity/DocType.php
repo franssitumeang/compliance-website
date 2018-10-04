@@ -8,9 +8,9 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $descriptions
+ * @property string $doc_type_name
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- * @property string $doc_type_name
  */
 class DocType extends Entity
 {
@@ -26,8 +26,8 @@ class DocType extends Entity
      */
     protected $_accessible = [
         'descriptions' => true,
+        'doc_type_name' => true,
         'created' => true,
-        'modified' => true,
-        'doc_type_name' => true
+        'modified' => true
     ];
 }
