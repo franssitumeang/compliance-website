@@ -19,9 +19,12 @@ class ArticlesController extends AppController
      */
     public function index()
     {
+        $title = "Artikel";
+        
         $articles = $this->paginate($this->Articles);
-
-        $this->set(compact('articles'));
+        $this->set(compact('articles','title'));
+        $this->viewBuilder()->templatePath('Publics/Articles');
+        $this->render('index');
     }
 
     /**
