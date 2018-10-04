@@ -18,6 +18,7 @@ class UserDocumentsController extends AppController
     {
         parent::initialize();
         $this->loadComponent('Paginator');
+        
     }
 
     public function beforeFilter(Event $event){

@@ -33,6 +33,7 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/departemens', ['controller' => 'Departemens', 'action' => 'index']);
     $routes->connect('/roles', ['controller' => 'Roles', 'action' => 'index']);
     $routes->connect('/userdocuments', ['controller' => 'UserDocuments', 'action' => 'index']);
+    $routes->connect('/userdoccategories', ['controller' => 'UserDocCategories', 'action' => 'index']);
     $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
