@@ -125,12 +125,17 @@
         <div class="card">
             <div class="card-body form">
                 <h5 class="card-title" id="title_form">Tambah Role</h5>
-                 <?= $this->Form->create($newRole, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form']); ?>
+                 <?= $this->Form->create($newRole, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                 'data-bv-feedbackicons-valid'=>'fa fa-check',
+                 'data-bv-feedbackicons-invalid'=>'fa fa-warning',
+                 'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <?= $this->Form->control('name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama']); ?>
+                            <?= $this->Form->control('name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            'required' => true, 
+                            'maxlength' => '5']); ?>
                         </div>
                     </div>
                     <div class="col-6">
@@ -155,6 +160,7 @@ $(document).ready(function(){
     $('#btn_update').hide()
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
+    $('#form').bootstrapValidator();
     var roles = JSON.parse('<?= json_encode($roles); ?>');
     $("button").click(function(e) {
         var id = this.id;
