@@ -18,19 +18,17 @@ class VersionsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'user_documents_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'versions' => ['type' => 'integer', 'length' => 10, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'user_document_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'version' => ['type' => 'integer', 'length' => 10, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'create_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'modi_by' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'obsolute' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'user_documents_id' => ['type' => 'index', 'columns' => ['user_documents_id'], 'length' => []],
+            'user_documents_id' => ['type' => 'index', 'columns' => ['user_document_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'fk_user_documents_id' => ['type' => 'foreign', 'columns' => ['user_documents_id'], 'references' => ['user_documents', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
+            'fk_user_documents_id' => ['type' => 'foreign', 'columns' => ['user_document_id'], 'references' => ['user_documents', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -48,13 +46,11 @@ class VersionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '65b93406-e27c-418a-9ac0-0e565b400c6d',
-                'user_documents_id' => '835ccaf6-0d41-4502-bdc0-18cb340fd21d',
-                'versions' => 1,
-                'created' => '2018-10-02 08:03:11',
-                'create_by' => 1,
-                'modified' => '2018-10-02 08:03:11',
-                'modi_by' => 1,
+                'id' => 'b1857c5d-8eef-4fdb-b94e-8ae04600bf48',
+                'user_document_id' => '5fd3af1d-a65d-4604-a6ae-7d358a20161a',
+                'version' => 1,
+                'created' => '2018-10-04 03:02:33',
+                'modified' => '2018-10-04 03:02:33',
                 'obsolute' => 1
             ],
         ];

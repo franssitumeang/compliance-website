@@ -12,9 +12,10 @@ use Cake\ORM\Entity;
  * @property int $create_by
  * @property \Cake\I18n\FrozenTime $modified
  * @property int $modi_by
- * @property string $user_request_details_id
+ * @property string $user_request_detail_id
  *
  * @property \App\Model\Entity\UserRequestDetail $user_request_detail
+ * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
  */
 class Discussion extends Entity
 {
@@ -34,7 +35,8 @@ class Discussion extends Entity
         'create_by' => true,
         'modified' => true,
         'modi_by' => true,
-        'user_request_details_id' => true,
-        'user_request_detail' => true
+        'user_request_detail_id' => true,
+        'user_request_detail' => true,
+        'discussion_participants' => true
     ];
 }

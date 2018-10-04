@@ -4,14 +4,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Reason Entity
+ * UserGroup Entity
  *
  * @property string $id
- * @property string $reasons_name
+ * @property string $user_group_name
+ * @property string $user_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\User $user
  */
-class Reason extends Entity
+class UserGroup extends Entity
 {
 
     /**
@@ -24,8 +27,10 @@ class Reason extends Entity
      * @var array
      */
     protected $_accessible = [
-        'reasons_name' => true,
+        'user_group_name' => true,
+        'user_id' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'user' => true
     ];
 }

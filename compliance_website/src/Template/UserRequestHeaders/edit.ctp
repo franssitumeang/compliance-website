@@ -18,6 +18,8 @@
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Reasons'), ['controller' => 'Reasons', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Reason'), ['controller' => 'Reasons', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List User Request Details'), ['controller' => 'UserRequestDetails', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User Request Detail'), ['controller' => 'UserRequestDetails', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="userRequestHeaders form large-9 medium-8 columns content">
@@ -25,7 +27,7 @@
     <fieldset>
         <legend><?= __('Edit User Request Header') ?></legend>
         <?php
-            echo $this->Form->control('user_id');
+            echo $this->Form->control('user_id', ['options' => $users]);
             echo $this->Form->control('status');
             echo $this->Form->control('request_dates');
             echo $this->Form->control('reasons_id', ['options' => $reasons]);

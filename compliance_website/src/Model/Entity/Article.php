@@ -4,15 +4,20 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * DocType Entity
+ * Article Entity
  *
  * @property string $id
- * @property string $descriptions
+ * @property string $title
  * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
- * @property string $doc_type_name
+ * @property string $description
+ * @property string $user_id
+ * @property string $categories_id
+ * @property string $attachment
+ *
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\CategoriesArticle $categories_article
  */
-class DocType extends Entity
+class Article extends Entity
 {
 
     /**
@@ -25,9 +30,13 @@ class DocType extends Entity
      * @var array
      */
     protected $_accessible = [
-        'descriptions' => true,
+        'title' => true,
         'created' => true,
-        'modified' => true,
-        'doc_type_name' => true
+        'description' => true,
+        'user_id' => true,
+        'categories_id' => true,
+        'attachment' => true,
+        'user' => true,
+        'categories_article' => true
     ];
 }

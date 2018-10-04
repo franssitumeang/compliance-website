@@ -34,7 +34,7 @@ class PositionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('positions');
-        $this->setDisplayField('id');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

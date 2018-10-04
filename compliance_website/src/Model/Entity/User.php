@@ -17,6 +17,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Department $department
+ * @property \App\Model\Entity\Article[] $articles
+ * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
+ * @property \App\Model\Entity\UserDocApproval[] $user_doc_approvals
  * @property \App\Model\Entity\UserGroup[] $user_groups
  * @property \App\Model\Entity\UserRequestHeader[] $user_request_headers
  */
@@ -42,6 +45,9 @@ class User extends Entity
         'created' => true,
         'modified' => true,
         'department' => true,
+        'articles' => true,
+        'discussion_participants' => true,
+        'user_doc_approvals' => true,
         'user_groups' => true,
         'user_request_headers' => true
     ];
