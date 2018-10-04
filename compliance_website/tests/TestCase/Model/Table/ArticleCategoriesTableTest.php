@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UserDocCategoriesTable;
+use App\Model\Table\ArticleCategoriesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UserDocCategoriesTable Test Case
+ * App\Model\Table\ArticleCategoriesTable Test Case
  */
-class UserDocCategoriesTableTest extends TestCase
+class ArticleCategoriesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UserDocCategoriesTable
+     * @var \App\Model\Table\ArticleCategoriesTable
      */
-    public $UserDocCategories;
+    public $ArticleCategories;
 
     /**
      * Fixtures
@@ -24,9 +24,7 @@ class UserDocCategoriesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.user_doc_categories',
-        'app.user_documents',
-        'app.user_request_headers'
+        'app.article_categories'
     ];
 
     /**
@@ -37,8 +35,8 @@ class UserDocCategoriesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('UserDocCategories') ? [] : ['className' => UserDocCategoriesTable::class];
-        $this->UserDocCategories = TableRegistry::getTableLocator()->get('UserDocCategories', $config);
+        $config = TableRegistry::getTableLocator()->exists('ArticleCategories') ? [] : ['className' => ArticleCategoriesTable::class];
+        $this->ArticleCategories = TableRegistry::getTableLocator()->get('ArticleCategories', $config);
     }
 
     /**
@@ -48,7 +46,7 @@ class UserDocCategoriesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->UserDocCategories);
+        unset($this->ArticleCategories);
 
         parent::tearDown();
     }

@@ -45,11 +45,11 @@ class UserGroupsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'ce3ba243-286c-4bf2-b9a5-a62f6671df0d',
+                'id' => '1f215872-b2e4-4147-aa27-960cd2277f81',
                 'user_group_name' => 'Lorem ipsum dolor sit amet',
-                'user_id' => '5bdca455-0726-46e4-84e1-567cb7f054fe',
-                'created' => '2018-10-04 03:02:24',
-                'modified' => '2018-10-04 03:02:24'
+                'user_id' => 'cf697686-3ad8-4af4-a746-fb1809e69dea',
+                'created' => '2018-10-04 06:13:33',
+                'modified' => '2018-10-04 06:13:33'
             ],
         ];
         parent::init();

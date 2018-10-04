@@ -40,10 +40,10 @@ class UserRequestReasonsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '4e341d80-a7c9-48cc-8e89-0360f7a3bfff',
+                'id' => 'ef70124f-f358-4f32-9606-2320ccde6ab6',
                 'reason_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 03:02:29',
-                'modified' => '2018-10-04 03:02:29'
+                'created' => '2018-10-04 06:13:37',
+                'modified' => '2018-10-04 06:13:37'
             ],
         ];
         parent::init();

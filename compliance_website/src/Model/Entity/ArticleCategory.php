@@ -4,17 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * UserDocCategory Entity
+ * ArticleCategory Entity
  *
  * @property string $id
- * @property string $category_name
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
- *
- * @property \App\Model\Entity\UserDocument[] $user_documents
- * @property \App\Model\Entity\UserRequestHeader[] $user_request_headers
+ * @property string $name_categories
+ * @property string $description
  */
-class UserDocCategory extends Entity
+class ArticleCategory extends Entity
 {
 
     /**
@@ -27,10 +23,7 @@ class UserDocCategory extends Entity
      * @var array
      */
     protected $_accessible = [
-        'category_name' => true,
-        'created' => true,
-        'modified' => true,
-        'user_documents' => true,
-        'user_request_headers' => true
+        'name_categories' => true,
+        'description' => true
     ];
 }

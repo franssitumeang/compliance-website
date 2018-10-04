@@ -75,7 +75,7 @@ class DepartmentsTable extends Table
 
         $validator
             ->scalar('dept_code')
-            ->maxLength('dept_code', 4)
+            ->maxLength('dept_code', 15)
             ->requirePresence('dept_code', 'create')
             ->notEmpty('dept_code');
 

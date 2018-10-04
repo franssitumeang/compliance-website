@@ -10,7 +10,6 @@ use Cake\Validation\Validator;
  * UserRequestDetails Model
  *
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\BelongsTo $UserRequestHeaders
- * @property \App\Model\Table\UserDocumentsTable|\Cake\ORM\Association\BelongsTo $UserDocuments
  * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\HasMany $Discussions
  *
  * @method \App\Model\Entity\UserRequestDetail get($primaryKey, $options = [])
@@ -47,10 +46,6 @@ class UserRequestDetailsTable extends Table
             'foreignKey' => 'user_request_header_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('UserDocuments', [
-            'foreignKey' => 'user_document_id',
-            'joinType' => 'INNER'
-        ]);
         $this->hasMany('Discussions', [
             'foreignKey' => 'user_request_detail_id'
         ]);
@@ -69,6 +64,16 @@ class UserRequestDetailsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('approve_m')
+            ->maxLength('approve_m', 15)
+            ->allowEmpty('approve_m');
+
+        $validator
+            ->scalar('approve_c')
+            ->maxLength('approve_c', 15)
+            ->allowEmpty('approve_c');
+
+        $validator
             ->scalar('request_types')
             ->maxLength('request_types', 50)
             ->requirePresence('request_types', 'create')
@@ -79,6 +84,11 @@ class UserRequestDetailsTable extends Table
             ->maxLength('descriptions', 255)
             ->requirePresence('descriptions', 'create')
             ->notEmpty('descriptions');
+
+        $validator
+            ->scalar('attachment')
+            ->maxLength('attachment', 255)
+            ->allowEmpty('attachment');
 
         return $validator;
     }
@@ -93,7 +103,6 @@ class UserRequestDetailsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_request_header_id'], 'UserRequestHeaders'));
-        $rules->add($rules->existsIn(['user_document_id'], 'UserDocuments'));
 
         return $rules;
     }

@@ -47,11 +47,11 @@ class DiscussionParticipantsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '82a5e135-847b-465d-8cb4-84bd2754abdb',
-                'user_id' => '1041fac7-65c0-46ca-9d1c-0973e56a7bb9',
-                'discussion_id' => '047d1eea-5219-4a5d-b234-9f96ee61912e',
-                'created' => '2018-10-04 03:01:22',
-                'modified' => '2018-10-04 03:01:22'
+                'id' => '2005fc49-969f-4633-a97a-bb878689fe4d',
+                'user_id' => 'f2c75bd6-83d4-4ac4-bc1b-39e5c2016bad',
+                'discussion_id' => '7c91a8ea-e9f8-4250-8acb-c498a4af86da',
+                'created' => '2018-10-04 06:13:19',
+                'modified' => '2018-10-04 06:13:19'
             ],
         ];
         parent::init();
