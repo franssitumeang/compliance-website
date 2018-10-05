@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
+            <a class="nav-link" href="roles">
               <i class="menu-icon fa fa-user-circle-o"></i>
               <span class="menu-title">Role</span>
             </a>
@@ -119,22 +119,20 @@
                   <a class="nav-link" href="../../pages/ui-features/buttons.html">Pengajuan Dokumen</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Alasan Pengajuan</a>
+                  <a class="nav-link" href="userrequestreasons">Alasan Pengajuan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Kategori Dokumen</a>
+                  <a class="nav-link" href="userdoccategories">Kategori Dokumen</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../pages/ui-features/buttons.html">Tipe Dokumen</a>
+                    <a class="nav-link" href="userdoctypes">Tipe Dokumen</a>
                   </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/typography.html">Kategori Artikel</a>
+                  <a class="nav-link" href="articlecategories">Kategori Artikel</a>
                 </li>
               </ul>
             </div>
           </li>
-          
-          
           <li class="nav-item">
             <a class="nav-link" href="../../pages/icons/font-awesome.html">
               <i class="menu-icon fa fa-bars"></i>

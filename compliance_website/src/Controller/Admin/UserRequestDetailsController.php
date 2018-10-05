@@ -19,8 +19,7 @@ class UserRequestDetailsController extends AppController
     }
 
     public function index()
-    {
-        
+    {  
         $title = "List Approval";
         $this->set('title', $title);
         $this->paginate = [
@@ -46,7 +45,5 @@ class UserRequestDetailsController extends AppController
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user_request_detail');
     }
-
-   
 }
         

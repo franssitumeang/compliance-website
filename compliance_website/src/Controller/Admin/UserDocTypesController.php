@@ -37,7 +37,7 @@ class UserDocTypesController extends AppController
             ];
         }
         $userDocType = $this->UserDocTypes->newEntity();
-        $title = "Kategori Dokumen";
+        $title = "Tipe Dokumen";
         $this->set('title', $title);
         
         $userDocTypes = $this->paginate('UserDocTypes');
