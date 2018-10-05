@@ -58,12 +58,11 @@ class UserDocTypesController extends AppController
         }
         $userDocType = $this->UserDocTypes->patchEntity($userDocType, $this->request->getData());
         if($this->UserDocTypes->save($userDocType)) {
-            $message = 'Tipe dokumen telah disimpan.';
+            $this->Flash->success(__('Tipe dokumen telah disimpan.'));
         } else {
-            $message = 'Tipe dokumen gagal disimpan.'; 
+            $this->Flash->error(__('Tipe dokumen gagal disimpan.'));
         }
-        $this->Flash->set(__($message));
-        return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
     }
 
     public function delete($id) {

@@ -57,7 +57,7 @@ class RolesController extends AppController
         if($this->Roles->save($role)) {
             $this->Flash->success(__('The Role has been saved.'));
         } else {
-            $this->Flash->success(__('The Role could not be saved. Please, try again.'));
+            $this->Flash->error(__('The Role could not be saved. Please, try again.'));
         }
         
         return $this->redirect(['action' => 'index']);

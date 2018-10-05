@@ -100,6 +100,7 @@
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <?= $this->Form->control('category_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            'id' => 'category_name',
                             'required' => true]); ?>
                         </div>
                     </div>
@@ -149,7 +150,7 @@
         for(var i=0;i<userDocCategories.length;i++) {
             if(id == userDocCategories[i].id) {
                 $("input#id").val(userDocCategories[i].id);
-                $("input#category_name").val(userDocCategories[i].name);
+                $("input#category_name").val(userDocCategories[i].category_name);
                 $("#title_form").text("Update Kategori Dokumen");
                 $('#form').attr('action','userdoccategories/add/'+id);
                 $('html, body').animate({

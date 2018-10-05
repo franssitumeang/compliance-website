@@ -3,15 +3,15 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="userdocuments" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Tipe Dokumen
+                    <a href="userrequestreasons" style="color:#669DE0;">
+                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Alasan Pengajuan
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
                 <div class="row">
                     <div class="col-6">
                     <div class="form-group">
-                        <label for="search">Searh</label>
+                        <label for="search">Search</label>
                         <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
                     </div>
                     </div>
@@ -38,21 +38,19 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Deskripsi</th>
+                                        <th>Kategori</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i=1; ?>
-                                    <?php foreach ($userDocTypes as $userDocType): ?>
+                                    <?php foreach ($userRequestReasons as $userRequestReason): ?>
                                     <tr>
                                         <td><?= $i; ?></td>
-                                        <td><?= $userDocType->doc_type_name; ?></td>
-                                        <td><?= $userDocType->description; ?></td>
+                                        <td><?= $userRequestReason->reason_name; ?></td>
                                         <td>
-                                            <button id="<?= $userDocType->id; ?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
+                                            <button id="<?= $userRequestReason->id; ?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
                                                 style="margin-top:-22px; margin-bottom:-20px;"><i class="fa fa-edit"></i></button>
-                                                <span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?= $userDocType->id; ?>" class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
+                                                <span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?= $userRequestReason->id; ?>" class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
                                                 style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                                         </td>
                                     </tr>
@@ -64,7 +62,7 @@
                     </div>
                 </div>
                 <br>
-                <?php if($userDocTypes->isEmpty()): ?>
+                <?php if($userRequestReasons->isEmpty()): ?>
                     <h5 class="text-center">No Record</h5>
                 <?php endif; ?>
                 <div class="row">
@@ -92,33 +90,29 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Role</h5>
-                    <?= $this->Form->create($newUserDocType, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
-                    'data-bv-feedbackicons-valid'=>'fa fa-check',
-                    'data-bv-feedbackicons-invalid'=>'fa fa-warning',
-                    'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
+                <h5 class="card-title" id="title_form">Tambah Alasan Pengajuan</h5>
+                 <?= $this->Form->create($newUserRequestReason, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                 'data-bv-feedbackicons-valid'=>'fa fa-check',
+                 'data-bv-feedbackicons-invalid'=>'fa fa-warning',
+                 'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
-                            <label for="name">Nama</label>
-                            <?= $this->Form->control('doc_type_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Tipe Dokumen', 
-                            'id' => 'doc_type_name',
+                            <label for="name">Alasan Pengajuan</label>
+                            <?= $this->Form->control('reason_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            'id' => 'reason_name',
                             'required' => true]); ?>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="form-group">  
-                            <label for="description">Deskripsi</label>
-                            <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi']); ?>
-                        </div>
+                    <div class="col-12">
                         <div class="pull-right">
                                 <input type="submit" value="Save" class="btn btn-success" id="btn_save">
                                 <input type="submit" value="Update" class="btn btn-success" id="btn_update">
                                 <button class="btn btn-secondary" type="button" id="btn_cancel">Cancel</button>
                         </div>
                     </div>
-                </div>
-                <?= $this->Form->end(); ?>  
+                 </div>
+             <?= $this->Form->end(); ?>  
             </div>
         </div>
     </div>                  
@@ -133,7 +127,7 @@
                 <p>Do you really want to delete these records? This process cannot be undone.</p>
                 <div class="btn-group btn-group-justified">
                     <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-                    <?= $this->Form->create($newUserDocType,['id'=>'form_delete']) ?>
+                    <?= $this->Form->create($newUserRequestReason,['id'=>'form_delete']) ?>
                         <div class="btn-group">
                             <input type="submit" class="btn btn-danger" value="Delete">
                         </div>
@@ -150,24 +144,22 @@
         $('#btn_cancel').hide()
         $('#form').bootstrapValidator();
     });
-    var userDocTypes = JSON.parse('<?php echo json_encode($userDocTypes); ?>');
+    var userRequestReasons = JSON.parse('<?php echo json_encode($userRequestReasons); ?>');
     $("button").click(function(e) {
         var id = this.id;
-        for(var i=0;i<userDocTypes.length;i++) {
-            if(id == userDocTypes[i].id) {
-                $("input#id").val(userDocTypes[i].id);
-                $("input#description").val(userDocTypes[i].description);
-                $("input#doc_type_name").val(userDocTypes[i].doc_type_name);
-                console.log(userDocTypes[i].doc_type_name);
-                $("#title_form").text("Update Tipe Dokumen");
-                $('#form').attr('action','userdoctypes/add/'+id);
+        for(var i=0;i<userRequestReasons.length;i++) {
+            if(id == userRequestReasons[i].id) {
+                $("input#id").val(userRequestReasons[i].id);
+                $("input#reason_name").val(userRequestReasons[i].reason_name);
+                $("#title_form").text("Update Alasan Pengajuan Dokumen Dokumen");
+                $('#form').attr('action','userrequestreasons/add/'+id);
                 $('html, body').animate({
                 scrollTop: $("form.form").offset().top
                 }, 1000)
                 break;
             }
-            if(id == 'btn_delete_'+userDocTypes[i].id) {
-                $('#form_delete').attr('action','userdoctypes/delete/'+userDocTypes[i].id);
+            if(id == 'btn_delete_'+userRequestReasons[i].id) {
+                $('#form_delete').attr('action','userrequestreasons/delete/'+userRequestReasons[i].id);
                 $('#btn_update').hide()
                 $('#btn_cancel').hide()
                 $('#btn_save').show()
@@ -176,8 +168,8 @@
                 .val('')
                 .removeAttr('checked')
                 .removeAttr('selected');
-                $('#form').attr('action','userdoctypes/add');
-                $("#title_form").text("Tambah Tipe Dokumen");
+                $('#form').attr('action','userrequestreasons/add');
+                $("#title_form").text("Tambah Alasan Pengajuan Dokumen");
                 break;
             }
         };
@@ -195,8 +187,7 @@
         .val('')
         .removeAttr('checked')
         .removeAttr('selected');
-        $('#form').attr('action','userdoctypes/add');
-        $("#title_form").text("Tambah Kategori Dokumen");
+        $('#form').attr('action','userrequestreasons/add');
+        $("#title_form").text("Tambah Alasan Pengajuan Dokumen");
     });
-
 </script>
