@@ -77,7 +77,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admins/departemens">
+            <a class="nav-link" href="/admin/departments">
               <i class="menu-icon fa fa-sitemap"></i>
               <span class="menu-title">Departemen</span>
             </a>

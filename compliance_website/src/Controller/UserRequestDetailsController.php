@@ -18,10 +18,10 @@ class UserRequestDetailsController extends AppController{
         $title = "List Approval";
         $this->set('title', $title);
         $this->paginate = [
-            'contain' => ['UserRequestHeaders','UserDocuments']
+            'contain' => ['UserRequestHeaders']
         ];
         $userRequestDetails = $this->UserRequestDetails->find('all', [
-            'conditions' => ['UserRequestDetails.user_request_headers_id' => $id]
+            'conditions' => ['UserRequestDetails.user_request_header_id' => $id]
         ]);
         $userRequestDetails = $this->paginate($userRequestDetails);
         $userRequestDetail = $this->UserRequestDetails->newEntity();

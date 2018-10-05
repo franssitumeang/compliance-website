@@ -49,26 +49,37 @@ class ArticlesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add($id=null)
+    public function add()
     {
         $title = "Menambah Artikel";
-        //$article = $this->Articles->newEntity();
-        if ($id == null) {
-            $article = $this->Articles->newEntity();
-        }else{
-            $article = $this->Articles->get($id);
-        }
-        if($this->request->is('post'))
-        {
+        $article= $this->Articles->newEntity();
+        if($this->request->is('post')){
             $article = $this->Articles->patchEntity($article, $this->request->getData());
-            $article->user_id = "Ivan Roabalang";
+            $article->user_id = "1";
             if($this->Articles->save($article)){
-                $this->Flash->success(__('The Article has been saved'));
-            }else{
-                $this->Flash->error(__('The Article could not be saved'));
+                $this->Flash->success('Added Success', ['key'=>'message']);
+                return $this->redirect(['action'=>'index']);
             }
-            return $this->redirect(['action' => 'index']);
+            $this->Flash->error(__('Unable add article'));
         }
+        $this->set('post', $article);
+        //$article = $this->Articles->newEntity();
+        // if ($id == null) {
+        //     $article = $this->Articles->newEntity();
+        // }else{
+        //     $article = $this->Articles->get($id);
+        // }
+        // if($this->request->is('post'))
+        // {
+        //     $article = $this->Articles->patchEntity($article, $this->request->getData());
+        //     $article->user_id = "Ivan Roabalang";
+        //     if($this->Articles->save($article)){
+        //         $this->Flash->success(__('The Article has been saved'));
+        //     }else{
+        //         $this->Flash->error(__('The Article could not be saved'));
+        //     }
+        //     return $this->redirect(['action' => 'index']);
+        // }
         $this->set(compact('article', 'title'));
         $this->viewBuilder()->templatePath('Publics/Articles');
         $this->render('add');

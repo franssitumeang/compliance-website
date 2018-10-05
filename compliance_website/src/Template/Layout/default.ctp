@@ -255,6 +255,7 @@
                 <?= $this->Html->script('public/custom/thumbnail-slider.js') ?>
                 <?= $this->Html->script('public/custom/tooltip.js') ?>
                 <?= $this->Html->script('public/vendor/jquery-2.2.4.min.js') ?>
+                <?= $this->Html->scritp('public/vendor/jquery-3.2.1.min.js') ?>
                 <?= $this->Html->script('public/popper.min.js') ?>
                 <?= $this->Html->script('public/vendor/bootstrap.min.js') ?>
                 <?= $this->Html->script('https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA') ?>

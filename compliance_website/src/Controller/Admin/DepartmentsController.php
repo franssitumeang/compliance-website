@@ -1,16 +1,18 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class CompaniesController extends AppController{
+class DepartmentsController extends AppController{
 
     public $paginate = [
         'limit' => 10,
         'order' => [
-            'Companies.company_name' => 'asc'
-        ]
+            'Departments.dept_name' => 'asc'
+        ],
+        'contain' => array('Companies','ParentDepartments')
+        
     ];
 
     public function initialize()
@@ -31,20 +33,20 @@ class CompaniesController extends AppController{
             $this->paginate = [
                 'limit' => 10,
                 'order' => [
-                    'Companies.company_name' => 'asc'
+                    'Departments.dept_name' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
             ];
         }       
-        $title = "Perusahaan";
+        $title = "Departemen";
         $this->set('title', $title);
-        $companies = $this->paginate('Companies');
-        $company = $this->Companies->newEntity();
-        $paginate = $this->Paginator->getPagingParams()["Companies"];
-        $this->set(compact('companies','company','paginate'));
+        $departments = $this->paginate('Departments');
+        $department = $this->Departments->newEntity();
+        $paginate = $this->Paginator->getPagingParams()["Departments"];
+        $this->set(compact('departments','department','paginate'));
         
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('company');
+        $this->render('department');
     }
     
     
