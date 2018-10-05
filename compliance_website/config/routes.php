@@ -34,6 +34,10 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/roles', ['controller' => 'Roles', 'action' => 'index']);
     $routes->connect('/userdocuments', ['controller' => 'UserDocuments', 'action' => 'index']);
     $routes->connect('/userdoccategories', ['controller' => 'UserDocCategories', 'action' => 'index']);
+    $routes->connect('/userrequestreasons', ['controller' => 'UserRequestReasons', 'action' => 'index']);
+    $routes->connect('/userrequestheaders', ['controller' => 'UserRequestHeaders', 'action' => 'index']);
+    $routes->connect('/userrequestdetails', ['controller' => 'UserRequestDetails', 'action' => 'index']);
+    $routes->connect('/articlecategories', ['controller' => 'ArticleCategories', 'action' => 'index']);
     $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
