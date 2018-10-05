@@ -177,12 +177,12 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="company_code">Kode Perusahaan</label>
-                  <input type="text" class="form-control" id="company_code" name="company_code" placeholder="Kode" required
+                  <input type="text" class="form-control" id="company_code" name="company_code" placeholder="Kode Perusahaan" required
                   maxlength="5">
                 </div>
                 <div class="form-group">
                   <label for="company_name">Nama Perusahaan</label>
-                  <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Nama" required
+                  <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Nama Perusahaan" required
                   maxlength="100">
                 </div>
                 <div class="form-group">

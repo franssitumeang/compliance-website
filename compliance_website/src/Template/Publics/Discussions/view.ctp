@@ -22,27 +22,26 @@
 										<img class="img-fluid" src="img/blog/feature-img1.jpg" alt="">
 									</div>									
 								</div>
-								<div class="col-lg-3  col-md-3 meta-details">
+								<div class=" col-lg-4  col-md-3 meta-details">
 									<ul class="tags">
 										<li><a href="#">Jenis Dokumen</a></li>
 									</ul>
 									<div class="user-details row">
-										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Dibuat oleh</a> <span class="lnr lnr-user"></span></p>
-										<p class="date col-lg-12 col-md-12 col-6"><a href="#">Tanggal Forum</a> <span class="lnr lnr-calendar-full"></span></p>
+										<p class="date col-lg-12 col-md-12 col-6"><a href="#"><?= h($discussion->created) ?></a> <span class="lnr lnr-calendar-full"></span></p>
 										<p class="comments col-lg-12 col-md-12 col-6"><a href="#">5 Komentar</a> <span class="lnr lnr-bubble"></span></p>
 									</div>
 								</div>
-								<div class="col-lg-9 col-md-9">
-                                    <h3 class="mt-20 mb-20">Judul</h3>
+								<div class="col-lg-8 col-md-9">
+                                    <h3 class="mt-20 mb-20">Forum Diskusi</h3>
 									<p class="excert">
                                         <h4>Nomor Dokumen : </h4>
                                     </p>
-                                    <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                                    <p><?= h($discussion->contents) ?>
                                     </P>
 								</div>
-							</div>
-							<div class="comments-area">
+                            </div>
+                          
+							<div class="comments-area col-lg-12">
 								<h4>5 Komentar</h4>
 								<div class="comment-list">
                                     <div class="single-comment justify-content-between d-flex">
