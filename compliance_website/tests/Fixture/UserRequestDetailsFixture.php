@@ -49,15 +49,15 @@ class UserRequestDetailsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '84de5256-43fd-4ecb-8d4a-9e823d7f0085',
-                'user_request_header_id' => 'd3d972d9-f172-4953-9c5c-b5de4133ffbe',
+                'id' => '1b69482e-864a-49a2-9264-7b69c65e3a20',
+                'user_request_header_id' => '75d13bcb-92bf-4d32-8140-e852085f4fc1',
                 'approve_m' => 'Lorem ipsum d',
                 'approve_c' => 'Lorem ipsum d',
                 'request_types' => 'Lorem ipsum dolor sit amet',
                 'descriptions' => 'Lorem ipsum dolor sit amet',
                 'attachment' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 06:13:34',
-                'modified' => '2018-10-04 06:13:34'
+                'created' => '2018-10-05 04:48:11',
+                'modified' => '2018-10-05 04:48:11'
             ],
         ];
         parent::init();

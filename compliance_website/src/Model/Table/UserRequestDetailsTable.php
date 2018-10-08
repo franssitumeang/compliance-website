@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * UserRequestDetails Model
  *
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\BelongsTo $UserRequestHeaders
+ * @property |\Cake\ORM\Association\HasMany $DiscussionParticipants
  * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\HasMany $Discussions
  *
  * @method \App\Model\Entity\UserRequestDetail get($primaryKey, $options = [])
@@ -45,6 +46,9 @@ class UserRequestDetailsTable extends Table
         $this->belongsTo('UserRequestHeaders', [
             'foreignKey' => 'user_request_header_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('DiscussionParticipants', [
+            'foreignKey' => 'user_request_detail_id'
         ]);
         $this->hasMany('Discussions', [
             'foreignKey' => 'user_request_detail_id'

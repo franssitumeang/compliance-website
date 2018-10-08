@@ -26,7 +26,6 @@ class UserRequestDetailsTableTest extends TestCase
     public $fixtures = [
         'app.user_request_details',
         'app.user_request_headers',
-        'app.user_documents',
         'app.discussions'
     ];
 
