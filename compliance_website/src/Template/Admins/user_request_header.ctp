@@ -20,8 +20,14 @@
                         <label>Search By</label>
                         <div class="input-group col-xs-12">
                         <select class="form-control" name="attribute">
-                            <option value="name">Nama</option>
-                            <option value="status">Status</option>
+                            <option value="UserRequestHeaders.doc_no">No Dokumen</option>
+                            <option value="UserRequestHeaders.doc_title">Nama Dokumen</option>
+                            <option value="UserDocCategories.category_name">Kategori</option>
+                            <option value="UserDocTypes.doc_type_name">Tipe</option>
+                            <option value="UserRequestReasons.reason_name">Alasan Pengajuan</option>
+                            <option value="UserRequestHeaders.status">Status</option>
+                            <option value="Users.user_name">Nama Pengaju Dokumen</option>
+                            <option value="UserRequestHeaders.request_date">Tanggal Pengajuan</option>
                         </select>
                         <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -32,7 +38,7 @@
                 </div>
                 <?= $this->Form->end() ?>
                 <div class="row">
-                    <div class="col-10" style="padding-right: 0px;">
+                    <div class="col-12" style="padding-right: 0px;">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
@@ -67,30 +73,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="col-2" style="padding-left: 0px;">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                <th style="text-align: center;">
-                                    Action
-                                </th>
-                                
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($userRequestHeaders as $userRequestHeader): ?>
-                                <tr>
-                                <td>
-                                    <button id="<?=$userRequestHeader->id?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
-                                    style="margin-top:-22px; margin-bottom:-20px;"><i class="fa fa-edit"></i></button>
-                                    <span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?=$userRequestHeader->id?>" class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
-                                    style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
-                                </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
                 <br>

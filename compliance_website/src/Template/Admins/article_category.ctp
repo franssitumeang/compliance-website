@@ -39,6 +39,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Kategori</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

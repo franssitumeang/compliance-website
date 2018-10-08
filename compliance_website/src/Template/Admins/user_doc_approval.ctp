@@ -20,8 +20,10 @@
                         <label>Search By</label>
                         <div class="input-group col-xs-12">
                         <select class="form-control" name="attribute">
-                            <option value="name">Nama</option>
-                            <option value="status">Status</option>
+                            <option value="UserRequestHeaders.doc_title">Judul</option>
+                            <option value="Users.user_name">Nama Pemberi Approval</option>
+                            <option value="UserDocApprovals.status">Status</option>
+                            <option value="UserDocApprovals.created">Tanggal</option>
                         </select>
                         <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -38,7 +40,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama Dokumen</th>
+                                        <th>Judul</th>
                                         <th>Nama Pemberi Approve</th>
                                         <th>Status</th>
                                         <th>Tanggal</th>
