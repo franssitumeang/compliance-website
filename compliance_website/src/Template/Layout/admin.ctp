@@ -95,7 +95,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
+            <a class="nav-link" href="/admin/positions">
               <i class="menu-icon fa fa-vcard"></i>
               <span class="menu-title">Jabatan</span>
             </a>
