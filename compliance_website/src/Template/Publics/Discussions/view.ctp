@@ -34,7 +34,8 @@
 								<div class="col-lg-8 col-md-9">
                                     <h3 class="mt-20 mb-20">Forum Diskusi</h3>
 									<p class="excert">
-                                        <h4>Nomor Dokumen : </h4>
+                                        <h4>Nomor Dokumen : 
+                                            <?= $discussion->has('user_request_detail') ? $this->Html->link($discussion->user_request_detail->user_request_detail_id, ['controller' => 'UserRequestDetails', 'action' => 'view', $discussion->user_request_detail->user_request_detail_id]) : '' ?></h4>
                                     </p>
                                     <p><?= h($discussion->contents) ?>
                                     </P>

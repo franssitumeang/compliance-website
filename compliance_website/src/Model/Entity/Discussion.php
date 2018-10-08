@@ -8,11 +8,10 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $contents
- * @property \Cake\I18n\FrozenTime $created
- * @property int $create_by
- * @property \Cake\I18n\FrozenTime $modified
- * @property int $modi_by
  * @property string $user_request_detail_id
+ * @property string $discussion_participant_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\UserRequestDetail $user_request_detail
  * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
@@ -31,11 +30,10 @@ class Discussion extends Entity
      */
     protected $_accessible = [
         'contents' => true,
-        'created' => true,
-        'create_by' => true,
-        'modified' => true,
-        'modi_by' => true,
         'user_request_detail_id' => true,
+        'discussion_participant_id' => true,
+        'created' => true,
+        'modified' => true,
         'user_request_detail' => true,
         'discussion_participants' => true
     ];

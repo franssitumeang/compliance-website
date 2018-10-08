@@ -4,12 +4,12 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class RolesController extends AppController
+class ArticleCategoriesController extends AppController
 {
     public $paginate = [
         'limit' => 10,
         'order' => [
-            'Roles.name' => 'asc'
+            'ArticleCategories.name_categories' => 'asc'
         ]
     ];
 
@@ -17,10 +17,13 @@ class RolesController extends AppController
     {
         parent::initialize();
         $this->loadComponent('Paginator');
+        $this->loadModel('ArticleCategories');
     }
+    
     public function beforeFilter(Event $event){
         $this->viewBuilder()->layout('admin');
     }
+    
     public function index() {
         $searchKey = $this->request->query('search_key');
         $attribute = $this->request->query('attribute');
@@ -28,47 +31,38 @@ class RolesController extends AppController
             $this->paginate = [
                 'limit' => '10',
                 'order' => [
-                    'Roles.name' => 'asc'
+                    'ArticleCategories.name_categories' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
             ];
         }
-        $role = $this->Roles->newEntity();
-        $title = "Roles";
+        $articleCategory = $this->ArticleCategories->newEntity();
+        $title = "Kategori Artikel";
         $this->set('title', $title);
         
-        $roles = $this->paginate('Roles');
-        $paginate = $this->Paginator->getPagingParams()["Roles"];
-        $this->set(compact('roles', 'paginate'));
-        $this->set('newRole', $role);
+        $articleCategories = $this->paginate('ArticleCategories');
+        $paginate = $this->Paginator->getPagingParams()["ArticleCategories"];
+        $this->set(compact('articleCategories', 'paginate'));
+        $this->set('newArticleCategory', $articleCategory);
         //kondisi
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('role');
+        $this->render('article_category');
     }
 
     public function add($id = null) {
         $this->request->allowMethod(['post', 'put']);
         if(!empty($id)) {
-            $role = $this->Roles->get($id);
+            $articleCategory = $this->ArticleCategories->get($id);
         } else {
-            $role = $this->Roles->newEntity();
+            $articleCategory = $this->ArticleCategories->newEntity();
         }
-        $role = $this->Roles->patchEntity($role, $this->request->getData());
-        if($this->Roles->save($role)) {
-            $this->Flash->success(__('The Role has been saved.'));
+        $articleCategory = $this->ArticleCategories->patchEntity($articleCategory, $this->request->getData());
+        if($this->ArticleCategories->save($articleCategory)) {
+            $this->Flash->success(__('Tipe artikel berhasil disimpan.'));
         } else {
-            $this->Flash->error(__('The Role could not be saved. Please, try again.'));
+            $this->Flash->error(__('Kategori artikel gagal disimpan.'));
         }
-        
         return $this->redirect(['action' => 'index']);
     }
 
-    public function delete($id) {
-        $this->request->allowMethod(['post', 'delete']);
-        $role = $this->Roles->get($id);
-        if ($this->Roles->delete($role)) {
-            $this->Flash->success(__('The role has been deleted.'));
-            return $this->redirect(['action' => 'index']);
-        }
-    }
 }

@@ -16,11 +16,8 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Tambah Artikel</h4>
-            <?= $this->Form->create($article,['class'=>'form','id'=>'form','url'=>['action'=>'add'],
-            'data-bv-feedbackicons-valid'=>'fa fa-check',
-            'data-bv-feedbackicons-invalid'=>'fa fa-warning',
-            'data-bv-feedbackicons-validating'=>'fa fa-spinner']) ?>
-              <div class="row">
+              <?= $this->Form->create($article,['class'=>'form','id'=>'form','url'=>['action'=>'add']]);?>
+            <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="judul">Judul</label>
@@ -60,4 +57,5 @@
           </div>
         </div>
     </div>
+    <?php echo $this->Form->end();?>
 <!--End Content -->

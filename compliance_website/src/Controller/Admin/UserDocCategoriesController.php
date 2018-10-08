@@ -58,11 +58,10 @@ class UserDocCategoriesController extends AppController
         }
         $userDocCategory = $this->UserDocCategories->patchEntity($userDocCategory, $this->request->getData());
         if($this->UserDocCategories->save($userDocCategory)) {
-            $message = 'Kategori dokumen telah disimpan.';
+            $this->Flash->success(__('Tipe dokumen berhasil disimpan.'));
         } else {
-            $message = 'Kategori dokumen gagal disimpan.'; 
+            $this->Flash->error(__('Kategori dokumen gagal disimpan.'));
         }
-        $this->Flash->set(__($message));
         return $this->redirect(['action' => 'index']);
     }
 
