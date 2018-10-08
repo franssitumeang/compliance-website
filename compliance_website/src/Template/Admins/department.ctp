@@ -18,10 +18,10 @@
                             <label>Search By</label>
                             <div class="input-group col-xs-12">
                                 <select class="form-control" name="attribute">
-                                    <option value="dept_code">Kode Departemen</option>
-                                    <option value="dept_name">Nama Departemen</option>
-                                    <option value="address_1">Induk Departemen</option>
-                                    <option value="address_2">Perusahaan</option>
+                                    <option value="Departments.dept_code">Kode Departemen</option>
+                                    <option value="Departments.dept_name">Nama Departemen</option>
+                                    <option value="ParentDepartments.dept_name">Induk Departemen</option>
+                                    <option value="Companies.company_name">Perusahaan</option>
                                 </select>
                                 <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -147,18 +147,19 @@
                                 <div class="form-group">
                                     <label>Perusahaan</label>
                                     <div class="input-group col-xs-12">
-                                        <select class="form-control" name="company_id">
-                                            <option value="company_code">Kode Perusahaan</option>
-                                            <option value="company_name">Nama Perusahaan</option>
+                                        <select class="form-control" name="company_id" required>
+                                            <option value="" disabled selected>-- Pilih Perusahaan --</option>
+                                            <?php foreach ($companies as $c): ?>
+                                            <option value="<?=$c->id?>"><?=$c->company_name?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Induk Departemen</label>
                                     <div class="input-group col-xs-12">
-                                        <select class="form-control" name="parent_id">
-                                            <option value="company_code">Kode Perusahaan</option>
-                                            <option value="company_name">Nama Perusahaan</option>
+                                        <select class="form-control" name="parent_id" id="parent_id">
+                                            <option value="" disabled selected>-- Pilih Departemen --</option>
                                         </select>
                                     </div>
                                 </div>
@@ -208,10 +209,9 @@
                 var id = this.id;
                 for(var i=0;i<departments.length;i++) {
                     if(id == departments[i].id) {
+                        empty_form();
                         $("#dept_code").val(departments[i].dept_code);
                         $("#dept_name").val(departments[i].dept_name);
-                        $("#company_id").val(departments[i].company_id);
-                        $("#parent_id").val(departments[i].parent_id);
                         $("#title_form").text("Update Departemen");
                         $('#form').attr('action','departments/add/'+id);
                         $('html, body').animate({
@@ -233,13 +233,28 @@
                 $('#btn_update').hide()
                 $('#btn_cancel').hide()
                 $('#btn_save').show()
+                empty_form();
+                $('#form').attr('action','departments/add');
+                $("#title_form").text("Tambah Departemen");
+            });
+            $("select[name='company_id']").change(function(){
+                func_get_dept($(this).val());
+            });
+            var allDepartment = JSON.parse('<?php echo json_encode($allDepartment); ?>');
+            var func_get_dept = function(company_id) {
+                $('#parent_id').empty();
+                $('#parent_id').append("<option value='' selected>-- Pilih Departemen --</option>");
+                for(var i=0; i<allDepartment.length; i++){
+                    if(allDepartment[i].company_id == company_id) {
+                        $('#parent_id').append("<option value='"+allDepartment[i].id+"'>"+allDepartment[i].dept_name+"</option>");
+                    }
+                }
+            }
+            var empty_form = function() {
                 $(':input','#form')
                 .not(':button, :submit, :reset, :hidden')
                 .val('')
                 .removeAttr('checked')
                 .removeAttr('selected');
-                $('#form').attr('action','companies/add');
-                $("#title_form").text("Tambah Perusahaan");
-            });
-            
+            }
         </script>
