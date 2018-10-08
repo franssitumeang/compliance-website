@@ -20,8 +20,8 @@
                 <label>Search By</label>
                 <div class="input-group col-xs-12">
                   <select class="form-control" name="attribute">
-                    <option value="name">Nama</option>
-                    <option value="description">Deskripsi</option>
+                    <option value="Roles.name">Nama</option>
+                    <option value="Roles.description">Deskripsi</option>
                   </select>
                   <span class="input-group-append">
                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
