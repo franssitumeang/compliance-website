@@ -10,7 +10,8 @@ use Cake\Validation\Validator;
  * DiscussionParticipants Model
  *
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\BelongsTo $Discussions
+ * @property |\Cake\ORM\Association\BelongsTo $UserRequestDetails
+ * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\HasMany $Discussions
  *
  * @method \App\Model\Entity\DiscussionParticipant get($primaryKey, $options = [])
  * @method \App\Model\Entity\DiscussionParticipant newEntity($data = null, array $options = [])
@@ -46,9 +47,11 @@ class DiscussionParticipantsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Discussions', [
-            'foreignKey' => 'discussion_id',
-            'joinType' => 'INNER'
+        $this->belongsTo('UserRequestDetails', [
+            'foreignKey' => 'user_request_detail_id'
+        ]);
+        $this->hasMany('Discussions', [
+            'foreignKey' => 'discussion_participant_id'
         ]);
     }
 
@@ -77,7 +80,7 @@ class DiscussionParticipantsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['discussion_id'], 'Discussions'));
+        $rules->add($rules->existsIn(['user_request_detail_id'], 'UserRequestDetails'));
 
         return $rules;
     }

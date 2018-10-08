@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h5 class="card-title">
                     <a href="userdocuments" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Kategori Dokumen
+                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Tipe Dokumen
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
@@ -38,19 +38,21 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Kategori</th>
+                                        <th>Nama</th>
+                                        <th>Deskripsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i=1; ?>
-                                    <?php foreach ($userDocCategories as $userDocCategory): ?>
+                                    <?php foreach ($userDocTypes as $userDocType): ?>
                                     <tr>
                                         <td><?= $i; ?></td>
-                                        <td><?= $userDocCategory->category_name; ?></td>
+                                        <td><?= $userDocType->doc_type_name; ?></td>
+                                        <td><?= $userDocType->description; ?></td>
                                         <td>
-                                            <button id="<?= $userDocCategory->id; ?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
+                                            <button id="<?= $userDocType->id; ?>" class="btn btn-icons btn-inverse-primary" data-toggle="tooltip" title="edit"
                                                 style="margin-top:-22px; margin-bottom:-20px;"><i class="fa fa-edit"></i></button>
-                                                <span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?= $userDocCategory->id; ?>" class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
+                                                <span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?= $userDocType->id; ?>" class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="delete"
                                                 style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                                         </td>
                                     </tr>
@@ -62,7 +64,7 @@
                     </div>
                 </div>
                 <br>
-                <?php if($userDocCategories->isEmpty()): ?>
+                <?php if($userDocTypes->isEmpty()): ?>
                     <h5 class="text-center">No Record</h5>
                 <?php endif; ?>
                 <div class="row">
@@ -91,28 +93,32 @@
         <div class="card">
             <div class="card-body form">
                 <h5 class="card-title" id="title_form">Tambah Role</h5>
-                 <?= $this->Form->create($newUserDocCategory, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
-                 'data-bv-feedbackicons-valid'=>'fa fa-check',
-                 'data-bv-feedbackicons-invalid'=>'fa fa-warning',
-                 'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
+                    <?= $this->Form->create($newUserDocType, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                    'data-bv-feedbackicons-valid'=>'fa fa-check',
+                    'data-bv-feedbackicons-invalid'=>'fa fa-warning',
+                    'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <?= $this->Form->control('category_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
-                            'id' => 'category_name',
+                            <?= $this->Form->control('doc_type_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Tipe Dokumen', 
+                            'id' => 'doc_type_name',
                             'required' => true]); ?>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
+                        <div class="form-group">  
+                            <label for="description">Deskripsi</label>
+                            <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi']); ?>
+                        </div>
                         <div class="pull-right">
                                 <input type="submit" value="Save" class="btn btn-success" id="btn_save">
                                 <input type="submit" value="Update" class="btn btn-success" id="btn_update">
                                 <button class="btn btn-secondary" type="button" id="btn_cancel">Cancel</button>
                         </div>
                     </div>
-                 </div>
-             <?= $this->Form->end(); ?>  
+                </div>
+                <?= $this->Form->end(); ?>  
             </div>
         </div>
     </div>                  
@@ -127,7 +133,7 @@
                 <p>Do you really want to delete these records? This process cannot be undone.</p>
                 <div class="btn-group btn-group-justified">
                     <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-                    <?= $this->Form->create($newUserDocCategory,['id'=>'form_delete']) ?>
+                    <?= $this->Form->create($newUserDocType,['id'=>'form_delete']) ?>
                         <div class="btn-group">
                             <input type="submit" class="btn btn-danger" value="Delete">
                         </div>
@@ -144,22 +150,24 @@
         $('#btn_cancel').hide()
         $('#form').bootstrapValidator();
     });
-    var userDocCategories = JSON.parse('<?php echo json_encode($userDocCategories); ?>');
+    var userDocTypes = JSON.parse('<?php echo json_encode($userDocTypes); ?>');
     $("button").click(function(e) {
         var id = this.id;
-        for(var i=0;i<userDocCategories.length;i++) {
-            if(id == userDocCategories[i].id) {
-                $("input#id").val(userDocCategories[i].id);
-                $("input#category_name").val(userDocCategories[i].category_name);
-                $("#title_form").text("Update Kategori Dokumen");
-                $('#form').attr('action','userdoccategories/add/'+id);
+        for(var i=0;i<userDocTypes.length;i++) {
+            if(id == userDocTypes[i].id) {
+                $("input#id").val(userDocTypes[i].id);
+                $("input#description").val(userDocTypes[i].description);
+                $("input#doc_type_name").val(userDocTypes[i].doc_type_name);
+                console.log(userDocTypes[i].doc_type_name);
+                $("#title_form").text("Update Tipe Dokumen");
+                $('#form').attr('action','userdoctypes/add/'+id);
                 $('html, body').animate({
                 scrollTop: $("form.form").offset().top
                 }, 1000)
                 break;
             }
-            if(id == 'btn_delete_'+userDocCategories[i].id) {
-                $('#form_delete').attr('action','userdoccategories/delete/'+userDocCategories[i].id);
+            if(id == 'btn_delete_'+userDocTypes[i].id) {
+                $('#form_delete').attr('action','userdoctypes/delete/'+userDocTypes[i].id);
                 $('#btn_update').hide()
                 $('#btn_cancel').hide()
                 $('#btn_save').show()
@@ -168,8 +176,8 @@
                 .val('')
                 .removeAttr('checked')
                 .removeAttr('selected');
-                $('#form').attr('action','userdoccategories/add');
-                $("#title_form").text("Tambah Kategori Dokumen");
+                $('#form').attr('action','userdoctypes/add');
+                $("#title_form").text("Tambah Tipe Dokumen");
                 break;
             }
         };
@@ -187,7 +195,7 @@
         .val('')
         .removeAttr('checked')
         .removeAttr('selected');
-        $('#form').attr('action','userdoccategories/add');
+        $('#form').attr('action','userdoctypes/add');
         $("#title_form").text("Tambah Kategori Dokumen");
     });
 

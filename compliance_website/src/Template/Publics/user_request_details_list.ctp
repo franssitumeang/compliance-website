@@ -73,7 +73,7 @@
 														<?= $this->Html->link('Download', ['controller' => 'userRequestHeaders', 'action' => 'download',$urd->user_request_header_id]) ?>
 														</button>
 														<button class="btn pull-left btn-sm">
-														<?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions', 'action'=>'view', $urd->id)); ?>
+														<?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions', 'action'=>'index', $urd->id)); ?>
 														</button>
 													</td>
 												</tr>

@@ -55,11 +55,11 @@ class RolesController extends AppController
         }
         $role = $this->Roles->patchEntity($role, $this->request->getData());
         if($this->Roles->save($role)) {
-            $message = 'The Role has been saved.';
+            $this->Flash->success(__('The Role has been saved.'));
         } else {
-            $message = 'The Role could not be saved. Please, try again.'; 
+            $this->Flash->error(__('The Role could not be saved. Please, try again.'));
         }
-        $this->Flash->set(__($message));
+        
         return $this->redirect(['action' => 'index']);
     }
 
@@ -67,7 +67,7 @@ class RolesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $role = $this->Roles->get($id);
         if ($this->Roles->delete($role)) {
-            $this->Flash->success(__('The {0} article has been deleted.', $role->name));
+            $this->Flash->success(__('The role has been deleted.'));
             return $this->redirect(['action' => 'index']);
         }
     }

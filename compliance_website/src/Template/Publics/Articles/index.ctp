@@ -40,6 +40,10 @@
                             </div>  
                     </div> 
                 </div>
+
+</div>    
+<!--End Content-->    
+
                 </div>
             <?php endforeach;?>
             <?php else:?>

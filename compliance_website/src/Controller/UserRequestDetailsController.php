@@ -32,6 +32,16 @@ class UserRequestDetailsController extends AppController{
         $this->render('user_request_details_list');
     }
 
+    public function view($id = null)
+    {
+        $userRequestDetail = $this->UserRequestDetail->get($id, [
+            'contain' => ['UserRequestHeaders']
+        ]);
+
+        $this->set('userRequestDetail', $userRequestDetail);
+    }
+
+
 
 }
 ?>
