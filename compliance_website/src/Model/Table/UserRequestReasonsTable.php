@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * UserRequestReasons Model
  *
+ * @property |\Cake\ORM\Association\HasMany $UserRequestHeaders
+ *
  * @method \App\Model\Entity\UserRequestReason get($primaryKey, $options = [])
  * @method \App\Model\Entity\UserRequestReason newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\UserRequestReason[] newEntities(array $data, array $options = [])
@@ -38,6 +40,10 @@ class UserRequestReasonsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('UserRequestHeaders', [
+            'foreignKey' => 'user_request_reason_id'
+        ]);
     }
 
     /**

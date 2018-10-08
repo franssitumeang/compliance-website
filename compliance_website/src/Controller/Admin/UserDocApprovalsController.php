@@ -4,14 +4,14 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class UserRequestDetailsController extends AppController
+class UserDocApprovalsController extends AppController
 {
 
     public function initialize()
     {
         parent::initialize();
         $this->loadComponent('Paginator');
-        $this->loadModel('UserRequestDetails');
+        $this->loadModel('UserDocApprovals');
     }
 
     public function beforeFilter(Event $event){
@@ -20,10 +20,10 @@ class UserRequestDetailsController extends AppController
 
     public function index()
     {  
-        $title = "List User Request Detail";
+        $title = "List Approval Dokumen";
         $this->set('title', $title);
         $this->paginate = [
-            'contain' => ['UserRequestHeaders']
+            'contain' => ['UserRequestHeaders', 'Users']
         ];
         $searchKey = $this->request->query('search_key');
         $attribute = $this->request->query('attribute');
@@ -31,19 +31,19 @@ class UserRequestDetailsController extends AppController
             $this->paginate = [
                 'limit' => 10,
                 'order' => [
-                    'UserRequestDetails.UserRequestHeaders.doc_title' => 'asc'
+                    'UserDocApprovals.UserRequestHeaders.doc_title' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
-                'contain' => ['UserRequestHeaders']
+                'contain' => ['UserRequestHeaders', 'Users']
             ];
         }           
-        $userRequestDetails = $this->paginate($this->UserRequestDetails);
-        $userRequestDetail = $this->UserRequestDetails->newEntity();
-        $paginate = $this->Paginator->getPagingParams()["UserRequestDetails"];
-        $this->set(compact('userRequestDetails', 'userRequestDetail', 'paginate'));
+        $userDocApprovals = $this->paginate($this->UserDocApprovals);
+        $userDocApproval = $this->UserDocApprovals->newEntity();
+        $paginate = $this->Paginator->getPagingParams()["UserDocApprovals"];
+        $this->set(compact('userDocApprovals', 'userDocApproval', 'paginate'));
        
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('user_request_detail');
+        $this->render('user_doc_approval');
     }
 }
         
