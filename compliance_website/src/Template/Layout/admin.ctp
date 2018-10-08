@@ -136,18 +136,6 @@
               </ul>
             </div>
           </li>
-<<<<<<< HEAD
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/articles">
-              <i class="menu-icon fa fa-newspaper-o"></i>
-              <span class="menu-title">Artikel</span>
-            </a>
-          </li>
-          
-          
-=======
->>>>>>> eda5ba282d5ffa593eb0cdf4cc4447aae42bc1ed
           <li class="nav-item">
             <a class="nav-link" href="../../pages/icons/font-awesome.html">
               <i class="menu-icon fa fa-bars"></i>

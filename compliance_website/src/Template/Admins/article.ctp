@@ -59,7 +59,7 @@
                                                 <?= $article->created; ?>
                                             </td>
                                             <td class="categories_id" value=<?= $article->categories_id; ?>>
-                                                <?= $article->categories_id; ?>
+                                                <?= $article->article_category->name_categories; ?>
                                             </td>
                                             <!-- <td class="attachment" value=<?= $article->attachment; ?>>
                                                 <?= $article->attachment; ?>
@@ -99,7 +99,7 @@
                                                             <div class="btn-group">
                                                                 <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                                                                 <div class="btn-group">
-                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Articles', 'action' => 'delete', $role->id], 
+                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Articles', 'action' => 'delete', $article->id], 
                                                                                             ['type' => 'submit',
                                                                                             'class' => 'btn btn-danger'
                                                                                             ]); ?>
@@ -146,7 +146,7 @@
         <div class="card">
             <div class="card-body form">
                 <h5 class="card-title" id="title_form">Tambah Artikel</h5>
-                 <?= $this->Form->create($article, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                 <?= $this->Form->create($newArticle, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                  'data-bv-feedbackicons-valid'=>'fa fa-check',
                  'data-bv-feedbackicons-invalid'=>'fa fa-warning',
                  'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>

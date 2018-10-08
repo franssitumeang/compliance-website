@@ -10,7 +10,8 @@ class ArticlesController extends AppController{
         'limit' => 10,
         'order' => [
             'Articles.title' => 'asc'
-        ]
+        ],
+        'contain' => ['ArticleCategories']
     ];
 
     public function initialize()
@@ -39,9 +40,9 @@ class ArticlesController extends AppController{
         $title = "Artikel";
         $this->set('title', $title);
         $articles = $this->paginate('Articles');
-        $article = $this->Articles->newEntity();
+        $newArticle = $this->Articles->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Articles"];
-        $this->set(compact('articles','article','paginate'));
+        $this->set(compact('articles','newArticle','paginate'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('article');
@@ -61,8 +62,9 @@ class ArticlesController extends AppController{
             }else{
                 $this->Flash->error(__('The article could not be saved. Please, try again.'));
             }
-            return $this->redirect(['action' => 'index']);
+            
         }
+        return $this->redirect(['action' => 'index']);
     }
     public function delete($id = null)
     {
