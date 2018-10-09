@@ -6,6 +6,12 @@ use App\Controller\AppController;
 class UserRequestHeadersController extends AppController
 {
 
+    public $paginate = [
+        'limit' => 10,
+        'contain' => ['Users','UserRequestReasons']
+        
+    ];
+
     public function initialize()
     {
         parent::initialize();
@@ -14,12 +20,6 @@ class UserRequestHeadersController extends AppController
 
     public function index()
     {
-        
-        $title = "Daftar Dokument";
-        $this->set('title', $title);
-        $this->paginate = [
-            'contain' => ['Users','UserRequestReasons']
-        ];
         $searchKey = $this->request->query('search_key');
         $attribute = $this->request->query('attribute');
         if($searchKey){
@@ -28,14 +28,20 @@ class UserRequestHeadersController extends AppController
                 'order' => [
                     'UserRequestHeaders.request_dates' => 'asc'
                 ],
-                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
-                'contain' => ['Users','UserRequestReasons']
+                'contain' => ['Users','UserRequestReasons'],
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+                
             ];
-        }           
-        $userRequestHeaders = $this->paginate($this->UserRequestHeaders);
-        $userRequestHeader = $this->UserRequestHeaders->newEntity();
+        } 
+        $title = "Daftar Dokumen";
+        $this->set('title', $title);          
+        $userRequestHeaders = $this->paginate('UserRequestHeaders');
         $paginate = $this->Paginator->getPagingParams()["UserRequestHeaders"];
-        $this->set(compact('userRequestHeaders', 'userRequestHeader', 'paginate'));
+        $usersTable = TableRegistry::get('Users');
+        $users = $usersTable->find('all');
+        $allUserRequestHeader = $this->UserRequestHeaders->find('all');
+
+        $this->set(compact('userRequestHeaders', 'paginate', 'users', 'allUserRequestHeaders'));
        
         $this->viewBuilder()->templatePath('Publics');
         $this->render('user_request_headers_list');

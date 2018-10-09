@@ -25,7 +25,7 @@
 						</object>
 					</div>
 					<div class="col-sm-4 sidebar-widgets">
-						<p><b>Deskripsi :</b><?= $discussion->has('user_request_detail') ? $this->Html->link($discussion->user_request_detail->descriptions, ['controller' => 'UserRequestDetails', 'action' => 'view', $discussion->user_request_detail->user_request_detail_id]) : '' ?>
+						<p><b>Deskripsi :</b>
 							<br>PT. WAHANA MAKMUR SEJATI bergerak dibidang perdagangan dalam arti kata
 							seluas-luasnya dengan kantor pusat di Gedung Wahanaartha Jl Gunung Sahari Raya No
 							32 Jakarta Pusat dengan cabang-cabang di wilayah Indonesia.
