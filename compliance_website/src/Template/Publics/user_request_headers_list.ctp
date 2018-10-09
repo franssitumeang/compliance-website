@@ -76,8 +76,6 @@
 														<button class="btn pull-left btn-sm">
 														<?php echo $this->Html->link('Detail', array('controller' => 'UserRequestDetails', $urh->id)); ?>
 														</button>
-
-														<span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?=$urh->id?>" data-toggle="tooltip" class="btn pull-left btn-sm">Lihat Modal</button></span>
 													</td>
 												</tr>
 												<?php $i+=1; ?>
@@ -116,28 +114,4 @@
 		</div>
 </div>		
 
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-					<div class="modal-header">
-							Detail Header
-					</div>
-					<div class="userRequestHeader modal-body">
-							<?= $this->Form->create($userRequestHeader,['id'=>'form_delete']) ?>
-							<p>Tanggal : <?></p>
-							<p>Nama  : </p>
-							<p>Alasan  : </p>
-							<p>Status  : </p>
-							<?= $this->Form->end() ?>
-							<div align="center">
-								<button type="button" name="previous" class="btn btn-warning btn-sm previous">Previous</button>
-								<button type="button" name="next" class="btn btn-warning btn-sm next">Next</button>
-							</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-			</div>
-	</div>
-</div>
 
