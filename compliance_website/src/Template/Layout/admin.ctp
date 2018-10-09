@@ -89,7 +89,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
+            <a class="nav-link" href="/admin/groups">
               <i class="menu-icon fa fa-group"></i>
               <span class="menu-title">Grup User</span>
             </a>
@@ -100,13 +100,6 @@
               <span class="menu-title">Jabatan</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="roles">
-              <i class="menu-icon fa fa-user-circle-o"></i>
-              <span class="menu-title">Role</span>
-            </a>
-          </li>
-          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon fa fa-list-alt"></i>
