@@ -4,12 +4,12 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class RolesController extends AppController
+class GroupsController extends AppController
 {
     public $paginate = [
         'limit' => 10,
         'order' => [
-            'Roles.name' => 'asc'
+            'Groups.title' => 'asc'
         ]
     ];
 
@@ -28,36 +28,36 @@ class RolesController extends AppController
             $this->paginate = [
                 'limit' => '10',
                 'order' => [
-                    'Roles.name' => 'asc'
+                    'Groups.title' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
             ];
         }
-        $role = $this->Roles->newEntity();
-        $title = "Roles";
+        $group = $this->Groups->newEntity();
+        $title = "Groups";
         $this->set('title', $title);
         
-        $roles = $this->paginate('Roles');
-        $paginate = $this->Paginator->getPagingParams()["Roles"];
-        $this->set(compact('roles', 'paginate'));
-        $this->set('newRole', $role);
+        $groups = $this->paginate('Groups');
+        $paginate = $this->Paginator->getPagingParams()["Groups"];
+        $this->set(compact('groups', 'paginate'));
+        $this->set('newGroup', $group);
         //kondisi
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('role');
+        $this->render('group');
     }
 
     public function add($id = null) {
         $this->request->allowMethod(['post', 'put']);
         if(!empty($id)) {
-            $role = $this->Roles->get($id);
+            $group = $this->Groups->get($id);
         } else {
-            $role = $this->Roles->newEntity();
+            $group = $this->Groups->newEntity();
         }
-        $role = $this->Roles->patchEntity($role, $this->request->getData());
-        if($this->Roles->save($role)) {
-            $this->Flash->success(__('The Role has been saved.'));
+        $group = $this->Groups->patchEntity($group, $this->request->getData());
+        if($this->Groups->save($group)) {
+            $this->Flash->success(__('The Group has been saved.'));
         } else {
-            $this->Flash->error(__('The Role could not be saved. Please, try again.'));
+            $this->Flash->error(__('The Group could not be saved. Please, try again.'));
         }
         
         return $this->redirect(['action' => 'index']);
@@ -65,9 +65,9 @@ class RolesController extends AppController
 
     public function delete($id) {
         $this->request->allowMethod(['post', 'delete']);
-        $role = $this->Roles->get($id);
-        if ($this->Roles->delete($role)) {
-            $this->Flash->success(__('The role has been deleted.'));
+        $group = $this->Groups->get($id);
+        if ($this->Groups->delete($group)) {
+            $this->Flash->success(__('The group has been deleted.'));
             return $this->redirect(['action' => 'index']);
         }
     }
