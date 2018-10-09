@@ -4,15 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Role Entity
+ * Group Entity
  *
  * @property string $id
- * @property string $name
+ * @property string $title
  * @property string $description
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Menu[] $menus
+ * @property \App\Model\Entity\User[] $users
  */
-class Role extends Entity
+class Group extends Entity
 {
 
     /**
@@ -25,9 +28,11 @@ class Role extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
+        'title' => true,
         'description' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'menus' => true,
+        'users' => true
     ];
 }
