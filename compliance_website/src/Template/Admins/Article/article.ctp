@@ -61,13 +61,6 @@
                                             <td class="categories_id" value=<?= $article->categories_id; ?>>
                                                 <?= $article->article_category->name_categories; ?>
                                             </td>
-                                            <!-- <td class="attachment" value=<?= $article->attachment; ?>>
-                                                <?= $article->attachment; ?>
-                                            </td>
-                                            <td class="content" value=<?= $article->content; ?>>
-                                                <?= $article->content; ?>
-                                            </td> -->
-
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
                                                                                 ['class' => 'btn btn-icons btn-inverse-primary',
@@ -76,18 +69,36 @@
                                                                                 'title' => 'Edit',
                                                                                 'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
                                                 ?></i>
-                                                <?= $this->Form->button('<i class="fa fa-eye">', 
-                                                    ['class' => 'btn btn-icons btn-inverse-primary',
-                                                    'data-toggle' => 'tooltip',
-                                                    'id' => $article->id,
-                                                    'title' => 'View',
-                                                    'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
-                                                ?></i>
+                                                <span data-target="#modalView-<?= $article->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-success view" data-toggle="tooltip" data-tooltip="" title="View"
+                                                    style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-eye"></i></button></span>
+                                                
                                                 <span data-target="#myModal-<?= $article->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
                                                     style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
-                                                
                                             </td>
                                         </tr>
+
+                                        <!-- Modal View -->
+                                        <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                <div class="modal-body">
+                                                        <?php echo $article->content?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <!-- Modal Delete -->
+
                                         <div id="myModal-<?= $article->id; ?>" class="modal fade">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
@@ -198,7 +209,7 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var articles = JSON.parse('<?= json_encode($articles); ?>');
+    var articles = JSON.parse('<?php echo json_encode($articles); ?>');
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<articles.length;i++) {
@@ -207,12 +218,12 @@ $(document).ready(function(){
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
                 $("input#categories_id").val(articles[i].categories_id);
-                $("input#attachment").val(articles[i].attachment);
-                $("input#content").val(articles[i].content);
+                $("input#attachment").html(articles[i].attachment);
+                $("textarea#content").text(articles[i].content);
                 $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
-                $('#btn_save').hide()
+                $('#btn_save').hide() 
                 $('#title_form').text('Update Artikel')
                 $('html, body').animate({
                   scrollTop: $("form.form").offset().top
