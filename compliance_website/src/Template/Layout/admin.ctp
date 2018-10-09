@@ -22,6 +22,9 @@
     <?= $this->Html->script('off-canvas.js') ?>
     <?= $this->Html->script('misc.js') ?>
     <?= $this->Html->script('bootstrapValidator.js') ?>
+    <?= $this->Html->script('tinymce/tinymce.min.js')?>
+    <?= $this->Html->script('tinymce/init-tinymce.js')?>
+
     
     
 </head>
@@ -77,7 +80,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admins/departemens">
+            <a class="nav-link" href="/admin/departments">
               <i class="menu-icon fa fa-sitemap"></i>
               <span class="menu-title">Departemen</span>
             </a>
@@ -89,24 +92,17 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
+            <a class="nav-link" href="/admin/groups">
               <i class="menu-icon fa fa-group"></i>
               <span class="menu-title">Grup User</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
+            <a class="nav-link" href="/admin/positions">
               <i class="menu-icon fa fa-vcard"></i>
               <span class="menu-title">Jabatan</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
-              <i class="menu-icon fa fa-user-circle-o"></i>
-              <span class="menu-title">Role</span>
-            </a>
-          </li>
-          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon fa fa-list-alt"></i>
@@ -119,19 +115,20 @@
                   <a class="nav-link" href="../../pages/ui-features/buttons.html">Pengajuan Dokumen</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Alasan Pengajuan</a>
+                  <a class="nav-link" href="userrequestreasons">Alasan Pengajuan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Kategori Dokumen</a>
+                  <a class="nav-link" href="userdoccategories">Kategori Dokumen</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/typography.html">Kategori Artikel</a>
+                    <a class="nav-link" href="userdoctypes">Tipe Dokumen</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="articlecategories">Kategori Artikel</a>
                 </li>
               </ul>
             </div>
           </li>
-          
-          
           <li class="nav-item">
             <a class="nav-link" href="../../pages/icons/font-awesome.html">
               <i class="menu-icon fa fa-bars"></i>

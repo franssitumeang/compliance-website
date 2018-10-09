@@ -16,11 +16,8 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Tambah Artikel</h4>
-            <?= $this->Form->create($article,['class'=>'form','id'=>'form','url'=>['action'=>'add'],
-            'data-bv-feedbackicons-valid'=>'fa fa-check',
-            'data-bv-feedbackicons-invalid'=>'fa fa-warning',
-            'data-bv-feedbackicons-validating'=>'fa fa-spinner']) ?>
-              <div class="row">
+              <?= $this->Form->create($article,['class'=>'form','id'=>'form','url'=>['action'=>'add']]);?>
+            <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="judul">Judul</label>
@@ -52,7 +49,7 @@
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
                     <div class ="input-group col-xs-12"></div>
-                        <textarea rows="5" cols="80" value="description" id="description" name="description"></textarea>
+                        <textarea class="tinymce" name="content" id="content" ></textarea>
                     </div>
                   </div>
               </div>
@@ -60,4 +57,5 @@
           </div>
         </div>
     </div>
-<!--End Content -->    
+    <?php echo $this->Form->end();?>
+<!--End Content -->

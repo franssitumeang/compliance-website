@@ -143,3 +143,14 @@
         padding:4px 24px;
     }
 }
+
+/* Box styles */
+.myScrollBox {
+border: none;
+padding: 5px;
+font: 14px/16px sans-serif;
+width: 400px;
+height: 400px;
+overflow: scroll;
+}
+

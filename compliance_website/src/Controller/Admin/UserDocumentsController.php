@@ -18,6 +18,7 @@ class UserDocumentsController extends AppController
     {
         parent::initialize();
         $this->loadComponent('Paginator');
+        
     }
 
     public function beforeFilter(Event $event){
@@ -46,6 +47,6 @@ class UserDocumentsController extends AppController
         //kondisi
         $this->set(compact('userDocuments', 'paginate'));
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('user_dokumen');
+        $this->render('user_document');
     }   
 }

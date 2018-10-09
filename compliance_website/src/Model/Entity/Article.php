@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property string $id
  * @property string $title
  * @property \Cake\I18n\FrozenTime $created
- * @property string $description
+ * @property string $content
  * @property string $user_id
  * @property string $categories_id
  * @property string $attachment
@@ -32,7 +32,7 @@ class Article extends Entity
     protected $_accessible = [
         'title' => true,
         'created' => true,
-        'description' => true,
+        'content' => true,
         'user_id' => true,
         'categories_id' => true,
         'attachment' => true,

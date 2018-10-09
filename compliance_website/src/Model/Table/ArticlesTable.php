@@ -71,16 +71,15 @@ class ArticlesTable extends Table
             ->notEmpty('title');
 
         $validator
-            ->scalar('description')
-            ->maxLength('description', 255)
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+            ->scalar('content')
+            ->maxLength('content', 255)
+            ->requirePresence('content', 'create')
+            ->notEmpty('content');
 
         $validator
             ->scalar('attachment')
             ->maxLength('attachment', 225)
-            ->requirePresence('attachment', 'create')
-            ->notEmpty('attachment');
+            ->allowEmpty('attachment');
 
         return $validator;
     }

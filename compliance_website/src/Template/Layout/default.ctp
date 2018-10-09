@@ -272,8 +272,28 @@
                     </div>
                 </footer>
                 
-                
-                <script>
+                <?= $this->Html->script('public/custom/thumbnail-slider.js') ?>
+                <?= $this->Html->script('public/custom/tooltip.js') ?>
+                <?= $this->Html->script('public/vendor/jquery-2.2.4.min.js') ?>
+                <?= $this->Html->scritp('public/vendor/jquery-3.2.1.min.js') ?>
+                <?= $this->Html->script('public/popper.min.js') ?>
+                <?= $this->Html->script('public/vendor/bootstrap.min.js') ?>
+                <?= $this->Html->script('https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA') ?>
+                <?= $this->Html->script('public/jquery-ui.js') ?>
+                <?= $this->Html->script('public/easing.min.js') ?>
+                <?= $this->Html->script('public/hoverIntent.js') ?>
+                <?= $this->Html->script('public/superfish.min.js') ?>
+                <?= $this->Html->script('public/jquery.ajaxchimp.min.js') ?>
+                <?= $this->Html->script('public/jquery.magnific-popup.min.js') ?>
+                <?= $this->Html->script('public/jquery.nice-select.min.js') ?>
+                <?= $this->Html->script('public/owl.carousel.min.js') ?>
+                <?= $this->Html->script('public/isotope.pkgd.min.js') ?>
+                <?= $this->Html->script('public/mail-script.js') ?>
+                <?= $this->Html->script('public/main.js') ?>
+                <?= $this->Html->script('tinymce/tinymce.min.js')?>
+                <?= $this->Html->script('tinymce/init-tinymce.js')?>
+
+                <!-- <script>
                     var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");
                     for (var i = 0; i < slides.length; i++) {
                         slides[i].onmouseover = function (e) {
@@ -284,7 +304,7 @@
                             }
                         };
                     }
-                </script>
+                </script> -->
             </body>
             
             </html>

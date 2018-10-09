@@ -19,7 +19,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\UserRequestHeader $user_request_header
- * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
  * @property \App\Model\Entity\Discussion[] $discussions
  */
 class UserRequestDetail extends Entity
@@ -46,7 +45,6 @@ class UserRequestDetail extends Entity
         'created' => true,
         'modified' => true,
         'user_request_header' => true,
-        'discussion_participants' => true,
         'discussions' => true
     ];
 }

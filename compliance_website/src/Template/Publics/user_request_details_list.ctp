@@ -52,7 +52,6 @@
 										<thead>
 											<tr>
 												<th>Tanggal </th>
-												<th>Nama Dokumen</th>
 												<th>Tipe Request</th>
 												<th>Description</th>
 												<th>Compliance</th>
@@ -62,20 +61,19 @@
 											</thead>   
 											<tbody>
 												<?php $i = 1; ?>
-                        <?php foreach ($userRequestDetails as $urh): ?>
+                        <?php foreach ($userRequestDetails as $urd): ?>
 												<tr>
-													<td><?=$urh->created?></td>
-													<td><?=$urh->user_document->name?></td>
-													<td><?=$urh->request_types ?></td>
-													<td><?=$urh->descriptions ?></td>
-													<td><?=$urh->approve_c ?></td>
-													<td><?=$urh->approve_m ?></td>
+													<td><?=$urd->created?></td>
+													<td><?=$urd->request_types ?></td>
+													<td><?=$urd->descriptions ?></td>
+													<td><?=$urd->approve_c ?></td>
+													<td><?=$urd->approve_m ?></td>
 													<td>
 														<button class="btn pull-left btn-sm">
-														<?php echo $this->Html->link('Download', array('controller' => 'UserRequestDetails', $urh->id)); ?>
+														<?= $this->Html->link('Download', ['controller' => 'userRequestHeaders', 'action' => 'download',$urd->user_request_header_id]) ?>
 														</button>
 														<button class="btn pull-left btn-sm">
-														<?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions','action'=>'view', $urh->id)); ?>
+														<?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions', 'action'=>'index', $urd->id)); ?>
 														</button>
 													</td>
 												</tr>

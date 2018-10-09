@@ -7,11 +7,12 @@ use Cake\ORM\Entity;
  * UserDocType Entity
  *
  * @property string $id
- * @property string $descriptions
+ * @property string $description
  * @property string $doc_type_name
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\UserDocument[] $user_documents
  * @property \App\Model\Entity\UserRequestHeader[] $user_request_headers
  */
 class UserDocType extends Entity
@@ -27,10 +28,11 @@ class UserDocType extends Entity
      * @var array
      */
     protected $_accessible = [
-        'descriptions' => true,
+        'description' => true,
         'doc_type_name' => true,
         'created' => true,
         'modified' => true,
+        'user_documents' => true,
         'user_request_headers' => true
     ];
 }

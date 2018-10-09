@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * UserDocTypes Model
  *
- * @property |\Cake\ORM\Association\HasMany $UserDocuments
+ * @property \App\Model\Table\UserDocumentsTable|\Cake\ORM\Association\HasMany $UserDocuments
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
  *
  * @method \App\Model\Entity\UserDocType get($primaryKey, $options = [])
@@ -63,10 +63,10 @@ class UserDocTypesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('descriptions')
-            ->maxLength('descriptions', 255)
-            ->requirePresence('descriptions', 'create')
-            ->notEmpty('descriptions');
+            ->scalar('description')
+            ->maxLength('description', 255)
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
 
         $validator
             ->scalar('doc_type_name')

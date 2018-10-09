@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $user_id
- * @property string $discussion_id
+ * @property string $user_request_detail_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -29,7 +29,7 @@ class DiscussionParticipant extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
-        'discussion_id' => true,
+        'user_request_detail_id' => true,
         'created' => true,
         'modified' => true,
         'user' => true,

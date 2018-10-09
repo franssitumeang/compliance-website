@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * UserRequestDetails Model
  *
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\BelongsTo $UserRequestHeaders
- * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
+ * @property |\Cake\ORM\Association\HasMany $DiscussionParticipants
  * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\HasMany $Discussions
  *
  * @method \App\Model\Entity\UserRequestDetail get($primaryKey, $options = [])

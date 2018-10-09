@@ -18,10 +18,10 @@ class UserRequestDetailsController extends AppController{
         $title = "List Approval";
         $this->set('title', $title);
         $this->paginate = [
-            'contain' => ['UserRequestHeaders','UserDocuments']
+            'contain' => ['UserRequestHeaders']
         ];
         $userRequestDetails = $this->UserRequestDetails->find('all', [
-            'conditions' => ['UserRequestDetails.user_request_headers_id' => $id]
+            'conditions' => ['UserRequestDetails.user_request_header_id' => $id]
         ]);
         $userRequestDetails = $this->paginate($userRequestDetails);
         $userRequestDetail = $this->UserRequestDetails->newEntity();
@@ -31,6 +31,16 @@ class UserRequestDetailsController extends AppController{
         $this->viewBuilder()->templatePath('Publics');
         $this->render('user_request_details_list');
     }
+
+    public function view($id = null)
+    {
+        $userRequestDetail = $this->UserRequestDetail->get($id, [
+            'contain' => ['UserRequestHeaders']
+        ]);
+
+        $this->set('userRequestDetail', $userRequestDetail);
+    }
+
 
 
 }

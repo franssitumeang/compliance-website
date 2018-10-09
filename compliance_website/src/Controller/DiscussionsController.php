@@ -11,15 +11,20 @@ class DiscussionsController extends AppController{
     {
         parent::initialize();
         $this->loadComponent('Paginator');
+        $this->loadModel('UserRequestDetails');
+        $this->loadModel('DiscussionParticipants');
     }
 
     public function index($id=null){
         $title = "List Discussions";
         $this->set('title', $title);
         $this->paginate = [
-            'contain' => ['UserRequestDetails']
+            'contain' => ['UserRequestDetails','DiscussionParticipants']
         ];
-        $title = "Perusahaan";
+        $discussions = $this->Discussions->find('all', [
+            'conditions' => ['Discussions.user_request_detail_id' => $id]
+        ]);
+        $title = "Halaman Diskusi";
         $this->set('title', $title);
         $discussions = $this->paginate('Discussions');
         $discussion = $this->Discussions->newEntity();
@@ -34,11 +39,15 @@ class DiscussionsController extends AppController{
     public function view($id = null)
     {
         $discussion = $this->Discussions->get($id, [
-            'contain' => ['UserRequestDetails']
+            'contain' => ['UserRequestDetails','DiscussionParticipants']
         ]);
 
         $this->set('discussion', $discussion);
+        $this->viewBuilder()->templatePath('Publics/Discussions');
+        return $this->redirect(['action' => 'index']);
     }
+
+    
 }
 
 ?>
