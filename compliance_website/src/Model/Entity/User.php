@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $position_id
- * @property string $user_name
+ * @property string $name
  * @property string $phone_num
  * @property string $telp_num
  * @property string $password
@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\Position $position
  * @property \App\Model\Entity\Department $department
  * @property \App\Model\Entity\Article[] $articles
  * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
@@ -38,7 +39,7 @@ class User extends Entity
      */
     protected $_accessible = [
         'position_id' => true,
-        'user_name' => true,
+        'name' => true,
         'phone_num' => true,
         'telp_num' => true,
         'password' => true,
@@ -46,6 +47,7 @@ class User extends Entity
         'department_id' => true,
         'created' => true,
         'modified' => true,
+        'position' => true,
         'department' => true,
         'articles' => true,
         'discussion_participants' => true,

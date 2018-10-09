@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property string $description
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\User[] $users
  */
 class Position extends Entity
 {
@@ -28,6 +30,7 @@ class Position extends Entity
         'name' => true,
         'description' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'users' => true
     ];
 }

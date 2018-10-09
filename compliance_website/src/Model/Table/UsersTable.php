@@ -9,9 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Positions
+ * @property \App\Model\Table\PositionsTable|\Cake\ORM\Association\BelongsTo $Positions
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\BelongsTo $Departments
- * @property \App\Model\Table\ArticlesTable|\Cake\ORM\Association\HasMany $Articles
  * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
  * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
  * @property \App\Model\Table\UserGroupsTable|\Cake\ORM\Association\HasMany $UserGroups
@@ -53,9 +52,6 @@ class UsersTable extends Table
         $this->belongsTo('Departments', [
             'foreignKey' => 'department_id'
         ]);
-        $this->hasMany('Articles', [
-            'foreignKey' => 'user_id'
-        ]);
         $this->hasMany('DiscussionParticipants', [
             'foreignKey' => 'user_id'
         ]);
@@ -83,10 +79,10 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('user_name')
-            ->maxLength('user_name', 50)
-            ->requirePresence('user_name', 'create')
-            ->notEmpty('user_name');
+            ->scalar('name')
+            ->maxLength('name', 50)
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
             ->scalar('phone_num')

@@ -4,14 +4,13 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class ArticlesController extends AppController{
+class PositionsController extends AppController{
 
     public $paginate = [
         'limit' => 10,
         'order' => [
-            'Articles.title' => 'asc'
+            'Positions.name' => 'asc'
         ],
-        'contain' => ['ArticleCategories']
     ];
 
     public function initialize()
@@ -32,46 +31,46 @@ class ArticlesController extends AppController{
             $this->paginate = [
                 'limit' => 10,
                 'order' => [
-                    'Articles.title' => 'asc'
+                    'Positions.name' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
             ];
         }       
-        $title = "Artikel";
+        $title = "Jabatan";
         $this->set('title', $title);
-        $articles = $this->paginate('Articles');
-        $newArticle = $this->Articles->newEntity();
-        $paginate = $this->Paginator->getPagingParams()["Articles"];
-        $this->set(compact('articles','newArticle','paginate'));
+        $positions = $this->paginate('Positions');
+        $position = $this->Positions->newEntity();
+        $paginate = $this->Paginator->getPagingParams()["Positions"];
+
+        $this->set(compact('positions','position','paginate'));
         
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('article');
+        $this->render('position');
     }
-    
     
     public function add($id = null){
         if($id == null){
-            $article = $this->Articles->newEntity();
+            $position = $this->Positions->newEntity();
         }else{
-            $article = $this->Articles->get($id);
+            $position = $this->Positions->get($id);
         }
         if ($this->request->is('post')) {
-            $article = $this->Articles->patchEntity($article, $this->request->getData());
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('The article has been saved.'));
+            $position = $this->Positions->patchEntity($position, $this->request->getData());
+            if ($this->Positions->save($position)) {
+                $this->Flash->success(__('The position has been saved.'));
             }else{
-                $this->Flash->error(__('The article could not be saved. Please, try again.'));
+                $this->Flash->error(__('The position could not be saved. Please, try again.'));
             }
-            
+            return $this->redirect(['action' => 'index']);
         }
-        return $this->redirect(['action' => 'index']);
     }
+
     public function delete($id = null)
     {
         if ($this->request->is('post')) {
-            $article = $this->Articles->get($id);
-            if ($this->Articles->delete($article)) {
-                $this->Flash->success(__('The article has been deleted.'));
+            $position = $this->Positions->get($id);
+            if ($this->Positions->delete($position)) {
+                $this->Flash->success(__('The positions has been deleted.'));
                 return $this->redirect(['action' => 'index']);
             }
         }
