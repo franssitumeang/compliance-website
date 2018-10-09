@@ -20,8 +20,7 @@
                         <label>Search By</label>
                         <div class="input-group col-xs-12">
                         <select class="form-control" name="attribute">
-                            <option value="name">Nama</option>
-                            <option value="status">Status</option>
+                            <option value="UserRequestReasons.reason_name">Alasan</option>
                         </select>
                         <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -38,7 +37,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Kategori</th>
+                                        <th>Alasan</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

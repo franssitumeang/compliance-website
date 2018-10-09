@@ -3,6 +3,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 class DepartmentsController extends AppController{
 
@@ -35,6 +36,7 @@ class DepartmentsController extends AppController{
                 'order' => [
                     'Departments.dept_name' => 'asc'
                 ],
+                'contain' => array('Companies','ParentDepartments'),
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
             ];
         }       
@@ -43,35 +45,42 @@ class DepartmentsController extends AppController{
         $departments = $this->paginate('Departments');
         $department = $this->Departments->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Departments"];
-        $this->set(compact('departments','department','paginate'));
+        $companiesTable = TableRegistry::get('Companies');
+        $companies = $companiesTable->find('all');
+        $allDepartment = $this->Departments->find('all');
+
+        $this->set(compact('departments','department','paginate','companies','allDepartment'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('department');
     }
     
-    
     public function add($id = null){
         if($id == null){
-            $company = $this->Companies->newEntity();
+            $department = $this->Departments->newEntity();
         }else{
-            $company = $this->Companies->get($id);
+            $department = $this->Departments->get($id);
         }
         if ($this->request->is('post')) {
-            $company = $this->Companies->patchEntity($company, $this->request->getData());
-            if ($this->Companies->save($company)) {
-                $this->Flash->success(__('The company has been saved.'));
+            $department = $this->Departments->patchEntity($department, $this->request->getData());
+            if($department->parent_id == ""){
+                $department->parent_id = null;
+            }
+            if ($this->Departments->save($department)) {
+                $this->Flash->success(__('The department has been saved.'));
             }else{
-                $this->Flash->error(__('The company could not be saved. Please, try again.'));
+                $this->Flash->error(__('The department could not be saved. Please, try again.'));
             }
             return $this->redirect(['action' => 'index']);
         }
     }
+
     public function delete($id = null)
     {
         if ($this->request->is('post')) {
-            $company = $this->Companies->get($id);
-            if ($this->Companies->delete($company)) {
-                $this->Flash->success(__('The company has been deleted.'));
+            $department = $this->Departments->get($id);
+            if ($this->Departments->delete($department)) {
+                $this->Flash->success(__('The department has been deleted.'));
                 return $this->redirect(['action' => 'index']);
             }
         }

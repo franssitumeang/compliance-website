@@ -40,16 +40,13 @@
                             </div>  
                     </div> 
                 </div>
-<<<<<<< HEAD
 
 </div>    
 <!--End Content-->    
 
-=======
                 </div>
             <?php endforeach;?>
             <?php else:?>
             <p>No record found</p>
             <?php endif;?>
     </div>
->>>>>>> 57cc6dd6d1f064712945a06a491ac270ac0d8b4c
