@@ -44,10 +44,6 @@
     <?= $this->Html->script('public/mail-script.js') ?>
     <?= $this->Html->script('public/main.js') ?>
     <?= $this->Html->script('bootstrapValidator.js') ?>
-<<<<<<< HEAD
-
-=======
->>>>>>> 94f1a97c5fe0dc5adf16486ae514aa6e7e4ebe25
     <?= $this->Html->script('tinymce/tinymce.min.js')?>
     <?= $this->Html->script('tinymce/init-tinymce.js')?>
 
@@ -274,7 +270,6 @@
                             </p>
                         </div>
                     </div>
-<<<<<<< HEAD
                 </div>
             </div>
             <div class="footer-bottom-wrap">
@@ -300,12 +295,3 @@
 </body>
 
 </html>
-=======
-                </footer>
-          
-
-                
-            </body>
-            
-            </html>
->>>>>>> 94f1a97c5fe0dc5adf16486ae514aa6e7e4ebe25

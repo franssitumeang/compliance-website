@@ -15,20 +15,21 @@
 <div class="col-lg-12 grid-margin stretch-card">
 	<div class="card">
 		<div class="card-body">
-		<h3 class="card-title"><center><b>Forum Diskusi</b></center></h3>
+			<p>
+				<h3><b><?=$userRequestDetails->user_request_header->doc_title?></b> </h3><br>
+				<b>Nomor Dokumen :</b> <?=$userRequestDetails->user_request_header->doc_no?>
+			</p>
 			<div class="container-fluid">
 				<div class="row content">
 					<div class="col-sm-8">
-						<p><b>Nama Dokumen</b></h4></p>
+						
 						<object data="/document/Peraturan.pdf#page=2" type="application/pdf" width="100%" height="90%">
 							<p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="/document/Peraturan.pdf">Download PDF</a>.</p>
 						</object>
 					</div>
 					<div class="col-sm-4 sidebar-widgets">
-						<p><b>Deskripsi :</b><?=$userRequestDetails->descriptions?>
-							<br>PT. WAHANA MAKMUR SEJATI bergerak dibidang perdagangan dalam arti kata
-							seluas-luasnya dengan kantor pusat di Gedung Wahanaartha Jl Gunung Sahari Raya No
-							32 Jakarta Pusat dengan cabang-cabang di wilayah Indonesia.
+						<p></p><p><b>Deskripsi :</b>
+							<br><?=$userRequestDetails->descriptions?>
 						</p>
 						<div class="widget-wrap">
 							<center><b>Komentar</b></center>

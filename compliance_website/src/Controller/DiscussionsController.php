@@ -32,8 +32,12 @@ class DiscussionsController extends AppController{
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
         $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
         // $userRequestDetails = $userRequestDetailsTable->find('all');
-        $userRequestDetails = $userRequestDetailsTable->get($id);
-        $allDiscussion=$this->Discussions->find('all');
+        $userRequestDetails = $userRequestDetailsTable->get($id, [
+            'contain' => ['UserRequestHeaders']
+        ]);
+        $allDiscussion=$this->Discussions->find('all', [
+            'where' => ['user_request_detail_id' => $id]
+        ]);
         $this->set(compact('discussions','discussion','paginate', 'userRequestDetails', 'allDiscussions'));
         
         $this->viewBuilder()->templatePath('Publics/Discussions');
