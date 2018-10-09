@@ -43,8 +43,8 @@ class UserRequestHeadersController extends AppController
 
         $this->set(compact('userRequestHeaders', 'paginate', 'users', 'allUserRequestHeaders'));
        
-        $this->viewBuilder()->templatePath('Publics');
-        $this->render('user_request_headers_list');
+        $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
+        $this->render('index');
     }
 
     public function view($id = null)
@@ -93,13 +93,13 @@ class UserRequestHeadersController extends AppController
                 if($UserRequestDetail->save($userRequestDetail)) {
                     $this->Flash->msg_success(__('Pengajuan Dokumen berhasil dibuat.'));
                 }else {
-                    $this->Flash->msg_success(__('Pengajuan Dokumen gagal dibuat.'));
+                    $this->Flash->msg_error(__('Pengajuan Dokumen gagal dibuat.'));
                 }
             }
 
             // return $this->redirect(['action' => 'index']);
             // }
-            // $this->Flash->error(__('The user request header could not be saved. Please, try again.'));
+            $this->Flash->msg_error(__('Pengajuan Dokumen gagal dibuat.'));
         }
 
         $users = $this->UserRequestHeaders->Users->find('all', array(
