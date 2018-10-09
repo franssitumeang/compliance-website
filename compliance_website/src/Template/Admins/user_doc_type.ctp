@@ -151,7 +151,7 @@
         $('#btn_cancel').hide()
         $('#form').bootstrapValidator();
     });
-    var userDocTypes = JSON.parse('<?php echo json_encode($userDocTypes); ?>');
+    var userDocTypes = JSON.parse(('<?php echo json_encode($userDocTypes); ?>'));
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<userDocTypes.length;i++) {

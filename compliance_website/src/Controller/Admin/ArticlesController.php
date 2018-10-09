@@ -34,7 +34,8 @@ class ArticlesController extends AppController{
                 'order' => [
                     'Articles.title' => 'asc'
                 ],
-                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
+                'contain' => ['ArticleCategories']
             ];
         }       
         $title = "Artikel";
@@ -44,10 +45,11 @@ class ArticlesController extends AppController{
         $paginate = $this->Paginator->getPagingParams()["Articles"];
         $this->set(compact('articles','newArticle','paginate'));
         
-        $this->viewBuilder()->templatePath('Admins');
+        $this->viewBuilder()->templatePath('Admins/Article/');
         $this->render('article');
     }
     
+    //Add Method
     
     public function add($id = null){
         if($id == null){
@@ -66,6 +68,8 @@ class ArticlesController extends AppController{
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    // Delete Method
     public function delete($id = null)
     {
         if ($this->request->is('post')) {
@@ -76,5 +80,13 @@ class ArticlesController extends AppController{
             }
         }
         
+    }
+
+    // View Method
+    public function view($id = null){
+        
+        $article = $this->Articles->get($id);
+        $this->set('article', $article);
+        $this->set('_serialize', ['article']);
     }
 }
