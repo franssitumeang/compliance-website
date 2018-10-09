@@ -3,15 +3,15 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="roles" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Roles
+                    <a href="groups" style="color:#669DE0;">
+                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Group
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
           <div class="row">
             <div class="col-6">
               <div class="form-group">
-                <label for="search">Searh</label>
+                <label for="search">Search</label>
                 <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
               </div>
             </div>
@@ -20,8 +20,8 @@
                 <label>Search By</label>
                 <div class="input-group col-xs-12">
                   <select class="form-control" name="attribute">
-                    <option value="Roles.name">Nama</option>
-                    <option value="Roles.description">Deskripsi</option>
+                    <option value="Groups.title">Nama</option>
+                    <option value="Groups.description">Deskripsi</option>
                   </select>
                   <span class="input-group-append">
                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -44,30 +44,30 @@
                                 <tbody>
                                     <tr>
                                         <?php $i=1;?>
-                                        <?php foreach ($roles as $role): ?>
+                                        <?php foreach ($groups as $group): ?>
                                             <td>
                                                 <?= $i; ?>
                                             </td>
-                                            <td class="role-name" value=<?= $role->name; ?>>
-                                                <?= $role->name; ?>
+                                            <td class="group-title" value=<?= $group->title; ?>>
+                                                <?= $group->title; ?>
                                             </td>
-                                            <td class="role-description" value=<?= $role->description; ?>>
-                                                <?= $role->description; ?>
+                                            <td class="group-description" value=<?= $group->description; ?>>
+                                                <?= $group->description; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
                                                                                 ['class' => 'btn btn-icons btn-inverse-primary',
                                                                                 'data-toggle' => 'tooltip',
-                                                                                'id' => $role->id,
+                                                                                'id' => $group->id,
                                                                                 'title' => 'Edit',
                                                                                 'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
                                                 ?></i>
-                                                <span data-target="#myModal-<?= $role->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
+                                                <span data-target="#myModal-<?= $group->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
                                                     style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                                                 
                                             </td>
                                         </tr>
-                                        <div id="myModal-<?= $role->id; ?>" class="modal fade">
+                                        <div id="myModal-<?= $group->id; ?>" class="modal fade">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -78,7 +78,7 @@
                                                             <div class="btn-group">
                                                                 <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                                                                 <div class="btn-group">
-                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Roles', 'action' => 'delete', $role->id], 
+                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Groups', 'action' => 'delete', $group->id], 
                                                                                             ['type' => 'submit',
                                                                                             'class' => 'btn btn-danger'
                                                                                             ]); ?>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <br>
-                <?php if($roles->isEmpty()) : ?>
+                <?php if($groups->isEmpty()) : ?>
                 <h5 class="text-center">No Record</h5>
                 <?php endif; ?>
                 <div class="row">
@@ -124,18 +124,17 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Role</h5>
-                 <?= $this->Form->create($newRole, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                <h5 class="card-title" id="title_form">Tambah Group</h5>
+                 <?= $this->Form->create($newGroup, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                  'data-bv-feedbackicons-valid'=>'fa fa-check',
                  'data-bv-feedbackicons-invalid'=>'fa fa-warning',
                  'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="name">Nama</label>
-                            <?= $this->Form->control('name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
-                            'required' => true, 
-                            'maxlength' => '5']); ?>
+                            <label for="title">Nama</label>
+                            <?= $this->Form->control('title', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            'required' => true]); ?>
                         </div>
                     </div>
                     <div class="col-6">
@@ -161,19 +160,19 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var roles = JSON.parse('<?= json_encode($roles); ?>');
+    var groups = JSON.parse('<?= json_encode($groups); ?>');
     $("button").click(function(e) {
         var id = this.id;
-        for(var i=0;i<roles.length;i++) {
-            if(id == roles[i].id) {
-                $("input#id").val(roles[i].id);
-                $("input#name").val(roles[i].name);
-                $("input#description").val(roles[i].description);
-                $('#form').attr('action','roles/add/'+id);
+        for(var i=0;i<groups.length;i++) {
+            if(id == groups[i].id) {
+                $("input#id").val(groups[i].id);
+                $("input#title").val(groups[i].title);
+                $("input#description").val(groups[i].description);
+                $('#form').attr('action','groups/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
                 $('#btn_save').hide()
-                $('#title_form').text('Update Role')
+                $('#title_form').text('Update Group')
                 $('html, body').animate({
                   scrollTop: $("form.form").offset().top
                 }, 1000)
@@ -185,13 +184,13 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
-        $('#title_form').text('Tambah Role');
+        $('#title_form').text('Tambah Group');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')
         .val('')
         .removeAttr('checked')
         .removeAttr('selected');
-        $('#form').attr('action','roles/add/');
+        $('#form').attr('action','groups/add/');
     });
 }); 
 </script>

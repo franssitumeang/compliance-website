@@ -12,7 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\UserDocCategoriesTable|\Cake\ORM\Association\BelongsTo $UserDocCategories
  * @property \App\Model\Table\UserDocTypesTable|\Cake\ORM\Association\BelongsTo $UserDocTypes
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\UserRequestReasonsTable|\Cake\ORM\Association\BelongsTo $UserRequestReasons
+ * @property |\Cake\ORM\Association\BelongsTo $UserRequestReasons
  * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
  * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\HasMany $UserRequestDetails
  *
@@ -66,6 +66,8 @@ class UserRequestHeadersTable extends Table
         $this->hasMany('UserRequestDetails', [
             'foreignKey' => 'user_request_header_id'
         ]);
+
+        
     }
 
     /**
@@ -92,7 +94,7 @@ class UserRequestHeadersTable extends Table
 
         $validator
             ->scalar('status')
-            ->maxLength('status', 10)
+            ->maxLength('status', 15)
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 

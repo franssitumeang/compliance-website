@@ -31,7 +31,7 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/dashboards', ['controller' => 'Admins', 'action' => 'index',]);
     $routes->connect('/companies', ['controller' => 'Companies', 'action' => 'index']);
     $routes->connect('/departments', ['controller' => 'Departments', 'action' => 'index']);
-    $routes->connect('/roles', ['controller' => 'Roles', 'action' => 'index']);
+    $routes->connect('/groups', ['controller' => 'Groups', 'action' => 'index']);
     $routes->connect('/userdocuments', ['controller' => 'UserDocuments', 'action' => 'index']);
     $routes->connect('/userdocapprovals', ['controller' => 'UserDocApprovals', 'action' => 'index']);
     $routes->connect('/userdoccategories', ['controller' => 'UserDocCategories', 'action' => 'index']);
@@ -51,7 +51,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/user-request-details-list', ['controller' => 'UserRequestDetails', 'action' => 'index']);
     $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
     $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
-    $routes->connect('/user-request', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
+
+    // for user request
+    $routes->connect('/user-request', ['controller' => 'UserRequestHeaders', 'action' => 'index']);
+    $routes->connect('/user-request/add', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
     
     //For Article
     $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);

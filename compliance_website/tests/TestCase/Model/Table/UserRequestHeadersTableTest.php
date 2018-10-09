@@ -28,7 +28,6 @@ class UserRequestHeadersTableTest extends TestCase
         'app.user_doc_categories',
         'app.user_doc_types',
         'app.users',
-        'app.user_request_reasons',
         'app.user_doc_approvals',
         'app.user_request_details'
     ];

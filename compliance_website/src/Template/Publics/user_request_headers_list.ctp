@@ -33,9 +33,9 @@
 						  <label>Search By</label>
 						  <div class="input-group col-xs-12">
 							<select class="form-control" name="attribute">
-							  <option value="request_dates">Tanggal</option>
-								<option value="user->user_name">Nama</option>
-							  <option value="status">Status</option>
+							  <option value="UserRequestHeader.created">Tanggal</option>
+								<option value="Users.name">Nama</option>
+							  <option value="UserRequestHeader.status"">Status</option>
 							</select>
 							<span class="input-group-append">
 							  <button  class="file-upload-browse btn btn-secondary" type="submit">Search</button>
@@ -54,6 +54,8 @@
 										<thead>
 											<tr>
 												<th>Tanggal </th>
+												<th>Nomor Dokumen</th>
+												<th>Judul Dokumen</th>
 												<th>Nama</th>
 												<th>Alasan</th>
 												<th>Status</th>
@@ -64,16 +66,16 @@
 												<?php $i = 1; ?>
                         <?php foreach ($userRequestHeaders as $urh): ?>
 												<tr>
-													<td><?=$urh->request_dates?></td>
-													<td><?=$urh->user->user_name; ?></td>
-													<td><?=$urh->user_request_reason->reason_name; ?></td>
+													<td><?=$urh->created?></td>
+													<td><?=$urh->doc_no?></td>
+													<td><?=$urh->doc_title?></td>
+													<td><?=$urh->user->name?></td>
+													<td><?=$urh->user_request_reason->reason_name?></td>
 													<td><?=$urh->status?></td>
 													<td>
 														<button class="btn pull-left btn-sm">
 														<?php echo $this->Html->link('Detail', array('controller' => 'UserRequestDetails', $urh->id)); ?>
 														</button>
-
-														<span data-target="#myModal" data-toggle="modal"><button id="btn_delete_<?=$urh->id?>" data-toggle="tooltip" class="btn pull-left btn-sm">Lihat Modal</button></span>
 													</td>
 												</tr>
 												<?php $i+=1; ?>
@@ -112,28 +114,4 @@
 		</div>
 </div>		
 
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-					<div class="modal-header">
-							Detail Header
-					</div>
-					<div class="userRequestHeader modal-body">
-							<?= $this->Form->create($userRequestHeader,['id'=>'form_delete']) ?>
-							<p>Tanggal : <?></p>
-							<p>Nama  : </p>
-							<p>Alasan  : </p>
-							<p>Status  : </p>
-							<?= $this->Form->end() ?>
-							<div align="center">
-								<button type="button" name="previous" class="btn btn-warning btn-sm previous">Previous</button>
-								<button type="button" name="next" class="btn btn-warning btn-sm next">Next</button>
-							</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-			</div>
-	</div>
-</div>
 
