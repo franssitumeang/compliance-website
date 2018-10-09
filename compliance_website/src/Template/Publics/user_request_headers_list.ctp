@@ -33,8 +33,8 @@
 						  <label>Search By</label>
 						  <div class="input-group col-xs-12">
 							<select class="form-control" name="attribute">
-							  <option value="request_dates">Tanggal</option>
-								<option value="user->user_name">Nama</option>
+							  <option value="created">Tanggal</option>
+								<option value="user->name">Nama</option>
 							  <option value="status">Status</option>
 							</select>
 							<span class="input-group-append">
@@ -54,6 +54,8 @@
 										<thead>
 											<tr>
 												<th>Tanggal </th>
+												<th>Nomor Dokumen</th>
+												<th>Judul Dokumen</th>
 												<th>Nama</th>
 												<th>Alasan</th>
 												<th>Status</th>
@@ -64,8 +66,10 @@
 												<?php $i = 1; ?>
                         <?php foreach ($userRequestHeaders as $urh): ?>
 												<tr>
-													<td><?=$urh->request_dates?></td>
-													<td><?=$urh->user->user_name; ?></td>
+													<td><?=$urh->created?></td>
+													<td><?=$urh->doc_no?></td>
+													<td><?=$urh->doc_title?></td>
+													<td><?=$urh->user->name; ?></td>
 													<td><?=$urh->user_request_reason->reason_name; ?></td>
 													<td><?=$urh->status?></td>
 													<td>

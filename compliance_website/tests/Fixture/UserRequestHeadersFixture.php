@@ -24,7 +24,7 @@ class UserRequestHeadersFixture extends TestFixture
         'user_request_reason_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'doc_title' => ['type' => 'string', 'length' => 125, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'doc_no' => ['type' => 'string', 'length' => 125, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'status' => ['type' => 'string', 'fixed' => true, 'length' => 10, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
+        'status' => ['type' => 'string', 'fixed' => true, 'length' => 15, 'null' => false, 'default' => '\'REQUESTED\'', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -56,16 +56,16 @@ class UserRequestHeadersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'e3089192-7765-4efb-ae83-4d67829b9933',
-                'user_doc_category_id' => '89dfdf8d-5b63-433f-80a8-03a350f91b46',
-                'user_doc_type_id' => '524da9b1-5739-48e3-9a75-8458d4b797ec',
+                'id' => 'af810843-004d-44dd-829f-0d7f316b8720',
+                'user_doc_category_id' => 'bc64bf8f-ddb1-4a89-b896-a6474e83432d',
+                'user_doc_type_id' => '2346d1a9-454a-4688-9e20-371e5f9ef67c',
                 'user_id' => 'Lorem ipsum dolor sit amet',
-                'user_request_reason_id' => '98ba2ada-839c-480a-a657-b45d260a63b5',
+                'user_request_reason_id' => '68108c41-2900-460b-89ec-dbbe64dce9bb',
                 'doc_title' => 'Lorem ipsum dolor sit amet',
                 'doc_no' => 'Lorem ipsum dolor sit amet',
-                'status' => 'Lorem ip',
-                'created' => '2018-10-08 03:33:19',
-                'modified' => '2018-10-08 03:33:19'
+                'status' => 'Lorem ipsum d',
+                'created' => '2018-10-09 06:19:29',
+                'modified' => '2018-10-09 06:19:29'
             ],
         ];
         parent::init();
