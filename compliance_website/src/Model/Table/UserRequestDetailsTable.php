@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * UserRequestDetails Model
  *
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\BelongsTo $UserRequestHeaders
+ * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
  * @property \App\Model\Table\DiscussionsTable|\Cake\ORM\Association\HasMany $Discussions
  *
  * @method \App\Model\Entity\UserRequestDetail get($primaryKey, $options = [])
@@ -40,16 +41,36 @@ class UserRequestDetailsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'fields' => [
+                'dir' => 'photo_dir',
+                'size' => 'photo_size',
+                'type' => 'photo_type'
+            ],
+            'attachment' => [
+                'path' => 'webroot{DS}files{DS}documents{DS}UserRequestDetails{DS}attachment{DS}',
+                'nameCallback' => function ($table, $entity, $data, $field, $settings) {
+                    return $data['doc_title'] . '.' . $entity->attachment_type;
+                }
+            ]
+        ]);
+
+
+
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('UserRequestHeaders', [
             'foreignKey' => 'user_request_header_id',
             'joinType' => 'INNER'
         ]);
+        $this->hasMany('DiscussionParticipants', [
+            'foreignKey' => 'user_request_detail_id'
+        ]);
         $this->hasMany('Discussions', [
             'foreignKey' => 'user_request_detail_id'
         ]);
     }
+
 
     /**
      * Default validation rules.
@@ -76,8 +97,7 @@ class UserRequestDetailsTable extends Table
         $validator
             ->scalar('request_types')
             ->maxLength('request_types', 50)
-            ->requirePresence('request_types', 'create')
-            ->notEmpty('request_types');
+            ->allowEmpty('request_types');
 
         $validator
             ->scalar('descriptions')
@@ -86,9 +106,17 @@ class UserRequestDetailsTable extends Table
             ->notEmpty('descriptions');
 
         $validator
-            ->scalar('attachment')
-            ->maxLength('attachment', 255)
             ->allowEmpty('attachment');
+
+        $validator
+            ->scalar('attachment_dir')
+            ->maxLength('attachment_dir', 255)
+            ->allowEmpty('attachment_dir');
+
+        $validator
+            ->scalar('attachment_type')
+            ->maxLength('attachment_type', 5)
+            ->allowEmpty('attachment_type');
 
         return $validator;
     }
@@ -106,4 +134,7 @@ class UserRequestDetailsTable extends Table
 
         return $rules;
     }
+
+
 }
+                    

@@ -24,6 +24,25 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    
+    <?= $this->Html->script('public/custom/thumbnail-slider.js') ?>
+    <?= $this->Html->script('public/custom/tooltip.js') ?>
+    <?= $this->Html->script('public/vendor/jquery-2.2.4.min.js') ?>
+    <?= $this->Html->script('public/popper.min.js') ?>
+    <?= $this->Html->script('public/vendor/bootstrap.min.js') ?>
+    <?= $this->Html->script('https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA') ?>
+    <?= $this->Html->script('public/jquery-ui.js') ?>
+    <?= $this->Html->script('public/easing.min.js') ?>
+    <?= $this->Html->script('public/hoverIntent.js') ?>
+    <?= $this->Html->script('public/superfish.min.js') ?>
+    <?= $this->Html->script('public/jquery.ajaxchimp.min.js') ?>
+    <?= $this->Html->script('public/jquery.magnific-popup.min.js') ?>
+    <?= $this->Html->script('public/jquery.nice-select.min.js') ?>
+    <?= $this->Html->script('public/owl.carousel.min.js') ?>
+    <?= $this->Html->script('public/isotope.pkgd.min.js') ?>
+    <?= $this->Html->script('public/mail-script.js') ?>
+    <?= $this->Html->script('public/main.js') ?>
+    <?= $this->Html->script('bootstrapValidator.js') ?>
 </head>
 
 <body>
@@ -47,7 +66,7 @@
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
                             <li><a href="index.html">Home</a></li>
-
+                            
                             <li class="menu-has-children"><a href="#">Perusahaan</a>
                                 <ul>
                                     <li class="menu-has-children"><a href="#">PT Wahana Artha Harsaka</a>
@@ -135,9 +154,9 @@
                                     
                                 </ul>
                             </li>
-
+                            
                             <li class="menu-has-children"><a href="#">Profil Perusahaan</a></li>
-
+                            
                             <li class="menu-has-children"><a href="#">Pengajuan SOP</a>
                                 <ul>
                                     <li><a href="#">Monitoring Approval SOP</a></li>
@@ -160,7 +179,7 @@
                                 </ul>
                             </li>
                             
-                        <li><a href="#">Forum Diskusi</a></li>
+                            <li><a href="#">Forum Diskusi</a></li>
                             <li><a href="#">Login</a></li>
                             <li class="menu-has-children"><a href="#">Profile</a>
                                 <ul>
@@ -174,8 +193,9 @@
             </div>
         </header><!-- #header -->
         
-        <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
+        <?= $this->Flash->render() ?>
+
         
         <footer class="footer-area">
             <div class="footer-widget-wrap">
@@ -252,23 +272,6 @@
                     </div>
                 </footer>
                 
-                <?= $this->Html->script('public/custom/thumbnail-slider.js') ?>
-                <?= $this->Html->script('public/custom/tooltip.js') ?>
-                <?= $this->Html->script('public/vendor/jquery-2.2.4.min.js') ?>
-                <?= $this->Html->script('public/popper.min.js') ?>
-                <?= $this->Html->script('public/vendor/bootstrap.min.js') ?>
-                <?= $this->Html->script('https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA') ?>
-                <?= $this->Html->script('public/jquery-ui.js') ?>
-                <?= $this->Html->script('public/easing.min.js') ?>
-                <?= $this->Html->script('public/hoverIntent.js') ?>
-                <?= $this->Html->script('public/superfish.min.js') ?>
-                <?= $this->Html->script('public/jquery.ajaxchimp.min.js') ?>
-                <?= $this->Html->script('public/jquery.magnific-popup.min.js') ?>
-                <?= $this->Html->script('public/jquery.nice-select.min.js') ?>
-                <?= $this->Html->script('public/owl.carousel.min.js') ?>
-                <?= $this->Html->script('public/isotope.pkgd.min.js') ?>
-                <?= $this->Html->script('public/mail-script.js') ?>
-                <?= $this->Html->script('public/main.js') ?>
                 
                 <script>
                     var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");

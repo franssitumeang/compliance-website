@@ -12,7 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\UserDocCategoriesTable|\Cake\ORM\Association\BelongsTo $UserDocCategories
  * @property \App\Model\Table\UserDocTypesTable|\Cake\ORM\Association\BelongsTo $UserDocTypes
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\UserRequestReasonsTable|\Cake\ORM\Association\BelongsTo $UserRequestReasons
+ * @property |\Cake\ORM\Association\BelongsTo $UserRequestReasons
  * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
  * @property \App\Model\Table\UserRequestDetailsTable|\Cake\ORM\Association\HasMany $UserRequestDetails
  *
@@ -58,8 +58,7 @@ class UserRequestHeadersTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('UserRequestReasons', [
-            'foreignKey' => 'reasons_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'user_request_reason_id'
         ]);
         $this->hasMany('UserDocApprovals', [
             'foreignKey' => 'user_request_header_id'
@@ -67,6 +66,8 @@ class UserRequestHeadersTable extends Table
         $this->hasMany('UserRequestDetails', [
             'foreignKey' => 'user_request_header_id'
         ]);
+
+        
     }
 
     /**
@@ -93,14 +94,9 @@ class UserRequestHeadersTable extends Table
 
         $validator
             ->scalar('status')
-            ->maxLength('status', 10)
+            ->maxLength('status', 15)
             ->requirePresence('status', 'create')
             ->notEmpty('status');
-
-        $validator
-            ->dateTime('request_dates')
-            ->requirePresence('request_dates', 'create')
-            ->notEmpty('request_dates');
 
         return $validator;
     }
@@ -117,7 +113,7 @@ class UserRequestHeadersTable extends Table
         $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
         $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['reasons_id'], 'UserRequestReasons'));
+        $rules->add($rules->existsIn(['user_request_reason_id'], 'UserRequestReasons'));
 
         return $rules;
     }

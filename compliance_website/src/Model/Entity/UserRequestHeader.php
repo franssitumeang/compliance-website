@@ -10,18 +10,16 @@ use Cake\ORM\Entity;
  * @property string $user_doc_category_id
  * @property string $user_doc_type_id
  * @property string $user_id
+ * @property string $user_request_reason_id
  * @property string $doc_title
  * @property string $doc_no
- * @property string $reasons_id
  * @property string $status
- * @property \Cake\I18n\FrozenTime $request_dates
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\UserDocCategory $user_doc_category
  * @property \App\Model\Entity\UserDocType $user_doc_type
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\UserRequestReason $user_request_reason
  * @property \App\Model\Entity\UserDocApproval[] $user_doc_approvals
  * @property \App\Model\Entity\UserRequestDetail[] $user_request_details
  */
@@ -41,17 +39,15 @@ class UserRequestHeader extends Entity
         'user_doc_category_id' => true,
         'user_doc_type_id' => true,
         'user_id' => true,
+        'user_request_reason_id' => true,
         'doc_title' => true,
         'doc_no' => true,
-        'reasons_id' => true,
         'status' => true,
-        'request_dates' => true,
         'created' => true,
         'modified' => true,
         'user_doc_category' => true,
         'user_doc_type' => true,
         'user' => true,
-        'user_request_reason' => true,
         'user_doc_approvals' => true,
         'user_request_details' => true
     ];

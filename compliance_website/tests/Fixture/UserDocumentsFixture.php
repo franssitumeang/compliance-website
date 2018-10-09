@@ -25,7 +25,9 @@ class UserDocumentsFixture extends TestFixture
         'user_doc_detail_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'status' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'publisher_date' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'paths' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'attachment' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'attachment_dir' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'attachment_type' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -55,17 +57,19 @@ class UserDocumentsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '341c21a0-f193-48b6-86e8-eceb76e3ded6',
+                'id' => 'f9778c02-1a45-444a-acba-62edeb121e28',
                 'name' => 'Lorem ipsum dolor sit amet',
-                'doc_num' => '412d7e2e-79ff-4ae2-97f3-b7d8032e7c44',
-                'user_doc_category_id' => '229ac803-ab14-40b4-aa7c-4a8c1b08368d',
-                'user_doc_type_id' => '4c2ac9ff-b940-4415-9ee5-fefbe0869899',
-                'user_doc_detail_id' => '99778f02-dd6c-4f9a-b2f5-42ea42d37b26',
+                'doc_num' => '1c3be1af-3512-40b6-b0fd-ebf0d2eec640',
+                'user_doc_category_id' => '547a1b44-e7c9-40d4-b251-cda253a7897a',
+                'user_doc_type_id' => '0c12ff5d-b651-45fc-846d-7f942e3ed43e',
+                'user_doc_detail_id' => 'ec5528ba-6ea1-4413-a35a-b3e5e9914931',
                 'status' => 'Lorem ipsum dolor sit amet',
-                'publisher_date' => '2018-10-04 06:13:31',
-                'paths' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 06:13:31',
-                'modified' => '2018-10-04 06:13:31'
+                'publisher_date' => '2018-10-08 02:41:37',
+                'attachment' => 'Lorem ipsum dolor sit amet',
+                'attachment_dir' => 'Lorem ipsum dolor sit amet',
+                'attachment_type' => 'Lorem ipsum dolor sit amet',
+                'created' => '2018-10-08 02:41:37',
+                'modified' => '2018-10-08 02:41:37'
             ],
         ];
         parent::init();

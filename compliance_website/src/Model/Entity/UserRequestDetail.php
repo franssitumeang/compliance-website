@@ -12,12 +12,14 @@ use Cake\ORM\Entity;
  * @property string $approve_c
  * @property string $request_types
  * @property string $descriptions
- * @property string $attachment
+ * @property $attachment
+ * @property string $attachment_dir
+ * @property string $attachment_type
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\UserRequestHeader $user_request_header
- * @property \App\Model\Entity\UserDocument $user_document
+ * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
  * @property \App\Model\Entity\Discussion[] $discussions
  */
 class UserRequestDetail extends Entity
@@ -39,10 +41,12 @@ class UserRequestDetail extends Entity
         'request_types' => true,
         'descriptions' => true,
         'attachment' => true,
+        'attachment_dir' => true,
+        'attachment_type' => true,
         'created' => true,
         'modified' => true,
         'user_request_header' => true,
-        'user_document' => true,
+        'discussion_participants' => true,
         'discussions' => true
     ];
 }

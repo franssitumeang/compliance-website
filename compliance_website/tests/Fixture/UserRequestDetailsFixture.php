@@ -21,9 +21,11 @@ class UserRequestDetailsFixture extends TestFixture
         'user_request_header_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'approve_m' => ['type' => 'string', 'fixed' => true, 'length' => 15, 'null' => true, 'default' => '\'PENDING\'', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'approve_c' => ['type' => 'string', 'fixed' => true, 'length' => 15, 'null' => true, 'default' => '\'PENDING\'', 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
-        'request_types' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'request_types' => ['type' => 'string', 'length' => 50, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'descriptions' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'attachment' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'attachment' => ['type' => 'upload.file', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'attachment_dir' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'attachment_type' => ['type' => 'string', 'length' => 5, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -49,15 +51,17 @@ class UserRequestDetailsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '84de5256-43fd-4ecb-8d4a-9e823d7f0085',
-                'user_request_header_id' => 'd3d972d9-f172-4953-9c5c-b5de4133ffbe',
+                'id' => '1de02793-c0c9-42c2-8b8f-791e6e5ad13d',
+                'user_request_header_id' => '5b411862-5afc-41b8-9805-a7f99fd1d3fb',
                 'approve_m' => 'Lorem ipsum d',
                 'approve_c' => 'Lorem ipsum d',
                 'request_types' => 'Lorem ipsum dolor sit amet',
                 'descriptions' => 'Lorem ipsum dolor sit amet',
-                'attachment' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 06:13:34',
-                'modified' => '2018-10-04 06:13:34'
+                'attachment' => '',
+                'attachment_dir' => 'Lorem ipsum dolor sit amet',
+                'attachment_type' => 'Lor',
+                'created' => '2018-10-08 10:25:45',
+                'modified' => '2018-10-08 10:25:45'
             ],
         ];
         parent::init();

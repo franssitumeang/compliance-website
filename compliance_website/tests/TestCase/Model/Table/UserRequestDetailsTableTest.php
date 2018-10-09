@@ -26,7 +26,7 @@ class UserRequestDetailsTableTest extends TestCase
     public $fixtures = [
         'app.user_request_details',
         'app.user_request_headers',
-        'app.user_documents',
+        'app.discussion_participants',
         'app.discussions'
     ];
 
@@ -60,6 +60,16 @@ class UserRequestDetailsTableTest extends TestCase
      * @return void
      */
     public function testInitialize()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test filerename method
+     *
+     * @return void
+     */
+    public function testFilerename()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
