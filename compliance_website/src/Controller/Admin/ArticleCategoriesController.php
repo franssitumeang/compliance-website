@@ -58,11 +58,21 @@ class ArticleCategoriesController extends AppController
         }
         $articleCategory = $this->ArticleCategories->patchEntity($articleCategory, $this->request->getData());
         if($this->ArticleCategories->save($articleCategory)) {
-            $this->Flash->success(__('Tipe artikel berhasil disimpan.'));
+            $this->Flash->success(__('Kategori artikel berhasil disimpan.'));
         } else {
             $this->Flash->error(__('Kategori artikel gagal disimpan.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function delete($id) {
+        if ($this->request->is('post')){
+            $articleCategory = $this->ArticleCategories->get($id);
+            if ($this->ArticleCategories->delete($articleCategory)) {
+                $this->Flash->success(__('Kategori Dokumen Telah dihapus.'));       
+            }
+            return $this->redirect(['action' => 'index']);
+        }
     }
 
 }

@@ -22,6 +22,9 @@
     <?= $this->Html->script('off-canvas.js') ?>
     <?= $this->Html->script('misc.js') ?>
     <?= $this->Html->script('bootstrapValidator.js') ?>
+    <?= $this->Html->script('tinymce/tinymce.min.js')?>
+    <?= $this->Html->script('tinymce/init-tinymce.js')?>
+
     
     
 </head>

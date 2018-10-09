@@ -58,8 +58,7 @@ class UserRequestHeadersTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('UserRequestReasons', [
-            'foreignKey' => 'reasons_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'user_request_reason_id'
         ]);
         $this->hasMany('UserDocApprovals', [
             'foreignKey' => 'user_request_header_id'
@@ -97,11 +96,6 @@ class UserRequestHeadersTable extends Table
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
-        $validator
-            ->dateTime('request_dates')
-            ->requirePresence('request_dates', 'create')
-            ->notEmpty('request_dates');
-
         return $validator;
     }
 
@@ -117,7 +111,7 @@ class UserRequestHeadersTable extends Table
         $rules->add($rules->existsIn(['user_doc_category_id'], 'UserDocCategories'));
         $rules->add($rules->existsIn(['user_doc_type_id'], 'UserDocTypes'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['reasons_id'], 'UserRequestReasons'));
+        $rules->add($rules->existsIn(['user_request_reason_id'], 'UserRequestReasons'));
 
         return $rules;
     }
