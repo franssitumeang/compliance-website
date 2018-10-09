@@ -33,9 +33,9 @@
 						  <label>Search By</label>
 						  <div class="input-group col-xs-12">
 							<select class="form-control" name="attribute">
-							  <option value="created">Tanggal</option>
-								<option value="user->name">Nama</option>
-							  <option value="status">Status</option>
+							  <option value="UserRequestHeader.created">Tanggal</option>
+								<option value="Users.name">Nama</option>
+							  <option value="UserRequestHeader.status"">Status</option>
 							</select>
 							<span class="input-group-append">
 							  <button  class="file-upload-browse btn btn-secondary" type="submit">Search</button>
@@ -69,8 +69,8 @@
 													<td><?=$urh->created?></td>
 													<td><?=$urh->doc_no?></td>
 													<td><?=$urh->doc_title?></td>
-													<td><?=$urh->user->name; ?></td>
-													<td><?=$urh->user_request_reason->reason_name; ?></td>
+													<td><?=$urh->user->name?></td>
+													<td><?=$urh->user_request_reason->reason_name?></td>
 													<td><?=$urh->status?></td>
 													<td>
 														<button class="btn pull-left btn-sm">
