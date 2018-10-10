@@ -13,8 +13,8 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\BelongsTo $Departments
  * @property \App\Model\Table\DiscussionParticipantsTable|\Cake\ORM\Association\HasMany $DiscussionParticipants
  * @property \App\Model\Table\UserDocApprovalsTable|\Cake\ORM\Association\HasMany $UserDocApprovals
- * @property \App\Model\Table\UserGroupsTable|\Cake\ORM\Association\HasMany $UserGroups
  * @property \App\Model\Table\UserRequestHeadersTable|\Cake\ORM\Association\HasMany $UserRequestHeaders
+ * @property \App\Model\Table\GroupsTable|\Cake\ORM\Association\BelongsToMany $Groups
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -58,11 +58,13 @@ class UsersTable extends Table
         $this->hasMany('UserDocApprovals', [
             'foreignKey' => 'user_id'
         ]);
-        $this->hasMany('UserGroups', [
-            'foreignKey' => 'user_id'
-        ]);
         $this->hasMany('UserRequestHeaders', [
             'foreignKey' => 'user_id'
+        ]);
+        $this->belongsToMany('Groups', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'group_id',
+            'joinTable' => 'groups_users'
         ]);
     }
 
@@ -91,11 +93,6 @@ class UsersTable extends Table
             ->notEmpty('phone_num');
 
         $validator
-            ->scalar('telp_num')
-            ->maxLength('telp_num', 30)
-            ->allowEmpty('telp_num');
-
-        $validator
             ->scalar('password')
             ->maxLength('password', 50)
             ->requirePresence('password', 'create')
@@ -105,6 +102,15 @@ class UsersTable extends Table
             ->email('email')
             ->requirePresence('email', 'create')
             ->notEmpty('email');
+
+        $validator
+            ->boolean('is_login')
+            ->requirePresence('is_login', 'create')
+            ->notEmpty('is_login');
+
+        $validator
+            ->dateTime('last_login')
+            ->allowEmpty('last_login');
 
         return $validator;
     }

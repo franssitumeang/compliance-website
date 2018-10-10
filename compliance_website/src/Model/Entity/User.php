@@ -10,20 +10,20 @@ use Cake\ORM\Entity;
  * @property string $position_id
  * @property string $name
  * @property string $phone_num
- * @property string $telp_num
  * @property string $password
  * @property string $email
  * @property string $department_id
+ * @property bool $is_login
+ * @property \Cake\I18n\FrozenTime $last_login
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Position $position
  * @property \App\Model\Entity\Department $department
- * @property \App\Model\Entity\Article[] $articles
  * @property \App\Model\Entity\DiscussionParticipant[] $discussion_participants
  * @property \App\Model\Entity\UserDocApproval[] $user_doc_approvals
- * @property \App\Model\Entity\UserGroup[] $user_groups
  * @property \App\Model\Entity\UserRequestHeader[] $user_request_headers
+ * @property \App\Model\Entity\Group[] $groups
  */
 class User extends Entity
 {
@@ -41,19 +41,19 @@ class User extends Entity
         'position_id' => true,
         'name' => true,
         'phone_num' => true,
-        'telp_num' => true,
         'password' => true,
         'email' => true,
         'department_id' => true,
+        'is_login' => true,
+        'last_login' => true,
         'created' => true,
         'modified' => true,
         'position' => true,
         'department' => true,
-        'articles' => true,
         'discussion_participants' => true,
         'user_doc_approvals' => true,
-        'user_groups' => true,
-        'user_request_headers' => true
+        'user_request_headers' => true,
+        'groups' => true
     ];
 
     /**

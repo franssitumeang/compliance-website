@@ -21,10 +21,11 @@ class UsersFixture extends TestFixture
         'position_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'phone_num' => ['type' => 'string', 'length' => 30, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'telp_num' => ['type' => 'string', 'length' => 30, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'password' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'email' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'department_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'is_login' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'last_login' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -52,16 +53,17 @@ class UsersFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'f3afbaf8-b414-4c3b-850d-6bf6f17cdb2b',
-                'position_id' => 'b5aca1d3-6ae4-469a-b8cb-429efb2929fe',
+                'id' => '0d76779b-bc6c-4a92-99c5-7ac5b00886d7',
+                'position_id' => '8d1597a0-c4df-4f2a-9716-e571b1266f8f',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'phone_num' => 'Lorem ipsum dolor sit amet',
-                'telp_num' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
-                'department_id' => '4f453675-dbd1-49a8-81f0-a3a23c92fca1',
-                'created' => '2018-10-08 10:04:47',
-                'modified' => '2018-10-08 10:04:47'
+                'department_id' => 'f87f8ec5-f0f3-44b6-9cd5-680ecdb0eba7',
+                'is_login' => 1,
+                'last_login' => '2018-10-09 07:23:54',
+                'created' => '2018-10-09 07:23:54',
+                'modified' => '2018-10-09 07:23:54'
             ],
         ];
         parent::init();
