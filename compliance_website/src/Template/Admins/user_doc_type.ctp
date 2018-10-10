@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-6">
                     <div class="form-group">
-                        <label for="search">Searh</label>
+                        <label for="search">Search</label>
                         <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
                     </div>
                     </div>
@@ -93,7 +93,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Role</h5>
+                <h5 class="card-title" id="title_form">Tambah Tipe Dokumen</h5>
                     <?= $this->Form->create($newUserDocType, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                     'data-bv-feedbackicons-valid'=>'fa fa-check',
                     'data-bv-feedbackicons-invalid'=>'fa fa-warning',
