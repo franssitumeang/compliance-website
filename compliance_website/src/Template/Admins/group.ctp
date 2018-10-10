@@ -3,15 +3,15 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="articles" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Artikel
+                    <a href="groups" style="color:#669DE0;">
+                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Group
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
           <div class="row">
             <div class="col-6">
               <div class="form-group">
-                <label for="search">Searh</label>
+                <label for="search">Search</label>
                 <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
               </div>
             </div>
@@ -20,9 +20,8 @@
                 <label>Search By</label>
                 <div class="input-group col-xs-12">
                   <select class="form-control" name="attribute">
-                    <option value="title">Judul</option>
-                    <option value="created">Tanggal Terbit</option>
-                    <option value="categories_id">Kategori Artikel</option>
+                    <option value="Groups.title">Nama</option>
+                    <option value="Groups.description">Deskripsi</option>
                   </select>
                   <span class="input-group-append">
                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -37,58 +36,38 @@
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
-                                    <th>No</th>
-                                    <th>Judul Artikel</th>
-                                    <th>Tanggal Terbit</th>
-                                    <th>Kategori Artikel</th>
-                                    <!-- <th>File Attach</th>
-                                    <th>Isi Content</th> -->
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>Deskripsi</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <?php $i=1;?>
-                                        <?php foreach ($articles as $article): ?>
+                                        <?php foreach ($groups as $group): ?>
                                             <td>
                                                 <?= $i; ?>
                                             </td>
-                                            <td class="title" value=<?= $article->title; ?>>
-                                                <?= $article->title; ?>
+                                            <td class="group-title" value=<?= $group->title; ?>>
+                                                <?= $group->title; ?>
                                             </td>
-                                            <td class="created" value=<?= $article->created; ?>>
-                                                <?= $article->created; ?>
+                                            <td class="group-description" value=<?= $group->description; ?>>
+                                                <?= $group->description; ?>
                                             </td>
-                                            <td class="categories_id" value=<?= $article->categories_id; ?>>
-                                                <?= $article->article_category->name_categories; ?>
-                                            </td>
-                                            <!-- <td class="attachment" value=<?= $article->attachment; ?>>
-                                                <?= $article->attachment; ?>
-                                            </td>
-                                            <td class="content" value=<?= $article->content; ?>>
-                                                <?= $article->content; ?>
-                                            </td> -->
-
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
                                                                                 ['class' => 'btn btn-icons btn-inverse-primary',
                                                                                 'data-toggle' => 'tooltip',
-                                                                                'id' => $article->id,
+                                                                                'id' => $group->id,
                                                                                 'title' => 'Edit',
                                                                                 'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
                                                 ?></i>
-                                                <?= $this->Form->button('<i class="fa fa-eye">', 
-                                                    ['class' => 'btn btn-icons btn-inverse-primary',
-                                                    'data-toggle' => 'tooltip',
-                                                    'id' => $article->id,
-                                                    'title' => 'View',
-                                                    'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
-                                                ?></i>
-                                                <span data-target="#myModal-<?= $article->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
+                                                <span data-target="#myModal-<?= $group->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
                                                     style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                                                 
                                             </td>
                                         </tr>
-                                        <div id="myModal-<?= $article->id; ?>" class="modal fade">
+                                        <div id="myModal-<?= $group->id; ?>" class="modal fade">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -99,7 +78,7 @@
                                                             <div class="btn-group">
                                                                 <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                                                                 <div class="btn-group">
-                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Articles', 'action' => 'delete', $article->id], 
+                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Groups', 'action' => 'delete', $group->id], 
                                                                                             ['type' => 'submit',
                                                                                             'class' => 'btn btn-danger'
                                                                                             ]); ?>
@@ -117,7 +96,7 @@
                     </div>
                 </div>
                 <br>
-                <?php if($articles->isEmpty()) : ?>
+                <?php if($groups->isEmpty()) : ?>
                 <h5 class="text-center">No Record</h5>
                 <?php endif; ?>
                 <div class="row">
@@ -145,45 +124,28 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Artikel</h5>
-                 <?= $this->Form->create($newArticle, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                <h5 class="card-title" id="title_form">Tambah Group</h5>
+                 <?= $this->Form->create($newGroup, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                  'data-bv-feedbackicons-valid'=>'fa fa-check',
                  'data-bv-feedbackicons-invalid'=>'fa fa-warning',
                  'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="form-group">
-                            <label for="title">Judul</label>
-                            <?= $this->Form->control('title', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Judul', 
-                            'required' => true, 
-                            'maxlength' => '50']); ?>
+                            <label for="title">Nama</label>
+                            <?= $this->Form->control('title', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            'required' => true]); ?>
                         </div>
+                    </div>
+                    <div class="col-6">
                         <div class="form-group">  
-                            <label for="categories_id">Kategori Artikel</label>
-                            <select class="form-control" name="categories_id">
-                                <option value="1">CEO'S Letter</option>
-                                <option value="2">Serba-Serbi</option>
-                                <option value="3">Event Promotion</option>
-                                <option value="4">Risk Profile</option>
-                                <option value="5">Pamflet Audit</option>
-                                <option value="6">Jurnal</option>
-                                <option value="7">Komunitas</option>
-                                <option value="8">SS/QCC/QCP</option>
-                              </select>
+                            <label for="description">Deskripsi</label>
+                            <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi']); ?>
                         </div>
-                        <div class="form-group">  
-                            <label for="attachment">Upload File</label>
-                                <input type = "file" class = "form-control" name ="attachment" value="attachment" id="attachment" >
-                        </div>
-                        <div class="form-group">  
-                            <label for="content">Content</label>
-                            <textarea class ="tinymce" name = "content" id = "content"></textarea>
-                        </div>
-
                         <div class="pull-right">
-                            <input type="submit" value="Save" class="btn btn-success" id="btn_save">
-                            <input type="submit" value="Update" class="btn btn-success" id="btn_update">
-                            <button class="btn btn-secondary" type="button" id="btn_cancel">Cancel</button>
+                                <input type="submit" value="Save" class="btn btn-success" id="btn_save">
+                                <input type="submit" value="Update" class="btn btn-success" id="btn_update">
+                                <button class="btn btn-secondary" type="button" id="btn_cancel">Cancel</button>
                         </div>
                     </div>
                  </div>
@@ -198,22 +160,19 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var articles = JSON.parse('<?= json_encode($articles); ?>');
+    var groups = JSON.parse('<?= json_encode($groups); ?>');
     $("button").click(function(e) {
         var id = this.id;
-        for(var i=0;i<articles.length;i++) {
-            if(id == articles[i].id) {
-                $("input#id").val(articles[i].id);
-                $("input#title").val(articles[i].title);
-                $("input#created").val(articles[i].created);
-                $("input#categories_id").val(articles[i].categories_id);
-                $("input#attachment").val(articles[i].attachment);
-                $("input#content").val(articles[i].content);
-                $('#form').attr('action','articles/add/'+id);
+        for(var i=0;i<groups.length;i++) {
+            if(id == groups[i].id) {
+                $("input#id").val(groups[i].id);
+                $("input#title").val(groups[i].title);
+                $("input#description").val(groups[i].description);
+                $('#form').attr('action','groups/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
                 $('#btn_save').hide()
-                $('#title_form').text('Update Artikel')
+                $('#title_form').text('Update Group')
                 $('html, body').animate({
                   scrollTop: $("form.form").offset().top
                 }, 1000)
@@ -225,13 +184,13 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
-        $('#title_form').text('Tambah Artikel');
+        $('#title_form').text('Tambah Group');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')
         .val('')
         .removeAttr('checked')
         .removeAttr('selected');
-        $('#form').attr('action','articles/add/');
+        $('#form').attr('action','groups/add/');
     });
 }); 
 </script>

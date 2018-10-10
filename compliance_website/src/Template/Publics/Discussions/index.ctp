@@ -13,103 +13,53 @@
 
  <!--Start Content-->
 <div class="col-lg-12 grid-margin stretch-card">
-		<div class="card">
-		  <div class="card-body">
-			<h5 class="card-title">List Discussions</h5>
-		
-			<form class="forms-sample">
-					<div class="row">
-					  <div class="col-6">
-						<div class="form-group">
-						  <label for="search">Search</label>
-						  <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
-						</div>
-					  </div>
-					  <div class="col-6">
-						<div class="form-group">
-						  <label>Search By</label>
-						  <div class="input-group col-xs-12">
-							<select class="form-control" name="attribute">
-							  <option value="created">Tanggal</option>
-							  <option value="request_types">Tipe Request</option>
-							</select>
-							<span class="input-group-append">
-							  <button  class="file-upload-browse btn btn-secondary" type="submit">Search</button>
-							</span>
-						  </div>
-						</div>
-					  </div>
+	<div class="card">
+		<div class="card-body">
+			<p>
+				<h3><b><?=$userRequestDetails->user_request_header->doc_title?></b> </h3><br>
+				<b>Nomor Dokumen :</b> <?=$userRequestDetails->user_request_header->doc_no?>
+			</p>
+			<div class="container-fluid">
+				<div class="row content">
+					<div class="col-sm-8">
+						
+						<object data="/document/Peraturan.pdf#page=2" type="application/pdf" width="100%" height="90%">
+							<p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="/document/Peraturan.pdf">Download PDF</a>.</p>
+						</object>
 					</div>
-			</form>
-			<br>
-			<div class= "row">
-				<div class="col-12" style="padding-right: 1px;">
-						<div class="table-responsive">
-								<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th>Tanggal </th>
-												<th>User Request Details </th>
-												<th>Content</th>
-												<th>Attachment</th>
-												<th>More</th>
-											</tr>
-											</thead>   
-											<tbody>
-												<?php $i = 1; ?>
-                        <?php foreach ($discussions as $d): ?>
-												<tr>
-													<td><?=$d->created ?></td>
-													<td><?=$d->user_request_detail->request_types?></td>
-													<td><?=$d->contents ?></td>
-													<td><?=$d->user_request_detail->attachment?></td>
-													<td>
-														<button class="btn pull-left btn-sm">
-														<?php echo $this->Html->link(__('View'), ['action' => 'view', $akun->id]) ?>
-														</button>
-												</tr>
-												<?php $i+=1; ?>
-                       	<?php endforeach; ?>
-											</tbody>
-										</table>    
-									</div>          
+					<div class="col-sm-4 sidebar-widgets">
+						<p></p><p><b>Deskripsi :</b>
+							<br><?=$userRequestDetails->descriptions?>
+						</p>
+						<div class="widget-wrap">
+							<center><b>Komentar</b></center>
+							<div class="myScrollBox">
+								<?php $i = 1; ?>
+								<?php foreach ($discussions as $d): ?>
+								<div class="single-sidebar-widget">
+									<br><b>"Fany Johanna Nelly Siregar"</b> <br><small><?=$d->created?></small>
+									<br><?=$d->contents?><br/>
 								</div>
-								<?php if ($discussions-> isEmpty()): ?>
-              	<h5 class="text-center">No Record</h5>
-          			<?php endif; ?>
-								<div class="col-6">
-									<p>Page <?= $paginate["page"] ?> of <?= $paginate["pageCount"] ?>, showing <?= $paginate["current"] ?> record(s) out of <?= $paginate["count"] ?> total</p>
-									</div>
-								
-							</div>		
-
-				<div class="posts-list">
-					<div class="comments-area col-lg-12">
-							<h4>5 Komentar</h4>
-							<?php $i = 1; ?>
-              <?php foreach ($discussions as $d): ?>
-							<div class="comment-list">
-								<div class="single-comment justify-content-between d-flex">
-									<div class="user justify-content-between d-flex">
-										<div class="thumb"><img src="img/blog/c1.jpg" alt=""></div>
-											<div class="desc">
-												<h5><a href="#"><?=$d->discussion_participant->user->user_name ?> </a></h5>
-												<p class="date"><?=$d->created ?> </p>
-												<p class="comment">
-														<?=$d->contents ?>
-												</p>
-											</div>
-										</div>
-									<div class="reply-btn">
-									<a href="" class="btn-reply text-uppercase">reply</a> 
+								<?php $i+=1; ?>
+                       			<?php endforeach; ?>
+							</div>
+							<div class="single-sidebar-widget">
+								<form>
+								<div class="form-group">
+									<textarea class="form-control mb-10" rows="3" name="Tambahkan Komentar" placeholder="Tambahkan Komentar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tambahkan Komentar'" required=""></textarea>
 								</div>
+								<a href="#" class="primary-btn text-uppercase">Post Comment</a>	
+							</form>
 							</div>
 						</div>
-						<?php $i+=1; ?>
-            <?php endforeach; ?>		
 					</div>
 				</div>
 			</div>
+		</div>
+
+
+
+
 	
 				
 	

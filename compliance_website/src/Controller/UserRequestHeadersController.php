@@ -1,10 +1,16 @@
 <?php
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
 
 class UserRequestHeadersController extends AppController
 {
+
+    public $paginate = [
+        'limit' => 10,
+        'contain' => ['Users','UserRequestReasons']
+        
+    ];
 
     public function initialize()
     {
@@ -14,12 +20,6 @@ class UserRequestHeadersController extends AppController
 
     public function index()
     {
-        
-        $title = "List Approval";
-        $this->set('title', $title);
-        $this->paginate = [
-            'contain' => ['Users','UserRequestReasons']
-        ];
         $searchKey = $this->request->query('search_key');
         $attribute = $this->request->query('attribute');
         if($searchKey){
@@ -28,23 +28,29 @@ class UserRequestHeadersController extends AppController
                 'order' => [
                     'UserRequestHeaders.request_dates' => 'asc'
                 ],
-                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
-                'contain' => ['Users','UserRequestReasons']
+                'contain' => ['Users','UserRequestReasons'],
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+                
             ];
-        }           
-        $userRequestHeaders = $this->paginate($this->UserRequestHeaders);
-        $userRequestHeader = $this->UserRequestHeaders->newEntity();
+        } 
+        $title = "Daftar Dokumen";
+        $this->set('title', $title);          
+        $userRequestHeaders = $this->paginate('UserRequestHeaders');
         $paginate = $this->Paginator->getPagingParams()["UserRequestHeaders"];
-        $this->set(compact('userRequestHeaders', 'userRequestHeader', 'paginate'));
+        $usersTable = TableRegistry::get('Users');
+        $users = $usersTable->find('all');
+        $allUserRequestHeader = $this->UserRequestHeaders->find('all');
+
+        $this->set(compact('userRequestHeaders', 'paginate', 'users', 'allUserRequestHeaders'));
        
-        $this->viewBuilder()->templatePath('Publics');
-        $this->render('user_request_headers_list');
+        $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
+        $this->render('index');
     }
 
     public function view($id = null)
     {
         $userRequestHeader = $this->UserRequestHeaders->get($id, [
-            'contain' => ['Users', 'Reasons']
+            'contain' => ['Users', 'UserRequestReasons']
         ]);
 
         $this->set('userRequestHeader', $userRequestHeader);
@@ -56,19 +62,64 @@ class UserRequestHeadersController extends AppController
 
 
         $userRequestHeader = $this->UserRequestHeaders->newEntity();
-        if ($this->request->is('post')) {
-            $userRequestHeader = $this->UserRequestHeaders->patchEntity($userRequestHeader, $this->request->getData());
-            if ($this->UserRequestHeaders->save($userRequestHeader)) {
-                $this->Flash->success(__('The user request header has been saved.'));
+        $UserRequestDetail = TableRegistry::get('UserRequestDetails');
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The user request header could not be saved. Please, try again.'));
-        }
-        $users = $this->UserRequestHeaders->Users->find('list', ['limit' => 200]);
-        $reasons = $this->UserRequestHeaders->Reasons->find('list', ['limit' => 200]);
-        $this->set(compact('userRequestHeader', 'users', 'reasons', 'title'));
         
+        $userRequestDetail = $UserRequestDetail->newEntity();
+
+        
+        if ($this->request->is('post')) {
+            $datas = $this->request->getData();
+            $userRequestHeader->user_doc_category_id = $datas['user_doc_category_id'];
+            $userRequestHeader->user_doc_type_id = $datas['user_doc_type_id'];
+            $userRequestHeader->user_id = $datas['user_id'];
+            $userRequestHeader->user_request_reason_id = $datas['user_request_reason_id'];
+            $userRequestHeader->doc_title = $datas['doc_title'];
+            $userRequestHeader->doc_no = $datas['doc_no'];
+            
+            if($this->UserRequestHeaders->save($userRequestHeader)) {
+                $attachment = $datas['file_attachment'];
+                $attachment['doc_title'] = $datas['doc_title'];
+                $filename = $this->request->data['file_attachment']['name'];
+                $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                
+                $userRequestDetail->user_request_header_id = $userRequestHeader->id;
+                $userRequestDetail->descriptions = $datas['descriptions'];
+                $userRequestDetail->attachment_dir = 'files/documents/UserRequestDetails/attachment/';
+                $userRequestDetail->attachment_type = $extension;
+
+                $userRequestDetail->attachment = $attachment;
+
+                if($UserRequestDetail->save($userRequestDetail)) {
+                    $this->Flash->msg_success(__('Pengajuan Dokumen berhasil dibuat.'));
+                }else {
+                    $this->Flash->msg_error(__('Pengajuan Dokumen gagal dibuat.'));
+                }
+            }
+
+            // return $this->redirect(['action' => 'index']);
+            // }
+            $this->Flash->msg_error(__('Pengajuan Dokumen gagal dibuat.'));
+        }
+
+        $users = $this->UserRequestHeaders->Users->find('all', array(
+            'fields' => array('Users.id', 'Users.name')
+        ));
+        $UserDocCategories = $this->UserRequestHeaders->UserDocCategories->find('all', array(
+            'fields' => array('UserDocCategories.id', 'UserDocCategories.category_name')
+        ));
+
+        
+        $UserRequestReasons = $this->UserRequestHeaders->UserRequestReasons->find('all', array(
+            'fields' => array('UserRequestReasons.id', 'UserRequestReasons.reason_name')
+        ));
+
+        $UserDocTypes = $this->UserRequestHeaders->UserDocTypes->find('all', array(
+            'fields' => array('UserDocTypes.id', 'UserDocTypes.doc_type_name')
+        ));
+        
+        
+        $this->set(compact('userRequestHeader','UserDocCategories', 'users', 'UserRequestReasons', 'title', 'UserDocTypes'));
         
         $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
         $this->render('add');

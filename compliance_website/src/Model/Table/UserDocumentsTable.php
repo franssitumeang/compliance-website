@@ -58,6 +58,14 @@ class UserDocumentsTable extends Table
         $this->hasMany('Versions', [
             'foreignKey' => 'user_document_id'
         ]);
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'attachment' => []
+        ]);
+
+
+
+
     }
 
     /**
@@ -95,10 +103,17 @@ class UserDocumentsTable extends Table
             ->notEmpty('publisher_date');
 
         $validator
-            ->scalar('paths')
-            ->maxLength('paths', 255)
-            ->requirePresence('paths', 'create')
-            ->notEmpty('paths');
+            ->scalar('attachment')
+            ->maxLength('attachment', 255)
+            ->requirePresence('attachment', 'create')
+            ->notEmpty('attachment');
+
+        $validator
+            ->scalar('attachment_dir')
+            ->maxLength('attachment_dir', 255)
+            ->allowEmpty('attachment_dir');
+
+ 
 
         return $validator;
     }

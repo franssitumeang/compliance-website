@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UserRequestHeadersTable;
+use App\Model\Table\GroupsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UserRequestHeadersTable Test Case
+ * App\Model\Table\GroupsTable Test Case
  */
-class UserRequestHeadersTableTest extends TestCase
+class GroupsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UserRequestHeadersTable
+     * @var \App\Model\Table\GroupsTable
      */
-    public $UserRequestHeaders;
+    public $Groups;
 
     /**
      * Fixtures
@@ -24,12 +24,9 @@ class UserRequestHeadersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.user_request_headers',
-        'app.user_doc_categories',
-        'app.user_doc_types',
-        'app.users',
-        'app.user_doc_approvals',
-        'app.user_request_details'
+        'app.groups',
+        'app.menus',
+        'app.users'
     ];
 
     /**
@@ -40,8 +37,8 @@ class UserRequestHeadersTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('UserRequestHeaders') ? [] : ['className' => UserRequestHeadersTable::class];
-        $this->UserRequestHeaders = TableRegistry::getTableLocator()->get('UserRequestHeaders', $config);
+        $config = TableRegistry::getTableLocator()->exists('Groups') ? [] : ['className' => GroupsTable::class];
+        $this->Groups = TableRegistry::getTableLocator()->get('Groups', $config);
     }
 
     /**
@@ -51,7 +48,7 @@ class UserRequestHeadersTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->UserRequestHeaders);
+        unset($this->Groups);
 
         parent::tearDown();
     }
@@ -72,16 +69,6 @@ class UserRequestHeadersTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

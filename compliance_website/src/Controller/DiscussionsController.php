@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 class DiscussionsController extends AppController{
 
@@ -29,7 +30,15 @@ class DiscussionsController extends AppController{
         $discussions = $this->paginate('Discussions');
         $discussion = $this->Discussions->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
-        $this->set(compact('discussions','discussion','paginate'));
+        $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
+        // $userRequestDetails = $userRequestDetailsTable->find('all');
+        $userRequestDetails = $userRequestDetailsTable->get($id, [
+            'contain' => ['UserRequestHeaders']
+        ]);
+        $allDiscussion=$this->Discussions->find('all', [
+            'where' => ['user_request_detail_id' => $id]
+        ]);
+        $this->set(compact('discussions','discussion','paginate', 'userRequestDetails', 'allDiscussions'));
         
         $this->viewBuilder()->templatePath('Publics/Discussions');
         $this->render('index');
@@ -44,7 +53,7 @@ class DiscussionsController extends AppController{
 
         $this->set('discussion', $discussion);
         $this->viewBuilder()->templatePath('Publics/Discussions');
-        $this->render('view');
+        return $this->redirect(['action' => 'index']);
     }
 
     

@@ -327,7 +327,7 @@ if (typeof jQuery === 'undefined') {
                     if (!updateAll || i === total - 1) {
                         $('<small/>')
                             .css('display', 'none')
-                            .addClass('help-block')
+                            .addClass('help-block text-danger')
                             .attr('data-bv-validator', validatorName)
                             .attr('data-bv-for', field)
                             .attr('data-bv-result', this.STATUS_NOT_VALIDATED)
