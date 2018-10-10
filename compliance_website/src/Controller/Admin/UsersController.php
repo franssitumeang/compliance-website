@@ -50,11 +50,11 @@ class UsersController extends AppController{
         $positions = $positionsTable->find('all');
         $departmentsTable = TableRegistry::get('Departments');
         $departments = $departmentsTable->find('all');
-        $groupsUsersTable = TableRegistry::get('GroupsUsers');
-        $groupsUsers = $groupsUsersTable->find('all');
+        $groupsTable = TableRegistry::get('Groups');
+        $groups = $groupsTable->find('all');
 
 
-        $this->set(compact('users','user','paginate','companies','positions','departments','groupsUsers'));
+        $this->set(compact('users','user','paginate','companies','positions','departments','groups'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user');
@@ -67,12 +67,14 @@ class UsersController extends AppController{
             $user = $this->Users->get($id);
         }
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Groups']]);
+            $user->password = "password";
+            if ($this->Users->save($user, ['associated'=>['Groups']])) {
                 $this->Flash->success(__('The user has been saved.'));
             }else{
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
+            // if($this->Issue->save($this->request->data)
             return $this->redirect(['action' => 'index']);
         }
     }
