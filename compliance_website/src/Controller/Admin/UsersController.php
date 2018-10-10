@@ -44,7 +44,17 @@ class UsersController extends AppController{
         $user = $this->Users->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Users"];
 
-        $this->set(compact('users','user','paginate'));
+        $companiesTable = TableRegistry::get('Companies');
+        $companies = $companiesTable->find('all');
+        $positionsTable = TableRegistry::get('Positions');
+        $positions = $positionsTable->find('all');
+        $departmentsTable = TableRegistry::get('Departments');
+        $departments = $departmentsTable->find('all');
+        $groupsUsersTable = TableRegistry::get('GroupsUsers');
+        $groupsUsers = $groupsUsersTable->find('all');
+
+
+        $this->set(compact('users','user','paginate','companies','positions','departments','groupsUsers'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user');

@@ -90,7 +90,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Role</h5>
+                <h5 class="card-title" id="title_form">Tambah Kategori Dokumen</h5>
                  <?= $this->Form->create($newUserDocCategory, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                  'data-bv-feedbackicons-valid'=>'fa fa-check',
                  'data-bv-feedbackicons-invalid'=>'fa fa-warning',
