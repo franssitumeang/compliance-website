@@ -31,25 +31,44 @@
 						<p></p><p><b>Deskripsi :</b>
 							<br><?=$userRequestDetails->descriptions?>
 						</p>
+						<p><b>Participant</b>  
+							<?php foreach ($discussionParticipants as $dp): ?>
+                            	<?=$dp->user->name?><br>
+                            <?php endforeach; ?>
+							<div class="input-group col-xs-12">
+								<select class="form-control" name="company_id" required>
+									<option value="" disabled selected>-- Tambah Partisipan --</option>
+									<?php foreach ($users as $s): ?>
+										<option value="<?=$s->id?>"><?=$s->name?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+							<br>
+							
+						</p>
 						<div class="widget-wrap">
 							<center><b>Komentar</b></center>
 							<div class="myScrollBox">
 								<?php $i = 1; ?>
 								<?php foreach ($discussions as $d): ?>
 								<div class="single-sidebar-widget">
-									<br><b>"<?=$d->discussion_participant->user_id?>Fany Johanna Nelly Siregar"</b> <br><small><?=$d->created?></small>
+									<br><b>"<?=$d->discussion_participant->user->name?>"</b> <br><small><?=$d->created?></small>
 									<br><?=$d->contents?><br/>
 								</div>
 								<?php $i+=1; ?>
                        			<?php endforeach; ?>
 							</div>
+							<?= $this->Form->create($discussion) ?>
 							<div class="single-sidebar-widget">
 								<form>
 								<div class="form-group">
-									<textarea class="form-control mb-10" rows="3" name="Tambahkan Komentar" placeholder="Tambahkan Komentar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tambahkan Komentar'" required=""></textarea>
+									<textarea class="form-control mb-10" rows="3" id="contents" name="contents" placeholder="Tambahkan Komentar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tambahkan Komentar'" required=""></textarea>
+									<input type="hidden" class="form-control" id="user_request_detail_id" name="user_request_detail_id" value="$userRequestDetails->id">
+									<input type="hidden" class="form-control" id="user_request_detail_id" name="user_request_detail_id" value="$userRequestDetails->id">
 								</div>
 								<a href="#" class="primary-btn text-uppercase">Post Comment</a>	
 							</form>
+							<?= $this->Form->end() ?>
 							</div>
 						</div>
 					</div>
