@@ -30,17 +30,21 @@ class DiscussionsController extends AppController{
             'contain' => ['UserRequestDetails', 'DiscussionParticipants'=>['Users']]
         ]);
         $discussionParticipants = $discussionParticipantsTable->find('all', [
-            'conditions' => ['DiscussionParticipants.user_request_detail_id' => $id],
+            'conditions' => ['DiscussionParticipants.user_request_header_id' => $id],
             'contain' => ['Users']
         ]);
-        $users = $usersTable->find('all');
+        
         $title = "Halaman Diskusi";
         $this->set('title', $title);
         $discussions = $this->paginate($discussions);
         $discussion = $this->Discussions->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
         $userRequestDetails = $userRequestDetailsTable->get($id, [
-            'contain' => ['UserRequestHeaders']
+            'contain' => ['UserRequestHeaders'=>['Users']]
+        ]);
+        $users = $usersTable->find('all',[
+            'contain' =>['Departments'=>['Companies']],
+            'condition'=>['Users.department_id'=>'UserRequestDetails.UserRequestHeader.Users.department_id']
         ]);
         $this->set(compact('discussions','discussion','paginate', 'userRequestDetails','discussionParticipants','users'));
         $this->viewBuilder()->templatePath('Publics/Discussions');
@@ -72,6 +76,12 @@ class DiscussionsController extends AppController{
             $this->Flash->error(__('The comment could not be saved. Please, try again.'));
         }
         $this->set(compact('dicussion'));
+    }
+
+    public function getDepartmentRequest($id = null)
+    {
+
+
     }
 }
 
