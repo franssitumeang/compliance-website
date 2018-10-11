@@ -22,24 +22,23 @@ class DiscussionsController extends AppController{
         $this->paginate = [
             'contain' => ['UserRequestDetails','DiscussionParticipants']
         ];
+        $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
+        $discussionParticipantsTable = TableRegistry::get('DiscussionParticipants');
+        
         $discussions = $this->Discussions->find('all', [
-            'conditions' => ['Discussions.user_request_detail_id' => $id]
+            'conditions' => ['Discussions.user_request_detail_id' => $id],
+            'contain' => ['UserRequestDetails', 'DiscussionParticipants']
         ]);
+       
         $title = "Halaman Diskusi";
         $this->set('title', $title);
-        $discussions = $this->paginate('Discussions');
+        $discussions = $this->paginate($discussions);
         $discussion = $this->Discussions->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
-        $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
-        // $userRequestDetails = $userRequestDetailsTable->find('all');
         $userRequestDetails = $userRequestDetailsTable->get($id, [
             'contain' => ['UserRequestHeaders']
         ]);
-        $allDiscussion=$this->Discussions->find('all', [
-            'where' => ['user_request_detail_id' => $id]
-        ]);
-        $this->set(compact('discussions','discussion','paginate', 'userRequestDetails', 'allDiscussions'));
-        
+        $this->set(compact('discussions','discussion','paginate', 'userRequestDetails'));
         $this->viewBuilder()->templatePath('Publics/Discussions');
         $this->render('index');
 
