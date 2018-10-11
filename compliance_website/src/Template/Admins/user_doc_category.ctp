@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-6">
                     <div class="form-group">
-                        <label for="search">Searh</label>
+                        <label for="search">Search</label>
                         <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
                     </div>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <?= $this->Form->control('category_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            <?= $this->Form->control('category_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama Kategori Dokumen', 
                             'id' => 'category_name',
                             'required' => true]); ?>
                         </div>

@@ -37,7 +37,7 @@
 								<?php $i = 1; ?>
 								<?php foreach ($discussions as $d): ?>
 								<div class="single-sidebar-widget">
-									<br><b>"Fany Johanna Nelly Siregar"</b> <br><small><?=$d->created?></small>
+									<br><b>"<?=$d->discussion_participant->user_id?>Fany Johanna Nelly Siregar"</b> <br><small><?=$d->created?></small>
 									<br><?=$d->contents?><br/>
 								</div>
 								<?php $i+=1; ?>
