@@ -99,7 +99,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="name">Alasan Pengajuan</label>
-                            <?= $this->Form->control('reason_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama', 
+                            <?= $this->Form->control('reason_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Alasan Pengajuan', 
                             'id' => 'reason_name',
                             'required' => true]); ?>
                         </div>
