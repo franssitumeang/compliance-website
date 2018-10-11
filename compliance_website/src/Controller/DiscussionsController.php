@@ -40,12 +40,9 @@ class DiscussionsController extends AppController{
         $discussion = $this->Discussions->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
         $userRequestDetails = $userRequestDetailsTable->get($id, [
-            'contain' => ['UserRequestHeaders'=>['Users']]
+            'contain' => ['UserRequestHeaders'=>['Users'=>['Departments']]]
         ]);
-        $users = $usersTable->find('all',[
-            'contain' =>['Departments'=>['Companies']],
-            'condition'=>['Users.department_id'=>'UserRequestDetails.UserRequestHeader.Users.department_id']
-        ]);
+        
         $this->set(compact('discussions','discussion','paginate', 'userRequestDetails','discussionParticipants','users'));
         $this->viewBuilder()->templatePath('Publics/Discussions');
         $this->render('index');
@@ -80,8 +77,11 @@ class DiscussionsController extends AppController{
 
     public function getDepartmentRequest($id = null)
     {
-
-
+        $usersTable = TableRegistry::get('Users');
+        $users = $usersTable->find('all',[
+            'contain' =>['Departments'=>['Companies']],
+            'conditions' => ['Users.department_id' => $id],
+        ]);
     }
 }
 

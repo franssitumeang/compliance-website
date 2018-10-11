@@ -28,7 +28,9 @@
 						</object>
 					</div>
 					<div class="col-sm-4 sidebar-widgets">
-						<p></p><p><b>Deskripsi :</b>
+						<p></p>
+						<p><b>Departemen :</b>  <?=$userRequestDetails->user_request_header->user->department->dept_name?> <br>
+							<b>Deskripsi :</b>
 							<br><?=$userRequestDetails->descriptions?>
 						</p>
 						<p><b>Participant</b>  
