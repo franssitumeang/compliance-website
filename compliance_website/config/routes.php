@@ -32,6 +32,7 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/companies', ['controller' => 'Companies', 'action' => 'index']);
     $routes->connect('/departments', ['controller' => 'Departments', 'action' => 'index']);
     $routes->connect('/groups', ['controller' => 'Groups', 'action' => 'index']);
+    $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('/userdocuments', ['controller' => 'UserDocuments', 'action' => 'index']);
     $routes->connect('/userdocapprovals', ['controller' => 'UserDocApprovals', 'action' => 'index']);
     $routes->connect('/userdoccategories', ['controller' => 'UserDocCategories', 'action' => 'index']);

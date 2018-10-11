@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-6">
                     <div class="form-group">
-                        <label for="search">Searh</label>
+                        <label for="search">Search</label>
                         <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
                     </div>
                     </div>

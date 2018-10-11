@@ -34,7 +34,7 @@ class GroupsController extends AppController
             ];
         }
         $group = $this->Groups->newEntity();
-        $title = "Groups";
+        $title = "Group User";
         $this->set('title', $title);
         
         $groups = $this->paginate('Groups');
