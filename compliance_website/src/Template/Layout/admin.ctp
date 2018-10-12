@@ -112,6 +112,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/admin/archives">
+              <i class="menu-icon fa fa-tasks"></i>
+              <span class="menu-title">Arsip</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon fa fa-list-alt"></i>
               <span class="menu-title">Dokumen</span>

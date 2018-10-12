@@ -12,8 +12,8 @@ use Cake\ORM\Entity;
  * @property string $content
  * @property string $categories_id
  * @property string $attachment
+ * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\ArticleCategory $article_category
  */
 class Article extends Entity
@@ -34,7 +34,7 @@ class Article extends Entity
         'content' => true,
         'categories_id' => true,
         'attachment' => true,
-        'user' => true,
+        'modified' => true,
         'article_category' => true
     ];
 }

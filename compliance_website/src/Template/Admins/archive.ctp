@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="articles" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-newspaper-o"></span>&nbsp; Daftar Artikel
+                    <a href="archives" style="color:#669DE0;">
+                    <span class="menu-icon fa fa-tasks"></span>&nbsp; Daftar Arsip
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
@@ -20,9 +20,9 @@
                 <label>Search By</label>
                 <div class="input-group col-xs-12">
                   <select class="form-control" name="attribute">
-                    <option value="title">Judul</option>
-                    <option value="created">Tanggal Terbit</option>
-                    <option value="ArticleCategories.name_categories">Kategori Artikel</option>
+                    <option value="doc_name">Nama Dokumen</option>
+                    <option value="process_owner">Tanggal Terbit</option>
+                    <!-- <option value="ArticleCategories.name_categories">Kategori Artikel</option> -->
                   </select>
                   <span class="input-group-append">
                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -38,28 +38,31 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <th>No</th>
-                                    <th>Judul Artikel</th>
-                                    <th>Tanggal Terbit</th>
-                                    <th>Kategori Artikel</th>
-                                    <!-- <th>File Attach</th>
-                                    <th>Isi Content</th> -->
+                                    <th>Histori Nomor Revisi</th>
+                                    <th>Nama Dokumen</th>
+                                    <th>Pemilik Proses</th>
+                                    <th>Tanggal Revisi</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <?php $i=1;?>
-                                        <?php foreach ($articles as $article): ?>
+                                        <?php foreach ($archives as $archive): ?>
                                             <td>
                                                 <?= $i; ?>
                                             </td>
-                                            <td class="title" value=<?= $article->title; ?>>
-                                                <?= $article->title; ?>
+                                            <td class="historical_revision_number" value=<?= $archive->historical_revision_number; ?>>
+                                                <?= $archive->historical_revision_number; ?>
                                             </td>
-                                            <td class="created" value=<?= $article->created; ?>>
-                                                <?= $article->created; ?>
+                                            <td class="doc_name" value=<?= $archive->doc_name; ?>>
+                                                <?= $archive->doc_name; ?>
                                             </td>
-                                            <td class="categories_id" value=<?= $article->categories_id; ?>>
-                                                <?= $article->article_category->name_categories; ?>
+                                            <td class="process_owner" value=<?= $archive->process_owner; ?>>
+                                                <?= $archive->process_owner; ?>
+                                            </td>
+                                            <td class="revision_date" value=<?= $archive->revision_date; ?>>
+                                                <?= $archive->revision_date; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
@@ -78,24 +81,24 @@
                                         </tr>
 
                                         <!-- Modal View -->
-                                        <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
+                                        <!-- <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
+                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $archive->doc_name?></h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                 <div class="modal-body">
-                                                        <?php echo $article->content?>
+                                                        <?php echo $archive->content?>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                          <!-- Modal Delete -->
 
@@ -110,7 +113,7 @@
                                                             <div class="btn-group">
                                                                 <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                                                                 <div class="btn-group">
-                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Articles', 'action' => 'delete', $article->id], 
+                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Archives', 'action' => 'delete', $archive->id], 
                                                                                             ['type' => 'submit',
                                                                                             'class' => 'btn btn-danger'
                                                                                             ]); ?>
@@ -128,7 +131,7 @@
                     </div>
                 </div>
                 <br>
-                <?php if($articles->isEmpty()) : ?>
+                <?php if($archives->isEmpty()) : ?>
                 <h5 class="text-center">No Record</h5>
                 <?php endif; ?>
                 <div class="row">
@@ -156,39 +159,45 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Artikel</h5>
-                 <?= $this->Form->create($newArticle, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                <h5 class="card-title" id="title_form">Tambah Arsip</h5>
+                 <?= $this->Form->create($newArchive, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                  'data-bv-feedbackicons-valid'=>'fa fa-check',
                  'data-bv-feedbackicons-invalid'=>'fa fa-warning',
                  'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="title">Judul</label>
-                            <?= $this->Form->control('title', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Judul', 
+                            <label for="historical_revision_number">Histori Nomor Revisi</label>
+                            <?= $this->Form->control('historical_revision_number', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nomor Revisi', 
                             'required' => true, 
                             'maxlength' => '50']); ?>
                         </div>
+
+                        <div class="form-group">
+                            <label for="doc_name">Nama Dokumen</label>
+                            <?= $this->Form->control('doc_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama Dokumen', 
+                            'required' => true, 
+                            'maxlength' => '50']); ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="process_owner">Pemilik Proses</label>
+                            <?= $this->Form->control('process_owner', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Pemilik Proses', 
+                            'required' => true, 
+                            'maxlength' => '50']); ?>
+                        </div>
+
                         <div class="form-group">  
-                            <label for="categories_id">Kategori Artikel</label>
+                            <label for="categories_id">Status</label>
                             <select class="form-control" name="categories_id">
-                                <option value="a8fa5f04-65ba-4a80-ab8d-2e9849d829c0">CEO'S Letter</option>
-                                <option value="dd95d01a-bb10-48bf-bd80-d9d2bf17103a">Serba-Serbi</option>
-                                <option value="466a2825-7097-4c57-a1b2-d85205efcda4">Event Promotion</option>
-                                <option value="5a4916b4-6e36-4a8a-8226-de2528cb28e1">Risk Profile</option>
-                                <option value="7cec2ad6-5f4a-4d50-bf67-6e71cd1e38a6">Pamflet Audit</option>
-                                <option value="d227fa5e-aa69-4d7e-b93f-0a37ce4161bf">Jurnal</option>
-                                <option value="b6a96a37-148f-4c94-8c94-7cd5a93bceda">Komunitas</option>
-                                <option value="f59510f3-eae3-44af-afec-51d92f174017">SS/QCC/QCP</option>
-                              </select>
+                                <option value="1">obsolote</option>
+                                <option value="2">draft</option>
+                                <option value="3">blast</option>
+                            </select>
                         </div>
                         <div class="form-group">  
                             <label for="attachment">Upload File</label>
                                 <input type = "file" class = "form-control" name ="attachment" value="attachment" id="attachment" >
-                        </div>
-                        <div class="form-group">  
-                            <label for="content">Content</label>
-                            <textarea class ="tinymce" name = "content" id = "content"></textarea>
                         </div>
 
                         <div class="pull-right">
@@ -209,22 +218,22 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var articles = <?= $jsonArticles; ?>;
+    var archives = JSON.parse('<?= json_encode([$archives]); ?>');
     $("button").click(function(e) {
         var id = this.id;
-        for(var i=0;i<articles.length;i++) {
-            if(id == articles[i].id) {
-                $("input#id").val(articles[i].id);
-                $("input#title").val(articles[i].title);
-                $("input#created").val(articles[i].created);
-                $("input#categories_id").val(articles[i].categories_id);
-                $("input#attachment").html(articles[i].attachment);
-                $(tinymce.get('content').setContent(articles[i].content));
-                $('#form').attr('action','articles/add/'+id);
+        for(var i=0;i<archives.length;i++) {
+            if(id == archives[i].id) {
+                $("input#id").val(archives[i].id);
+                $("input#historical_revision_number").val(archives[i].historical_revision_number);
+                $("input#doc_name").val(archives[i].doc_name);
+                $("input#process_owner").val(archives[i].process_owner);
+                $("input#status").html(archives[i].status);
+                $("input#attachment").html(archives[i].attachment);
+                $('#form').attr('action','archives/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
                 $('#btn_save').hide() 
-                $('#title_form').text('Update Artikel')
+                $('#title_form').text('Update Arsip')
                 $('html, body').animate({
                   scrollTop: $("form.form").offset().top
                 }, 1000)
@@ -236,13 +245,13 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
-        $('#title_form').text('Tambah Artikel');
+        $('#title_form').text('Tambah Arsip');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')
         .val('')
         .removeAttr('checked')
         .removeAttr('selected');
-        $('#form').attr('action','articles/add/');
+        $('#form').attr('action','archives/add/');
     });
 }); 
 </script>
