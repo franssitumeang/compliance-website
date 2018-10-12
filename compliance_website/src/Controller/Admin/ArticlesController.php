@@ -45,7 +45,7 @@ class ArticlesController extends AppController{
         $paginate = $this->Paginator->getPagingParams()["Articles"];
         $this->set(compact('articles','newArticle','paginate'));
         
-        $this->viewBuilder()->templatePath('Admins/Article/');
+        $this->viewBuilder()->templatePath('Admins');
         $this->render('article');
     }
     
@@ -80,13 +80,5 @@ class ArticlesController extends AppController{
             }
         }
         
-    }
-
-    // View Method
-    public function view($id = null){
-        
-        $article = $this->Articles->get($id);
-        $this->set('article', $article);
-        $this->set('_serialize', ['article']);
     }
 }

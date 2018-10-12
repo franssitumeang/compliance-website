@@ -104,6 +104,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/admin/articles">
+              <i class="menu-icon fa fa-newspaper-o"></i>
+              <span class="menu-title">Artikel</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon fa fa-list-alt"></i>
               <span class="menu-title">Dokumen</span>
