@@ -173,7 +173,7 @@
                                 <div class="form-group">
                                     <label>Jabatan</label>
                                     <div class="input-group col-xs-12">
-                                        <select class="form-control" name="position_id" required>
+                                        <select class="form-control" name="position_id" id="position_id" required>
                                             <option value="" disabled selected>-- Pilih Jabatan --</option>
                                             <?php foreach ($positions as $p): ?>
                                             <option value="<?=$p->id?>"><?=$p->name?></option>

@@ -69,6 +69,7 @@ class UsersController extends AppController{
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Groups']]);
             $user->password = "password";
+            $user->is_login = 0;
             if ($this->Users->save($user, ['associated'=>['Groups']])) {
                 $this->Flash->success(__('The user has been saved.'));
             }else{
@@ -76,6 +77,7 @@ class UsersController extends AppController{
             }
             // if($this->Issue->save($this->request->data)
             return $this->redirect(['action' => 'index']);
+            // return debug($user);
         }
     }
 
