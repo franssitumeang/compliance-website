@@ -24,6 +24,8 @@
     <?= $this->Html->script('bootstrapValidator.js') ?>
     <?= $this->Html->script('tinymce/tinymce.min.js')?>
     <?= $this->Html->script('tinymce/init-tinymce.js')?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
 
     
     
@@ -86,7 +88,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/font-awesome.html">
+            <a class="nav-link" href="/admin/users">
               <i class="menu-icon fa fa-user-o"></i>
               <span class="menu-title">User</span>
             </a>
@@ -117,9 +119,6 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Pengajuan Dokumen</a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="userrequestreasons">Alasan Pengajuan</a>
                 </li>
