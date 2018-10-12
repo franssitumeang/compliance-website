@@ -8,14 +8,13 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $title
- * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenDate $created
  * @property string $content
- * @property string $user_id
  * @property string $categories_id
  * @property string $attachment
  *
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\CategoriesArticle $categories_article
+ * @property \App\Model\Entity\ArticleCategory $article_category
  */
 class Article extends Entity
 {
@@ -33,10 +32,9 @@ class Article extends Entity
         'title' => true,
         'created' => true,
         'content' => true,
-        'user_id' => true,
         'categories_id' => true,
         'attachment' => true,
         'user' => true,
-        'categories_article' => true
+        'article_category' => true
     ];
 }

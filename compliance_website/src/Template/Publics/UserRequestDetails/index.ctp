@@ -1,6 +1,7 @@
-<!-- start banner Area -->
 <section class="relative about-banner">
-    <div class="overlay overlay-bg"></div>
+    <div class="overlay overlay-bg">
+
+    </div>
     <div class="container" style="height: 200px;">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
@@ -9,57 +10,30 @@
         </div>
     </div>
 </section>
-<!-- End banner Area -->
 
 <section class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
             <div class="row">
-                <div class="col-lg-5">
-                    <h3 class="mb-30">Daftar Pengajuan Dokumen</h3>
+                <div class="col-lg-12 mb-30 flex">
+                    <div class="col-lg-10">
+                        <h4 class="mb-10">
+                            <?= $userRequestHeader->doc_title;?>
+                        </h4>
+                    </div>
+                    <div class="col-lg-2">
+                        <?= $this->Html->link(
+                                'Upload Revisi', 
+                                array('controller' => 'UserRequestHeaders', 'action' => 'add'),
+                                ['class' => 'genric-btn primary radius medium pull-right']); ?>
+                    </div>
                 </div>
-                <div class="col-lg-7">
-                    <?= $this->Html->link(
-                        'Buat Pengajuan Dokumen', 
-                        array('controller' => 'UserRequestHeaders', 'action' => 'add'),
-                        ['class' => 'genric-btn primary radius medium pull-right']); ?>
-                </div>
-
             </div>
-
             <div class="row">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <form class="forms-sample">
-                                <div class="row">
-                                    <?= $this->Form->create(null,['type'=>'get']) ?>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="search">Search</label>
-                                            <input type="text" class="form-control" name="search_key" placeholder="Enter Searh Key">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label>Search By</label>
-                                            <div class="input-group col-xs-12">
-                                                <select class="form-control" name="attribute">
-                                                    <option value="UserRequestHeader.created">Tanggal</option>
-                                                    <option value="Users.name">Nama</option>
-                                                    <option value="UserRequestHeader.status"">Status</option>
-                                                </select>
-                                                <span class="
-                                                        input-group-append">
-                                                        <button class="genric-btn primary radius medium" type="submit">Search</button>
-                                                        </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?= $this->Form->end() ?>
-
-                                </div>
-                            </form>
+                            <h5 class="card-title">Daftar Revisi</h5>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
@@ -67,41 +41,50 @@
                                             <thead>
                                                 <tr>
                                                     <th>Tanggal </th>
-                                                    <th>Nomor Dokumen</th>
-                                                    <th>Judul Dokumen</th>
-                                                    <th>Nama</th>
-                                                    <th>Alasan</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th>Tipe Request</th>
+                                                    <th>Description</th>
+                                                    <th>Compliance</th>
+                                                    <th>Manager</th>
+                                                    <th>More</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php $i = 1; ?>
-                                                <?php foreach ($userRequestHeaders as $urh): ?>
+                                                <?php foreach ($userRequestDetails as $urd): ?>
                                                 <tr>
                                                     <td>
-                                                        <?=$urh->created?>
+                                                        <?=$urd->created?>
                                                     </td>
                                                     <td>
-                                                        <?=$urh->doc_no?>
+                                                        <?=$urd->request_types ?>
                                                     </td>
                                                     <td>
-                                                        <?=$urh->doc_title?>
+                                                        <?=$urd->descriptions ?>
                                                     </td>
                                                     <td>
-                                                        <?=$urh->user->name?>
+                                                        <?=$urd->approve_c ?>
                                                     </td>
                                                     <td>
-                                                        <?=$urh->user_request_reason->reason_name?>
+                                                        <?=$urd->approve_m ?>
                                                     </td>
                                                     <td>
-                                                        <?=$urh->status?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $this->Html->link(
-                                                            'Detail', 
-                                                            array('controller' => 'UserRequestDetails', 'action' => 'index', $urh->id),
-                                                            ['class' => 'genric-btn primary-border radius small']); ?>
+                                                        <div class="button-group-area">
+
+                                                            <?php echo $this->Html->link(
+                                                                    'Detail', 
+                                                                    array('controller' => 'Discussions', 'action' => 'index', $urd->id),
+                                                                    ['class' => 'genric-btn primary-border radius small']); ?>
+                                                            <?php echo $this->Html->link(
+                                                                    'Download', 
+                                                                    array('controller' => 'UserRequestDetails', 'action' => 'index', $urd->id),
+                                                                    ['class' => 'genric-btn primary-border radius small']); ?>
+                                                            <!-- <button class="btn pull-left btn-sm">
+                                                                <?= $this->Html->link('Download', ['controller' => 'userRequestHeaders', 'action' => 'download',$urd->user_request_header_id]) ?>
+                                                            </button>
+                                                            <button class="btn pull-left btn-sm">
+                                                                <?php echo $this->Html->link('Diskusi', array('controller' => 'Discussions', 'action'=>'index', $urd->id)); ?>
+                                                            </button> -->
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <?php $i+=1; ?>
@@ -110,7 +93,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <?php if ($userRequestHeaders-> isEmpty()): ?>
+                                <?php if ($userRequestDetails-> isEmpty()): ?>
                                 <h5 class="text-center">No Record</h5>
                                 <?php endif; ?>
                                 <div class="col-6">
@@ -138,9 +121,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
-    </div>
 
 </section>

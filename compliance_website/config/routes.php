@@ -45,21 +45,27 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-Router::scope('/', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
+Router::prefix('publics', function (RouteBuilder $routes) {
     $routes->connect('/approvals', ['controller' => 'Publics', 'action' => 'approval']);
     $routes->connect('/monitoring-approval', ['controller' => 'UserRequestHeaders', 'action' => 'index']);
-    $routes->connect('/user-request-details-list', ['controller' => 'UserRequestDetails', 'action' => 'index']);
-    $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
-    $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
-
+    
     // for user request
     $routes->connect('/user-request', ['controller' => 'UserRequestHeaders', 'action' => 'index']);
     $routes->connect('/user-request/add', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
     
+    $routes->connect('/user-request-details', ['controller' => 'UserRequestDetails', 'action' => 'index']);
+    
+    
+    $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
+    $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
+
+
     //For Article
     $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);
-    // $routes->connect('/articles-add',['controller' => 'Articles', 'action'=>'add']);
     $routes->setExtensions(['json']);
+    $routes->fallbacks(DashedRoute::class);
+});
+Router::scope('/', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });

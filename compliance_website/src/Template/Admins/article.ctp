@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h5 class="card-title">
                     <a href="articles" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-user-circle-o"></span>&nbsp; Daftar Artikel
+                    <span class="menu-icon fa fa-newspaper-o"></span>&nbsp; Daftar Artikel
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
@@ -22,7 +22,7 @@
                   <select class="form-control" name="attribute">
                     <option value="title">Judul</option>
                     <option value="created">Tanggal Terbit</option>
-                    <option value="categories_id">Kategori Artikel</option>
+                    <option value="ArticleCategories.name_categories">Kategori Artikel</option>
                   </select>
                   <span class="input-group-append">
                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -209,7 +209,7 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var articles = JSON.parse('<?php echo json_encode($articles); ?>');
+    var articles = JSON.parse('<?= json_encode([$articles]); ?>');
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<articles.length;i++) {
@@ -217,7 +217,7 @@ $(document).ready(function(){
                 $("input#id").val(articles[i].id);
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
-                $("input#categories_id").val(articles[i].categories_id);
+                $("input#categorsies_id").val(articles[i].categories_id);
                 $("input#attachment").html(articles[i].attachment);
                 $("textarea#content").text(articles[i].content);
                 $('#form').attr('action','articles/add/'+id);

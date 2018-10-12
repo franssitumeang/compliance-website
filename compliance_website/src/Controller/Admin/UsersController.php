@@ -12,7 +12,7 @@ class UsersController extends AppController{
         'order' => [
             'Users.name' => 'asc'
         ],
-        
+        'contain' => array('Positions','Departments'=>['Companies'])
     ];
 
     public function initialize()
@@ -52,9 +52,10 @@ class UsersController extends AppController{
         $departments = $departmentsTable->find('all');
         $groupsTable = TableRegistry::get('Groups');
         $groups = $groupsTable->find('all');
+        $allUser = $this->Users->find('all');
 
 
-        $this->set(compact('users','user','paginate','companies','positions','departments','groups'));
+        $this->set(compact('users','user','paginate','companies','positions','departments','groups','allUser'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user');
@@ -75,9 +76,14 @@ class UsersController extends AppController{
             }else{
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
+<<<<<<< HEAD
             // if($this->Issue->save($this->request->data)
             return $this->redirect(['action' => 'index']);
             // return debug($user);
+=======
+            // return $this->redirect(['action' => 'index']);
+            debug($user);
+>>>>>>> 1029f0ad2341acf57663a7633258dffbd1aca551
         }
     }
 

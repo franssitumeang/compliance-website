@@ -79,19 +79,19 @@
                                             <?=$u->name?>
                                         </td>
                                         <td>
-                                            <?=$u->name?>
+                                            <?=$u->position->name?>
                                         </td>
                                         <td>
-                                            <?=$u->name?>
+                                            <?=$u->department->dept_name?>
                                         </td>
                                         <td>
-                                            <?=$u->name?>
+                                            <?=$u->department->company->company_name?>
                                         </td>
                                         <td>
-                                            <?=$u->name?>
+                                            <?=$u->phone_num?>
                                         </td>
                                         <td>
-                                            <?=$u->name?>
+                                            <?=$u->email?>
                                         </td>
                                         <td>
                                             <?=$u->name?>
@@ -201,16 +201,16 @@
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Email" required
                                     maxlength="50">
                                 </div>                                         
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label>Group User</label>
                                     <div class="input-group col-xs-12">
-                                        <select id="multiselect" multiple="multiple">
+                                        <select id="multiselect" multiple="multiple" name="groups_id">
                                             <?php foreach ($groups as $g): ?>
                                             <option value="<?=$g->id?>"><?=$g->title?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                             
                         </div>
@@ -251,7 +251,7 @@
                     $('#form').bootstrapValidator();
                     $('#multiselect').multiselect();
                 });
-                var users = JSON.parse('<?php echo json_encode($users); ?>');
+                var users = JSON.parse('<?php echo json_encode($allUser); ?>');
                 $("button").click(function(e) {
                     var id = this.id;
                     for(var i=0;i<users.length;i++) {
