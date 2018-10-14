@@ -54,11 +54,8 @@ Router::prefix('publics', function (RouteBuilder $routes) {
     $routes->connect('/user-request/add', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
     
     $routes->connect('/user-request-details', ['controller' => 'UserRequestDetails', 'action' => 'index']);
-    
-    
     $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
     $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
-
 
     //For Article
     $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);

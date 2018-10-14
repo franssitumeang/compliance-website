@@ -42,7 +42,6 @@ class UserRequestHeadersController extends AppController
         $this->set(compact('userRequestHeaders', 'paginate', 'users'));
 
         $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
-        // $this->render('index');
     }
 
     public function view($id = null)

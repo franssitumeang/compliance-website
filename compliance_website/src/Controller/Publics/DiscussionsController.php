@@ -34,7 +34,7 @@ class DiscussionsController extends AppController{
             'contain' => ['Users']
         ]);
         
-        $title = "Halaman Diskusi";
+        $title = "Diskusi";
         $this->set('title', $title);
         $discussions = $this->paginate($discussions);
         $discussion = $this->Discussions->newEntity();
@@ -48,8 +48,6 @@ class DiscussionsController extends AppController{
         ]);
         $this->set(compact('discussions','discussion','paginate', 'userRequestDetails','discussionParticipants','users'));
         $this->viewBuilder()->templatePath('Publics/Discussions');
-        $this->render('index');
-
     }
 
     public function view($id = null)

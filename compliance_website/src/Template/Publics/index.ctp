@@ -219,4 +219,21 @@
     </div>
 </section>
 
+<script>
+    $('document').ready(function () {
+
+        var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].onmouseover = function (e) {
+                var li = this;
+                if (li.thumb) {
+                    var content = "<div class='tip-wrap' style='background-image:url(" + li.thumbSrc +
+                        ");'><div class='tip-text'>" + li.thumb.innerHTML + "</div></div>";
+                    tooltip.pop(li, content);
+                }
+            };
+        }
+    });
+
+</script>
 <!-- End menu-area Area -->
