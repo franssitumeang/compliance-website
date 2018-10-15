@@ -22,16 +22,14 @@
     <?= $this->Html->css('public/main.css') ?>
     <?= $this->Html->css('public/custom/tooltip.css') ?>
     <?= $this->Html->css('public/custom/thumbnail-slider.css') ?>
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+    
 
     <?= $this->Html->script('public/custom/thumbnail-slider.js') ?>
     <?= $this->Html->script('public/custom/tooltip.js') ?>
+
     <?= $this->Html->script('public/vendor/jquery-2.2.4.min.js') ?>
     <?= $this->Html->script('public/popper.min.js') ?>
     <?= $this->Html->script('public/vendor/bootstrap.min.js') ?>
-    <?= $this->Html->script('https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA') ?>
     <?= $this->Html->script('public/jquery-ui.js') ?>
     <?= $this->Html->script('public/easing.min.js') ?>
     <?= $this->Html->script('public/hoverIntent.js') ?>
@@ -47,18 +45,13 @@
     <?= $this->Html->script('tinymce/tinymce.min.js')?>
     <?= $this->Html->script('tinymce/init-tinymce.js')?>
 
-    <script>
-        var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");
-        for (var i = 0; i < slides.length; i++) {
-            slides[i].onmouseover = function (e) {
-                var li = this;
-                if (li.thumb) {
-                    var content = "<div class='tip-wrap' style='background-image:url(" + li.thumbSrc + ");'><div class='tip-text'>" + li.thumb.innerHTML + "</div></div>";
-                    tooltip.pop(li, content);
-                }
-            };
-        }
-    </script>
+
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
+
+    
 </head>
 
 <body>
