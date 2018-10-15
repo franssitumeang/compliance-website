@@ -172,14 +172,14 @@
                         <div class="form-group">  
                             <label for="categories_id">Kategori Artikel</label>
                             <select class="form-control" name="categories_id">
-                                <option value="a8fa5f04-65ba-4a80-ab8d-2e9849d829c0">CEO'S Letter</option>
-                                <option value="dd95d01a-bb10-48bf-bd80-d9d2bf17103a">Serba-Serbi</option>
-                                <option value="466a2825-7097-4c57-a1b2-d85205efcda4">Event Promotion</option>
-                                <option value="5a4916b4-6e36-4a8a-8226-de2528cb28e1">Risk Profile</option>
-                                <option value="7cec2ad6-5f4a-4d50-bf67-6e71cd1e38a6">Pamflet Audit</option>
-                                <option value="d227fa5e-aa69-4d7e-b93f-0a37ce4161bf">Jurnal</option>
-                                <option value="b6a96a37-148f-4c94-8c94-7cd5a93bceda">Komunitas</option>
-                                <option value="f59510f3-eae3-44af-afec-51d92f174017">SS/QCC/QCP</option>
+                                <option value="7d39914b-b5df-4280-8afb-ffdc44d04def">CEO'S Letter</option>
+                                <option value="9aa7a467-f2cb-4fef-b600-269d1e0e1eae">Serba-Serbi</option>
+                                <option value="acfda27e-ca46-4353-9eb3-d10cb25b9d10">Event Promotion</option>
+                                <option value="73f6ac4e-983f-4437-be56-559aa74d6793">Risk Profile</option>
+                                <option value="8a614479-1438-411b-85da-fa620ec86e0a">Pamflet Audit</option>
+                                <option value="6c5698bf-0082-4fb6-93c0-d2acb9d912da">Jurnal</option>
+                                <option value="48229044-330b-408a-a992-2e92170fd9d0">Komunitas</option>
+                                <option value="f4d1be27-4c62-4e87-bb25-b5cffc54b5ba">SS/QCC/QCP</option>
                               </select>
                         </div>
                         <div class="form-group">  

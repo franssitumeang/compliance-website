@@ -11,9 +11,11 @@ use Cake\ORM\Entity;
  * @property string $doc_name
  * @property string $process_owner
  * @property \Cake\I18n\FrozenDate $revision_date
- * @property string $status
+ * @property string $archive_category_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\ArchiveCategory $archive_category
  */
 class Archive extends Entity
 {
@@ -32,8 +34,9 @@ class Archive extends Entity
         'doc_name' => true,
         'process_owner' => true,
         'revision_date' => true,
-        'status' => true,
+        'archive_category_id' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'archive_category' => true
     ];
 }
