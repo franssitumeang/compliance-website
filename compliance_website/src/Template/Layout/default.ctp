@@ -47,7 +47,7 @@
     <?= $this->Html->script('tinymce/tinymce.min.js')?>
     <?= $this->Html->script('tinymce/init-tinymce.js')?>
 
-    <script>
+    <script src="https://code.jquesry.com/jquery-3.3.1.js" integrity="" crossorigin="anonymous">
         var slides = document.getElementById("thumbnail-slider").getElementsByTagName("li");
         for (var i = 0; i < slides.length; i++) {
             slides[i].onmouseover = function (e) {
@@ -58,6 +58,7 @@
                 }
             };
         }
+
     </script>
 </head>
 

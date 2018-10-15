@@ -69,3 +69,4 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
+Router::extensions('json', 'xml');
