@@ -7,9 +7,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Archives Model
- *
- * @property \App\Model\Table\ArchiveCategoriesTable|\Cake\ORM\Association\BelongsTo $ArchiveCategories
+ * Archive Model
  *
  * @method \App\Model\Entity\Archive get($primaryKey, $options = [])
  * @method \App\Model\Entity\Archive newEntity($data = null, array $options = [])
@@ -22,7 +20,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class ArchivesTable extends Table
+class ArchiveTable extends Table
 {
 
     /**
@@ -35,16 +33,11 @@ class ArchivesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('archives');
+        $this->setTable('archive');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsTo('ArchiveCategories', [
-            'foreignKey' => 'archive_category_id',
-            'joinType' => 'INNER'
-        ]);
     }
 
     /**
@@ -60,10 +53,10 @@ class ArchivesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('historical_revision_number')
-            ->maxLength('historical_revision_number', 30)
-            ->requirePresence('historical_revision_number', 'create')
-            ->notEmpty('historical_revision_number');
+            ->scalar('historical_revision_name')
+            ->maxLength('historical_revision_name', 30)
+            ->requirePresence('historical_revision_name', 'create')
+            ->notEmpty('historical_revision_name');
 
         $validator
             ->scalar('doc_name')
@@ -79,22 +72,15 @@ class ArchivesTable extends Table
 
         $validator
             ->date('revision_date')
-            ->allowEmpty('revision_date');
+            ->requirePresence('revision_date', 'create')
+            ->notEmpty('revision_date');
+
+        $validator
+            ->scalar('status')
+            ->maxLength('status', 36)
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['archive_category_id'], 'ArchiveCategories'));
-
-        return $rules;
     }
 }
