@@ -10,8 +10,7 @@ class PublicsController extends AppController
     {
         $title = "Home";
         $this->set('title', $title);
-        // $this->viewBuilder()->templatePath('Admins');
-        // $this->render('dashboard');
+
     }
 
 
