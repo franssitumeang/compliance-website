@@ -17,21 +17,19 @@ class ArticlesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'title' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'content' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'created' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'content' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'categories_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'attachment' => ['type' => 'string', 'length' => 225, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
             'categories_id' => ['type' => 'index', 'columns' => ['categories_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'fk_categories_id' => ['type' => 'foreign', 'columns' => ['categories_id'], 'references' => ['article_categories', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
-            'fk_user_id' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['users', 'id'], 'update' => 'cascade', 'delete' => 'cascade', 'length' => []],
+            'articles_ibfk_1' => ['type' => 'foreign', 'columns' => ['categories_id'], 'references' => ['article_categories', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -49,13 +47,13 @@ class ArticlesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'a94ed2a6-ca28-4dda-b095-4db975353e33',
+                'id' => '0dd29291-4659-421b-91fd-71dd6b0e4301',
                 'title' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 06:13:13',
-                'description' => 'Lorem ipsum dolor sit amet',
-                'user_id' => 'ec74b736-88c5-42ec-b493-2a7cb9859730',
-                'categories_id' => '404bfb07-41c8-4d6e-9c2c-d5e91dc57aa1',
-                'attachment' => 'Lorem ipsum dolor sit amet'
+                'created' => '2018-10-12',
+                'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'categories_id' => '9dc49a5e-6fc3-4cb4-b17a-63a6855e134c',
+                'attachment' => 'Lorem ipsum dolor sit amet',
+                'modified' => '2018-10-12 10:14:12'
             ],
         ];
         parent::init();

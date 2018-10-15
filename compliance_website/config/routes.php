@@ -42,6 +42,7 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/articlecategories', ['controller' => 'ArticleCategories', 'action' => 'index']);
     $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->connect('/articles',['controller' => 'Articles', 'action' => 'index']);
+    $routes->connect('/archives',['controller' => 'Archives', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
 
@@ -54,11 +55,8 @@ Router::prefix('publics', function (RouteBuilder $routes) {
     $routes->connect('/user-request/add', ['controller' => 'UserRequestHeaders', 'action' => 'add']);
     
     $routes->connect('/user-request-details', ['controller' => 'UserRequestDetails', 'action' => 'index']);
-    
-    
     $routes->connect('/discussion-list', ['controller' => 'Discussions', 'action' => 'index']);
     $routes->connect('/discussion-view', ['controller' => 'Discussions', 'action' => 'view']);
-
 
     //For Article
     $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);
