@@ -70,11 +70,6 @@ class ArticlesTable extends Table
             ->requirePresence('content', 'create')
             ->notEmpty('content');
 
-        $validator
-            ->scalar('attachment')
-            ->maxLength('attachment', 225)
-            ->allowEmpty('attachment');
-
         return $validator;
     }
 

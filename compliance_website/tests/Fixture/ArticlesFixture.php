@@ -17,13 +17,11 @@ class ArticlesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null],
         'title' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'content' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'categories_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'attachment' => ['type' => 'string', 'length' => 225, 'null' => true, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
             'categories_id' => ['type' => 'index', 'columns' => ['categories_id'], 'length' => []],
         ],
@@ -47,13 +45,11 @@ class ArticlesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '0dd29291-4659-421b-91fd-71dd6b0e4301',
+                'id' => '1e117414-0c6f-404e-b539-6655b5bb44d3',
                 'title' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-12',
+                'created' => '2018-10-16',
                 'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'categories_id' => '9dc49a5e-6fc3-4cb4-b17a-63a6855e134c',
-                'attachment' => 'Lorem ipsum dolor sit amet',
-                'modified' => '2018-10-12 10:14:12'
+                'categories_id' => '42767637-8206-43eb-a042-61e5eab8084e'
             ],
         ];
         parent::init();

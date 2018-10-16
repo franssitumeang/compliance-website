@@ -11,8 +11,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate $created
  * @property string $content
  * @property string $categories_id
- * @property string $attachment
- * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\ArticleCategory $article_category
  */
@@ -33,8 +31,6 @@ class Article extends Entity
         'created' => true,
         'content' => true,
         'categories_id' => true,
-        'attachment' => true,
-        'modified' => true,
         'article_category' => true
     ];
 }

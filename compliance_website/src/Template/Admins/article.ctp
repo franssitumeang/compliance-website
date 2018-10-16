@@ -45,7 +45,7 @@
                                     <th>Isi Content</th> -->
                                     <th>Action</th>
                                 </thead>
-                                <tbody>
+                                <tbody> 
                                     <tr>
                                         <?php $i=1;?>
                                         <?php foreach ($articles as $article): ?>
@@ -182,10 +182,10 @@
                                 <option value="f4d1be27-4c62-4e87-bb25-b5cffc54b5ba">SS/QCC/QCP</option>
                               </select>
                         </div>
-                        <div class="form-group">  
+                        <!-- <div class="form-group">  
                             <label for="attachment">Upload File</label>
                                 <input type = "file" class = "form-control" name ="attachment" value="attachment" id="attachment" >
-                        </div>
+                        </div> -->
                         <div class="form-group">  
                             <label for="content">Content</label>
                             <textarea class ="tinymce" name ="content" id ="content"></textarea>
@@ -209,11 +209,7 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-<<<<<<< HEAD
-    var articles = <?= $jsonArticles ?>;
-=======
     var articles = <?= $jsonArticles; ?>;
->>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<articles.length;i++) {
@@ -222,16 +218,9 @@ $(document).ready(function(){
                 $("input#id").val(articles[i].id);
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
-<<<<<<< HEAD
-                $("select#categories_id").val(articles[i].categories_id);
-                $("input#attachment").html(articles[i].attachment);
-                $(tinymce.get('content').setContent(articles[i].content));
-                // $("textarea#content").html(articles[i].content);
-=======
                 $("input#categories_id").val(articles[i].categories_id);
-                $("input#attachment").html(articles[i].attachment);
+                // $("input#attachment").html(articles[i].attachment);
                 $(tinymce.get('content').setContent(articles[i].content));
->>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
                 $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()

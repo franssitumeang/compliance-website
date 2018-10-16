@@ -16,15 +16,21 @@
                 <div id="thumbnail-slider" style="top: 15px;">
                     <div class="inner">
                         <ul>
+                                <?php $i=1;?>
+                                <?php foreach ($articles as $article): ?>
                             <li>
-                                <a href="/">
-                                    <div class="thumb" style="background-image:url(https://amazingpict.com/wp-content/uploads/2014/01/Honda-CBR-600RR-HD-Wallpaper-for-Gadgets.jpg)">
-                                        <h3>Links to the Homepage</h3>
-                                        This slide demonstrates how to link the thumbnail image to another web page.
+                                <!-- <a href="/"> -->
+                                    
+                                    <div class="thumb" style="background-image: 7y)">
+                                        <h3><?=$article->title; ?></h3>
+                                        <?=$article->content;?>
                                     </div>
-                                </a>
+                                <!-- </a> -->
+                                
                             </li>
-                            <li>
+                            <?php $i++; ?>
+                            <?php endforeach;?>
+                            <!-- <li>
                                 <a class="thumb" href="http://naikmotor.com/wp-content/uploads/2016/07/Wahana_Honda_Jakarta_fair_2016.jpg">
                                     <h3>Pellentesque at Felis</h3>
                                     Nulla porttitor fringilla dui vel pulvinar. Nam sodales, diam eu faucibus
@@ -93,7 +99,8 @@
                                     <h3>Cras Viverra Nisi Purus</h3>
                                     At gravida nunc condimentum id. Morbi gravida accumsan mauris at scelerisque
                                 </a>
-                            </li>
+                            </li> -->
+                            
                         </ul>
                     </div>
                 </div>
