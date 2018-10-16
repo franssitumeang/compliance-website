@@ -3,6 +3,7 @@ namespace App\Controller\Publics;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 class UserRequestDetailsController extends AppController
 {
@@ -29,18 +30,20 @@ class UserRequestDetailsController extends AppController
             'conditions' => ['UserRequestDetails.user_request_header_id' => $id],
             'order' => ['UserRequestDetails.created' => 'desc']
         ]);
-
         $userRequestHeader = $this->UserRequestDetails->UserRequestHeaders->get($id, [
             'contain' => ['Users' => 'Departments', 'UserDocTypes', 'UserRequestReasons']
         ]);
+        
+        $DiscussionParticipantsTable = TableRegistry::get('DiscussionParticipants');
+        $discussionParticipant = $DiscussionParticipantsTable->find('all', [
+            'conditions' => ['user_request_header_id' => $id],
+            'contain' => ['Users']
+        ]);
         $userRequestDetails = $this->paginate($userRequestDetails);
-
         $newUserRequestDetail = $this->UserRequestDetails->newEntity();
 
         $paginate = $this->Paginator->getPagingParams()["UserRequestDetails"];
-
-        $this->set(compact('userRequestDetails', 'newUserRequestDetail', 'paginate', 'userRequestHeader'));
-
+        $this->set(compact('userRequestDetails', 'newUserRequestDetail', 'paginate', 'userRequestHeader', 'discussionParticipant'));
         $this->viewBuilder()->templatePath('Publics/UserRequestDetails/');
     }
 
@@ -71,7 +74,7 @@ class UserRequestDetailsController extends AppController
             $ure = $this->UserRequestDetails->patchEntity($ure, $this->request->getData());
             $ure->user_request_header_id = $id;
             $ure->attachment['doc_title'] = $userRequestHeader->doc_title;
-            $filename =  $ure->attachment['name'];
+            $filename = $ure->attachment['name'];
             $ure->attachment_dir = 'files/documents/UserRequestDetails/attachment/';
             $ure->attachment_type = pathinfo($filename, PATHINFO_EXTENSION);
             if ($this->UserRequestDetails->save($ure)) {
@@ -81,7 +84,7 @@ class UserRequestDetailsController extends AppController
                 $this->Flash->msg_error(__('Upload Revisi gagal. Periksa dokumen yang Anda Upload'));
             }
         }
-        
+
         $this->set(compact('ure', 'userRequestHeader'));
         $this->viewBuilder()->templatePath('Publics/UserRequestDetails/');
     }

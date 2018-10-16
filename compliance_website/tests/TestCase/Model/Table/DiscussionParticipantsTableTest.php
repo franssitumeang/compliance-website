@@ -26,7 +26,7 @@ class DiscussionParticipantsTableTest extends TestCase
     public $fixtures = [
         'app.discussion_participants',
         'app.users',
-        'app.discussions'
+        'app.user_request_headers'
     ];
 
     /**
@@ -59,16 +59,6 @@ class DiscussionParticipantsTableTest extends TestCase
      * @return void
      */
     public function testInitialize()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

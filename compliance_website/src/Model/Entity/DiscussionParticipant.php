@@ -8,12 +8,12 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $user_id
- * @property string $user_request_detail_id
+ * @property string $user_request_header_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Discussion $discussion
+ * @property \App\Model\Entity\UserRequestHeader $user_request_header
  */
 class DiscussionParticipant extends Entity
 {
@@ -29,10 +29,10 @@ class DiscussionParticipant extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
-        'user_request_detail_id' => true,
+        'user_request_header_id' => true,
         'created' => true,
         'modified' => true,
         'user' => true,
-        'discussion' => true
+        'user_request_header' => true
     ];
 }
