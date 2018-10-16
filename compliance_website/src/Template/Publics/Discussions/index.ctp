@@ -34,9 +34,28 @@
                 <div class="container-fluid">
                     <div class="row content">
                         <div class="col-lg-8 posts-list">
-                            <object data="/<?= $userRequestDetails->attachment_dir .  $userRequestDetails->attachment?>"
-                                type="application/pdf" width="100%" height="700">
-                            </object>
+                            <div class="row">
+                                <div class="col-lg-12 mb-10 d-flex flex-row ">
+                                        <?php 
+                                            echo $this->Form->create($userRequestDetails, ['Discussions' => ['action' => 'approve']]);
+                                            echo $this->Form->button(__('Approve'), ['class' => 'genric-btn primary medium']); 
+                                            echo $this->Form->end();    
+                                        ?> 
+                                        <?php 
+                                            echo $this->Form->create($userRequestDetails, ['Discussions' => ['action' => 'reject']]);
+                                            echo $this->Form->button(__('Reject'), ['class' => 'genric-btn primary medium']); 
+                                            echo $this->Form->end();    
+                                        ?>
+
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <object data="/<?= $userRequestDetails->attachment_dir .  $userRequestDetails->attachment?>"
+                                        type="application/pdf" width="100%" height="700">
+                                    </object>
+                                </div>
+
+                            </div>
                         </div>
                         <div class="col-lg-4 sidebar-widgets">
                             <div class="widget-wrap">

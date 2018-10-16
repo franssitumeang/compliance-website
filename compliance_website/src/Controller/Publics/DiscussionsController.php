@@ -79,7 +79,16 @@ class DiscussionsController extends AppController{
     public function getDepartmentRequest($id = null)
     {
 
+    }
 
+    public function approve($id) {
+        $this->Flash->success(__('Berhasil di approve'));
+        return $this->redirect(['action' => 'index']);
+    }
+
+    public function reject($id) {
+        $this->Flash->success(__('gagal di approve'));
+        return $this->redirect(['action' => 'index']);
     }
 }
 
