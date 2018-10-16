@@ -6,6 +6,7 @@ use App\Controller\AppController;
 
 class UserRequestHeadersController extends AppController
 {
+ 
 
     public $paginate = [
         'limit' => 10,
@@ -42,7 +43,6 @@ class UserRequestHeadersController extends AppController
         $this->set(compact('userRequestHeaders', 'paginate', 'users'));
 
         $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
-        // $this->render('index');
     }
 
     public function view($id = null)
@@ -120,6 +120,23 @@ class UserRequestHeadersController extends AppController
         $this->render('add');
     }
 
+    public $components = array("Email");
+
+    public function sent($id)
+    {
+        $to='fanyjohanna42@gmail.com';
+        $subject='Hi Surya, i got a message for you';
+        $message = 'All is well';
+
+        try{
+            $mail = $this->Email->send_mail($to,$subject,$message);
+        }catch (Exception $e){
+            echo 'Message could not be sent.Mailer error: ', $mail->ErrorInfo;
+        }
+        exit;
+
+    }
+
     public function download($id = null)
     {
         $filePath = WWW_ROOT . 'files' . DS . $id;
@@ -127,6 +144,7 @@ class UserRequestHeadersController extends AppController
             $filePath,
             array('download' => true, 'name' => 'file name')
         );
+        $this->render('index');
     }
 
 

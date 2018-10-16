@@ -4,14 +4,14 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class ArticlesController extends AppController{
+class ArchivesController extends AppController{
 
     public $paginate = [
         'limit' => 10,
         'order' => [
             'Articles.title' => 'asc'
         ],
-        'contain' => ['ArticleCategories']
+        'contain' => ['ArchiveCategories']
     ];
 
     public function initialize()
@@ -32,42 +32,40 @@ class ArticlesController extends AppController{
             $this->paginate = [
                 'limit' => 10,
                 'order' => [
-                    'Articles.title' => 'asc'
+                    'Archives.historical_revision_number' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
-                'contain' => ['ArticleCategories']
+                'contain' => ['ArchiveCategories']
             ];
         }       
-        $title = "Artikel";
+        $title = "Arsip";
         $this->set('title', $title);
-        $articles = $this->paginate('Articles');
-        $jsonArticles = json_encode($articles);
-        $newArticle = $this->Articles->newEntity();
-        $paginate = $this->Paginator->getPagingParams()["Articles"];
-<<<<<<< HEAD
-        $jsonArticles = json_encode($articles);
-=======
->>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
-        $this->set(compact('articles','newArticle','paginate', 'jsonArticles'));
+        $archives = $this->paginate('Archives');
+        $jsonArchives = json_encode($archives);
+        $newArchive = $this->Archives->newEntity();
+        $paginate = $this->Paginator->getPagingParams()["Archives"];
+        $this->set(compact('archives','newArchive','paginate', 'jsonArchives'));
         
         $this->viewBuilder()->templatePath('Admins');
-        $this->render('article');
+        $this->render('archive');
     }
     
     //Add Method
     
     public function add($id = null){
+
+
         if($id == null){
-            $article = $this->Articles->newEntity();
+            $archive = $this->Archives->newEntity();
         }else{
-            $article = $this->Articles->get($id);
+            $archive = $this->Archives->get($id);
         }
         if ($this->request->is('post')) {
-            $article = $this->Articles->patchEntity($article, $this->request->getData());
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('The article has been saved.'));
+            $archive = $this->Archives->patchEntity($archive, $this->request->getData());
+            if ($this->Archives->save($archive)) {
+                $this->Flash->success(__('The archive has been saved.'));
             }else{
-                $this->Flash->error(__('The article could not be saved. Please, try again.'));
+                $this->Flash->error(__('The archive could not be saved. Please, try again.'. $archive->doc_name));
             }
             
         }
@@ -78,9 +76,9 @@ class ArticlesController extends AppController{
     public function delete($id = null)
     {
         if ($this->request->is('post')) {
-            $article = $this->Articles->get($id);
-            if ($this->Articles->delete($article)) {
-                $this->Flash->success(__('The article has been deleted.'));
+            $archive = $this->Archives->get($id);
+            if ($this->Archives->delete($archive)) {
+                $this->Flash->success(__('The archive has been deleted.'));
                 return $this->redirect(['action' => 'index']);
             }
         }

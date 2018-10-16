@@ -4,15 +4,20 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * ArticleCategory Entity
+ * Archive Entity
  *
  * @property string $id
- * @property string $name_categories
- * @property string $description
+ * @property string $historical_revision_number
+ * @property string $doc_name
+ * @property string $process_owner
+ * @property \Cake\I18n\FrozenDate $revision_date
+ * @property string $archive_category_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\ArchiveCategory $archive_category
  */
-class ArticleCategory extends Entity
+class Archive extends Entity
 {
 
     /**
@@ -25,9 +30,13 @@ class ArticleCategory extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name_categories' => true,
-        'description' => true,
+        'historical_revision_number' => true,
+        'doc_name' => true,
+        'process_owner' => true,
+        'revision_date' => true,
+        'archive_category_id' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'archive_category' => true
     ];
 }

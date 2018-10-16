@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ArticlesTable;
+use App\Model\Table\ArchiveTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ArticlesTable Test Case
+ * App\Model\Table\ArchiveTable Test Case
  */
-class ArticlesTableTest extends TestCase
+class ArchiveTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ArticlesTable
+     * @var \App\Model\Table\ArchiveTable
      */
-    public $Articles;
+    public $Archive;
 
     /**
      * Fixtures
@@ -24,8 +24,7 @@ class ArticlesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.articles',
-        'app.article_categories'
+        'app.archive'
     ];
 
     /**
@@ -36,8 +35,8 @@ class ArticlesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Articles') ? [] : ['className' => ArticlesTable::class];
-        $this->Articles = TableRegistry::getTableLocator()->get('Articles', $config);
+        $config = TableRegistry::getTableLocator()->exists('Archive') ? [] : ['className' => ArchiveTable::class];
+        $this->Archive = TableRegistry::getTableLocator()->get('Archive', $config);
     }
 
     /**
@@ -47,7 +46,7 @@ class ArticlesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Articles);
+        unset($this->Archive);
 
         parent::tearDown();
     }
@@ -68,16 +67,6 @@ class ArticlesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
