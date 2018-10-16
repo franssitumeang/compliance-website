@@ -43,7 +43,8 @@ class ArticlesController extends AppController{
         $articles = $this->paginate('Articles');
         $newArticle = $this->Articles->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Articles"];
-        $this->set(compact('articles','newArticle','paginate'));
+        $jsonArticles = json_encode($articles);
+        $this->set(compact('articles','newArticle','paginate', 'jsonArticles'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('article');

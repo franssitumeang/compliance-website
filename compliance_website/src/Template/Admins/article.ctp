@@ -171,7 +171,7 @@
                         </div>
                         <div class="form-group">  
                             <label for="categories_id">Kategori Artikel</label>
-                            <select class="form-control" name="categories_id">
+                            <select class="form-control" name="categories_id" id="categories_id">
                                 <option value="1">CEO'S Letter</option>
                                 <option value="2">Serba-Serbi</option>
                                 <option value="3">Event Promotion</option>
@@ -188,7 +188,7 @@
                         </div>
                         <div class="form-group">  
                             <label for="content">Content</label>
-                            <textarea class ="tinymce" name = "content" id = "content"></textarea>
+                            <textarea class ="tinymce" name ="content" id ="content"></textarea>
                         </div>
 
                         <div class="pull-right">
@@ -209,17 +209,19 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var articles = JSON.parse('<?= json_encode([$articles]); ?>');
+    var articles = <?= $jsonArticles ?>;
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<articles.length;i++) {
             if(id == articles[i].id) {
+                console.log(articles[i].categories_id);
                 $("input#id").val(articles[i].id);
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
-                $("input#categorsies_id").val(articles[i].categories_id);
+                $("select#categories_id").val(articles[i].categories_id);
                 $("input#attachment").html(articles[i].attachment);
-                $("textarea#content").text(articles[i].content);
+                $(tinymce.get('content').setContent(articles[i].content));
+                // $("textarea#content").html(articles[i].content);
                 $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
