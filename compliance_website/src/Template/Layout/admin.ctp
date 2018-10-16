@@ -24,9 +24,12 @@
     <?= $this->Html->script('bootstrapValidator.js') ?>
     <?= $this->Html->script('tinymce/tinymce.min.js')?>
     <?= $this->Html->script('tinymce/init-tinymce.js')?>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     
 </head>
@@ -111,12 +114,31 @@
               <span class="menu-title">Artikel</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/admin/archives">
               <i class="menu-icon fa fa-tasks"></i>
               <span class="menu-title">Arsip</span>
             </a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basics" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon fa fa-tasks"></i>
+              <span class="menu-title">Arsip</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basics">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="archivecategories">Kategori Arsip</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="archives">Penyimpanan Arsip</a>
+                </li>
+              </ul>
+            </div>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon fa fa-list-alt"></i>

@@ -12,7 +12,7 @@ class UsersController extends AppController{
         'order' => [
             'Users.name' => 'asc'
         ],
-        'contain' => array('Positions','Departments'=>['Companies'])
+        'contain' => array('Positions','Departments'=>['Companies'],'Groups')
     ];
 
     public function initialize()
@@ -35,7 +35,8 @@ class UsersController extends AppController{
                 'order' => [
                     'Users.name' => 'asc'
                 ],
-                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
+                'contain' => array('Positions','Departments'=>['Companies'],'Groups')
             ];
         }       
         $title = "User";
@@ -68,16 +69,30 @@ class UsersController extends AppController{
             $user = $this->Users->get($id);
         }
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Groups']]);
+            $datas = $this->request->getData();
             $user->password = "password";
             $user->is_login = 0;
+            $user->name = $datas['name'];
+            $user->position_id = $datas['position_id'];
+            $user->phone_num = $datas['phone_num'];
+            $user->email = $datas['email'];
+            $user->department_id = $datas['department_id'];
             if ($this->Users->save($user, ['associated'=>['Groups']])) {
+                $groups_id = explode(",", $datas['id_group']);
+                $GroupsUsersTable = TableRegistry::get('GroupsUsers');
+                $GroupsUsersTable->deleteAll(array('user_id' => $user->id), false);
+                for($i = 0; $i < count($groups_id); ++$i) {
+                    $groupsUsers = $GroupsUsersTable->newEntity();
+                    $groupsUsers->user_id = $user->id;
+                    $groupsUsers->group_id = $groups_id[$i];
+                    $GroupsUsersTable->save($groupsUsers);
+                }
                 $this->Flash->success(__('The user has been saved.'));
             }else{
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
-            // return $this->redirect(['action' => 'index']);
-            debug($user);
+            return $this->redirect(['action' => 'index']);
+
         }
     }
 
@@ -91,5 +106,13 @@ class UsersController extends AppController{
             }
         }
         
+    }
+
+    public function test(){
+        
+        $this->request->allowMethod('ajax');
+        $this->set('data', "test");
+        $this->autoRender = false;
+        // $this->set('_serialize',['data']);
     }
 }

@@ -43,6 +43,7 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/positions', ['controller' => 'Positions', 'action' => 'index']);
     $routes->connect('/articles',['controller' => 'Articles', 'action' => 'index']);
     $routes->connect('/archives',['controller' => 'Archives', 'action' => 'index']);
+    $routes->connect('/archivecategories', ['controller' => 'ArchiveCategories', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
 
@@ -67,3 +68,4 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
+Router::extensions('json', 'xml');

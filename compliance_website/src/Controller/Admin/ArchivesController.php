@@ -9,9 +9,9 @@ class ArchivesController extends AppController{
     public $paginate = [
         'limit' => 10,
         'order' => [
-            'Archives.doc_name' => 'asc'
+            'Articles.title' => 'asc'
         ],
-        //'contain' => ['ArchiveCategories']
+        'contain' => ['ArchiveCategories']
     ];
 
     public function initialize()
@@ -32,7 +32,7 @@ class ArchivesController extends AppController{
             $this->paginate = [
                 'limit' => 10,
                 'order' => [
-                    'Archives.title' => 'asc'
+                    'Archives.historical_revision_number' => 'asc'
                 ],
                 'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
                 'contain' => ['ArchiveCategories']
@@ -41,9 +41,10 @@ class ArchivesController extends AppController{
         $title = "Arsip";
         $this->set('title', $title);
         $archives = $this->paginate('Archives');
+        $jsonArchives = json_encode($archives);
         $newArchive = $this->Archives->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Archives"];
-        $this->set(compact('archives','newArchive','paginate'));
+        $this->set(compact('archives','newArchive','paginate', 'jsonArchives'));
         
         $this->viewBuilder()->templatePath('Admins');
         $this->render('archive');
@@ -52,17 +53,19 @@ class ArchivesController extends AppController{
     //Add Method
     
     public function add($id = null){
+
+
         if($id == null){
             $archive = $this->Archives->newEntity();
         }else{
             $archive = $this->Archives->get($id);
         }
         if ($this->request->is('post')) {
-            $article = $this->Archives->patchEntity($archive, $this->request->getData());
-            if ($this->Archives->save($article)) {
+            $archive = $this->Archives->patchEntity($archive, $this->request->getData());
+            if ($this->Archives->save($archive)) {
                 $this->Flash->success(__('The archive has been saved.'));
             }else{
-                $this->Flash->error(__('The archive could not be saved. Please, try again.'));
+                $this->Flash->error(__('The archive could not be saved. Please, try again.'. $archive->doc_name));
             }
             
         }

@@ -26,7 +26,6 @@
 
     <?= $this->Html->script('public/custom/thumbnail-slider.js') ?>
     <?= $this->Html->script('public/custom/tooltip.js') ?>
-    <!-- <?= $this->Html->script('https://code.jquery.com/jquery-3.3.1.js')?> -->
 
     <?= $this->Html->script('public/vendor/jquery-2.2.4.min.js') ?>
     <?= $this->Html->script('public/popper.min.js') ?>
