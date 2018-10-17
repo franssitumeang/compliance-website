@@ -70,6 +70,12 @@ class ArticlesTable extends Table
             ->requirePresence('content', 'create')
             ->notEmpty('content');
 
+        $validator
+            ->scalar('description')
+            ->maxLength('description', 100)
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
+
         return $validator;
     }
 

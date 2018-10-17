@@ -22,6 +22,7 @@ class ArticlesFixture extends TestFixture
         'created' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'content' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null],
         'categories_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'description' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'categories_id' => ['type' => 'index', 'columns' => ['categories_id'], 'length' => []],
         ],
@@ -45,11 +46,12 @@ class ArticlesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '1e117414-0c6f-404e-b539-6655b5bb44d3',
+                'id' => 'd0421f2d-c492-4c7d-9c0b-2595fc2a3340',
                 'title' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-16',
+                'created' => '2018-10-17',
                 'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'categories_id' => '42767637-8206-43eb-a042-61e5eab8084e'
+                'categories_id' => '429097a9-5f98-43d3-9bc5-c976e68de167',
+                'description' => 'Lorem ipsum dolor sit amet'
             ],
         ];
         parent::init();

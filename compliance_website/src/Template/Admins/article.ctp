@@ -41,6 +41,7 @@
                                     <th>Judul Artikel</th>
                                     <th>Tanggal Terbit</th>
                                     <th>Kategori Artikel</th>
+                                    <th>Deskripsi</th>
                                     <!-- <th>File Attach</th>
                                     <th>Isi Content</th> -->
                                     <th>Action</th>
@@ -60,6 +61,9 @@
                                             </td>
                                             <td class="categories_id" value=<?= $article->categories_id; ?>>
                                                 <?= $article->article_category->name_categories; ?>
+                                            </td>
+                                            <td class="description" value=<?= $article->description; ?>>
+                                                <?= $article->description; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
@@ -182,10 +186,14 @@
                                 <option value="f4d1be27-4c62-4e87-bb25-b5cffc54b5ba">SS/QCC/QCP</option>
                               </select>
                         </div>
-                        <!-- <div class="form-group">  
-                            <label for="attachment">Upload File</label>
-                                <input type = "file" class = "form-control" name ="attachment" value="attachment" id="attachment" >
-                        </div> -->
+
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi Singkat', 
+                            'required' => true, 
+                            'maxlength' => '100', 'minlength' => '50']); ?>
+                        </div>
+
                         <div class="form-group">  
                             <label for="content">Content</label>
                             <textarea class ="tinymce" name ="content" id ="content"></textarea>
@@ -219,7 +227,7 @@ $(document).ready(function(){
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
                 $("input#categories_id").val(articles[i].categories_id);
-                // $("input#attachment").html(articles[i].attachment);
+                $("input#description").val(articles[i].description);
                 $(tinymce.get('content').setContent(articles[i].content));
                 $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
