@@ -104,7 +104,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>   
+                                            </div>       
                                         <?php $i++; ?>
                                         <?php endforeach;?>
                                 </tbody>
@@ -133,7 +133,7 @@
                         <a class="btn btn-light disabled"><i class="fa fa-chevron-right"></i></a>
                         <?php endif; ?>
                     </div>
-                    </div>
+                        </div>
                 </div>
             </div>                  
         </div>
@@ -191,8 +191,9 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
 
+<?php foreach($articles as $article): ?>
 <!-- Modal View -->
 <div id="modalView-<?= $article->id; ?>" class="modal fade" style="overflow: auto;">
     <div class="modal-dialog modal-lg">
@@ -212,7 +213,7 @@
         </div>
     </div>
 </div>
-
+<?php endforeach; ?>
 
 <script>
 $(document).ready(function(){
@@ -248,6 +249,7 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
+        $(tinymce.get('content').setContent(''));
         $('#title_form').text('Tambah Artikel');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')
