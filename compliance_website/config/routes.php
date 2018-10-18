@@ -61,12 +61,13 @@ Router::prefix('publics', function (RouteBuilder $routes) {
     
     //For Article
     $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);
+    
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
-    $routes->connect('/view', ['controller' => 'Publics', 'action' => 'view']);
+   
     $routes->fallbacks(DashedRoute::class);
 });
 Router::extensions('json', 'xml');

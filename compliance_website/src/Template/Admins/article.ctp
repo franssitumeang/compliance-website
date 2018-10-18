@@ -81,26 +81,7 @@
                                             </td>
                                         </tr>
 
-                                        <!-- Modal View -->
-                                        <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                <div class="modal-body">
-                                                        <?php echo $article->content?>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        
                                          <!-- Modal Delete -->
 
                                         <div id="myModal-<?= $article->id; ?>" class="modal fade">
@@ -211,6 +192,28 @@
         </div>
     </div>
 </div>  
+
+<!-- Modal View -->
+<div id="modalView-<?= $article->id; ?>" class="modal fade" style="overflow: auto;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="word-wrap: break-word;">
+                    <?php echo $article->content; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
 $(document).ready(function(){
     $('#btn_update').hide()

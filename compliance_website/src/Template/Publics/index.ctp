@@ -18,7 +18,7 @@
                         <ul>
                             <?php foreach ($articles as $article): ?>
                             <li>
-                                <a class="thumb" id="img_<?= $article->id; ?>" href="<?php echo $this->Url->build(['controller' => 'Publics', 'action' => 'view', $article->id]) ?>">
+                                <a class="thumb" id="img_<?= $article->id; ?>" href="publics/articles/view/<?= $article->id; ?>">
                                     <h3><?= $article->title; ?></h3>
                                     <p><?= $article->description; ?><p>
                                 </a>
