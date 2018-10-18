@@ -81,26 +81,7 @@
                                             </td>
                                         </tr>
 
-                                        <!-- Modal View -->
-                                        <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                <div class="modal-body">
-                                                        <?php echo $article->content?>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        
                                          <!-- Modal Delete -->
 
                                         <div id="myModal-<?= $article->id; ?>" class="modal fade">
@@ -123,7 +104,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>   
+                                            </div>       
                                         <?php $i++; ?>
                                         <?php endforeach;?>
                                 </tbody>
@@ -152,7 +133,7 @@
                         <a class="btn btn-light disabled"><i class="fa fa-chevron-right"></i></a>
                         <?php endif; ?>
                     </div>
-                    </div>
+                        </div>
                 </div>
             </div>                  
         </div>
@@ -210,7 +191,30 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
+
+<?php foreach($articles as $article): ?>
+<!-- Modal View -->
+<div id="modalView-<?= $article->id; ?>" class="modal fade" style="overflow: auto;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="word-wrap: break-word;">
+                    <?php echo $article->content; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+
 <script>
 $(document).ready(function(){
     $('#btn_update').hide()
@@ -245,6 +249,7 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
+        $(tinymce.get('content').setContent(''));
         $('#title_form').text('Tambah Artikel');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')

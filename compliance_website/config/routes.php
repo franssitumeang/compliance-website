@@ -61,6 +61,7 @@ Router::prefix('publics', function (RouteBuilder $routes) {
     
     //For Article
     $routes->connect('/articles',['controller' => 'Articles', 'action'=>'index']);
+    
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);
 });
