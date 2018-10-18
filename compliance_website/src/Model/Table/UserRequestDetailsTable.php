@@ -50,7 +50,7 @@ class UserRequestDetailsTable extends Table
             'attachment' => [
                 'path' => 'webroot{DS}files{DS}documents{DS}UserRequestDetails{DS}attachment{DS}',
                 'nameCallback' => function ($table, $entity, $data, $field, $settings) {
-                    return $data['doc_title'] . '.' . $entity->attachment_type;
+                    return $data['doc_title']. '_versi-'. $data['doc_version'] . '.' . $entity->attachment_type;
                 }
             ]
         ]);

@@ -117,7 +117,7 @@
                         <!-- <div class="alert-msg" style="text-align: left;"></div> -->
                         <button type="submit" class="genric-btn primary radius">Submit</button>
                         <button type="reset" class="genric-btn primary radius">Reset</button>
-                       <button> <?= $this->Html->link(__('sent'), ['action' => 'sent', $user->id]) ?></button>
+                       <!-- <button> <?= $this->Html->link(__('sent'), ['action' => 'sent', $user->id]) ?></button> -->
                     </div>
                 </div>
                 <?= $this->Form->end() ?>

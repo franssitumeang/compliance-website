@@ -75,9 +75,16 @@ class UserRequestHeadersController extends AppController
             $userRequestHeader->doc_title = $datas['doc_title'];
             $userRequestHeader->doc_no = $datas['doc_no'];
 
+
+            
+
             if ($this->UserRequestHeaders->save($userRequestHeader)) {
+
+                $doc_version = ($UserRequestDetail->findAllByUserRequestHeaderId($userRequestHeader->id))->count();
+
                 $attachment = $datas['file_attachment'];
                 $attachment['doc_title'] = $datas['doc_title'];
+                $attachment['doc_version'] = $doc_version;
                 $filename = $this->request->data['file_attachment']['name'];
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
 

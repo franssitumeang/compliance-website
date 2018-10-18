@@ -71,9 +71,12 @@ class UserRequestDetailsController extends AppController
         }
 
         if ($this->request->is('post')) {
+            $doc_version = ($this->UserRequestDetails->findAllByUserRequestHeaderId($id))->count();
             $ure = $this->UserRequestDetails->patchEntity($ure, $this->request->getData());
+
             $ure->user_request_header_id = $id;
             $ure->attachment['doc_title'] = $userRequestHeader->doc_title;
+            $ure->attachment['doc_version'] = $doc_version;
             $filename = $ure->attachment['name'];
             $ure->attachment_dir = 'files/documents/UserRequestDetails/attachment/';
             $ure->attachment_type = pathinfo($filename, PATHINFO_EXTENSION);
