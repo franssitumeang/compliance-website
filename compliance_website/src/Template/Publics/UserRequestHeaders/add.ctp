@@ -26,19 +26,6 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>User</label>
-                            <div class="common-select" id="common-select">
-                                <select class="common-select form-control" name="user_id" required>
-                                    <option value="">Select user</option>
-                                    <?php foreach ($users as $user) : ?>
-                                    <option value=<?=$user->id ?>>
-                                        <?= $user->name ?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <p>Pengajuan Dokumen : </p>
                             <div class="common-select" id="common-select">
                                 <select class="common-select form-control" name="user_doc_type_id" required>

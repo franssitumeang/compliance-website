@@ -53,6 +53,11 @@ class UserDocumentsController extends AppController
         $this->set('userDocument', $userDocument);
     }
 
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 
 
 }

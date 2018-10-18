@@ -45,5 +45,12 @@ class UserRequestDetailsController extends AppController
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user_request_detail');
     }
+
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 }
         

@@ -182,6 +182,11 @@
                                             required maxlength="50">
                                         </div>
                                         <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                                            required maxlength="100">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Jabatan</label>
                                             <div class="input-group col-xs-12">
                                                 <select class="form-control" name="position_id" required>
@@ -279,6 +284,7 @@
                                 $("#name").val(users[i].name);
                                 $("#phone_num").val(users[i].phone_num);
                                 $("#email").val(users[i].email);
+                                $("#password").val(users[i].password);
                                 $("#title_form").text("Update User");
                                 $('#form').attr('action', 'users/add/' + id);
                                 $('html, body').animate({
