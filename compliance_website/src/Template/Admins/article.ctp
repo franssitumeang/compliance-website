@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="archives" style="color:#669DE0;">
-                    <span class="menu-icon fa fa-task"></span>&nbsp; Daftar Arsip
+                    <a href="articles" style="color:#669DE0;">
+                    <span class="menu-icon fa fa-newspaper-o"></span>&nbsp; Daftar Artikel
                     </a>
                 </h5>
                 <?= $this->Form->create("",['type'=>'get']) ?>
@@ -20,10 +20,9 @@
                 <label>Search By</label>
                 <div class="input-group col-xs-12">
                   <select class="form-control" name="attribute">
-                    <option value="historical_revision_number">Histori Nomor Revisi</option>
-                    <option value="doc_name">Nama Dokumen</option>
-                    <option value="process_owner">Pemilik Proses</option>
-                    <option value="ArchiveCategories.name_categories">Kategori Dokumen Arsip</option>
+                    <option value="title">Judul</option>
+                    <option value="created">Tanggal Terbit</option>
+                    <option value="ArticleCategories.name_categories">Kategori Artikel</option>
                   </select>
                   <span class="input-group-append">
                     <button class="file-upload-browse btn btn-primary" type="submit">Search</button>
@@ -39,54 +38,72 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <th>No</th>
-                                    <th>Histori Nomor Revisi</th>
-                                    <th>Nama Dokumen</th>
-                                    <th>Pemilik Proses</th>
-                                    <th>Tanggal Revisi</th>
-                                    <th>Status</th>
+                                    <th>Judul Artikel</th>
+                                    <th>Tanggal Terbit</th>
+                                    <th>Kategori Artikel</th>
+                                    <th>Deskripsi</th>
+                                    <!-- <th>File Attach</th>
+                                    <th>Isi Content</th> -->
                                     <th>Action</th>
                                 </thead>
-                                <tbody>
+                                <tbody> 
                                     <tr>
                                         <?php $i=1;?>
-                                        <?php foreach ($archives as $archive): ?>
+                                        <?php foreach ($articles as $article): ?>
                                             <td>
                                                 <?= $i; ?>
                                             </td>
-                                            <td class="historical_revision_number" value=<?= $archive->historical_revision_number; ?>>
-                                                <?= $archive->historical_revision_number; ?>
+                                            <td class="title" value=<?= $article->title; ?>>
+                                                <?= $article->title; ?>
                                             </td>
-                                            <td class="doc_name" value=<?= $archive->doc_name; ?>>
-                                                <?= $archive->doc_name; ?>
+                                            <td class="created" value=<?= $article->created; ?>>
+                                                <?= $article->created; ?>
                                             </td>
-                                            <td class="process_owner" value=<?= $archive->process_owner; ?>>
-                                                <?= $archive->process_owner; ?>
+                                            <td class="categories_id" value=<?= $article->categories_id; ?>>
+                                                <?= $article->article_category->name_categories; ?>
                                             </td>
-                                            <td class="revision_date" value=<?= $archive->revision_date; ?>>
-                                                <?= $archive->revision_date; ?>
-                                            </td>
-                                            <td class="archive_category_id" value=<?= $archive->archive_category_id; ?>>
-                                                <?= $archive->archive_category->archive_category_id; ?>
+                                            <td class="description" value=<?= $article->description; ?>>
+                                                <?= $article->description; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
                                                                                 ['class' => 'btn btn-icons btn-inverse-primary',
                                                                                 'data-toggle' => 'tooltip',
-                                                                                'id' => $archive->id,
+                                                                                'id' => $article->id,
                                                                                 'title' => 'Edit',
                                                                                 'style' => 'margin-top:-22px; margin-bottom:-20px;']); 
                                                 ?></i>
-                                                <!-- <span data-target="#modalView-<?= $article->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-success view" data-toggle="tooltip" data-tooltip="" title="View"
+                                                <span data-target="#modalView-<?= $article->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-success view" data-toggle="tooltip" data-tooltip="" title="View"
                                                     style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-eye"></i></button></span>
-                                                 -->
-                                                <span data-target="#myModal-<?= $archive->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
+                                                
+                                                <span data-target="#myModal-<?= $article->id; ?>" data-toggle="modal"><button class="btn btn-icons btn-inverse-danger delete" data-toggle="tooltip" data-tooltip="" title="Delete"
                                                     style="margin-top:-22px; margin-bottom:-20px;" ><i class="fa fa-trash"></i></button></span>
                                             </td>
                                         </tr>
 
-                                        <!-- Modal Delete -->
+                                        <!-- Modal View -->
+                                        <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                <div class="modal-body">
+                                                        <?php echo $article->content?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <div id="myModal-<?= $archive->id; ?>" class="modal fade">
+                                         <!-- Modal Delete -->
+
+                                        <div id="myModal-<?= $article->id; ?>" class="modal fade">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -97,7 +114,7 @@
                                                             <div class="btn-group">
                                                                 <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                                                                 <div class="btn-group">
-                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Archives', 'action' => 'delete', $archive->id], 
+                                                                <?= $this->Form->postButton('Delete', ['controller' => 'Articles', 'action' => 'delete', $article->id], 
                                                                                             ['type' => 'submit',
                                                                                             'class' => 'btn btn-danger'
                                                                                             ]); ?>
@@ -115,7 +132,7 @@
                     </div>
                 </div>
                 <br>
-                <?php if($archives->isEmpty()) : ?>
+                <?php if($articles->isEmpty()) : ?>
                 <h5 class="text-center">No Record</h5>
                 <?php endif; ?>
                 <div class="row">
@@ -143,49 +160,45 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body form">
-                <h5 class="card-title" id="title_form">Tambah Arsip</h5>
-                 <?= $this->Form->create($newArchive, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
+                <h5 class="card-title" id="title_form">Tambah Artikel</h5>
+                 <?= $this->Form->create($newArticle, ['url' => ['action' => 'add'], 'id' => 'form', 'class' => 'form',
                  'data-bv-feedbackicons-valid'=>'fa fa-check',
                  'data-bv-feedbackicons-invalid'=>'fa fa-warning',
                  'data-bv-feedbackicons-validating'=>'fa fa-spinner']); ?>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
-                            <label for="historical_revision_number">Histori Nomor Revisi</label>
-                            <?= $this->Form->control('historical_revision_number', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Histori Nomor Revisi', 
+                            <label for="title">Judul</label>
+                            <?= $this->Form->control('title', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Judul', 
                             'required' => true, 
-                            'maxlength' => '20']); ?>
+                            'maxlength' => '50']); ?>
                         </div>
-
-                        <div class="form-group">
-                            <label for="doc_name">Nama Dokumen</label>
-                            <?= $this->Form->control('doc_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama Dokumen', 
-                            'required' => true, 
-                            'maxlength' => '36']); ?>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="process_owner">Pemilik Proses</label>
-                            <?= $this->Form->control('process_owner', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Pemilik Proses', 
-                            'required' => true, 
-                            'maxlength' => '10']); ?>
-                        </div>
-                    </div>
-                    <div class="col-6">
                         <div class="form-group">  
-                            <label for="attachment">Tanggal Revisi</label>
-                                <input type = "date" class = "form-control" name ="revision_date" value="revision_date" id="revision_date" >
+                            <label for="categories_id">Kategori Artikel</label>
+                            <select class="form-control" name="categories_id">
+                                <option value="7d39914b-b5df-4280-8afb-ffdc44d04def">CEO'S Letter</option>
+                                <option value="9aa7a467-f2cb-4fef-b600-269d1e0e1eae">Serba-Serbi</option>
+                                <option value="acfda27e-ca46-4353-9eb3-d10cb25b9d10">Event Promotion</option>
+                                <option value="73f6ac4e-983f-4437-be56-559aa74d6793">Risk Profile</option>
+                                <option value="8a614479-1438-411b-85da-fa620ec86e0a">Pamflet Audit</option>
+                                <option value="6c5698bf-0082-4fb6-93c0-d2acb9d912da">Jurnal</option>
+                                <option value="48229044-330b-408a-a992-2e92170fd9d0">Komunitas</option>
+                                <option value="f4d1be27-4c62-4e87-bb25-b5cffc54b5ba">SS/QCC/QCP</option>
+                              </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi Singkat', 
+                            'required' => true, 
+                            'maxlength' => '100', 'minlength' => '50']); ?>
                         </div>
 
                         <div class="form-group">  
-                            <label for="archive_category_id">Kategori Arsip</label>
-                            <select class="form-control" name="archive_category_id">
-                                <option value="07e87826-723d-4484-bd9a-53f7b9aa29fe">Blast</option>
-                                <option value="07e87826-723d-4484-bd9a-53f7b9aa29fe">Draft</option> 
-                                <option value="88a508cd-8507-42cf-b4df-b9b21e5b27e3">Obsolete</option>
-                            </select>
+                            <label for="content">Content</label>
+                            <textarea class ="tinymce" name ="content" id ="content"></textarea>
                         </div>
-                        
+
                         <div class="pull-right">
                             <input type="submit" value="Save" class="btn btn-success" id="btn_save">
                             <input type="submit" value="Update" class="btn btn-success" id="btn_update">
@@ -204,21 +217,23 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-    var archives = <?= $jsonArchives; ?>;
+    var articles = <?= $jsonArticles; ?>;
     $("button").click(function(e) {
         var id = this.id;
-        for(var i=0;i<archives.length;i++) {
-            if(id == archives[i].id) {
-                $("input#id").val(archives[i].id);
-                $("input#historical_revision_number").val(archives[i].historical_revision_number);
-                $("input#doc_name").val(archives[i].doc_name);
-                $("input#process_owner").val(archives[i].process_owner);
-                $("input#archive_category_id").val(archives[i].archive_category_id);
-                $('#form').attr('action','archives/add/'+id);
+        for(var i=0;i<articles.length;i++) {
+            if(id == articles[i].id) {
+                console.log(articles[i].categories_id);
+                $("input#id").val(articles[i].id);
+                $("input#title").val(articles[i].title);
+                $("input#created").val(articles[i].created);
+                $("input#categories_id").val(articles[i].categories_id);
+                $("input#description").val(articles[i].description);
+                $(tinymce.get('content').setContent(articles[i].content));
+                $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
                 $('#btn_save').hide() 
-                $('#title_form').text('Update Arsip')
+                $('#title_form').text('Update Artikel')
                 $('html, body').animate({
                   scrollTop: $("form.form").offset().top
                 }, 1000)
@@ -230,13 +245,13 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
-        $('#title_form').text('Tambah Arsip');
+        $('#title_form').text('Tambah Artikel');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')
         .val('')
         .removeAttr('checked')
         .removeAttr('selected');
-        $('#form').attr('action','archives/add/');
+        $('#form').attr('action','articles/add/');
     });
 }); 
 </script>
