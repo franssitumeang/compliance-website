@@ -65,8 +65,8 @@
                                             <td class="revision_date" value=<?= $archive->revision_date; ?>>
                                                 <?= $archive->revision_date; ?>
                                             </td>
-                                            <td class="archive_category_id" value=<?= $article->archive_category_id; ?>>
-                                                <?= $article->archive_category->archive_category_id; ?>
+                                            <td class="archive_category_id" value=<?= $archive->archive_category_id; ?>>
+                                                <?= $archive->archive_category->archive_category_id; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
