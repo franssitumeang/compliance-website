@@ -65,8 +65,8 @@
                                             <td class="revision_date" value=<?= $archive->revision_date; ?>>
                                                 <?= $archive->revision_date; ?>
                                             </td>
-                                            <td class="archive_category_id" value=<?= $article->archive_category_id; ?>>
-                                                <?= $article->archive_category->archive_category_id; ?>
+                                            <td class="archive_category_id" value=<?= $archive->archive_category_id; ?>>
+                                                <?= $archive->archive_category->name_categories; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
@@ -153,6 +153,7 @@
                         <div class="form-group">
                             <label for="historical_revision_number">Histori Nomor Revisi</label>
                             <?= $this->Form->control('historical_revision_number', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Histori Nomor Revisi', 
+                            'id' => 'historical_revision_number',
                             'required' => true, 
                             'maxlength' => '20']); ?>
                         </div>
@@ -160,6 +161,7 @@
                         <div class="form-group">
                             <label for="doc_name">Nama Dokumen</label>
                             <?= $this->Form->control('doc_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama Dokumen', 
+                            'id' => 'doc_name',
                             'required' => true, 
                             'maxlength' => '36']); ?>
                         </div>
@@ -167,6 +169,7 @@
                         <div class="form-group">
                             <label for="process_owner">Pemilik Proses</label>
                             <?= $this->Form->control('process_owner', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Pemilik Proses', 
+                            'id' => 'process_owner',
                             'required' => true, 
                             'maxlength' => '10']); ?>
                         </div>
@@ -174,7 +177,7 @@
                     <div class="col-6">
                         <div class="form-group">  
                             <label for="attachment">Tanggal Revisi</label>
-                                <input type = "date" class = "form-control" name ="revision_date" value="revision_date" id="revision_date" >
+                                <input id="revision_date" type = "date" class = "form-control" name ="revision_date" value="revision_date" id="revision_date" >
                         </div>
 
                         <div class="form-group">  
@@ -214,6 +217,7 @@ $(document).ready(function(){
                 $("input#doc_name").val(archives[i].doc_name);
                 $("input#process_owner").val(archives[i].process_owner);
                 $("input#archive_category_id").val(archives[i].archive_category_id);
+                $("input#revision_date").val(archives[i].revision_date);
                 $('#form').attr('action','archives/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()

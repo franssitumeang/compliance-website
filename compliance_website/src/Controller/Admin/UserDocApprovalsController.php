@@ -45,5 +45,11 @@ class UserDocApprovalsController extends AppController
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user_doc_approval');
     }
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 }
         

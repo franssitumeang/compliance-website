@@ -14,7 +14,7 @@ class EmailComponent extends Component{
 
     public function send_mail($to, $subject, $message)
     {
-        $sender = "suryasimorangkir24@gmail.com";
+        $sender = "suryasimorangkir16@gmail.com";
         $header = "X-Mailer:PHP/".phpversion() . "Return-Path:$sender";
 
         $mail = new PHPMailer();

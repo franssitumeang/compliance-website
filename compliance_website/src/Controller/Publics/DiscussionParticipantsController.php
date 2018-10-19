@@ -83,8 +83,12 @@ class DiscussionParticipantsController extends AppController{
         // $query = $userTable->find('all',[
         //     'conditions'=>['name LIKE'=>'%'.$keyword.'%'],
         // ]);
+    }
 
-
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
     }
 
 }

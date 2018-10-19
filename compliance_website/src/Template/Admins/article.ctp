@@ -41,11 +41,12 @@
                                     <th>Judul Artikel</th>
                                     <th>Tanggal Terbit</th>
                                     <th>Kategori Artikel</th>
+                                    <th>Deskripsi</th>
                                     <!-- <th>File Attach</th>
                                     <th>Isi Content</th> -->
                                     <th>Action</th>
                                 </thead>
-                                <tbody>
+                                <tbody> 
                                     <tr>
                                         <?php $i=1;?>
                                         <?php foreach ($articles as $article): ?>
@@ -60,6 +61,9 @@
                                             </td>
                                             <td class="categories_id" value=<?= $article->categories_id; ?>>
                                                 <?= $article->article_category->name_categories; ?>
+                                            </td>
+                                            <td class="description" value=<?= $article->description; ?>>
+                                                <?= $article->description; ?>
                                             </td>
                                             <td>
                                                 <?= $this->Form->button('<i class="fa fa-edit">', 
@@ -77,26 +81,7 @@
                                             </td>
                                         </tr>
 
-                                        <!-- Modal View -->
-                                        <div id="modalView-<?= $article->id; ?>" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="modalViewLongTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                <div class="modal-body">
-                                                        <?php echo $article->content?>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        
                                          <!-- Modal Delete -->
 
                                         <div id="myModal-<?= $article->id; ?>" class="modal fade">
@@ -119,7 +104,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>   
+                                            </div>       
                                         <?php $i++; ?>
                                         <?php endforeach;?>
                                 </tbody>
@@ -148,7 +133,7 @@
                         <a class="btn btn-light disabled"><i class="fa fa-chevron-right"></i></a>
                         <?php endif; ?>
                     </div>
-                    </div>
+                        </div>
                 </div>
             </div>                  
         </div>
@@ -182,10 +167,14 @@
                                 <option value="f4d1be27-4c62-4e87-bb25-b5cffc54b5ba">SS/QCC/QCP</option>
                               </select>
                         </div>
-                        <div class="form-group">  
-                            <label for="attachment">Upload File</label>
-                                <input type = "file" class = "form-control" name ="attachment" value="attachment" id="attachment" >
+
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <?= $this->Form->control('description', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Deskripsi Singkat', 
+                            'required' => true, 
+                            'maxlength' => '100', 'minlength' => '50']); ?>
                         </div>
+
                         <div class="form-group">  
                             <label for="content">Content</label>
                             <textarea class ="tinymce" name ="content" id ="content"></textarea>
@@ -202,18 +191,37 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
+
+<?php foreach($articles as $article): ?>
+<!-- Modal View -->
+<div id="modalView-<?= $article->id; ?>" class="modal fade" style="overflow: auto;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalViewLongTitle"><?php echo $article->title?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="word-wrap: break-word;">
+                    <?php echo $article->content; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+
 <script>
 $(document).ready(function(){
     $('#btn_update').hide()
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
-<<<<<<< HEAD
-    var articles = <?= $jsonArticles ?>;
-=======
     var articles = <?= $jsonArticles; ?>;
->>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<articles.length;i++) {
@@ -222,16 +230,9 @@ $(document).ready(function(){
                 $("input#id").val(articles[i].id);
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
-<<<<<<< HEAD
-                $("select#categories_id").val(articles[i].categories_id);
-                $("input#attachment").html(articles[i].attachment);
-                $(tinymce.get('content').setContent(articles[i].content));
-                // $("textarea#content").html(articles[i].content);
-=======
                 $("input#categories_id").val(articles[i].categories_id);
-                $("input#attachment").html(articles[i].attachment);
+                $("input#description").val(articles[i].description);
                 $(tinymce.get('content').setContent(articles[i].content));
->>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
                 $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
@@ -248,6 +249,7 @@ $(document).ready(function(){
         $('#btn_update').hide();
         $('#btn_cancel').hide();
         $('#btn_save').show();
+        $(tinymce.get('content').setContent(''));
         $('#title_form').text('Tambah Artikel');
         $(':input','#form')
         .not(':button, :submit, :reset, :hidden')
