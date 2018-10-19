@@ -42,9 +42,11 @@ class PublicsController extends AppController
     {
         $title = "Home";
         $this->set('title', $title);
+
         $articles = $this->paginate('Articles');
         $jsonArticles = json_encode($articles);
         $paginate = $this->Paginator->getPagingParams()["Articles"];
+       
         $this->set(compact('articles', 'paginate', 'jsonArticles'));
     }
 
