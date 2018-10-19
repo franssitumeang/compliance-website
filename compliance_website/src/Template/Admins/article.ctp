@@ -188,7 +188,7 @@
                         </div>
                         <div class="form-group">  
                             <label for="content">Content</label>
-                            <textarea class ="tinymce" name = "content" id = "content"></textarea>
+                            <textarea class ="tinymce" name ="content" id ="content"></textarea>
                         </div>
 
                         <div class="pull-right">
@@ -209,17 +209,29 @@ $(document).ready(function(){
     $('#btn_cancel').hide()
     $('[data-toggle="tooltip"]').tooltip();
     $('#form').bootstrapValidator();
+<<<<<<< HEAD
+    var articles = <?= $jsonArticles ?>;
+=======
     var articles = <?= $jsonArticles; ?>;
+>>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
     $("button").click(function(e) {
         var id = this.id;
         for(var i=0;i<articles.length;i++) {
             if(id == articles[i].id) {
+                console.log(articles[i].categories_id);
                 $("input#id").val(articles[i].id);
                 $("input#title").val(articles[i].title);
                 $("input#created").val(articles[i].created);
+<<<<<<< HEAD
+                $("select#categories_id").val(articles[i].categories_id);
+                $("input#attachment").html(articles[i].attachment);
+                $(tinymce.get('content').setContent(articles[i].content));
+                // $("textarea#content").html(articles[i].content);
+=======
                 $("input#categories_id").val(articles[i].categories_id);
                 $("input#attachment").html(articles[i].attachment);
                 $(tinymce.get('content').setContent(articles[i].content));
+>>>>>>> 6f81e4833d01e708669f4865283d899fbad36b36
                 $('#form').attr('action','articles/add/'+id);
                 $('#btn_update').show()
                 $('#btn_cancel').show()
