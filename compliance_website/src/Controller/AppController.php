@@ -17,6 +17,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application Controller
@@ -76,8 +77,10 @@ class AppController extends Controller
         $this->Auth->allow('index', 'view');
         $this->Auth->allow('index', 'view');
 
-        $this->set('authUser', $this->Auth->user());
-
+        $companiesTable = TableRegistry::get('Companies');
+        $headerCompanies = $companiesTable->find('all');
+        $authUser = $this->Auth->user();
+        $this->set(compact('authUser', 'headerCompanies'));
     }
 
 }
