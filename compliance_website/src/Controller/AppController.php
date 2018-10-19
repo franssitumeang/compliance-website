@@ -76,6 +76,8 @@ class AppController extends Controller
         $this->Auth->allow('index', 'view');
         $this->Auth->allow('index', 'view');
 
+        $this->set('authUser', $this->Auth->user());
+
     }
 
 }

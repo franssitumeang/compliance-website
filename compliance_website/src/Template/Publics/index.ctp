@@ -2,8 +2,8 @@
 <section class="banner-area">
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
-            <div class="col-lg-12 banner-content" style="bottom: -50px;">
-                <h6 class="text-white">WELCOME TO</h6>
+            <div class="col-lg-12 banner-content" style="bottom: -70px;">
+                <h6 class="text-white">Selamat Datang</h6>
 
                 <h1 class="text-white">WAHANA ARTHA GROUP</h1>
                 <p class="text-white">
@@ -205,7 +205,7 @@
             };
         }
 
-    var articles = <?= $jsonArticles; ?>;
+    var articles = <?= $jsonArticles ?>;
     for(var i=0;i<articles.length;i++) {
         var string = (articles[i].content);
         var elem= document.createElement("div");

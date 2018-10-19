@@ -74,8 +74,21 @@
             <div class="row align-items-center justify-content-center d-flex">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
 
+                       
+                        <li class="menu-has-children"><a href="#">Pengajuan SOP</a>
+                            <ul>
+                                <li><a href="/publics/user-request/">Daftar Pengajuan OP</a></li>
+                                <li><a href="/publics/user-request/add">Buat pengajuan OP</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children"><a href="#">Pendaftaran Quiz</a>
+                            <ul>
+                                <li><a href="blog-home.html">QYPO</a></li>
+                                <li><a href="blog-home.html">The Comment</a></li>
+                            </ul>
+                        </li>
                         <li class="menu-has-children"><a href="#">Perusahaan</a>
                             <ul>
                                 <li class="menu-has-children"><a href="#">PT Wahana Artha Harsaka</a>
@@ -166,17 +179,6 @@
 
                         <li class="menu-has-children"><a href="#">Profil Perusahaan</a></li>
 
-                        <li class="menu-has-children"><a href="#">Pengajuan SOP</a>
-                            <ul>
-                                <li><a href="#">Monitoring Approval SOP</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-children"><a href="#">Pendaftaran Quiz</a>
-                            <ul>
-                                <li><a href="blog-home.html">QYPO</a></li>
-                                <li><a href="blog-home.html">The Comment</a></li>
-                            </ul>
-                        </li>
                         <li class="menu-has-children"><a href="#">Dokumen Perusahaan</a>
                             <ul>
                                 <li><a href="#">Policy & Procedure</a></li>
@@ -189,13 +191,19 @@
                         </li>
 
                         <li><a href="#">Forum Diskusi</a></li>
-                        <li><a href="#">Login</a></li>
+                        <?php if (!$authUser): ?>
+                        <li><a href="/login">Login</a></li>
+                        <?php endif; ?>
+                        <?php if ($authUser): ?>
                         <li class="menu-has-children"><a href="#">Profile</a>
-                            <ul>
+                            <ul>                                
+                                <li><a href="#">Hello, <?= $authUser['name'];?></a></li>
                                 <li><a href="#">Change Password</a></li>
-                                <li><a href="#">Logout</a></li>
+
+                                <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
