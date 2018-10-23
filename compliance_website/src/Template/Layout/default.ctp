@@ -107,7 +107,7 @@
                             </ul>
                         </li>
 
-                        <li class="menu-has-children"><a href="#">Profil</a></li>
+                        <li class="menu-has-children"><a href="/profile">Profil</a></li>
 
                         <li class="menu-has-children"><a href="#">Dokumen Perusahaan</a>
                             <ul>

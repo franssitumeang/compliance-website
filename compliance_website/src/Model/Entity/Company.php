@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property string $id
  * @property string $company_code
  * @property string $company_name
+ * @property string $parent_id
  * @property string $address_1
  * @property string $address_2
  * @property string $phone_num
@@ -35,6 +36,7 @@ class Company extends Entity
     protected $_accessible = [
         'company_code' => true,
         'company_name' => true,
+        'parent_id' => true,
         'address_1' => true,
         'address_2' => true,
         'phone_num' => true,

@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Companies Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $ParentCompanies
+ * @property |\Cake\ORM\Association\HasMany $ChildCompanies
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\HasMany $Departments
  *
  * @method \App\Model\Entity\Company get($primaryKey, $options = [])
@@ -41,6 +43,14 @@ class CompaniesTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('ParentCompanies', [
+            'className' => 'Companies',
+            'foreignKey' => 'parent_id'
+        ]);
+        $this->hasMany('ChildCompanies', [
+            'className' => 'Companies',
+            'foreignKey' => 'parent_id'
+        ]);
         $this->hasMany('Departments', [
             'foreignKey' => 'company_id'
         ]);
@@ -103,5 +113,19 @@ class CompaniesTable extends Table
             ->allowEmpty('website');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['parent_id'], 'ParentCompanies'));
+
+        return $rules;
     }
 }
