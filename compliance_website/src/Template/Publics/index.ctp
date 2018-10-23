@@ -2,8 +2,8 @@
 <section class="banner-area">
     <div class="container">
         <div class="row fullscreen align-items-center justify-content-between">
-            <div class="col-lg-12 banner-content" style="bottom: -50px;">
-                <h6 class="text-white">WELCOME TO</h6>
+            <div class="col-lg-12 banner-content" style="bottom: -70px;">
+                <h6 class="text-white">Selamat Datang</h6>
 
                 <h1 class="text-white">WAHANA ARTHA GROUP</h1>
                 <p class="text-white">
@@ -16,46 +16,15 @@
                 <div id="thumbnail-slider" style="top: 15px;">
                     <div class="inner">
                         <ul>
+                            <?php foreach ($articles as $article): ?>
                             <li>
-                                <a href="/">
-                                    <div class="thumb" style="background-image:url(https://amazingpict.com/wp-content/uploads/2014/01/Honda-CBR-600RR-HD-Wallpaper-for-Gadgets.jpg)">
-                                        <h3>Links to the Homepage</h3>
-                                        This slide demonstrates how to link the thumbnail image to another web page.
-                                    </div>
+                                <a class="thumb" id="img_<?= $article->id; ?>" href="publics/articles/view/<?= $article->id; ?>">
+                                    <h3><?= $article->title; ?></h3>
+                                    <p><?= $article->description; ?><p>
                                 </a>
                             </li>
-                            <li>
-                                <a class="thumb" href="http://naikmotor.com/wp-content/uploads/2016/07/Wahana_Honda_Jakarta_fair_2016.jpg">
-                                    <h3>Pellentesque at Felis</h3>
-                                    Nulla porttitor fringilla dui vel pulvinar. Nam sodales, diam eu faucibus
-                                    convallis.
-                                </a>
-                            </li>
-                            <li>
-                                <a class="thumb" href="http://naikmotor.com/wp-content/uploads/2016/07/Wahana_Honda_Jakarta_fair_2016.jpg">
-                                    <h3>Condimentum Posuere</h3>
-                                    Sed tincidunt mi ut ligula rutrum dictum. Nam varius in nunc eget viverra.
-                                </a>
-                            </li>
-                            <li>
-                                <a class="thumb" href="http://naikmotor.com/wp-content/uploads/2016/07/Wahana_Honda_Jakarta_fair_2016.jpg">
-                                    <h3>Lorem Ipsum</h3>
-                                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                                </a>
-                            </li>
-                            <li>
-                                <a class="thumb" href="https://amazingpict.com/wp-content/uploads/2014/01/Honda-CBR-600RR-HD-Wallpaper-for-Gadgets.jpg">
-                                    <h3>Mauris Suscipit</h3>
-                                    Quisque luctus, dui nec condimentum interdum et sodales nulla ante at nunc.
-                                </a>
-                            </li>
-                            <li>
-                                <a class="thumb" href="http://naikmotor.com/wp-content/uploads/2016/07/Wahana_Honda_Jakarta_fair_2016.jpg">
-                                    <h3>Felis at Volutpat</h3>
-                                    Maecenas volutpat accumsan nibh ut gravida. Praesent id laoreet libero. Felis at
-                                    volutpat egestas.
-                                </a>
-                            </li>
+                            <?php endforeach;?>
+                            
                             <li>
                                 <a class="thumb" href="https://amazingpict.com/wp-content/uploads/2014/01/Honda-CBR-600RR-HD-Wallpaper-for-Gadgets.jpg">
                                     <h3>Quisque Quam Eros</h3>
@@ -94,6 +63,7 @@
                                     At gravida nunc condimentum id. Morbi gravida accumsan mauris at scelerisque
                                 </a>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -226,14 +196,29 @@
         for (var i = 0; i < slides.length; i++) {
             slides[i].onmouseover = function (e) {
                 var li = this;
-                if (li.thumb) {
+                if (li.
+                thumb) {
                     var content = "<div class='tip-wrap' style='background-image:url(" + li.thumbSrc +
                         ");'><div class='tip-text'>" + li.thumb.innerHTML + "</div></div>";
                     tooltip.pop(li, content);
                 }
             };
         }
+
+    var articles = <?= $jsonArticles ?>;
+    for(var i=0;i<articles.length;i++) {
+        var string = (articles[i].content);
+        var elem= document.createElement("div");
+        elem.innerHTML = string;
+
+        var images = elem.getElementsByTagName("img")[0];
+        console.log(images.src);
+        $("#img_"+articles[i].id).attr('href',images.src);
+    }
+    
     });
 
 </script>
+
+
 <!-- End menu-area Area -->

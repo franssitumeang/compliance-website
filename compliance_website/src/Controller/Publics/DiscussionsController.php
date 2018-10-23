@@ -5,7 +5,8 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 
-class DiscussionsController extends AppController{
+class DiscussionsController extends AppController
+{
 
 
     public function initialize()
@@ -16,41 +17,42 @@ class DiscussionsController extends AppController{
         $this->loadModel('DiscussionParticipants');
     }
 
-    public function index($id=null){
+    public function index($id = null)
+    {
         $title = "List Discussions";
         $this->set('title', $title);
         $this->paginate = [
-            'contain' => ['UserRequestDetails','DiscussionParticipants']
+            'contain' => ['UserRequestDetails', 'DiscussionParticipants']
         ];
         $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
         $discussionParticipantsTable = TableRegistry::get('DiscussionParticipants');
         $usersTable = TableRegistry::get('Users');
         $discussions = $this->Discussions->find('all', [
             'conditions' => ['Discussions.user_request_detail_id' => $id],
-            'contain' => ['UserRequestDetails', 'DiscussionParticipants'=>['Users']]
+            'contain' => ['UserRequestDetails', 'DiscussionParticipants' => ['Users']]
         ]);
         $discussionParticipants = $discussionParticipantsTable->find('all', [
             'conditions' => ['DiscussionParticipants.user_request_header_id' => $id],
             'contain' => ['Users']
         ]);
-        
+
         $title = "Diskusi";
         $this->set('title', $title);
         $discussions = $this->paginate($discussions);
         $discussion = $this->Discussions->newEntity();
         $paginate = $this->Paginator->getPagingParams()["Discussions"];
         $userRequestDetails = $userRequestDetailsTable->get($id, [
-            'contain' => ['UserRequestHeaders'=>['Users'=>['Departments']]]
+            'contain' => ['UserRequestHeaders' => ['Users' => ['Departments']]]
         ]);
-        
-        $this->set(compact('discussions','discussion','paginate', 'userRequestDetails','discussionParticipants','users'));
+
+        $this->set(compact('discussions', 'discussion', 'paginate', 'userRequestDetails', 'discussionParticipants', 'users'));
         $this->viewBuilder()->templatePath('Publics/Discussions');
     }
 
     public function view($id = null)
     {
         $discussion = $this->Discussions->get($id, [
-            'contain' => ['UserRequestDetails','DiscussionParticipants']
+            'contain' => ['UserRequestDetails', 'DiscussionParticipants']
         ]);
 
         $this->set('discussion', $discussion);
@@ -76,11 +78,61 @@ class DiscussionsController extends AppController{
     public function getDepartmentRequest($id = null)
     {
         $usersTable = TableRegistry::get('Users');
-        $users = $usersTable->find('all',[
-            'contain' =>['Departments'=>['Companies']],
+        $users = $usersTable->find('all', [
+            'contain' => ['Departments' => ['Companies']],
             'conditions' => ['Users.department_id' => $id],
         ]);
     }
+
+    public function approveDocument($id)
+    {
+        $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
+        if ($this->request->is('post')) {
+            $userRequestDetail = $userRequestDetailsTable->get($this->request->getData()['id']);
+            $userRequestDetail->approve_m = 'ACCEPTED';
+            $userRequestDetail->approve_c = 'ACCEPTED';
+
+            if ($userRequestDetailsTable->save($userRequestDetail)) {
+                $this->Flash->msg_success(__('Dokumen berhasil di approve.'));
+            } else {
+                $this->Flash->msg_error(__('Dokumen gagal di approve.'));
+            }
+        } else {
+            $this->Flash->msg_error(__('Methodnya salah.'));
+        }
+
+        return $this->redirect(['controller'=> 'UserRequestDetails', 'action'=> 'index', $id]);
+
+    }
+
+    public function rejectDocument($id)
+    {
+        $userRequestDetailsTable = TableRegistry::get('UserRequestDetails');
+        if ($this->request->is('post')) {
+            $userRequestDetail = $userRequestDetailsTable->get($this->request->getData()['id']);
+
+            $userRequestDetail->approve_m = 'REJECTED';
+            $userRequestDetail->approve_c = 'REJECTED';
+
+            if ($userRequestDetailsTable->save($userRequestDetail)) {
+                $this->Flash->msg_success(__('Dokumen berhasil di reject.'));
+            } else {
+                $this->Flash->msg_error(__('Dokumen gagal di reject.'));
+            }
+        } else {
+            $this->Flash->msg_error(__('Methodnya salah.'));
+        }
+
+        return $this->redirect(['controller'=> 'UserRequestDetails', 'action'=> 'index', $id]);
+    }
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
+
+    
 }
 
 ?>

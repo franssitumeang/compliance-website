@@ -47,6 +47,12 @@ class UserRequestHeadersController extends AppController
         $this->render('user_request_header');
     }
 
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
    
 }
         

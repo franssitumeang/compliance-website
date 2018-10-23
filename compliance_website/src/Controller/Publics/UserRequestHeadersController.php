@@ -70,14 +70,21 @@ class UserRequestHeadersController extends AppController
             $datas = $this->request->getData();
             $userRequestHeader->user_doc_category_id = $datas['user_doc_category_id'];
             $userRequestHeader->user_doc_type_id = $datas['user_doc_type_id'];
-            $userRequestHeader->user_id = $datas['user_id'];
+            $userRequestHeader->user_id = $this->Auth->user('id');
             $userRequestHeader->user_request_reason_id = $datas['user_request_reason_id'];
             $userRequestHeader->doc_title = $datas['doc_title'];
             $userRequestHeader->doc_no = $datas['doc_no'];
 
+
+            
+
             if ($this->UserRequestHeaders->save($userRequestHeader)) {
+
+                $doc_version = ($UserRequestDetail->findAllByUserRequestHeaderId($userRequestHeader->id))->count();
+
                 $attachment = $datas['file_attachment'];
                 $attachment['doc_title'] = $datas['doc_title'];
+                $attachment['doc_version'] = $doc_version;
                 $filename = $this->request->data['file_attachment']['name'];
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -97,9 +104,6 @@ class UserRequestHeadersController extends AppController
         
         }
 
-        $users = $this->UserRequestHeaders->Users->find('all', array(
-            'fields' => array('Users.id', 'Users.name')
-        ));
         $UserDocCategories = $this->UserRequestHeaders->UserDocCategories->find('all', array(
             'fields' => array('UserDocCategories.id', 'UserDocCategories.category_name')
         ));
@@ -114,7 +118,7 @@ class UserRequestHeadersController extends AppController
         ));
 
 
-        $this->set(compact('userRequestHeader', 'UserDocCategories', 'users', 'UserRequestReasons', 'title', 'UserDocTypes'));
+        $this->set(compact('userRequestHeader', 'UserDocCategories', 'UserRequestReasons', 'title', 'UserDocTypes'));
 
         $this->viewBuilder()->templatePath('Publics/UserRequestHeaders');
         $this->render('add');
@@ -147,6 +151,11 @@ class UserRequestHeadersController extends AppController
         $this->render('index');
     }
 
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 
 }
         

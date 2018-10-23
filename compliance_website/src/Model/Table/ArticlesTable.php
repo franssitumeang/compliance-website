@@ -71,9 +71,10 @@ class ArticlesTable extends Table
             ->notEmpty('content');
 
         $validator
-            ->scalar('attachment')
-            ->maxLength('attachment', 225)
-            ->allowEmpty('attachment');
+            ->scalar('description')
+            ->maxLength('description', 100)
+            ->requirePresence('description', 'create')
+            ->notEmpty('description');
 
         return $validator;
     }

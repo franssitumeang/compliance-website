@@ -166,7 +166,6 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -181,6 +180,11 @@
                                             <label for="name">Nama Lengkap</label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap"
                                             required maxlength="50">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                                            required maxlength="100">
                                         </div>
                                         <div class="form-group">
                                             <label>Jabatan</label>
@@ -203,34 +207,6 @@
                                                 <option value="" disabled selected>-- Pilih Departemen --</option>
                                             </select>
                                         </div>
-=======
-                </div>
-            </div>
-            <div class="col-lg-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" id="title_form">Tambah Perusahan</h5>
-                        <?= $this->Form->create($user,['class'=>'form','id'=>'form','url'=>['action'=>'add'],
-                        'data-bv-feedbackicons-valid'=>'fa fa-check',
-                        'data-bv-feedbackicons-invalid'=>'fa fa-warning',
-                        'data-bv-feedbackicons-validating'=>'fa fa-spinner']) ?>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="name">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" required
-                                    maxlength="50">
-                                </div>
-                                <div class="form-group">
-                                    <label>Jabatan</label>
-                                    <div class="input-group col-xs-12">
-                                        <select class="form-control" name="position_id" id="position_id" required>
-                                            <option value="" disabled selected>-- Pilih Jabatan --</option>
-                                            <?php foreach ($positions as $p): ?>
-                                            <option value="<?=$p->id?>"><?=$p->name?></option>
-                                            <?php endforeach; ?>
-                                        </select>
->>>>>>> 9625e1d9a9e2645782a88d68aeb71f301ff2078e
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -308,6 +284,7 @@
                                 $("#name").val(users[i].name);
                                 $("#phone_num").val(users[i].phone_num);
                                 $("#email").val(users[i].email);
+                                $("#password").val(users[i].password);
                                 $("#title_form").text("Update User");
                                 $('#form').attr('action', 'users/add/' + id);
                                 $('html, body').animate({

@@ -36,15 +36,17 @@
                         <div class="col-lg-8 posts-list">
                             <div class="row">
                                 <div class="col-lg-12 mb-10 d-flex flex-row ">
-                                        <?php 
-                                            echo $this->Form->create($userRequestDetails, ['Discussions' => ['action' => 'approve']]);
-                                            echo $this->Form->button(__('Approve'), ['class' => 'genric-btn primary medium']); 
-                                            echo $this->Form->end();    
-                                        ?> 
-                                        <?php 
-                                            echo $this->Form->create($userRequestDetails, ['Discussions' => ['action' => 'reject']]);
-                                            echo $this->Form->button(__('Reject'), ['class' => 'genric-btn primary medium']); 
-                                            echo $this->Form->end();    
+                                    <?php 
+                                        echo $this->Form->create($userRequestDetails, ['type' => 'post', 'url' => ['action' => 'approveDocument', $userRequestDetails->user_request_header_id]]);
+                                        echo $this->Form->hidden('id'); 
+                                        echo $this->Form->button(__('Approve'), ['class' => 'genric-btn primary medium']); 
+                                        echo $this->Form->end();    
+                                        ?>
+                                    <?php 
+                                        echo $this->Form->create($userRequestDetails, ['type' => 'post', 'url' => ['action' => 'rejectDocument', $userRequestDetails->user_request_header_id]]);
+                                        echo $this->Form->hidden('id');
+                                        echo $this->Form->button(__('Reject'), ['class' => 'genric-btn primary medium']); 
+                                        echo $this->Form->end();    
                                         ?>
 
 
@@ -71,10 +73,14 @@
                                             <div class="single-comment justify-content-between d-flex">
                                                 <div class="user justify-content-between d-flex">
                                                     <div class="desc">
-                                                        <h5><a href="#"><?=$d->discussion_paticipant->user->name?></a></h5>
-                                                        <p class="date" style="margin-bottom: 0px;"><?=$d->created?> </p>
+                                                        <h5><a href="#">
+                                                                <?=$d->discussion_paticipant->user->name?></a></h5>
+                                                        <p class="date" style="margin-bottom: 0px;">
+                                                            <?=$d->created?>
+                                                        </p>
                                                         <p class="comment">
-                                                        <?=$d->contents?></p>
+                                                            <?=$d->contents?>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,16 +88,16 @@
                                         <?php $i+=1; ?>
                                         <?php endforeach; ?>
                                         <div class="comment-list" style="
-                                        padding-bottom: 0px;
-                                        ">
+                                            padding-bottom: 0px;
+                                            ">
                                             <div class="single-comment justify-content-between d-flex">
                                                 <div class="user justify-content-between d-flex">
 
                                                     <div class="desc">
                                                         <h5><a href="#">Emilly Blunt</a></h5>
                                                         <p class="date" style="
-                                                    margin-bottom: 0px;
-                                                    ">December
+                                                        margin-bottom: 0px;
+                                                        ">December
                                                             4,
                                                             2017 at 3:12 pm </p>
                                                         <p class="comment">
@@ -99,7 +105,6 @@
                                                         </p>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>

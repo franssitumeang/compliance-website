@@ -74,101 +74,13 @@
             <div class="row align-items-center justify-content-center d-flex">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
 
-                        <li class="menu-has-children"><a href="#">Perusahaan</a>
-                            <ul>
-                                <li class="menu-has-children"><a href="#">PT Wahana Artha Harsaka</a>
-                                    <ul>
-                                        <li><a href="#">Peraturan Perusahaan PT WAH</a></li>
-                                        <li><a href="#">Prosedur PT WAH</a></li>
-                                        <li><a href="#">SK-Dir PT WAH</a></li>
-                                        <li><a href="#">Struktur Organisasi PT WAH</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Wahana Makmur Sejati</a>
-                                    <ul>
-                                        <li><a href="#">Peraturan Perusahaan PT WMS</a></li>
-                                        <li><a href="#">Prosedur PT WMS</a></li>
-                                        <li><a href="#">SK-Dir PT WMS</a></li>
-                                        <li><a href="#">Struktur Organisasi PT WMS</a></li>
-                                        <li><a href="#">Tabel Proses Approval PT WMS</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Wahana Artha Ritelindo</a>
-                                    <ul>
-                                        <li><a href="#">Peraturan Perusahaan PT WARI</a></li>
-                                        <li><a href="#">Prosedur PT WARI</a></li>
-                                        <li><a href="#">SK-Dir PT WARI</a></li>
-                                        <li><a href="#">Struktur Organisasi PT WARI</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Tristar Trasindo</a>
-                                    <ul>
-                                        <li><a href="#">Peraturan Perusahaan PT TST</a></li>
-                                        <li><a href="#">Prosedur PT TST</a></li>
-                                        <li><a href="#">SK-Dir PT TST</a></li>
-                                        <li><a href="#">Struktur Organisasi PT TST</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Wahana Kalyanamitra Mahardika</a>
-                                    <ul>
-                                        <li><a href="#">Peraturan Perusahaan PT WKM</a></li>
-                                        <li><a href="#">Prosedur PT WKM</a></li>
-                                        <li><a href="#">SK-Dir PT WKM</a></li>
-                                        <li><a href="#">Struktur Organisasi PT WKM</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Wahana Artha Motorental</a>
-                                    <ul>
-                                        <li><a href="#">Peraturan Perusahaan PT WAMO</a></li>
-                                        <li><a href="#">Prosedur PT WAMO</a></li>
-                                        <li><a href="#">SK-Dir PT WAMO</a></li>
-                                        <li><a href="#">Struktur Organisasi PT WAMO</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Sahari Multi Investama</a>
-                                    <ul>
-                                        <li><a href="#">Struktur Organisasi PT SMI</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Graha Sahari Multitalenta</a>
-                                    <ul>
-                                        <li><a href="#">Struktur Organisasi PT GSM (GSTA)</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Kyochon Indonesia</a>
-                                    <ul>
-                                        <li><a href="#">Prosedur PT KI</a></li>
-                                        <li><a href="#">Struktur Organisasi PT KI</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Multiusaha Sejahtera Bersama</a>
-                                    <ul>
-                                        <li><a href="#">Prosedur PT MSB</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">Yayasan Wahana Artha</a>
-                                    <ul>
-                                        <li><a href="#">SK Ketua Yayasan Wahana Artha</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-has-children"><a href="#">PT Sahari Raya Investama</a>
-                                    <ul>
-                                        <li><a href="#">Prosedur PT SRI</a></li>
-                                        <li><a href="#">Struktur Organisasi PT SRI</a></li>
-                                        <li><a href="#">SK-Dir PT WAMO</a></li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="menu-has-children"><a href="#">Profil Perusahaan</a></li>
-
+                       
                         <li class="menu-has-children"><a href="#">Pengajuan SOP</a>
                             <ul>
-                                <li><a href="#">Monitoring Approval SOP</a></li>
+                                <li><a href="/publics/user-request/">Daftar Pengajuan OP</a></li>
+                                <li><a href="/publics/user-request/add">Buat pengajuan OP</a></li>
                             </ul>
                         </li>
                         <li class="menu-has-children"><a href="#">Pendaftaran Quiz</a>
@@ -177,6 +89,26 @@
                                 <li><a href="blog-home.html">The Comment</a></li>
                             </ul>
                         </li>
+                        <li class="menu-has-children"><a href="#">Perusahaan</a>
+                            <ul>
+                                <?php foreach($headerCompanies as $perusahaan): ?>
+                                <li class="menu-has-children"><a href="#"><?= $perusahaan->company_name ?></a>
+                                    <ul>
+                                        <li><a href="#">Peraturan Perusahaan PT WAH</a></li>
+                                        <li><a href="#">Prosedur PT WAH</a></li>
+                                        <li><a href="#">SK-Dir PT WAH</a></li>
+                                        <li><a href="#">Struktur Organisasi PT WAH</a></li>
+                                    </ul>
+                                </li>
+                                <?php endforeach;?>
+
+                                
+
+                            </ul>
+                        </li>
+
+                        <li class="menu-has-children"><a href="#">Profil</a></li>
+
                         <li class="menu-has-children"><a href="#">Dokumen Perusahaan</a>
                             <ul>
                                 <li><a href="#">Policy & Procedure</a></li>
@@ -189,13 +121,19 @@
                         </li>
 
                         <li><a href="#">Forum Diskusi</a></li>
-                        <li><a href="#">Login</a></li>
+                        <?php if (!$authUser): ?>
+                        <li><a href="/login">Login</a></li>
+                        <?php endif; ?>
+                        <?php if ($authUser): ?>
                         <li class="menu-has-children"><a href="#">Profile</a>
-                            <ul>
+                            <ul>                                
+                                <li><a href="#">Hello, <?= $authUser['name'];?></a></li>
                                 <li><a href="#">Change Password</a></li>
-                                <li><a href="#">Logout</a></li>
+
+                                <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
