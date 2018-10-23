@@ -62,6 +62,7 @@ class ArchivesController extends AppController{
         }
         if ($this->request->is('post')) {
             $archive = $this->Archives->patchEntity($archive, $this->request->getData());
+            $archive->attachment_dir = 'files/documents/archives/attachment/';
             if ($this->Archives->save($archive)) {
                 $this->Flash->success(__('The archive has been saved.'));
             }else{

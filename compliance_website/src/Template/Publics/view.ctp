@@ -17,7 +17,7 @@
             <hr>
 
             <p>Ditulis Pada <?= $article->created; ?></p>
-            
+                
             <hr>
 
             <?= $article->content; ?>
