@@ -125,6 +125,14 @@ class DiscussionsController extends AppController
 
         return $this->redirect(['controller'=> 'UserRequestDetails', 'action'=> 'index', $id]);
     }
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
+
+    
 }
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -16,6 +17,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application Controller
@@ -37,6 +39,9 @@ class AppController extends Controller
      *
      * @return void
      */
+    // public function beforeFilter(Event $event){
+    //     $this->Auth->allow(array('index', 'view', 'profile'));
+    // }
     public function initialize()
     {
         parent::initialize();
@@ -50,6 +55,34 @@ class AppController extends Controller
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
-        //$this->loadComponent('Security');
+        // $this->loadComponent('Security');
+
+
+        // $this->loadComponent('Auth', [
+        //     'authorize' => ['Controller'],
+        //     'authenticate' => [
+        //         'Form' => [
+        //             'fields' => [
+        //                 'username' => 'email',
+        //                 'password' => 'password'
+        //             ]
+        //         ]
+        //     ],
+        //     'loginAction' => [
+        //         'controller' => 'Publics',
+        //         'action' => 'login',
+        //         'prefix' => false
+        //     ],
+        //      //use isAuthorized in Controllers
+        //      // If unauthorized, return them to page they were just on
+        //     'unauthorizedRedirect' => $this->referer()
+        // ]);
+        
+
+        $companiesTable = TableRegistry::get('Companies');
+        $headerCompanies = $companiesTable->find('all');
+        // $authUser = $this->Auth->user();
+        $this->set(compact('headerCompanies'));
     }
+
 }

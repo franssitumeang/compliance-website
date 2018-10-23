@@ -26,23 +26,10 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>User</label>
-                            <div class="common-select" id="common-select">
-                                <select class="common-select form-control" name="user_id" required>
-                                    <option value="">Select user</option>
-                                    <?php foreach ($users as $user) : ?>
-                                    <option value=<?=$user->id ?>>
-                                        <?= $user->name ?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <p>Pengajuan Dokumen : </p>
                             <div class="common-select" id="common-select">
                                 <select class="common-select form-control" name="user_doc_type_id" required>
-                                    <option value="">Select Pengajuan Dokumen</option>
+                                    <option value="">Pilih Pengajuan Dokumen</option>
                                     <?php foreach ($UserDocTypes as $udt) : ?>
                                     <option value=<?=$udt->id ?>>
                                         <?= $udt->doc_type_name ?>
@@ -55,7 +42,7 @@
                             <p>Kategori</p>
                             <div class="common-select" id="common-select">
                                 <select class="common-select form-control" name="user_doc_category_id" required>
-                                    <option value="">Select Kategori</option>
+                                    <option value="">Pilih Kategori</option>
                                     <?php foreach ($UserDocCategories as $udc) : ?>
                                     <option value=<?=$udc->id ?>>
                                         <?= $udc->category_name ?>
@@ -68,7 +55,7 @@
                             <p>Alasan Pengajuan : </p>
                             <div class="common-select" id="common-select">
                                 <select class="common-select form-control" name="user_request_reason_id" required>
-                                    <option value="">Select Alasan Pengajuan</option>
+                                    <option value="">Pilih Alasan Pengajuan</option>
                                     <?php foreach ($UserRequestReasons as $urr) : ?>
                                     <option value=<?=$urr->id ?>>
                                         <?= $urr->reason_name ?>
@@ -77,22 +64,23 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Uraian Dokumen</label>
-                            <textarea name="descriptions" class="common-textarea form-control" style="min-height: 136px;"
-                                name="" placeholder="Enter Messege" required="" minlength="10"></textarea>
-                        </div>
                         <div class="form-group">
                             <p>Judul Dokumen</p>
                             <input name="doc_title" placeholder="Masukkan judul dokumen" class="common-input form-control"
                                 required="" type="text" required>
                         </div>
+
+                    </div>
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label class="control-label">Nomor Dokumen</label>
                             <input name="doc_no" placeholder="Masukkan nomor dokumen" class="common-input form-control"
                                 required="" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Uraian Dokumen</label>
+                            <textarea name="descriptions" class="common-textarea form-control" style="min-height: 136px;"
+                                name="" placeholder="Enter Messege" required="" minlength="10"></textarea>
                         </div>
                         <div class="form-group">
                             <p name="namepath">Pilih Dokumen</p>
@@ -117,7 +105,7 @@
                         <!-- <div class="alert-msg" style="text-align: left;"></div> -->
                         <button type="submit" class="genric-btn primary radius">Submit</button>
                         <button type="reset" class="genric-btn primary radius">Reset</button>
-                       <!-- <button> <?= $this->Html->link(__('sent'), ['action' => 'sent', $user->id]) ?></button> -->
+                        <!-- <button> <?= $this->Html->link(__('sent'), ['action' => 'sent', $user->id]) ?></button> -->
                     </div>
                 </div>
                 <?= $this->Form->end() ?>

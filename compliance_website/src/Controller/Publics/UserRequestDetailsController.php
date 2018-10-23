@@ -92,6 +92,12 @@ class UserRequestDetailsController extends AppController
         $this->viewBuilder()->templatePath('Publics/UserRequestDetails/');
     }
 
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
+
 
 }
 ?>

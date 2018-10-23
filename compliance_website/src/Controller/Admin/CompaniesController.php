@@ -10,7 +10,8 @@ class CompaniesController extends AppController{
         'limit' => 10,
         'order' => [
             'Companies.company_name' => 'asc'
-        ]
+        ],
+        'contain' => array('ParentCompanies')
     ];
 
     public function initialize()
@@ -33,7 +34,8 @@ class CompaniesController extends AppController{
                 'order' => [
                     'Companies.company_name' => 'asc'
                 ],
-                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
+                'contain' => array('ParentCompanies')
             ];
         }       
         $title = "Perusahaan";
@@ -74,5 +76,11 @@ class CompaniesController extends AppController{
             }
         }
         
+    }
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
     }
 }

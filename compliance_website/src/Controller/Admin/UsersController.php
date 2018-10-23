@@ -70,7 +70,7 @@ class UsersController extends AppController{
         }
         if ($this->request->is('post')) {
             $datas = $this->request->getData();
-            $user->password = "password";
+            $user->password = $datas['password'];
             $user->is_login = 0;
             $user->name = $datas['name'];
             $user->position_id = $datas['position_id'];
@@ -116,4 +116,12 @@ class UsersController extends AppController{
         $this->autoRender = false;
         // $this->set('_serialize',['data']);
     }
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
+
+
 }

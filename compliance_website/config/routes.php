@@ -28,7 +28,7 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::prefix('admin', function (RouteBuilder $routes) {
-    $routes->connect('/dashboards', ['controller' => 'Admins', 'action' => 'index',]);
+    $routes->connect('/ ', ['controller' => 'Admins', 'action' => 'index',]);
     $routes->connect('/companies', ['controller' => 'Companies', 'action' => 'index']);
     $routes->connect('/departments', ['controller' => 'Departments', 'action' => 'index']);
     $routes->connect('/groups', ['controller' => 'Groups', 'action' => 'index']);
@@ -67,7 +67,10 @@ Router::prefix('publics', function (RouteBuilder $routes) {
 });
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Publics', 'action' => 'index']);
-   
+    $routes->connect('/logout', ['controller' => 'Publics', 'action' => 'logout']);
+    $routes->connect('/login', ['controller' => 'Publics', 'action' => 'login']);
+    $routes->connect('/view', ['controller' => 'Publics', 'action' => 'view']);
+    $routes->connect('/profile', ['controller' => 'Publics', 'action' => 'profile']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::extensions('json', 'xml');

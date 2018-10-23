@@ -49,4 +49,11 @@ class UserDocumentsController extends AppController
         $this->viewBuilder()->templatePath('Admins');
         $this->render('user_document');
     }   
+
+
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 }

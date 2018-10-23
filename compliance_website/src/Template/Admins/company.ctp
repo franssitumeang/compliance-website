@@ -52,6 +52,9 @@
                       Nama Perusahaan
                     </th>
                     <th>
+                      Induk Perusahaan
+                    </th>
+                    <th>
                       Alamat 1
                     </th>
                     <th>
@@ -85,6 +88,13 @@
                     <td>
                       <?=$c->company_name?>
                     </td>
+                    <td>
+                      <?php if ($c->parent_id): ?>
+                        <?=$c->parent_company->company_name?>
+                      <?php else: ?>
+                          -
+                      <?php endif; ?>
+                  </td>
                     <td>
                       <?=$c->address_1?>
                     </td>
@@ -184,6 +194,17 @@
                   <label for="company_name">Nama Perusahaan</label>
                   <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Nama Perusahaan" required
                   maxlength="100">
+                </div>
+                <div class="form-group">
+                  <label>Induk Perusahaan</label>
+                  <div class="input-group col-xs-12">
+                      <select class="form-control" name="parent_id">
+                          <option value="" selected>-- PT Wahanaartha Harsaka --</option>
+                          <?php foreach ($companies as $c): ?>
+                          <option value="<?=$c->id?>"><?=$c->company_name?></option>
+                          <?php endforeach; ?>
+                      </select>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="address_1">Alamat 1</label>

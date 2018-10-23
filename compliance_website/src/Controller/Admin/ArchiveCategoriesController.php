@@ -85,4 +85,10 @@ class ArchiveCategoriesController extends AppController
             return $this->redirect(['action' => 'index']);
         }
     }
+
+
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 }

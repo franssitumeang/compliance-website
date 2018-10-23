@@ -45,9 +45,9 @@
                                             <label>Search By</label>
                                             <div class="input-group col-xs-12">
                                                 <select class="form-control" name="attribute">
-                                                    <option value="UserRequestHeader.created">Tanggal</option>
                                                     <option value="Users.name">Nama</option>
-                                                    <option value="UserRequestHeader.status"">Status</option>
+                                                    <option value="UserRequestHeaders.doc_title"">Judul Dokumen</option>
+                                                    <option value="UserRequestHeaders.status"">Status</option>
                                                 </select>
                                                 <span class="
                                                         input-group-append">

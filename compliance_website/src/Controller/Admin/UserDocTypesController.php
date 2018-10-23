@@ -75,4 +75,9 @@ class UserDocTypesController extends AppController
         }
     }
 
+    
+    // create your authentication here
+    public function isAuthorized($user) {
+        return true;
+    }
 }

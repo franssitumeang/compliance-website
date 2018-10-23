@@ -29,5 +29,10 @@ class ArticlesController extends AppController
         $this->viewBuilder()->templatePath('Publics');
         $this->render('view');
     }
+
+     // create your authentication here
+     public function isAuthorized($user) {
+        return true;
+    }
 }
 ?>
