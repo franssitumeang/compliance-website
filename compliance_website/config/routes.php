@@ -70,6 +70,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/logout', ['controller' => 'Publics', 'action' => 'logout']);
     $routes->connect('/login', ['controller' => 'Publics', 'action' => 'login']);
     $routes->connect('/view', ['controller' => 'Publics', 'action' => 'view']);
+    $routes->connect('/profile', ['controller' => 'Publics', 'action' => 'profile']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::extensions('json', 'xml');

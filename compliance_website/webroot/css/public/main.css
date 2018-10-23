@@ -4081,3 +4081,95 @@ body.mobile-nav-active #mobile-nav-toggle {
 .footer-text i {
     color: #f42f2c
 }
+
+.org_chart {
+    direction: rtl;
+  }
+  .org_chart .list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .org_chart .list:first-child > .item {
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .org_chart .list:first-child > .item:after, .org_chart .list:first-child > .item:before {
+    display: none;
+  }
+  .org_chart .item {
+    display: inline-block;
+    margin: 0 -0.2em;
+    position: relative;
+    vertical-align: top;
+    overflow: hidden;
+    font-size: 16px;
+  }
+  .org_chart .item:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1em;
+    left: 50%;
+    border-left: 1px solid #8d1e1c;
+  }
+  .org_chart .item:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top: 1px solid #8d1e1c;
+  }
+  .org_chart .item:first-child:after {
+    right: 50%;
+  }
+  .org_chart .item:last-child:after {
+    left: 50%;
+  }
+  .org_chart .item:only-child:after {
+    width: 0;
+  }
+  .org_chart .item .list:not(:empty):before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1em;
+    left: 50%;
+    bottom: 100%;
+    z-index: -1;
+    border-left: 1px solid #8d1e1c;
+  }
+  .org_chart .link {
+    display: inline-block;
+    position: relative;
+    padding: 0.5em 1.5em;
+    margin: 1em;
+    font: 1em "Vazir", sans-serif;
+    text-decoration: none;
+    border: 1px solid #8d1e1c;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+  .org_chart .link:hover, .org_chart .link:focus {
+    background-color: #8d1e1c;
+    border-radius: 0;
+    border-color: #e0f7fa;
+  }
+  .org_chart .link:hover .name, .org_chart .link:focus .name {
+    color: #fff;
+  }
+  .org_chart .link:hover .position, .org_chart .link:focus .position {
+    color: #e0f7fa;
+  }
+  .org_chart .name {
+    color: #8d1e1c;
+  }
+  .org_chart .position {
+    color: #8d1e1c;
+    font-size: 0.85em;
+  }
+  

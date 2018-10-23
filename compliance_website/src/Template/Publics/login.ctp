@@ -21,7 +21,7 @@
                 <?= $this->Form->create('User', ['class' => 'form-wrap', 'style' => 'padding: 40px;']) ?>
                 <h3 class="mb-30 text-center">LOGIN</h3>
                 <?= $this->Form->control('email', ['class' => 'form-control', 'placeholder'=>'ex : user@sample.com']) ?>
-                <?= $this->Form->control('password', ['class' => 'form-control', 'placeholder'=>'ex : user@sample.com']) ?>
+                <?= $this->Form->control('password', ['class' => 'form-control', 'placeholder'=>'password']) ?>
                 <?= $this->Form->button('Login', ['class' => 'primary-btn text-uppercase mt-20']) ?>
                 <?= $this->Form->end() ?>
             </div>
