@@ -14,7 +14,7 @@ class EmailComponent extends Component{
 
     public function send_mail($to, $subject, $message)
     {
-        $sender = "suryasimorangkir24@gmail.com";
+        $sender = "fanyjohanna42@gmail.com";
         $header = "X-Mailer:PHP/".phpversion() . "Return-Path:$sender";
 
         $mail = new PHPMailer();
@@ -23,8 +23,8 @@ class EmailComponent extends Component{
         $mail->IsSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
-        $mail->Username = "suryasimorangkir24@gmail.com";
-        $mail->Password = "@@123SuryaSimorangkir";
+        $mail->Username = "fanyjohanna42@gmail.com";
+        $mail->Password = "dreizehn13";
         $mail->SMTPSecure = "tls";
         $mail->Port = 587;
 
