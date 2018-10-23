@@ -24,8 +24,11 @@ class ArticlesController extends AppController
     {
         $articleTable = TableRegistry::get('Articles');
         $article = $articleTable->get($id);
+        $articleCommentsTable = TableRegistry::get('ArticleComments');
+        $comments = $articleCommentsTable->find('all')->where(['article_id' => $article->id])
+            ->contain(['Users', 'Articles']);
         $title = "View - " .$article->title;
-        $this->set(compact('title', 'article'));
+        $this->set(compact('title', 'article', 'comments'));
         $this->viewBuilder()->templatePath('Publics');
         $this->render('view');
     }

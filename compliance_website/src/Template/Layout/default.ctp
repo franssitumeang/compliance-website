@@ -60,7 +60,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div id="logo">
-                        <a href="index.html">
+                        <a href="/">
                             <?= $this->Html->image('wahana-logo.png', [
                             'alt' => 'Wahana Artha Logo',
                             'height' => 100,
