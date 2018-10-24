@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\CompaniesTable;
+use App\Model\Table\ArticleCommentsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\CompaniesTable Test Case
+ * App\Model\Table\ArticleCommentsTable Test Case
  */
-class CompaniesTableTest extends TestCase
+class ArticleCommentsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\CompaniesTable
+     * @var \App\Model\Table\ArticleCommentsTable
      */
-    public $Companies;
+    public $ArticleComments;
 
     /**
      * Fixtures
@@ -24,8 +24,9 @@ class CompaniesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.companies',
-        'app.departments'
+        'app.article_comments',
+        'app.users',
+        'app.articles'
     ];
 
     /**
@@ -36,8 +37,8 @@ class CompaniesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Companies') ? [] : ['className' => CompaniesTable::class];
-        $this->Companies = TableRegistry::getTableLocator()->get('Companies', $config);
+        $config = TableRegistry::getTableLocator()->exists('ArticleComments') ? [] : ['className' => ArticleCommentsTable::class];
+        $this->ArticleComments = TableRegistry::getTableLocator()->get('ArticleComments', $config);
     }
 
     /**
@@ -47,7 +48,7 @@ class CompaniesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Companies);
+        unset($this->ArticleComments);
 
         parent::tearDown();
     }

@@ -10,7 +10,8 @@ class CompaniesController extends AppController{
         'limit' => 10,
         'order' => [
             'Companies.company_name' => 'asc'
-        ]
+        ],
+        'contain' => array('ParentCompanies')
     ];
 
     public function initialize()
@@ -33,7 +34,8 @@ class CompaniesController extends AppController{
                 'order' => [
                     'Companies.company_name' => 'asc'
                 ],
-                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%']
+                'conditions' => [$attribute.' LIKE' => '%'.$searchKey.'%'],
+                'contain' => array('ParentCompanies')
             ];
         }       
         $title = "Perusahaan";
@@ -56,11 +58,15 @@ class CompaniesController extends AppController{
         }
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
+            if($company->parent_id == "null"){
+                $company->parent_id = null;
+            }
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));
             }else{
                 $this->Flash->error(__('The company could not be saved. Please, try again.'));
             }
+            // debug($company);
             return $this->redirect(['action' => 'index']);
         }
     }

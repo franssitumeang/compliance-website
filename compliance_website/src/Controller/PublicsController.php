@@ -10,6 +10,7 @@ class PublicsController extends AppController
     public function initialize()
     {
         parent::initialize();
+        // $this->Auth->allow('logout');
         
     }
 
@@ -30,6 +31,7 @@ class PublicsController extends AppController
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
+            debug($user);
             $this->Flash->msg_error('Your username or password is incorrect.');
         }
         $this->viewBuilder()->templatePath('Publics');
@@ -72,6 +74,17 @@ class PublicsController extends AppController
     // create your authentication here
     public function isAuthorized($user) {
         return true;
+    }
+
+    public function profile(){
+        $title = "Profile";
+        $this->paginate = [
+            'contain' => array('ChildCompanies','ParentCompanies'),
+        ];
+        $companies = $this->paginate('Companies');
+        $this->set(compact('title','companies'));
+        $this->viewBuilder()->templatePath('Publics');
+        $this->render('profile');
     }
 
 }

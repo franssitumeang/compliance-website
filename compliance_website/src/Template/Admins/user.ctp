@@ -234,7 +234,6 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="id_group" id="id_group">
-                                
                             </div>
                             <div class="pull-right">
                                 <input type="submit" value="Save" class="btn btn-success" id="btn_save">

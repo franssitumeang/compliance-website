@@ -39,6 +39,9 @@ class AppController extends Controller
      *
      * @return void
      */
+    // public function beforeFilter(Event $event){
+    //     $this->Auth->allow(array('index', 'view', 'profile'));
+    // }
     public function initialize()
     {
         parent::initialize();
@@ -55,44 +58,31 @@ class AppController extends Controller
         // $this->loadComponent('Security');
 
 
-        // Untuk melakukan authentikasi login
-        $this->loadComponent('Auth', [
-            'authorize' => ['Controller'],
-            'authenticate' => [
-                'Form' => [
-                    'fields' => [
-                        'username' => 'email',
-                        'password' => 'password'
-                    ],
-                    'userModel' => 'Users',
-                    
-                    // konfigurasi ada di UsersTable.php 
-                    // berguna untuk mengambil Positions dan Groups pada users
-                    // Untuk lebih jelasnya
-                    // https://book.cakephp.org/3.0/en/controllers/components/authentication.html#customizing-find-query
-                    'finder' => 'auth'
-                ]
-            ],
-            'loginAction' => [
-                'controller' => 'Publics',
-                'action' => 'login',
-                'prefix' => false
-            ],
-             //use isAuthorized in Controllers
-             // If unauthorized, return them to page they were just on
-            'unauthorizedRedirect' => $this->referer()
-        ]);
-        $this->Auth->allow('index', 'view');
-
-        $this->Auth->allow('logout');
-
+        // $this->loadComponent('Auth', [
+        //     'authorize' => ['Controller'],
+        //     'authenticate' => [
+        //         'Form' => [
+        //             'fields' => [
+        //                 'username' => 'email',
+        //                 'password' => 'password'
+        //             ]
+        //         ]
+        //     ],
+        //     'loginAction' => [
+        //         'controller' => 'Publics',
+        //         'action' => 'login',
+        //         'prefix' => false
+        //     ],
+        //      //use isAuthorized in Controllers
+        //      // If unauthorized, return them to page they were just on
+        //     'unauthorizedRedirect' => $this->referer()
+        // ]);
+        
 
         $companiesTable = TableRegistry::get('Companies');
         $headerCompanies = $companiesTable->find('all');
-        $authUser = $this->Auth->user();
-        $this->set(compact('authUser', 'headerCompanies'));
-
-
+        // $authUser = $this->Auth->user();
+        $this->set(compact('headerCompanies'));
     }
 
 }

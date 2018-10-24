@@ -137,8 +137,8 @@ class UserRequestHeadersController extends AppController
 
     public function sent($id)
     {
-        $to = 'fanyjohanna42@gmail.com';
-        $subject = 'Hi Surya, i got a message for you';
+        $to='suryasimorangkir24@gmail.com';
+        $subject='Hi Surya, i got a message for you';
         $message = 'All is well';
 
         try {
