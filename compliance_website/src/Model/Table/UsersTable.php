@@ -130,4 +130,19 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+
+    // Untuk mengambil Positions dan Groups.
+    // dapat di customize dengan menggunakan cakephp query
+    // ex : $query->select(['id', 'username', 'password', 'name'])
+    //            ->contain(['Positions', 'Groups']);
+    // untuk lebih jelasnya
+    // https://book.cakephp.org/3.0/en/controllers/components/authentication.html#customizing-find-query
+    public function findAuth(\Cake\ORM\Query $query, array $options)
+    {
+        $query
+            ->contain(['Positions', 'Groups']);
+
+        return $query;
+    }
 }

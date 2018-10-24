@@ -6,13 +6,12 @@ use App\Controller\AppController;
 
 class UserRequestHeadersController extends AppController
 {
- 
+
 
     public $paginate = [
-        'limit' => 10,
+        'limit' => 5,
         'contain' => ['Users', 'UserRequestReasons'],
         'order' => ['UserRequestHeaders.created' => 'DESC']
-
     ];
 
     public function initialize()
@@ -25,12 +24,22 @@ class UserRequestHeadersController extends AppController
     {
         $searchKey = $this->request->query('search_key');
         $attribute = $this->request->query('attribute');
+        $authUser = $this->Auth->user();
+        $this->paginate = [
+            'limit' => 5,
+            'contain' => ['UserRequestReasons'],
+            'order' => ['UserRequestHeaders.created' => 'DESC'],
+            'conditions' => ['user_id' => $authUser['id']]
+        ];
         if ($searchKey) {
             $this->paginate = [
-                'limit' => 10,
-                'contain' => ['Users', 'UserRequestReasons'],
-                'conditions' => [$attribute . ' LIKE' => '%' . $searchKey . '%']
-
+                'limit' => 5,
+                'contain' => ['UserRequestReasons'],
+                'order' => ['UserRequestHeaders.created' => 'DESC'],
+                'conditions' => [
+                    $attribute . ' LIKE' => '%' . $searchKey . '%',
+                    'user_id' => $authUser['id']
+                ]
             ];
         }
         $title = "Daftar Dokumen";
@@ -76,7 +85,7 @@ class UserRequestHeadersController extends AppController
             $userRequestHeader->doc_no = $datas['doc_no'];
 
 
-            
+
 
             if ($this->UserRequestHeaders->save($userRequestHeader)) {
 
@@ -98,10 +107,10 @@ class UserRequestHeadersController extends AppController
                 if ($UserRequestDetail->save($userRequestDetail)) {
                     $this->Flash->msg_success(__('Pengajuan Dokumen berhasil dibuat.'));
                     return $this->redirect(['action' => 'index']);
-                } 
+                }
             }
             $this->Flash->msg_error(__('Pengajuan Dokumen gagal dibuat.'));
-        
+
         }
 
         $UserDocCategories = $this->UserRequestHeaders->UserDocCategories->find('all', array(
@@ -128,13 +137,13 @@ class UserRequestHeadersController extends AppController
 
     public function sent($id)
     {
-        $to='fanyjohanna42@gmail.com';
-        $subject='Hi Surya, i got a message for you';
+        $to = 'fanyjohanna42@gmail.com';
+        $subject = 'Hi Surya, i got a message for you';
         $message = 'All is well';
 
-        try{
-            $mail = $this->Email->send_mail($to,$subject,$message);
-        }catch (Exception $e){
+        try {
+            $mail = $this->Email->send_mail($to, $subject, $message);
+        } catch (Exception $e) {
             echo 'Message could not be sent.Mailer error: ', $mail->ErrorInfo;
         }
         exit;
@@ -153,7 +162,8 @@ class UserRequestHeadersController extends AppController
 
     
     // create your authentication here
-    public function isAuthorized($user) {
+    public function isAuthorized($user)
+    {
         return true;
     }
 

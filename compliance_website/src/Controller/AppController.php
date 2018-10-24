@@ -55,6 +55,7 @@ class AppController extends Controller
         // $this->loadComponent('Security');
 
 
+        // Untuk melakukan authentikasi login
         $this->loadComponent('Auth', [
             'authorize' => ['Controller'],
             'authenticate' => [
@@ -62,7 +63,14 @@ class AppController extends Controller
                     'fields' => [
                         'username' => 'email',
                         'password' => 'password'
-                    ]
+                    ],
+                    'userModel' => 'Users',
+                    
+                    // konfigurasi ada di UsersTable.php 
+                    // berguna untuk mengambil Positions dan Groups pada users
+                    // Untuk lebih jelasnya
+                    // https://book.cakephp.org/3.0/en/controllers/components/authentication.html#customizing-find-query
+                    'finder' => 'auth'
                 ]
             ],
             'loginAction' => [
@@ -75,12 +83,16 @@ class AppController extends Controller
             'unauthorizedRedirect' => $this->referer()
         ]);
         $this->Auth->allow('index', 'view');
-        $this->Auth->allow('index', 'view');
+
+        $this->Auth->allow('logout');
+
 
         $companiesTable = TableRegistry::get('Companies');
         $headerCompanies = $companiesTable->find('all');
         $authUser = $this->Auth->user();
         $this->set(compact('authUser', 'headerCompanies'));
+
+
     }
 
 }

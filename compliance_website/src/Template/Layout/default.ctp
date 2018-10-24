@@ -125,11 +125,9 @@
                         <li><a href="/login">Login</a></li>
                         <?php endif; ?>
                         <?php if ($authUser): ?>
-                        <li class="menu-has-children"><a href="#">Profile</a>
+                        <li class="menu-has-children"><a href="#">Hello, <?= explode(" ", $authUser['name'])[0];?></a>
                             <ul>                                
-                                <li><a href="#">Hello, <?= $authUser['name'];?></a></li>
                                 <li><a href="#">Change Password</a></li>
-
                                 <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>

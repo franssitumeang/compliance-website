@@ -45,7 +45,6 @@
                                             <label>Search By</label>
                                             <div class="input-group col-xs-12">
                                                 <select class="form-control" name="attribute">
-                                                    <option value="Users.name">Nama</option>
                                                     <option value="UserRequestHeaders.doc_title"">Judul Dokumen</option>
                                                     <option value="UserRequestHeaders.status"">Status</option>
                                                 </select>
@@ -69,7 +68,6 @@
                                                     <th>Tanggal </th>
                                                     <th>Nomor Dokumen</th>
                                                     <th>Judul Dokumen</th>
-                                                    <th>Nama</th>
                                                     <th>Alasan</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -87,9 +85,6 @@
                                                     </td>
                                                     <td>
                                                         <?=$urh->doc_title?>
-                                                    </td>
-                                                    <td>
-                                                        <?=$urh->user->name?>
                                                     </td>
                                                     <td>
                                                         <?=$urh->user_request_reason->reason_name?>
