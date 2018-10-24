@@ -159,12 +159,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="doc_name">Nomor Dokumen</label>
+                            <?= $this->Form->control('doc_number', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nomor Dokumen', 
+                            'id' => 'doc_number',
+                            'required' => true, 
+                            'maxlength' => '36']); ?>
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="doc_name">Nama Dokumen</label>
                             <?= $this->Form->control('doc_name', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Nama Dokumen', 
                             'id' => 'doc_name',
                             'required' => true, 
                             'maxlength' => '36']); ?>
                         </div>
+
+
 
                         <div class="form-group">
                             <label for="process_owner">Pemilik Proses</label>
@@ -173,10 +183,13 @@
                             'required' => true, 
                             'maxlength' => '10']); ?>
                         </div>
+                        
+
                     </div>
                     <div class="col-6">
+                        
                         <div class="form-group">  
-                            <label for="attachment">Tanggal Revisi</label>
+                            <label for="revision_date">Tanggal Revisi</label>
                                 <input id="revision_date" type = "date" class = "form-control" name ="revision_date" value="revision_date" id="revision_date" >
                         </div>
 
@@ -188,7 +201,12 @@
                                 <option value="88a508cd-8507-42cf-b4df-b9b21e5b27e3">Obsolete</option>
                             </select>
                         </div>
-                        
+
+                        <div class="form-group">  
+                            <label for="attachment">File Upload</label>
+                                <input id="attachment" type = "file" class = "form-control" name ="attachment"  id="attachment" >
+                        </div>
+
                         <div class="pull-right">
                             <input type="submit" value="Save" class="btn btn-success" id="btn_save">
                             <input type="submit" value="Update" class="btn btn-success" id="btn_update">

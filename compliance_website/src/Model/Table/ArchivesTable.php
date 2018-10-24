@@ -66,6 +66,12 @@ class ArchivesTable extends Table
             ->notEmpty('historical_revision_number');
 
         $validator
+            ->scalar('doc_number')
+            ->maxLength('doc_number', 36)
+            ->requirePresence('doc_number', 'create')
+            ->notEmpty('doc_number');
+
+        $validator
             ->scalar('doc_name')
             ->maxLength('doc_name', 50)
             ->requirePresence('doc_name', 'create')
@@ -80,6 +86,11 @@ class ArchivesTable extends Table
         $validator
             ->date('revision_date')
             ->allowEmpty('revision_date');
+
+        $validator
+            ->scalar('support_file')
+            ->maxLength('support_file', 255)
+            ->allowEmpty('support_file');
 
         return $validator;
     }
