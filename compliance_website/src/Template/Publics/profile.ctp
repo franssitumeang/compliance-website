@@ -27,15 +27,37 @@
                         </a>
                         <ul class="list">
                             <?php foreach ($companies as $c): ?>
+                            <?php if (!$c->parent_id): ?>
                             <li class="item">
                                 <a class="link" href="#">
                                     <div class="name"><?= $c->company_name ?></div>
                                 </a>
+                                <ul class="list">
+                                    <?php foreach ($c->child_companies as $cc): ?>
+                                    <?php if ($cc->parent_id): ?>
+                                    <li class="item">
+                                        <a class="link" href="#">
+                                            <div class="name"><?= $cc->company_name ?></div>
+                                        </a>
+                                    </li>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ul>
                             </li>
+                            <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
                     </li>
                 </ul>
+            </div><br>
+            <div class="col-lg-12">
+                <h5 class="mb-30" style="margin-bottom: -3px;">PT Wahanaartha Harsaka</h5>
+                <p>WAH adalah perusaahaan supplier produk Oli Federal. Untuk menjalankan aktifitas PT WAH
+                     di jalankan oleh dua function yang terdiri dari Accounting & Sales.</p>
+                <?php foreach ($companies as $c): ?>
+                <h5 class="mb-30" style="margin-bottom: -3px;"><?= $c->company_name ?></h5>
+                <p><?= $c->description ?></p>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

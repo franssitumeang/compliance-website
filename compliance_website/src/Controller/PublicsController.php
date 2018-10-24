@@ -78,8 +78,10 @@ class PublicsController extends AppController
 
     public function profile(){
         $title = "Profile";
-        $companiesTable = TableRegistry::get('Companies');
-        $companies = $companiesTable->find('all');
+        $this->paginate = [
+            'contain' => array('ChildCompanies','ParentCompanies'),
+        ];
+        $companies = $this->paginate('Companies');
         $this->set(compact('title','companies'));
         $this->viewBuilder()->templatePath('Publics');
         $this->render('profile');

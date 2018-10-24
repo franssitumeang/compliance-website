@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Companies Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $ParentCompanies
- * @property |\Cake\ORM\Association\HasMany $ChildCompanies
+ * @property \App\Model\Table\CompaniesTable|\Cake\ORM\Association\BelongsTo $ParentCompanies
+ * @property \App\Model\Table\CompaniesTable|\Cake\ORM\Association\HasMany $ChildCompanies
  * @property \App\Model\Table\DepartmentsTable|\Cake\ORM\Association\HasMany $Departments
  *
  * @method \App\Model\Entity\Company get($primaryKey, $options = [])
@@ -92,6 +92,10 @@ class CompaniesTable extends Table
             ->allowEmpty('address_2');
 
         $validator
+            ->scalar('description')
+            ->allowEmpty('description');
+
+        $validator
             ->scalar('phone_num')
             ->maxLength('phone_num', 30)
             ->requirePresence('phone_num', 'create')
@@ -100,7 +104,7 @@ class CompaniesTable extends Table
         $validator
             ->scalar('fax_num')
             ->maxLength('fax_num', 30)
-            ->allowEmpty('fax_num');
+            ->allowEmpty('fax_num', 'create');
 
         $validator
             ->scalar('url_link')
