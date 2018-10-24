@@ -8,10 +8,12 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $historical_revision_number
+ * @property string $doc_number
  * @property string $doc_name
  * @property string $process_owner
  * @property \Cake\I18n\FrozenDate $revision_date
  * @property string $archive_category_id
+ * @property string $support_file
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -31,10 +33,12 @@ class Archive extends Entity
      */
     protected $_accessible = [
         'historical_revision_number' => true,
+        'doc_number' => true,
         'doc_name' => true,
         'process_owner' => true,
         'revision_date' => true,
         'archive_category_id' => true,
+        'support_file' => true,
         'created' => true,
         'modified' => true,
         'archive_category' => true
